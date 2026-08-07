@@ -1,11 +1,11 @@
-package com.streamvault.app.ui.screens.epg
+package com.zenlemon.app.ui.screens.epg
 
 import com.google.common.truth.Truth.assertThat
 import com.google.common.truth.Truth.assertWithMessage
 import android.app.Application
 import androidx.lifecycle.ViewModel
-import com.streamvault.app.player.LivePreviewHandoffManager
-import com.streamvault.app.plugins.StreamVaultPluginManager
+import com.zenlemon.app.player.LivePreviewHandoffManager
+import com.zenlemon.app.plugins.StreamVaultPluginManager
 import com.streamvault.data.preferences.PreferencesRepository
 import com.streamvault.domain.manager.ParentalControlManager
 import com.streamvault.domain.manager.ProgramReminderManager

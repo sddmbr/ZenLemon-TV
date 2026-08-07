@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import com.google.common.truth.Truth.assertThat
-import com.streamvault.app.R
+import com.zenlemon.app.R
 import org.junit.Test
 
 class SettingsXtreamLiveOnboardingMessageTest {

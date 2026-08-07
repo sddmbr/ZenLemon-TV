@@ -1,8 +1,8 @@
-package com.streamvault.app.ui.screens.provider
+package com.zenlemon.app.ui.screens.provider
 
 import com.google.common.truth.Truth.assertThat
-import com.streamvault.app.pairing.ProviderQrPairingManager
-import com.streamvault.app.pairing.ProviderQrPairingState
+import com.zenlemon.app.pairing.ProviderQrPairingManager
+import com.zenlemon.app.pairing.ProviderQrPairingState
 import com.streamvault.domain.model.ActiveLiveSource
 import com.streamvault.domain.model.CombinedM3uProfile
 import com.streamvault.domain.model.Provider

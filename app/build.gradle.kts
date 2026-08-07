@@ -50,17 +50,17 @@ fun computeOfficialSigningCertSha256(): String {
 val officialSigningCertSha256 = computeOfficialSigningCertSha256()
 
 android {
-    namespace = "com.streamvault.app"
+    namespace = "com.zenlemon.app"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.streamvault.app"
+        applicationId = "com.zenlemon.streamtv"
         minSdk = 25
         targetSdk = 36
         versionCode = 17
         versionName = "1.0.16"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "OFFICIAL_APPLICATION_ID", "\"com.streamvault.app\"")
+        buildConfigField("String", "OFFICIAL_APPLICATION_ID", "\"com.zenlemon.app\"")
         buildConfigField("String", "OFFICIAL_SIGNING_CERT_SHA256", "\"$officialSigningCertSha256\"")
         buildConfigField("String", "APP_UPDATE_CHANNEL", "\"stable\"")
         buildConfigField("long", "BUILD_TIMESTAMP_UTC", "0L")

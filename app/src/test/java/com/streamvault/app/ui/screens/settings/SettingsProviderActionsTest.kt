@@ -1,9 +1,9 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import com.google.common.truth.Truth.assertThat
-import com.streamvault.app.tv.LauncherRecommendationsManager
-import com.streamvault.app.tv.WatchNextManager
-import com.streamvault.app.tvinput.TvInputChannelSyncManager
+import com.zenlemon.app.tv.LauncherRecommendationsManager
+import com.zenlemon.app.tv.WatchNextManager
+import com.zenlemon.app.tvinput.TvInputChannelSyncManager
 import com.streamvault.data.preferences.PreferencesRepository
 import com.streamvault.data.sync.SyncManager
 import com.streamvault.domain.model.ActiveLiveSource

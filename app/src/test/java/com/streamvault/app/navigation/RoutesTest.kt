@@ -1,4 +1,4 @@
-package com.streamvault.app.navigation
+package com.zenlemon.app.navigation
 
 import com.google.common.truth.Truth.assertThat
 import com.streamvault.domain.model.AppLandingDestination

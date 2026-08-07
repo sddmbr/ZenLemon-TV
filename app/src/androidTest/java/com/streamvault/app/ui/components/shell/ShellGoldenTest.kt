@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.components.shell
+package com.zenlemon.app.ui.components.shell
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,9 +10,9 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.streamvault.app.navigation.Routes
-import com.streamvault.app.ui.test.assertAgainstGolden
-import com.streamvault.app.ui.theme.StreamVaultTheme
+import com.zenlemon.app.navigation.Routes
+import com.zenlemon.app.ui.test.assertAgainstGolden
+import com.zenlemon.app.ui.theme.StreamVaultTheme
 import com.streamvault.domain.model.Channel
 import org.junit.Rule
 import org.junit.Test

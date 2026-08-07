@@ -1,4 +1,4 @@
-package com.streamvault.app.ui
+package com.zenlemon.app.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.LaunchedEffect
@@ -13,11 +13,11 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.streamvault.app.ui.components.shell.CategoryRailPanel
-import com.streamvault.app.ui.screens.player.overlay.PlayerControlsOverlay
-import com.streamvault.app.ui.screens.player.overlay.PlayerTrackSelectionDialog
-import com.streamvault.app.ui.test.TestFixtures
-import com.streamvault.app.ui.theme.StreamVaultTheme
+import com.zenlemon.app.ui.components.shell.CategoryRailPanel
+import com.zenlemon.app.ui.screens.player.overlay.PlayerControlsOverlay
+import com.zenlemon.app.ui.screens.player.overlay.PlayerTrackSelectionDialog
+import com.zenlemon.app.ui.test.TestFixtures
+import com.zenlemon.app.ui.theme.StreamVaultTheme
 import com.streamvault.player.TrackType
 import org.junit.Rule
 import org.junit.Test

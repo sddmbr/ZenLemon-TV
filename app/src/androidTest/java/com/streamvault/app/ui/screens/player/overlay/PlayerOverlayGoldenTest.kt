@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.player.overlay
+package com.zenlemon.app.ui.screens.player.overlay
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,9 +8,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.streamvault.app.ui.test.TestFixtures
-import com.streamvault.app.ui.test.assertAgainstGolden
-import com.streamvault.app.ui.theme.StreamVaultTheme
+import com.zenlemon.app.ui.test.TestFixtures
+import com.zenlemon.app.ui.test.assertAgainstGolden
+import com.zenlemon.app.ui.theme.StreamVaultTheme
 import com.streamvault.player.PlayerError
 import com.streamvault.player.TrackType
 import org.junit.Rule

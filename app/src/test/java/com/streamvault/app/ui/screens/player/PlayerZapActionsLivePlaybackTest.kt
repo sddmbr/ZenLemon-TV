@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import com.google.common.truth.Truth.assertThat
 import com.streamvault.domain.model.Channel

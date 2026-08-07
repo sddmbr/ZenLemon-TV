@@ -1,4 +1,4 @@
-package com.streamvault.app.player.external
+package com.zenlemon.app.player.external
 
 import android.content.Intent
 import com.google.common.truth.Truth.assertThat

@@ -1,4 +1,4 @@
-package com.streamvault.app.update
+package com.zenlemon.app.update
 
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test

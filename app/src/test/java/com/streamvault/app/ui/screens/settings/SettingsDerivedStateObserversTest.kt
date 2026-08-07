@@ -1,8 +1,8 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.app.Application
 import com.google.common.truth.Truth.assertThat
-import com.streamvault.app.R
+import com.zenlemon.app.R
 import com.streamvault.data.local.dao.ProgramDao
 import com.streamvault.domain.model.Provider
 import com.streamvault.domain.model.ProviderType

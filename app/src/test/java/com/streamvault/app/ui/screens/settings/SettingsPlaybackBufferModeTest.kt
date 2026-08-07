@@ -1,8 +1,8 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.content.Context
 import com.google.common.truth.Truth.assertThat
-import com.streamvault.app.R
+import com.zenlemon.app.R
 import com.streamvault.domain.model.PlaybackBufferMode
 import org.junit.Test
 import org.mockito.kotlin.mock

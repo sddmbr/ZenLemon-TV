@@ -1,4 +1,4 @@
-package com.streamvault.app.tv
+package com.zenlemon.app.tv
 
 import android.content.ContentResolver
 import android.content.ContentUris
@@ -184,10 +184,10 @@ class LauncherProviderInstrumentationTest {
     }
 
     private fun resourceArtworkUri(): Uri =
-        Uri.parse("android.resource://${context.packageName}/${com.streamvault.app.R.mipmap.ic_launcher_vault}")
+        Uri.parse("android.resource://${context.packageName}/${com.zenlemon.app.R.mipmap.ic_launcher_vault}")
 
     private fun mainActivityIntentUri(): String =
-        Intent(context, com.streamvault.app.MainActivity::class.java)
+        Intent(context, com.zenlemon.app.MainActivity::class.java)
             .setAction(Intent.ACTION_VIEW)
             .toUri(Intent.URI_INTENT_SCHEME)
 

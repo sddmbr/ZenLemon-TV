@@ -1,9 +1,9 @@
-package com.streamvault.app.ui.test
+package com.zenlemon.app.ui.test
 
-import com.streamvault.app.ui.screens.player.NumericChannelInputState
-import com.streamvault.app.ui.screens.player.PlayerNoticeAction
-import com.streamvault.app.ui.screens.player.PlayerNoticeState
-import com.streamvault.app.ui.screens.player.PlayerRecoveryType
+import com.zenlemon.app.ui.screens.player.NumericChannelInputState
+import com.zenlemon.app.ui.screens.player.PlayerNoticeAction
+import com.zenlemon.app.ui.screens.player.PlayerNoticeState
+import com.zenlemon.app.ui.screens.player.PlayerRecoveryType
 import com.streamvault.domain.model.Category
 import com.streamvault.domain.model.Channel
 import com.streamvault.domain.model.ContentType

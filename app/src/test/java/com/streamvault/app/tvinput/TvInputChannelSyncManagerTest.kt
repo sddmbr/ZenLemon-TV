@@ -1,4 +1,4 @@
-package com.streamvault.app.tvinput
+package com.zenlemon.app.tvinput
 
 import com.google.common.truth.Truth.assertThat
 import com.streamvault.domain.model.Channel
