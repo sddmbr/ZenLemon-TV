@@ -1,4 +1,6 @@
-# StreamVault
+# 🍋 ZenLemon TV (zenlemon-iptv)
+
+> *The pinnacle of tailored, enterprise-grade media streaming — where bitter complexity meets sweet user experience.*
 
 <p align="center">
 	<a href="https://github.com/Davidona/StreamVault-IPTV/releases/latest/download/StreamVault.apk"><img src="https://img.shields.io/badge/Download-StreamVault.apk-2ea44f?style=for-the-badge&logo=android" alt="Download StreamVault APK" /></a>
@@ -11,9 +13,7 @@
 	<a href="LICENSE"><img src="https://img.shields.io/badge/License-StreamVault_OSL-0284c7?style=for-the-badge" alt="License" /></a>
 </p>
 
-# 🍋 ZenLemon TV (zenlemon-iptv)
 
-> *The pinnacle of tailored, enterprise-grade media streaming — where bitter complexity meets sweet user experience.*
 
 ---
 
