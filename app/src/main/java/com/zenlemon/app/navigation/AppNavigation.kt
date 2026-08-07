@@ -37,6 +37,7 @@ import com.zenlemon.app.ui.screens.series.SeriesScreen
 import com.zenlemon.app.ui.screens.settings.SettingsScreen
 import com.zenlemon.app.ui.screens.welcome.WelcomeScreen
 import com.zenlemon.app.ui.screens.downloads.DownloadsScreen
+import com.zenlemon.app.ui.screens.youtube.YouTubeScreen
 import com.zenlemon.app.MainActivity
 import com.streamvault.domain.model.AppLandingDestination
 import com.streamvault.domain.model.AppTopLevelDestination
@@ -104,6 +105,7 @@ object Routes {
     const val WELCOME = "welcome"
     const val PARENTAL_CONTROL_GROUPS = "parental_control_groups/{providerId}"
     const val MULTI_VIEW = "multi_view"
+    const val YOUTUBE = "youtube"
 
 
     fun providerSetup(providerId: Long? = null, importUri: String? = null): String {
@@ -492,7 +494,6 @@ fun AppNavigation(mainActivity: MainActivity) {
                 }
             )
         }
-// ...
 
         composable(Routes.HOME) {
             DashboardScreen(
@@ -605,7 +606,6 @@ fun AppNavigation(mainActivity: MainActivity) {
                 initialCategoryId = initialCategoryId
             )
         }
-// ... (rest of file)
 
         composable(Routes.MOVIES) {
             MoviesScreen(
@@ -923,6 +923,10 @@ fun AppNavigation(mainActivity: MainActivity) {
             MultiViewScreen(
                 onBack = { navController.popBackStack() }
             )
+        }
+
+        composable(Routes.YOUTUBE) {
+            YouTubeScreen()
         }
     }
 }

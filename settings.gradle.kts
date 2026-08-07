@@ -11,10 +11,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
-rootProject.name = "StreamVault"
+rootProject.name = "ZenLemon"
 
 include(":app")
 include(":domain")
