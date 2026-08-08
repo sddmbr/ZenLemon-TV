@@ -181,7 +181,7 @@ ZenLemon is more than just a media player; it is a sandbox for advanced client-f
 
 ## Download
 
-- [Download latest ZenLemonTV.apk][(https://github.com/sddmbr/ZenLemon-TV/releases/download/lemonlime/ZenLemon-TV.apk)]
+- [Download latest ZenLemonTV.apk][(https://github.com/sddmbr/ZenLemon-TV/releases/download/v1.0.0/ZenLemon-TV.apk)]
 - The app can also detect and download newer releases in-app through GitHub Releases.
 - GitHub Actions still runs build and test validation on pushes and pull requests.
 - GitHub Releases are now published only when the workflow is started manually with `workflow_dispatch`, so versioned releases do not get created by mistake on every push.
