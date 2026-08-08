@@ -54,7 +54,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.lemontreesites.zenlemontv"
+        applicationId = "com.zenlemon.streamtv"
         minSdk = 25
         targetSdk = 36
         versionCode = 17
@@ -137,9 +137,6 @@ android {
 
     testOptions {
         animationsDisabled = true
-        unitTests.all {
-            it.ignoreFailures = true
-        }
     }
 }
 
@@ -233,10 +230,7 @@ dependencies {
 }
 
 tasks.configureEach {
-    // Aggressively disable all testing, coverage, and linting tasks to unblock CI
-    if (name.contains("Test", ignoreCase = true) || 
-        name.contains("kover", ignoreCase = true) || 
-        name.contains("lint", ignoreCase = true)) {
+    if (name == "hiltJavaCompileDebugUnitTest") {
         enabled = false
     }
 }
