@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.accessibility
+package com.streamvault.app.ui.accessibility
 
 import android.content.Context
 import android.database.ContentObserver

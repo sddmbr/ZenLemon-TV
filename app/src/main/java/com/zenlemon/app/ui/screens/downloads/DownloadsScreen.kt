@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.downloads
+package com.streamvault.app.ui.screens.downloads
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -49,11 +49,11 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.components.rememberCrossfadeImageModel
-import com.zenlemon.app.ui.components.shell.AppNavigationChrome
-import com.zenlemon.app.ui.components.shell.AppScreenScaffold
-import com.zenlemon.app.ui.design.AppColors
+import com.streamvault.app.R
+import com.streamvault.app.ui.components.rememberCrossfadeImageModel
+import com.streamvault.app.ui.components.shell.AppNavigationChrome
+import com.streamvault.app.ui.components.shell.AppScreenScaffold
+import com.streamvault.app.ui.design.AppColors
 import com.streamvault.domain.model.DownloadItem
 import com.streamvault.domain.model.DownloadStatus
 

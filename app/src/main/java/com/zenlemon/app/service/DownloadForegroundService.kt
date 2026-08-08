@@ -1,4 +1,4 @@
-package com.zenlemon.app.service
+package com.streamvault.app.service
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -12,8 +12,8 @@ import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import com.zenlemon.app.MainActivity
-import com.zenlemon.app.R
+import com.streamvault.app.MainActivity
+import com.streamvault.app.R
 import com.streamvault.domain.model.DownloadItem
 import com.streamvault.domain.model.DownloadStatus
 import com.streamvault.domain.repository.DownloadManager

@@ -1,4 +1,4 @@
-package com.zenlemon.app.diagnostics
+package com.streamvault.app.diagnostics
 
 import android.content.Intent
 import android.os.Bundle

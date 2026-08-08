@@ -1,10 +1,10 @@
-package com.zenlemon.app.ui.screens.vod
+package com.streamvault.app.ui.screens.vod
 
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
-import com.zenlemon.app.ui.components.dialogs.PinDialog
+import com.streamvault.app.ui.components.dialogs.PinDialog
 import kotlinx.coroutines.launch
 
 object VodBrowseDefaults {

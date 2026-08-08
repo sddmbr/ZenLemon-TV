@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.multiview
+package com.streamvault.app.ui.screens.multiview
 
 import android.app.ActivityManager
 import android.content.Context
@@ -6,8 +6,8 @@ import android.os.Build
 import android.os.PowerManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zenlemon.app.di.AuxiliaryPlayerEngine
-import com.zenlemon.app.ui.model.associateByAnyRawId
+import com.streamvault.app.di.AuxiliaryPlayerEngine
+import com.streamvault.app.ui.model.associateByAnyRawId
 import com.streamvault.data.preferences.PreferencesRepository
 import com.streamvault.domain.manager.ParentalControlManager
 import com.streamvault.domain.model.Category

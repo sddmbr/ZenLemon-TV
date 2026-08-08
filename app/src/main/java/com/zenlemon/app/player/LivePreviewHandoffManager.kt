@@ -1,4 +1,4 @@
-package com.zenlemon.app.player
+package com.streamvault.app.player
 
 import com.streamvault.domain.model.Channel
 import com.streamvault.domain.model.StreamInfo

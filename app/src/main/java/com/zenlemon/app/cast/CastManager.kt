@@ -1,4 +1,4 @@
-package com.zenlemon.app.cast
+package com.streamvault.app.cast
 
 import android.content.Context
 import android.net.Uri
@@ -13,7 +13,7 @@ import com.google.android.gms.cast.MediaMetadata
 import com.google.android.gms.cast.framework.CastContext
 import com.google.android.gms.cast.framework.CastSession
 import com.google.android.gms.cast.framework.SessionManagerListener
-import com.zenlemon.app.plugins.StreamVaultPluginManager
+import com.streamvault.app.plugins.StreamVaultPluginManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

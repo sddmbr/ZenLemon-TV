@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.player
+package com.streamvault.app.ui.screens.player
 
 internal fun computeSleepTimerUiState(
     current: SleepTimerUiState,

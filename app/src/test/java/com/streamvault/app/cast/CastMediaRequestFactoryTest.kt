@@ -1,4 +1,4 @@
-package com.zenlemon.app.cast
+package com.streamvault.app.cast
 
 import com.google.common.truth.Truth.assertThat
 import com.streamvault.domain.model.StreamInfo

@@ -1,7 +1,7 @@
-package com.zenlemon.app.ui.screens.player
+package com.streamvault.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
-import com.zenlemon.app.ui.model.isArchivePlayable
+import com.streamvault.app.ui.model.isArchivePlayable
 import com.streamvault.domain.model.ContentType
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

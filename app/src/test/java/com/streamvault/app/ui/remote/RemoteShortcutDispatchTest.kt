@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.remote
+package com.streamvault.app.ui.remote
 
 import com.google.common.truth.Truth.assertThat
 import com.streamvault.domain.model.RemoteShortcutAction

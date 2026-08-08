@@ -1,9 +1,9 @@
-package com.zenlemon.app.di
+package com.streamvault.app.di
 
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.util.Log
-import com.zenlemon.app.BuildConfig
+import com.streamvault.app.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.streamvault.data.remote.NetworkTimeoutConfig

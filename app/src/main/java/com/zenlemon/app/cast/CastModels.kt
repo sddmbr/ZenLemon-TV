@@ -1,4 +1,4 @@
-package com.zenlemon.app.cast
+package com.streamvault.app.cast
 
 /**
  * Media payload sent to a Chromecast receiver.

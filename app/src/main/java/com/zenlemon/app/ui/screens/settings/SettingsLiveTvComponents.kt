@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,18 +17,18 @@ import androidx.compose.ui.unit.dp
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.components.dialogs.PremiumDialog
-import com.zenlemon.app.ui.components.dialogs.PremiumDialogFooterButton
-import com.zenlemon.app.ui.interaction.TvClickableSurface
-import com.zenlemon.app.ui.model.LiveTvChannelMode
-import com.zenlemon.app.ui.model.LiveTvQuickFilterVisibilityMode
-import com.zenlemon.app.ui.theme.ErrorColor
-import com.zenlemon.app.ui.theme.OnBackground
-import com.zenlemon.app.ui.theme.OnSurfaceDim
-import com.zenlemon.app.ui.theme.Primary
-import com.zenlemon.app.ui.theme.Secondary
-import com.zenlemon.app.ui.theme.SurfaceElevated
+import com.streamvault.app.R
+import com.streamvault.app.ui.components.dialogs.PremiumDialog
+import com.streamvault.app.ui.components.dialogs.PremiumDialogFooterButton
+import com.streamvault.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.ui.model.LiveTvChannelMode
+import com.streamvault.app.ui.model.LiveTvQuickFilterVisibilityMode
+import com.streamvault.app.ui.theme.ErrorColor
+import com.streamvault.app.ui.theme.OnBackground
+import com.streamvault.app.ui.theme.OnSurfaceDim
+import com.streamvault.app.ui.theme.Primary
+import com.streamvault.app.ui.theme.Secondary
+import com.streamvault.app.ui.theme.SurfaceElevated
 
 internal enum class ParentalAction {
     ChangeLevel, ChangePin, SetNewPin

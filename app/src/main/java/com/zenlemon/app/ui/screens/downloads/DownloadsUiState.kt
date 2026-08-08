@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.downloads
+package com.streamvault.app.ui.screens.downloads
 
 import com.streamvault.domain.model.DownloadItem
 import com.streamvault.domain.model.DownloadStorageConfig

@@ -1,8 +1,8 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
-import com.zenlemon.app.tv.LauncherRecommendationsManager
-import com.zenlemon.app.tv.WatchNextManager
-import com.zenlemon.app.tvinput.TvInputChannelSyncManager
+import com.streamvault.app.tv.LauncherRecommendationsManager
+import com.streamvault.app.tv.WatchNextManager
+import com.streamvault.app.tvinput.TvInputChannelSyncManager
 import com.streamvault.domain.model.ActiveLiveSource
 import com.streamvault.domain.model.ChannelLogoSourcePolicy
 import com.streamvault.domain.model.GuideSourcePolicy

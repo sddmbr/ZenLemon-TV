@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -33,13 +33,13 @@ import androidx.compose.ui.window.Dialog
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.components.dialogs.rememberDialogOpenGestureBlocker
-import com.zenlemon.app.ui.interaction.TvClickableSurface
-import com.zenlemon.app.ui.theme.OnBackground
-import com.zenlemon.app.ui.theme.OnSurfaceDim
-import com.zenlemon.app.ui.theme.Primary
-import com.zenlemon.app.ui.theme.SurfaceElevated
+import com.streamvault.app.R
+import com.streamvault.app.ui.components.dialogs.rememberDialogOpenGestureBlocker
+import com.streamvault.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.ui.theme.OnBackground
+import com.streamvault.app.ui.theme.OnSurfaceDim
+import com.streamvault.app.ui.theme.Primary
+import com.streamvault.app.ui.theme.SurfaceElevated
 
 @Composable
 internal fun PremiumSelectionDialog(
@@ -47,7 +47,7 @@ internal fun PremiumSelectionDialog(
     onDismiss: () -> Unit,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    val isTelevisionDevice = com.zenlemon.app.device.rememberIsTelevisionDevice()
+    val isTelevisionDevice = com.streamvault.app.device.rememberIsTelevisionDevice()
     var canInteract by remember { mutableStateOf(false) }
     val blockOpenGesture = rememberDialogOpenGestureBlocker(canInteract)
     LaunchedEffect(Unit) {

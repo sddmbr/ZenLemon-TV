@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState

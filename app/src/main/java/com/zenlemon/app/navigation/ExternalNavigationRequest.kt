@@ -1,4 +1,4 @@
-package com.zenlemon.app.navigation
+package com.streamvault.app.navigation
 
 import java.io.Serializable
 import java.net.URLDecoder

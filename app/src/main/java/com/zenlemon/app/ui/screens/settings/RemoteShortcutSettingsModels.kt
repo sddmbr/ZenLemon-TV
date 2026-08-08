@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import com.streamvault.domain.model.RemoteColorButton
 import com.streamvault.domain.model.RemoteShortcutProfile

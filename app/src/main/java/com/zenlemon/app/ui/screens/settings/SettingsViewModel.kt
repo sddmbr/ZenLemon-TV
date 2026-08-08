@@ -1,22 +1,22 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import android.app.Application
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zenlemon.app.R
-import com.zenlemon.app.BuildConfig
-import com.zenlemon.app.diagnostics.CrashReportStore
-import com.zenlemon.app.tv.LauncherRecommendationsManager
-import com.zenlemon.app.tv.WatchNextManager
-import com.zenlemon.app.tvinput.TvInputChannelSyncManager
-import com.zenlemon.app.ui.model.LiveTvChannelMode
-import com.zenlemon.app.ui.model.LiveTvQuickFilterVisibilityMode
-import com.zenlemon.app.ui.model.VodViewMode
-import com.zenlemon.app.update.AppUpdateInstaller
-import com.zenlemon.app.update.GitHubReleaseChecker
-import com.zenlemon.app.update.isRemoteVersionNewer
+import com.streamvault.app.R
+import com.streamvault.app.BuildConfig
+import com.streamvault.app.diagnostics.CrashReportStore
+import com.streamvault.app.tv.LauncherRecommendationsManager
+import com.streamvault.app.tv.WatchNextManager
+import com.streamvault.app.tvinput.TvInputChannelSyncManager
+import com.streamvault.app.ui.model.LiveTvChannelMode
+import com.streamvault.app.ui.model.LiveTvQuickFilterVisibilityMode
+import com.streamvault.app.ui.model.VodViewMode
+import com.streamvault.app.update.AppUpdateInstaller
+import com.streamvault.app.update.GitHubReleaseChecker
+import com.streamvault.app.update.isRemoteVersionNewer
 import com.streamvault.data.local.dao.ProgramDao
 import com.streamvault.data.local.dao.XtreamIndexJobDao
 import com.streamvault.data.local.dao.XtreamLiveOnboardingDao
@@ -280,7 +280,7 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    private fun com.zenlemon.app.diagnostics.CrashReportSummary.toUiModel(): CrashReportUiModel =
+    private fun com.streamvault.app.diagnostics.CrashReportSummary.toUiModel(): CrashReportUiModel =
         CrashReportUiModel(
             timestamp = timestamp,
             exception = exception,

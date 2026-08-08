@@ -1,14 +1,14 @@
-package com.zenlemon.app.ui.screens.player
+package com.streamvault.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
-import com.zenlemon.app.R
-import com.zenlemon.app.cast.CastMediaRequest
-import com.zenlemon.app.cast.CastMediaRequestBuildResult
-import com.zenlemon.app.cast.CastMediaRequestUnsupportedReason
-import com.zenlemon.app.cast.CastPlaybackEvent
-import com.zenlemon.app.cast.CastPlaybackReportMode
-import com.zenlemon.app.cast.CastRewriteRequiredReason
-import com.zenlemon.app.cast.CastStartResult
+import com.streamvault.app.R
+import com.streamvault.app.cast.CastMediaRequest
+import com.streamvault.app.cast.CastMediaRequestBuildResult
+import com.streamvault.app.cast.CastMediaRequestUnsupportedReason
+import com.streamvault.app.cast.CastPlaybackEvent
+import com.streamvault.app.cast.CastPlaybackReportMode
+import com.streamvault.app.cast.CastRewriteRequiredReason
+import com.streamvault.app.cast.CastStartResult
 import com.streamvault.domain.model.ContentType
 import com.streamvault.domain.model.RecordingRecurrence
 import com.streamvault.domain.model.RecordingRequest

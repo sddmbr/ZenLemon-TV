@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.vod
+package com.streamvault.app.ui.screens.vod
 
 import com.streamvault.domain.model.LibraryFilterType
 import com.streamvault.domain.model.LibrarySortBy

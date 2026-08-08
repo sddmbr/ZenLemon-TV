@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.components
+package com.streamvault.app.ui.components
 
 import android.view.View
 import androidx.compose.runtime.Composable

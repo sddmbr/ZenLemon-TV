@@ -1,4 +1,4 @@
-package com.zenlemon.app.player
+package com.streamvault.app.player
 
 import androidx.media3.common.C
 import androidx.media3.common.text.Cue

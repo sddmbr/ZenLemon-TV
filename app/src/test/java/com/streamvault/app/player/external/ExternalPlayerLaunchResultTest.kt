@@ -1,4 +1,4 @@
-package com.zenlemon.app.player.external
+package com.streamvault.app.player.external
 
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test

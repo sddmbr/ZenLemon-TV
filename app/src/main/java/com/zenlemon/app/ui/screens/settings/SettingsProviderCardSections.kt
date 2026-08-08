@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -21,16 +21,16 @@ import androidx.tv.material3.Border
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.design.FocusSpec
-import com.zenlemon.app.ui.interaction.TvClickableSurface
-import com.zenlemon.app.ui.theme.ErrorColor
-import com.zenlemon.app.ui.theme.OnBackground
-import com.zenlemon.app.ui.theme.OnSurfaceDim
-import com.zenlemon.app.ui.theme.Primary
-import com.zenlemon.app.ui.theme.Secondary
-import com.zenlemon.app.ui.theme.Surface
-import com.zenlemon.app.ui.theme.SurfaceHighlight
+import com.streamvault.app.R
+import com.streamvault.app.ui.design.FocusSpec
+import com.streamvault.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.ui.theme.ErrorColor
+import com.streamvault.app.ui.theme.OnBackground
+import com.streamvault.app.ui.theme.OnSurfaceDim
+import com.streamvault.app.ui.theme.Primary
+import com.streamvault.app.ui.theme.Secondary
+import com.streamvault.app.ui.theme.Surface
+import com.streamvault.app.ui.theme.SurfaceHighlight
 import com.streamvault.domain.model.ProviderType
 
 @Composable

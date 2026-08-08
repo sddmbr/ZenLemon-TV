@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.components
+package com.streamvault.app.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.animation.AnimatedVisibility
@@ -15,17 +15,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
 import androidx.tv.material3.*
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.design.FocusSpec
-import com.zenlemon.app.ui.theme.FocusBorder
-import com.zenlemon.app.ui.theme.OnSurface
-import com.zenlemon.app.ui.theme.Primary
-import com.zenlemon.app.ui.theme.SurfaceElevated
-import com.zenlemon.app.ui.theme.TextPrimary
-import com.zenlemon.app.ui.theme.TextSecondary
-import com.zenlemon.app.ui.interaction.TvClickableSurface
-import com.zenlemon.app.ui.interaction.TvButton
-import com.zenlemon.app.ui.interaction.TvIconButton
+import com.streamvault.app.R
+import com.streamvault.app.ui.design.FocusSpec
+import com.streamvault.app.ui.theme.FocusBorder
+import com.streamvault.app.ui.theme.OnSurface
+import com.streamvault.app.ui.theme.Primary
+import com.streamvault.app.ui.theme.SurfaceElevated
+import com.streamvault.app.ui.theme.TextPrimary
+import com.streamvault.app.ui.theme.TextSecondary
+import com.streamvault.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.ui.interaction.TvButton
+import com.streamvault.app.ui.interaction.TvIconButton
 
 @Composable
 fun ReorderTopBar(

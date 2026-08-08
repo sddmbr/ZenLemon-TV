@@ -68,7 +68,7 @@ If you need to verify, decompile a release APK and search for
 The seeding logic only runs when no provider exists. To force a re-seed:
 
 ```bash
-adb shell pm clear com.zenlemon.app
+adb shell pm clear com.streamvault.app
 ```
 
 Then relaunch the app.

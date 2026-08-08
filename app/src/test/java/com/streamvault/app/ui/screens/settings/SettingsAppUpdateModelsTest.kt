@@ -1,10 +1,10 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import com.google.common.truth.Truth.assertThat
-import com.zenlemon.app.update.AppUpdateActionState
-import com.zenlemon.app.update.AppUpdateChannel
-import com.zenlemon.app.update.AppUpdateDownloadStatus
-import com.zenlemon.app.update.isRemoteVersionNewerForBuild
+import com.streamvault.app.update.AppUpdateActionState
+import com.streamvault.app.update.AppUpdateChannel
+import com.streamvault.app.update.AppUpdateDownloadStatus
+import com.streamvault.app.update.isRemoteVersionNewerForBuild
 import org.junit.Test
 
 class SettingsAppUpdateModelsTest {

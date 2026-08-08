@@ -1,4 +1,4 @@
-package com.zenlemon.app.pairing
+package com.streamvault.app.pairing
 
 import android.content.Context
 import android.graphics.Bitmap

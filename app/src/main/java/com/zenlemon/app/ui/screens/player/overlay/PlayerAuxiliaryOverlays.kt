@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.player.overlay
+package com.streamvault.app.ui.screens.player.overlay
 
 import androidx.activity.compose.BackHandler
 import android.view.KeyEvent
@@ -58,24 +58,24 @@ import androidx.compose.ui.unit.sp
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.zenlemon.app.R
-import com.zenlemon.app.device.rememberIsTelevisionDevice
-import com.zenlemon.app.ui.components.shell.StatusPill
-import com.zenlemon.app.ui.design.AppColors
-import com.zenlemon.app.ui.model.archivePlaybackCapability
-import com.zenlemon.app.ui.screens.player.PlayerDiagnosticsUiState
-import com.zenlemon.app.ui.time.LocalAppTimeFormat
-import com.zenlemon.app.ui.time.createTimeFormat
-import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.R
+import com.streamvault.app.device.rememberIsTelevisionDevice
+import com.streamvault.app.ui.components.shell.StatusPill
+import com.streamvault.app.ui.design.AppColors
+import com.streamvault.app.ui.model.archivePlaybackCapability
+import com.streamvault.app.ui.screens.player.PlayerDiagnosticsUiState
+import com.streamvault.app.ui.time.LocalAppTimeFormat
+import com.streamvault.app.ui.time.createTimeFormat
+import com.streamvault.app.ui.interaction.TvClickableSurface
 import com.streamvault.domain.model.Channel
 import com.streamvault.domain.model.Program
 import com.streamvault.player.PlayerStats
 import java.util.Date
 import kotlinx.coroutines.launch
-import com.zenlemon.app.ui.design.AppColors.Brand as Primary
-import com.zenlemon.app.ui.design.AppColors.SurfaceElevated as SurfaceVariant
-import com.zenlemon.app.ui.design.AppColors.TextSecondary as TextSecondary
-import com.zenlemon.app.ui.design.AppColors.TextTertiary as OnSurfaceDim
+import com.streamvault.app.ui.design.AppColors.Brand as Primary
+import com.streamvault.app.ui.design.AppColors.SurfaceElevated as SurfaceVariant
+import com.streamvault.app.ui.design.AppColors.TextSecondary as TextSecondary
+import com.streamvault.app.ui.design.AppColors.TextTertiary as OnSurfaceDim
 
 @Composable
 fun ChannelListOverlay(

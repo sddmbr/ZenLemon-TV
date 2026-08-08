@@ -1,17 +1,17 @@
-package com.zenlemon.app.ui.screens.movies
+package com.streamvault.app.ui.screens.movies
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.google.common.truth.Truth.assertThat
-import com.zenlemon.app.MainDispatcherRule
-import com.zenlemon.app.R
-import com.zenlemon.app.cast.CastMediaRequest
-import com.zenlemon.app.cast.CastMediaRequestFactory
-import com.zenlemon.app.cast.CastPlaybackEvent
-import com.zenlemon.app.cast.CastPlaybackCoordinator
-import com.zenlemon.app.cast.CastStartResult
-import com.zenlemon.app.cast.CastUiEvent
-import com.zenlemon.app.plugins.StreamVaultPluginManager
+import com.streamvault.app.MainDispatcherRule
+import com.streamvault.app.R
+import com.streamvault.app.cast.CastMediaRequest
+import com.streamvault.app.cast.CastMediaRequestFactory
+import com.streamvault.app.cast.CastPlaybackEvent
+import com.streamvault.app.cast.CastPlaybackCoordinator
+import com.streamvault.app.cast.CastStartResult
+import com.streamvault.app.cast.CastUiEvent
+import com.streamvault.app.plugins.StreamVaultPluginManager
 import com.streamvault.data.preferences.PreferencesRepository
 import com.streamvault.domain.model.ExternalRatings
 import com.streamvault.domain.model.Movie

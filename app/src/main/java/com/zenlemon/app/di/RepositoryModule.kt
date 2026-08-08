@@ -1,4 +1,4 @@
-package com.zenlemon.app.di
+package com.streamvault.app.di
 
 import com.streamvault.data.local.DatabaseTransactionRunner
 import com.streamvault.data.local.RoomDatabaseTransactionRunner

@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.components.shell
+package com.streamvault.app.ui.components.shell
 
 import android.content.Context
 import android.content.ContextWrapper
@@ -73,18 +73,18 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
-import com.zenlemon.app.R
-import com.zenlemon.app.MainActivity
-import com.zenlemon.app.navigation.toAppRoute
-import com.zenlemon.app.navigation.Routes
-import com.zenlemon.app.ui.design.AppColors
-import com.zenlemon.app.ui.design.AppMotion
-import com.zenlemon.app.ui.design.FocusSpec
-import com.zenlemon.app.ui.interaction.mouseClickable
-import com.zenlemon.app.ui.interaction.rememberTvInteractionSounds
-import com.zenlemon.app.ui.interaction.TvIconButton
-import com.zenlemon.app.ui.design.LocalAppShapes
-import com.zenlemon.app.ui.design.LocalAppSpacing
+import com.streamvault.app.R
+import com.streamvault.app.MainActivity
+import com.streamvault.app.navigation.toAppRoute
+import com.streamvault.app.navigation.Routes
+import com.streamvault.app.ui.design.AppColors
+import com.streamvault.app.ui.design.AppMotion
+import com.streamvault.app.ui.design.FocusSpec
+import com.streamvault.app.ui.interaction.mouseClickable
+import com.streamvault.app.ui.interaction.rememberTvInteractionSounds
+import com.streamvault.app.ui.interaction.TvIconButton
+import com.streamvault.app.ui.design.LocalAppShapes
+import com.streamvault.app.ui.design.LocalAppSpacing
 import com.streamvault.domain.model.AppTopLevelDestination
 
 enum class AppNavigationChrome {

@@ -1,4 +1,4 @@
-package com.zenlemon.app.tv
+package com.streamvault.app.tv
 
 import android.content.ContentUris
 import android.content.ContentValues
@@ -8,10 +8,10 @@ import android.media.tv.TvContract
 import android.net.Uri
 import android.provider.BaseColumns
 import android.util.Log
-import com.zenlemon.app.MainActivity
-import com.zenlemon.app.R
-import com.zenlemon.app.device.isTelevisionDevice
-import com.zenlemon.app.navigation.toPlayerNavigationRequest
+import com.streamvault.app.MainActivity
+import com.streamvault.app.R
+import com.streamvault.app.device.isTelevisionDevice
+import com.streamvault.app.navigation.toPlayerNavigationRequest
 import com.streamvault.domain.model.ContentType
 import com.streamvault.domain.model.PlaybackHistory
 import com.streamvault.domain.repository.PlaybackHistoryRepository

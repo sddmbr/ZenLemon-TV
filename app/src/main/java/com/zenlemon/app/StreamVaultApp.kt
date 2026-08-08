@@ -1,4 +1,4 @@
-package com.zenlemon.app
+package com.streamvault.app
 
 import android.app.Application
 import coil3.ImageLoader
@@ -8,10 +8,10 @@ import coil3.disk.DiskCache
 import coil3.memory.MemoryCache
 import coil3.network.okhttp.OkHttpNetworkFetcherFactory
 import coil3.request.crossfade
-import com.zenlemon.app.diagnostics.CrashReportStore
-import com.zenlemon.app.diagnostics.RuntimeDiagnosticsManager
-import com.zenlemon.app.update.GitHubReleaseChecker
-import com.zenlemon.app.ui.accessibility.isReducedMotionEnabled
+import com.streamvault.app.diagnostics.CrashReportStore
+import com.streamvault.app.diagnostics.RuntimeDiagnosticsManager
+import com.streamvault.app.update.GitHubReleaseChecker
+import com.streamvault.app.ui.accessibility.isReducedMotionEnabled
 import com.streamvault.data.remote.jellyfin.JellyfinImageAuthInterceptor
 import com.streamvault.data.preferences.PreferencesRepository
 import com.streamvault.domain.model.Result

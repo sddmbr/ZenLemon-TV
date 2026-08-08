@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.welcome
+package com.streamvault.app.ui.screens.welcome
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -34,11 +34,11 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
-import com.zenlemon.app.BuildConfig
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.components.shell.StatusPill
-import com.zenlemon.app.ui.design.AppColors
-import com.zenlemon.app.ui.interaction.TvButton
+import com.streamvault.app.BuildConfig
+import com.streamvault.app.R
+import com.streamvault.app.ui.components.shell.StatusPill
+import com.streamvault.app.ui.design.AppColors
+import com.streamvault.app.ui.interaction.TvButton
 import com.streamvault.data.sync.SyncProgressBus
 import com.streamvault.domain.repository.ProviderRepository
 import com.streamvault.domain.sync.Section

@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.settings.parental
+package com.streamvault.app.ui.screens.settings.parental
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

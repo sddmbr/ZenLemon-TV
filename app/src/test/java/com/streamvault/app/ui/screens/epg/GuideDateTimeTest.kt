@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.epg
+package com.streamvault.app.ui.screens.epg
 
 import com.google.common.truth.Truth.assertThat
 import java.time.Instant

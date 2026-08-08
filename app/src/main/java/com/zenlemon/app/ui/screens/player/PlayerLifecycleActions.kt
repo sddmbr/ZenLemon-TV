@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.player
+package com.streamvault.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
 import com.streamvault.domain.model.ContentType
@@ -161,7 +161,7 @@ internal fun PlayerViewModel.cleanupAfterCleared(mainPlayerEngine: PlayerEngine)
             channel = channel!!,
             streamInfo = streamInfo!!,
             engine = activeEngine,
-            source = com.zenlemon.app.player.PreviewHandoffSource.HOME
+            source = com.streamvault.app.player.PreviewHandoffSource.HOME
         )
         mainPlayerEngine.resetForReuse()
     } else {

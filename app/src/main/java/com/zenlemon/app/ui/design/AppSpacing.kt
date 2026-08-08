@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.design
+package com.streamvault.app.ui.design
 
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp

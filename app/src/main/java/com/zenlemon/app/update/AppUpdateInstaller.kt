@@ -1,4 +1,4 @@
-package com.zenlemon.app.update
+package com.streamvault.app.update
 
 import android.app.DownloadManager
 import android.content.ActivityNotFoundException
@@ -11,7 +11,7 @@ import android.os.Build
 import android.os.Environment
 import android.provider.Settings
 import androidx.core.content.FileProvider
-import com.zenlemon.app.BuildConfig
+import com.streamvault.app.BuildConfig
 import com.streamvault.data.preferences.PreferencesRepository
 import com.streamvault.domain.model.Result
 import dagger.hilt.android.qualifiers.ApplicationContext

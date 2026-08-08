@@ -1,13 +1,13 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import android.content.Context
 import android.content.ContextWrapper
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import com.zenlemon.app.MainActivity
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.time.createDateTimeFormat
-import com.zenlemon.app.util.OfficialBuildStatus
+import com.streamvault.app.MainActivity
+import com.streamvault.app.R
+import com.streamvault.app.ui.time.createDateTimeFormat
+import com.streamvault.app.util.OfficialBuildStatus
 import com.streamvault.domain.model.AppHomeDashboardShelf
 import com.streamvault.domain.model.AppLandingDestination
 import com.streamvault.domain.model.AppTopLevelDestination

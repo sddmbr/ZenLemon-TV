@@ -1,4 +1,4 @@
-package com.zenlemon.app.tvinput
+package com.streamvault.app.tvinput
 
 import android.app.Activity
 import android.content.ComponentName
@@ -36,15 +36,15 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewModelScope
-import com.zenlemon.app.R
-import com.zenlemon.app.MainActivity
-import com.zenlemon.app.navigation.ExternalDestination
-import com.zenlemon.app.ui.theme.ErrorColor
-import com.zenlemon.app.ui.theme.OnBackground
-import com.zenlemon.app.ui.theme.OnSurfaceDim
-import com.zenlemon.app.ui.theme.Primary
-import com.zenlemon.app.ui.theme.StreamVaultTheme
-import com.zenlemon.app.ui.theme.SurfaceElevated
+import com.streamvault.app.R
+import com.streamvault.app.MainActivity
+import com.streamvault.app.navigation.ExternalDestination
+import com.streamvault.app.ui.theme.ErrorColor
+import com.streamvault.app.ui.theme.OnBackground
+import com.streamvault.app.ui.theme.OnSurfaceDim
+import com.streamvault.app.ui.theme.Primary
+import com.streamvault.app.ui.theme.StreamVaultTheme
+import com.streamvault.app.ui.theme.SurfaceElevated
 import com.streamvault.domain.model.Provider
 import com.streamvault.domain.repository.ProviderRepository
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,10 +1,10 @@
-package com.zenlemon.app.ui.screens.favorites
+package com.streamvault.app.ui.screens.favorites
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.model.associateByAnyRawId
+import com.streamvault.app.R
+import com.streamvault.app.ui.model.associateByAnyRawId
 import com.streamvault.domain.model.Channel
 import com.streamvault.domain.model.ContentType
 import com.streamvault.domain.model.Favorite

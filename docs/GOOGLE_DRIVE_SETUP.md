@@ -62,7 +62,7 @@ flow to all users, see the publishing section below.
 | Field | Value |
 |---|---|
 | Name | `StreamVault — debug (<your handle>)` |
-| Package name | `com.zenlemon.app` |
+| Package name | `com.streamvault.app` |
 | SHA-1 certificate fingerprint | from `keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android` |
 
 Repeat the step for every signing certificate that will run the feature

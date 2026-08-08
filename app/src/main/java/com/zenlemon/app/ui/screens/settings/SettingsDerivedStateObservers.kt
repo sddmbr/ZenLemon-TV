@@ -1,9 +1,9 @@
 @file:OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
 
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import android.app.Application
-import com.zenlemon.app.R
+import com.streamvault.app.R
 import com.streamvault.data.local.dao.ProgramDao
 import com.streamvault.domain.model.Category
 import com.streamvault.domain.model.CategorySortMode

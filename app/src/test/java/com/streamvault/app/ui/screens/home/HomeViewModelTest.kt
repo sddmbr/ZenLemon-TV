@@ -1,11 +1,11 @@
-package com.zenlemon.app.ui.screens.home
+package com.streamvault.app.ui.screens.home
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
-import com.zenlemon.app.player.LivePreviewHandoffManager
-import com.zenlemon.app.plugins.StreamVaultPluginManager
-import com.zenlemon.app.tvinput.TvInputChannelSyncManager
-import com.zenlemon.app.ui.screens.multiview.MultiViewManager
+import com.streamvault.app.player.LivePreviewHandoffManager
+import com.streamvault.app.plugins.StreamVaultPluginManager
+import com.streamvault.app.tvinput.TvInputChannelSyncManager
+import com.streamvault.app.ui.screens.multiview.MultiViewManager
 import com.streamvault.data.preferences.PreferencesRepository
 import com.streamvault.data.sync.SyncManager
 import com.streamvault.domain.manager.ParentalControlManager

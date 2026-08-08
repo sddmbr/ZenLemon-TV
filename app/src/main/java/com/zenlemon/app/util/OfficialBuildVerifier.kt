@@ -1,9 +1,9 @@
-package com.zenlemon.app.util
+package com.streamvault.app.util
 
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
-import com.zenlemon.app.BuildConfig
+import com.streamvault.app.BuildConfig
 import java.io.ByteArrayInputStream
 import java.security.MessageDigest
 import java.security.cert.CertificateFactory

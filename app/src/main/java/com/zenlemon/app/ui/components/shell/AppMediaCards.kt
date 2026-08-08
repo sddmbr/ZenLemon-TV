@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.components.shell
+package com.streamvault.app.ui.components.shell
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.BorderStroke
@@ -59,15 +59,15 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.components.ChannelLogoBadge
-import com.zenlemon.app.ui.components.rememberCrossfadeImageModel
-import com.zenlemon.app.ui.design.AppColors
-import com.zenlemon.app.ui.design.AppMotion
-import com.zenlemon.app.ui.design.FocusSpec
-import com.zenlemon.app.ui.interaction.mouseClickable
-import com.zenlemon.app.ui.interaction.rememberTvInteractionSounds
-import com.zenlemon.app.ui.model.archivePlaybackCapability
+import com.streamvault.app.R
+import com.streamvault.app.ui.components.ChannelLogoBadge
+import com.streamvault.app.ui.components.rememberCrossfadeImageModel
+import com.streamvault.app.ui.design.AppColors
+import com.streamvault.app.ui.design.AppMotion
+import com.streamvault.app.ui.design.FocusSpec
+import com.streamvault.app.ui.interaction.mouseClickable
+import com.streamvault.app.ui.interaction.rememberTvInteractionSounds
+import com.streamvault.app.ui.model.archivePlaybackCapability
 import com.streamvault.domain.model.Channel
 import com.streamvault.domain.model.Episode
 import com.streamvault.domain.model.Movie

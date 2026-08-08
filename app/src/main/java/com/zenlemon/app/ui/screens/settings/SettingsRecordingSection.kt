@@ -1,9 +1,9 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.runtime.Composable
-import com.zenlemon.app.MainActivity
-import com.zenlemon.app.navigation.Routes
+import com.streamvault.app.MainActivity
+import com.streamvault.app.navigation.Routes
 import com.streamvault.domain.model.RecordingStatus
 
 internal fun LazyListScope.settingsRecordingSection(

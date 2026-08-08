@@ -1,10 +1,10 @@
-package com.zenlemon.app.ui.screens.epg
+package com.streamvault.app.ui.screens.epg
 
 import android.view.inputmethod.InputMethodManager
-import com.zenlemon.app.ui.model.ArchiveReplayMechanism
-import com.zenlemon.app.ui.model.archivePlaybackCapability
-import com.zenlemon.app.ui.model.isArchivePlayable
-import com.zenlemon.app.ui.model.guideLookupKey
+import com.streamvault.app.ui.model.ArchiveReplayMechanism
+import com.streamvault.app.ui.model.archivePlaybackCapability
+import com.streamvault.app.ui.model.isArchivePlayable
+import com.streamvault.app.ui.model.guideLookupKey
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -88,26 +88,26 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
-import com.zenlemon.app.R
-import com.zenlemon.app.device.rememberIsTelevisionDevice
-import com.zenlemon.app.ui.components.ChannelLogoBadge
-import com.zenlemon.app.navigation.Routes
-import com.zenlemon.app.ui.notifications.rememberNotificationPermissionGate
-import com.zenlemon.app.ui.components.SelectionChip
-import com.zenlemon.app.ui.components.SelectionChipRow
+import com.streamvault.app.R
+import com.streamvault.app.device.rememberIsTelevisionDevice
+import com.streamvault.app.ui.components.ChannelLogoBadge
+import com.streamvault.app.navigation.Routes
+import com.streamvault.app.ui.notifications.rememberNotificationPermissionGate
+import com.streamvault.app.ui.components.SelectionChip
+import com.streamvault.app.ui.components.SelectionChipRow
 import kotlinx.coroutines.launch
-import com.zenlemon.app.ui.components.dialogs.PinDialog
-import com.zenlemon.app.ui.components.shell.AppNavigationChrome
-import com.zenlemon.app.ui.components.shell.AppScreenScaffold
-import com.zenlemon.app.ui.theme.FocusBorder
-import com.zenlemon.app.ui.theme.OnBackground
-import com.zenlemon.app.ui.theme.OnSurface
-import com.zenlemon.app.ui.theme.OnSurfaceDim
-import com.zenlemon.app.ui.theme.Primary
-import com.zenlemon.app.ui.theme.SurfaceElevated
-import com.zenlemon.app.ui.theme.SurfaceHighlight
-import com.zenlemon.app.ui.theme.TextPrimary
-import com.zenlemon.app.ui.theme.TextSecondary
+import com.streamvault.app.ui.components.dialogs.PinDialog
+import com.streamvault.app.ui.components.shell.AppNavigationChrome
+import com.streamvault.app.ui.components.shell.AppScreenScaffold
+import com.streamvault.app.ui.theme.FocusBorder
+import com.streamvault.app.ui.theme.OnBackground
+import com.streamvault.app.ui.theme.OnSurface
+import com.streamvault.app.ui.theme.OnSurfaceDim
+import com.streamvault.app.ui.theme.Primary
+import com.streamvault.app.ui.theme.SurfaceElevated
+import com.streamvault.app.ui.theme.SurfaceHighlight
+import com.streamvault.app.ui.theme.TextPrimary
+import com.streamvault.app.ui.theme.TextSecondary
 import com.streamvault.domain.model.Category
 import com.streamvault.domain.model.Channel
 import com.streamvault.domain.model.EpgMatchType
@@ -123,9 +123,9 @@ import java.util.Locale
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.max
-import com.zenlemon.app.ui.interaction.TvClickableSurface
-import com.zenlemon.app.ui.interaction.TvButton
-import com.zenlemon.app.ui.interaction.TvIconButton
+import com.streamvault.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.ui.interaction.TvButton
+import com.streamvault.app.ui.interaction.TvIconButton
 
 private sealed interface LockedGuideAction {
     data class SelectCategory(val category: Category) : LockedGuideAction
@@ -260,7 +260,7 @@ fun FullEpgScreen(
             title = {
                 androidx.compose.material3.Text(
                     text = stringResource(R.string.epg_recording_conflict_title),
-                    color = com.zenlemon.app.ui.theme.OnSurface
+                    color = com.streamvault.app.ui.theme.OnSurface
                 )
             },
             text = {
@@ -269,7 +269,7 @@ fun FullEpgScreen(
                 }
                 androidx.compose.material3.Text(
                     text = stringResource(R.string.epg_recording_conflict_body, conflict.programTitle, conflictNames),
-                    color = com.zenlemon.app.ui.theme.TextSecondary
+                    color = com.streamvault.app.ui.theme.TextSecondary
                 )
             },
             confirmButton = {
@@ -282,7 +282,7 @@ fun FullEpgScreen(
                 ) {
                     androidx.compose.material3.Text(
                         text = stringResource(R.string.epg_recording_conflict_replace),
-                        color = com.zenlemon.app.ui.theme.Primary
+                        color = com.streamvault.app.ui.theme.Primary
                     )
                 }
             },
@@ -290,13 +290,13 @@ fun FullEpgScreen(
                 androidx.compose.material3.TextButton(onClick = { viewModel.dismissRecordingConflict() }) {
                     androidx.compose.material3.Text(
                         text = stringResource(R.string.epg_recording_conflict_cancel),
-                        color = com.zenlemon.app.ui.theme.OnSurface
+                        color = com.streamvault.app.ui.theme.OnSurface
                     )
                 }
             },
-            containerColor = com.zenlemon.app.ui.theme.SurfaceElevated,
-            titleContentColor = com.zenlemon.app.ui.theme.OnSurface,
-            textContentColor = com.zenlemon.app.ui.theme.TextSecondary
+            containerColor = com.streamvault.app.ui.theme.SurfaceElevated,
+            titleContentColor = com.streamvault.app.ui.theme.OnSurface,
+            textContentColor = com.streamvault.app.ui.theme.TextSecondary
         )
     }
 

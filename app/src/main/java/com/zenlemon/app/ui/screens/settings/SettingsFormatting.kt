@@ -1,11 +1,11 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
-import com.zenlemon.app.R
-import com.zenlemon.app.localization.localeForLanguageTag
-import com.zenlemon.app.localization.supportedAppLanguageTags
-import com.zenlemon.app.ui.model.LiveTvChannelMode
-import com.zenlemon.app.ui.model.LiveTvQuickFilterVisibilityMode
-import com.zenlemon.app.ui.model.VodViewMode
+import com.streamvault.app.R
+import com.streamvault.app.localization.localeForLanguageTag
+import com.streamvault.app.localization.supportedAppLanguageTags
+import com.streamvault.app.ui.model.LiveTvChannelMode
+import com.streamvault.app.ui.model.LiveTvQuickFilterVisibilityMode
+import com.streamvault.app.ui.model.VodViewMode
 import com.streamvault.domain.model.CategorySortMode
 import com.streamvault.domain.model.ChannelNumberingMode
 import com.streamvault.domain.model.ContentType

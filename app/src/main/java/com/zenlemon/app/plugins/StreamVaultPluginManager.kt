@@ -1,4 +1,4 @@
-package com.zenlemon.app.plugins
+package com.streamvault.app.plugins
 
 import android.content.ActivityNotFoundException
 import android.content.Context
@@ -11,9 +11,9 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
 import androidx.core.content.FileProvider
-import com.zenlemon.app.BuildConfig
-import com.zenlemon.app.cast.CastMediaRequest
-import com.zenlemon.app.tvinput.TvInputChannelSyncManager
+import com.streamvault.app.BuildConfig
+import com.streamvault.app.cast.CastMediaRequest
+import com.streamvault.app.tvinput.TvInputChannelSyncManager
 import com.streamvault.domain.model.ActiveLiveSource
 import com.streamvault.domain.model.DrmInfo
 import com.streamvault.domain.model.DrmScheme

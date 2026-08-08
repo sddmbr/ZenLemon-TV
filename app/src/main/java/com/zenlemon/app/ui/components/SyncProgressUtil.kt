@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.components
+package com.streamvault.app.ui.components
 
 private val progressRatioRegex = Regex("(\\d+)\\s*/\\s*(\\d+)")
 

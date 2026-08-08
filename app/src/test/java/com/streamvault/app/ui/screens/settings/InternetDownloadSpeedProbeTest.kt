@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import com.google.common.truth.Truth.assertThat
 import okhttp3.MediaType.Companion.toMediaType

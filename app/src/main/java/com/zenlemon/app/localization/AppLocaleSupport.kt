@@ -1,4 +1,4 @@
-package com.zenlemon.app.localization
+package com.streamvault.app.localization
 
 import android.os.Build
 import android.content.res.Configuration

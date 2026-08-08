@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.components.shell
+package com.streamvault.app.ui.components.shell
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -20,8 +20,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.design.AppColors
+import com.streamvault.app.R
+import com.streamvault.app.ui.design.AppColors
 import com.streamvault.domain.model.ExternalRatingValue
 import com.streamvault.domain.model.ExternalRatings
 

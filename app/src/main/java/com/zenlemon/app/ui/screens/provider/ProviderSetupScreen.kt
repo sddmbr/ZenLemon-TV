@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.provider
+package com.streamvault.app.ui.screens.provider
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.animateColorAsState
@@ -16,7 +16,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
-import com.zenlemon.app.ui.interaction.mouseClickable
+import com.streamvault.app.ui.interaction.mouseClickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -71,18 +71,18 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.tv.material3.*
-import com.zenlemon.app.R
-import com.zenlemon.app.device.rememberIsTelevisionDevice
-import com.zenlemon.app.pairing.ProviderQrPairingState
-import com.zenlemon.app.pairing.ProviderQrPairingStatus
-import com.zenlemon.app.ui.components.dialogs.PremiumDialog
-import com.zenlemon.app.ui.components.dialogs.PremiumDialogFooterButton
-import com.zenlemon.app.ui.components.extractProgressFraction
-import com.zenlemon.app.ui.interaction.TvButton
-import com.zenlemon.app.ui.interaction.TvClickableSurface
-import com.zenlemon.app.ui.components.shell.StatusPill
-import com.zenlemon.app.ui.screens.settings.BackupImportPreviewDialog
-import com.zenlemon.app.ui.theme.*
+import com.streamvault.app.R
+import com.streamvault.app.device.rememberIsTelevisionDevice
+import com.streamvault.app.pairing.ProviderQrPairingState
+import com.streamvault.app.pairing.ProviderQrPairingStatus
+import com.streamvault.app.ui.components.dialogs.PremiumDialog
+import com.streamvault.app.ui.components.dialogs.PremiumDialogFooterButton
+import com.streamvault.app.ui.components.extractProgressFraction
+import com.streamvault.app.ui.interaction.TvButton
+import com.streamvault.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.ui.components.shell.StatusPill
+import com.streamvault.app.ui.screens.settings.BackupImportPreviewDialog
+import com.streamvault.app.ui.theme.*
 import com.streamvault.data.remote.stalker.StalkerAdvancedOptions
 import com.streamvault.data.remote.stalker.StalkerAdvancedOptionsCodec
 import com.streamvault.data.remote.stalker.StalkerParamOverride

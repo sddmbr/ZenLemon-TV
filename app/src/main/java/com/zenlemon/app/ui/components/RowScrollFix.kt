@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.zenlemon.app.ui.components
+package com.streamvault.app.ui.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.relocation.BringIntoViewResponder

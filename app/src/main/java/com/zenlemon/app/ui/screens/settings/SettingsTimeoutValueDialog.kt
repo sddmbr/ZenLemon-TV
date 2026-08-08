@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -36,13 +36,13 @@ import androidx.compose.ui.unit.dp
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.components.dialogs.PremiumDialog
-import com.zenlemon.app.ui.components.dialogs.PremiumDialogFooterButton
-import com.zenlemon.app.ui.interaction.TvClickableSurface
-import com.zenlemon.app.ui.theme.OnSurface
-import com.zenlemon.app.ui.theme.OnSurfaceDim
-import com.zenlemon.app.ui.theme.Primary
+import com.streamvault.app.R
+import com.streamvault.app.ui.components.dialogs.PremiumDialog
+import com.streamvault.app.ui.components.dialogs.PremiumDialogFooterButton
+import com.streamvault.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.ui.theme.OnSurface
+import com.streamvault.app.ui.theme.OnSurfaceDim
+import com.streamvault.app.ui.theme.Primary
 
 @Composable
 internal fun TimeoutValueDialog(
@@ -109,7 +109,7 @@ private fun NumericSettingsTextField(
     onValueChange: (String) -> Unit,
     placeholder: String
 ) {
-    val isTelevisionDevice = com.zenlemon.app.device.rememberIsTelevisionDevice()
+    val isTelevisionDevice = com.streamvault.app.device.rememberIsTelevisionDevice()
     val focusRequester = remember { FocusRequester() }
     val keyboardController = LocalSoftwareKeyboardController.current
     var hasContainerFocus by remember { mutableStateOf(false) }

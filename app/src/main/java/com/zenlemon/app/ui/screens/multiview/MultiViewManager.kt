@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.multiview
+package com.streamvault.app.ui.screens.multiview
 
 import com.streamvault.domain.model.Channel
 import kotlinx.coroutines.flow.MutableStateFlow

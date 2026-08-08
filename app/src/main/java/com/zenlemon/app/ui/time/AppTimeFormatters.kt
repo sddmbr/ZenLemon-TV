@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.time
+package com.streamvault.app.ui.time
 
 import androidx.compose.runtime.compositionLocalOf
 import com.streamvault.domain.model.AppTimeFormat

@@ -1,14 +1,14 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import android.app.Application
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import com.zenlemon.app.R
-import com.zenlemon.app.update.AppUpdateActionState
-import com.zenlemon.app.update.AppUpdateInstaller
-import com.zenlemon.app.update.GitHubReleaseChecker
+import com.streamvault.app.R
+import com.streamvault.app.update.AppUpdateActionState
+import com.streamvault.app.update.AppUpdateInstaller
+import com.streamvault.app.update.GitHubReleaseChecker
 import com.streamvault.data.preferences.PreferencesRepository
 import com.streamvault.domain.model.Result
 

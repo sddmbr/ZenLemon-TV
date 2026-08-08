@@ -1,4 +1,4 @@
-package com.zenlemon.app.cast
+package com.streamvault.app.cast
 
 import android.content.Context
 import com.google.android.gms.cast.CastMediaControlIntent

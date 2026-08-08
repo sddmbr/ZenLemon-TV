@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.epg
+package com.streamvault.app.ui.screens.epg
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -49,17 +49,17 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.interaction.TvClickableSurface
-import com.zenlemon.app.ui.interaction.TvButton
-import com.zenlemon.app.ui.time.LocalAppTimeFormat
-import com.zenlemon.app.ui.time.createTimeFormat
-import com.zenlemon.app.ui.theme.FocusBorder
-import com.zenlemon.app.ui.theme.OnSurface
-import com.zenlemon.app.ui.theme.OnSurfaceDim
-import com.zenlemon.app.ui.theme.Primary
-import com.zenlemon.app.ui.theme.SurfaceElevated
-import com.zenlemon.app.ui.theme.SurfaceHighlight
+import com.streamvault.app.R
+import com.streamvault.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.ui.interaction.TvButton
+import com.streamvault.app.ui.time.LocalAppTimeFormat
+import com.streamvault.app.ui.time.createTimeFormat
+import com.streamvault.app.ui.theme.FocusBorder
+import com.streamvault.app.ui.theme.OnSurface
+import com.streamvault.app.ui.theme.OnSurfaceDim
+import com.streamvault.app.ui.theme.Primary
+import com.streamvault.app.ui.theme.SurfaceElevated
+import com.streamvault.app.ui.theme.SurfaceHighlight
 import com.streamvault.domain.model.Category
 import com.streamvault.domain.model.Channel
 import com.streamvault.domain.model.EpgMatchType
@@ -421,7 +421,7 @@ internal fun CompactGuideProgramDialog(
                             modifier = Modifier.fillMaxWidth(),
                             scale = ButtonDefaults.scale(focusedScale = 1f),
                             colors = ButtonDefaults.colors(
-                                containerColor = com.zenlemon.app.ui.theme.AccentRed,
+                                containerColor = com.streamvault.app.ui.theme.AccentRed,
                                 contentColor = Color.White
                             )
                         ) {

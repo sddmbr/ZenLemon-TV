@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.notifications
+package com.streamvault.app.ui.notifications
 
 import android.Manifest
 import android.content.Context

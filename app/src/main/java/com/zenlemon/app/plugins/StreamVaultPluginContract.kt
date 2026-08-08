@@ -1,4 +1,4 @@
-package com.zenlemon.app.plugins
+package com.streamvault.app.plugins
 
 object StreamVaultPluginContract {
     const val API_VERSION = 1

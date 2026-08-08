@@ -1,4 +1,4 @@
-package com.zenlemon.app.tvinput
+package com.streamvault.app.tvinput
 
 import android.content.ContentUris
 import android.content.Context

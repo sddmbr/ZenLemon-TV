@@ -1,11 +1,11 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
-import com.zenlemon.app.update.AppUpdateActionState
-import com.zenlemon.app.update.AppUpdateDownloadState
-import com.zenlemon.app.update.AppUpdateDownloadStatus
-import com.zenlemon.app.update.GitHubReleaseInfo
-import com.zenlemon.app.update.isRemoteVersionNewer
-import com.zenlemon.app.update.latestAppUpdateAction
+import com.streamvault.app.update.AppUpdateActionState
+import com.streamvault.app.update.AppUpdateDownloadState
+import com.streamvault.app.update.AppUpdateDownloadStatus
+import com.streamvault.app.update.GitHubReleaseInfo
+import com.streamvault.app.update.isRemoteVersionNewer
+import com.streamvault.app.update.latestAppUpdateAction
 
 data class AppUpdateUiModel(
     val latestVersionName: String? = null,

@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.player
+package com.streamvault.app.ui.screens.player
 
 import android.os.SystemClock
 import androidx.lifecycle.viewModelScope

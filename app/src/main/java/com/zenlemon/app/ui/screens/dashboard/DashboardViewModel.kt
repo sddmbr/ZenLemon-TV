@@ -1,14 +1,14 @@
-package com.zenlemon.app.ui.screens.dashboard
+package com.streamvault.app.ui.screens.dashboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zenlemon.app.ui.model.orderedByRequestedRawIds
+import com.streamvault.app.ui.model.orderedByRequestedRawIds
 import com.streamvault.data.preferences.PreferencesRepository
 import com.streamvault.data.sync.SyncManager
-import com.zenlemon.app.update.AppUpdateActionState
-import com.zenlemon.app.update.AppUpdateInstaller
-import com.zenlemon.app.update.isRemoteVersionNewer
-import com.zenlemon.app.update.latestAppUpdateAction
+import com.streamvault.app.update.AppUpdateActionState
+import com.streamvault.app.update.AppUpdateInstaller
+import com.streamvault.app.update.isRemoteVersionNewer
+import com.streamvault.app.update.latestAppUpdateAction
 import com.streamvault.domain.model.ActiveLiveSource
 import com.streamvault.domain.model.AppHomeDashboardShelf
 import com.streamvault.domain.model.Category
@@ -37,7 +37,7 @@ import com.streamvault.domain.usecase.GetCustomCategories
 import com.streamvault.domain.manager.RecordingManager
 import com.streamvault.domain.model.RecordingStatus
 import android.content.Context
-import com.zenlemon.app.R
+import com.streamvault.app.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.time.LocalDate

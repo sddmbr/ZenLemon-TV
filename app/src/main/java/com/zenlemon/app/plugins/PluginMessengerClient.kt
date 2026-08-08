@@ -1,4 +1,4 @@
-package com.zenlemon.app.plugins
+package com.streamvault.app.plugins
 
 import android.content.ComponentName
 import android.content.Context

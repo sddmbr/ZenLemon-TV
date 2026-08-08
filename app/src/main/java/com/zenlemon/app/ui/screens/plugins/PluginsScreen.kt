@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.plugins
+package com.streamvault.app.ui.screens.plugins
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -51,22 +51,22 @@ import androidx.tv.material3.Border
 import androidx.tv.material3.ButtonDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.zenlemon.app.navigation.Routes
-import com.zenlemon.app.plugins.InstalledStreamVaultPlugin
-import com.zenlemon.app.plugins.PluginConfigurationAction
-import com.zenlemon.app.plugins.PluginConfigurationField
-import com.zenlemon.app.plugins.PluginConfigurationSection
-import com.zenlemon.app.ui.components.dialogs.PremiumDialog
-import com.zenlemon.app.ui.components.dialogs.PremiumDialogFooterButton
-import com.zenlemon.app.ui.components.shell.AppNavigationChrome
-import com.zenlemon.app.ui.components.shell.AppScreenScaffold
-import com.zenlemon.app.ui.components.shell.StatusPill
-import com.zenlemon.app.ui.design.AppColors
-import com.zenlemon.app.ui.design.FocusSpec
-import com.zenlemon.app.ui.interaction.TvButton
-import com.zenlemon.app.ui.theme.FocusBorder
-import com.zenlemon.app.ui.theme.OnSurface
-import com.zenlemon.app.ui.theme.Primary
+import com.streamvault.app.navigation.Routes
+import com.streamvault.app.plugins.InstalledStreamVaultPlugin
+import com.streamvault.app.plugins.PluginConfigurationAction
+import com.streamvault.app.plugins.PluginConfigurationField
+import com.streamvault.app.plugins.PluginConfigurationSection
+import com.streamvault.app.ui.components.dialogs.PremiumDialog
+import com.streamvault.app.ui.components.dialogs.PremiumDialogFooterButton
+import com.streamvault.app.ui.components.shell.AppNavigationChrome
+import com.streamvault.app.ui.components.shell.AppScreenScaffold
+import com.streamvault.app.ui.components.shell.StatusPill
+import com.streamvault.app.ui.design.AppColors
+import com.streamvault.app.ui.design.FocusSpec
+import com.streamvault.app.ui.interaction.TvButton
+import com.streamvault.app.ui.theme.FocusBorder
+import com.streamvault.app.ui.theme.OnSurface
+import com.streamvault.app.ui.theme.Primary
 
 @Composable
 fun PluginsScreen(

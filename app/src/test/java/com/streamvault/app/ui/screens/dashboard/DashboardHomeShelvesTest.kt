@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.dashboard
+package com.streamvault.app.ui.screens.dashboard
 
 import com.google.common.truth.Truth.assertThat
 import com.streamvault.domain.model.AppHomeDashboardShelf

@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.remote
+package com.streamvault.app.ui.remote
 
 import android.view.KeyEvent
 import com.streamvault.domain.model.RemoteColorButton

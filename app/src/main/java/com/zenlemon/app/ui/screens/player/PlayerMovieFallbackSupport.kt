@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.player
+package com.streamvault.app.ui.screens.player
 
 import com.streamvault.domain.model.Movie
 import com.streamvault.domain.model.VodMovieVariant

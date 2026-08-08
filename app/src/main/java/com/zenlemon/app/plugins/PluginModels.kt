@@ -1,4 +1,4 @@
-package com.zenlemon.app.plugins
+package com.streamvault.app.plugins
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

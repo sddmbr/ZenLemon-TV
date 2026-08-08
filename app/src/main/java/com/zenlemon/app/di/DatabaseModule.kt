@@ -1,10 +1,10 @@
-package com.zenlemon.app.di
+package com.streamvault.app.di
 
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory
-import com.zenlemon.app.BuildConfig
+import com.streamvault.app.BuildConfig
 import com.streamvault.data.local.StreamVaultDatabase
 import com.streamvault.data.local.dao.*
 import com.streamvault.data.remote.jellyfin.JellyfinProvider

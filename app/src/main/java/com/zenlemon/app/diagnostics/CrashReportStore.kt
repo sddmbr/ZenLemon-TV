@@ -1,4 +1,4 @@
-package com.zenlemon.app.diagnostics
+package com.streamvault.app.diagnostics
 
 import android.app.Application
 import android.content.Context
@@ -6,7 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import androidx.core.content.FileProvider
-import com.zenlemon.app.BuildConfig
+import com.streamvault.app.BuildConfig
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter

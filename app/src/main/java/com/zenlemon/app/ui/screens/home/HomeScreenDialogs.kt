@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.home
+package com.streamvault.app.ui.screens.home
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
@@ -11,18 +11,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import com.zenlemon.app.R
-import com.zenlemon.app.navigation.Routes
-import com.zenlemon.app.ui.components.SearchInput
-import com.zenlemon.app.ui.components.dialogs.AddToGroupDialog
-import com.zenlemon.app.ui.components.dialogs.CategoryOptionsDialog
-import com.zenlemon.app.ui.components.dialogs.PinDialog
-import com.zenlemon.app.ui.components.dialogs.PremiumDialog
-import com.zenlemon.app.ui.components.dialogs.PremiumDialogActionButton
-import com.zenlemon.app.ui.components.dialogs.PremiumDialogFooterButton
-import com.zenlemon.app.ui.components.dialogs.RenameGroupDialog
-import com.zenlemon.app.ui.screens.multiview.MultiViewPlannerDialog
-import com.zenlemon.app.ui.screens.multiview.MultiViewViewModel
+import com.streamvault.app.R
+import com.streamvault.app.navigation.Routes
+import com.streamvault.app.ui.components.SearchInput
+import com.streamvault.app.ui.components.dialogs.AddToGroupDialog
+import com.streamvault.app.ui.components.dialogs.CategoryOptionsDialog
+import com.streamvault.app.ui.components.dialogs.PinDialog
+import com.streamvault.app.ui.components.dialogs.PremiumDialog
+import com.streamvault.app.ui.components.dialogs.PremiumDialogActionButton
+import com.streamvault.app.ui.components.dialogs.PremiumDialogFooterButton
+import com.streamvault.app.ui.components.dialogs.RenameGroupDialog
+import com.streamvault.app.ui.screens.multiview.MultiViewPlannerDialog
+import com.streamvault.app.ui.screens.multiview.MultiViewViewModel
 import com.streamvault.domain.model.ActiveLiveSource
 import com.streamvault.domain.model.Category
 import com.streamvault.domain.model.Channel

@@ -1,4 +1,4 @@
-﻿package com.zenlemon.app.ui.screens.multiview
+﻿package com.streamvault.app.ui.screens.multiview
 
 import android.app.Activity
 import android.view.View
@@ -76,19 +76,19 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.components.PlayerRenderView
-import com.zenlemon.app.ui.components.dialogs.PinDialog
-import com.zenlemon.app.ui.components.dialogs.PremiumDialog
-import com.zenlemon.app.ui.components.dialogs.PremiumDialogActionButton
-import com.zenlemon.app.ui.components.dialogs.PremiumDialogFooterButton
-import com.zenlemon.app.ui.theme.Primary
+import com.streamvault.app.R
+import com.streamvault.app.ui.components.PlayerRenderView
+import com.streamvault.app.ui.components.dialogs.PinDialog
+import com.streamvault.app.ui.components.dialogs.PremiumDialog
+import com.streamvault.app.ui.components.dialogs.PremiumDialogActionButton
+import com.streamvault.app.ui.components.dialogs.PremiumDialogFooterButton
+import com.streamvault.app.ui.theme.Primary
 import com.streamvault.player.PlayerRenderSurfaceType
 import com.streamvault.player.PlayerSurfaceResizeMode
 import kotlinx.coroutines.launch
-import com.zenlemon.app.ui.interaction.TvClickableSurface
-import com.zenlemon.app.ui.interaction.TvButton
-import com.zenlemon.app.ui.interaction.TvIconButton
+import com.streamvault.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.ui.interaction.TvButton
+import com.streamvault.app.ui.interaction.TvIconButton
 
 @Composable
 fun MultiViewScreen(

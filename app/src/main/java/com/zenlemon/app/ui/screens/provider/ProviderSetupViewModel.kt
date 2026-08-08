@@ -1,9 +1,9 @@
-package com.zenlemon.app.ui.screens.provider
+package com.streamvault.app.ui.screens.provider
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zenlemon.app.pairing.ProviderQrPairingManager
-import com.zenlemon.app.pairing.ProviderQrPairingState
+import com.streamvault.app.pairing.ProviderQrPairingManager
+import com.streamvault.app.pairing.ProviderQrPairingState
 import com.streamvault.data.remote.xtream.XtreamAuthenticationException
 import com.streamvault.data.remote.xtream.XtreamNetworkException
 import com.streamvault.data.remote.xtream.XtreamParsingException

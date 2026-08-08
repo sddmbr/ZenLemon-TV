@@ -1,7 +1,7 @@
-package com.zenlemon.app.ui.screens.search
+package com.streamvault.app.ui.screens.search
 
 import androidx.annotation.StringRes
-import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.ui.interaction.TvClickableSurface
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -42,19 +42,19 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Star
 import androidx.tv.material3.*
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.components.CategoryRow
-import com.zenlemon.app.ui.components.SearchInput
-import com.zenlemon.app.ui.components.ChannelCard
-import com.zenlemon.app.ui.components.MovieCard
-import com.zenlemon.app.ui.components.SeriesCard
-import com.zenlemon.app.ui.components.TvEmptyState
-import com.zenlemon.app.ui.components.shell.AppNavigationChrome
-import com.zenlemon.app.ui.components.shell.AppScreenScaffold
-import com.zenlemon.app.ui.design.AppColors
-import com.zenlemon.app.ui.design.requestFocusSafely
-import com.zenlemon.app.ui.interaction.mouseClickable
-import com.zenlemon.app.ui.theme.*
+import com.streamvault.app.R
+import com.streamvault.app.ui.components.CategoryRow
+import com.streamvault.app.ui.components.SearchInput
+import com.streamvault.app.ui.components.ChannelCard
+import com.streamvault.app.ui.components.MovieCard
+import com.streamvault.app.ui.components.SeriesCard
+import com.streamvault.app.ui.components.TvEmptyState
+import com.streamvault.app.ui.components.shell.AppNavigationChrome
+import com.streamvault.app.ui.components.shell.AppScreenScaffold
+import com.streamvault.app.ui.design.AppColors
+import com.streamvault.app.ui.design.requestFocusSafely
+import com.streamvault.app.ui.interaction.mouseClickable
+import com.streamvault.app.ui.theme.*
 import com.streamvault.domain.manager.ParentalControlManager
 import com.streamvault.domain.model.Channel
 import com.streamvault.domain.model.ContentType
@@ -436,7 +436,7 @@ fun SearchScreen(
     }
 
     if (showPinDialog) {
-        com.zenlemon.app.ui.components.dialogs.PinDialog(
+        com.streamvault.app.ui.components.dialogs.PinDialog(
             onDismissRequest = {
                 showPinDialog = false
                 pinError = null

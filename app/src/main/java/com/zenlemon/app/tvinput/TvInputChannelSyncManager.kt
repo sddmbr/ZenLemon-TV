@@ -1,4 +1,4 @@
-package com.zenlemon.app.tvinput
+package com.streamvault.app.tvinput
 
 import android.content.ComponentName
 import android.content.ContentResolver
@@ -9,9 +9,9 @@ import android.content.Intent
 import android.media.tv.TvContract
 import android.provider.BaseColumns
 import android.util.Log
-import com.zenlemon.app.MainActivity
-import com.zenlemon.app.device.isTelevisionDevice
-import com.zenlemon.app.navigation.PlayerNavigationRequest
+import com.streamvault.app.MainActivity
+import com.streamvault.app.device.isTelevisionDevice
+import com.streamvault.app.navigation.PlayerNavigationRequest
 import com.streamvault.domain.model.Channel
 import com.streamvault.domain.model.Program
 import com.streamvault.domain.repository.ChannelRepository

@@ -1,4 +1,4 @@
-package com.zenlemon.app.cast
+package com.streamvault.app.cast
 
 import com.streamvault.domain.model.StreamInfo
 import com.streamvault.domain.model.StreamType

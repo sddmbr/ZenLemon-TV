@@ -1,7 +1,7 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import android.app.Application
-import com.zenlemon.app.R
+import com.streamvault.app.R
 import com.streamvault.domain.manager.RecordingManager
 import com.streamvault.domain.model.RecordingStorageConfig
 import com.streamvault.domain.model.Result

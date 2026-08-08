@@ -1,9 +1,9 @@
 @file:OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
 
-package com.zenlemon.app.ui.screens.player
+package com.streamvault.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
-import com.zenlemon.app.ui.model.orderedByRequestedRawIds
+import com.streamvault.app.ui.model.orderedByRequestedRawIds
 import com.streamvault.domain.model.Category
 import com.streamvault.domain.model.Channel
 import com.streamvault.domain.model.ChannelNumberingMode

@@ -1,4 +1,4 @@
-package com.zenlemon.app.cast
+package com.streamvault.app.cast
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

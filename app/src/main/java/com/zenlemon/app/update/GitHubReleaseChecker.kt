@@ -1,6 +1,6 @@
-package com.zenlemon.app.update
+package com.streamvault.app.update
 
-import com.zenlemon.app.BuildConfig
+import com.streamvault.app.BuildConfig
 import com.streamvault.domain.model.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

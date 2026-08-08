@@ -1,4 +1,4 @@
-package com.zenlemon.app.di
+package com.streamvault.app.di
 
 import android.database.Cursor
 import android.os.SystemClock

@@ -1,4 +1,4 @@
-package com.zenlemon.app
+package com.streamvault.app
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

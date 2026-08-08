@@ -1,4 +1,4 @@
-package com.zenlemon.app.player.external
+package com.streamvault.app.player.external
 
 import android.app.Activity
 import android.content.ActivityNotFoundException

@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.components
+package com.streamvault.app.ui.components
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -52,36 +52,36 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.Border
 import androidx.tv.material3.ClickableSurfaceDefaults
-import com.zenlemon.app.ui.design.LocalAppShapes
+import com.streamvault.app.ui.design.LocalAppShapes
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import com.zenlemon.app.R
-import com.zenlemon.app.ui.components.rememberCrossfadeImageModel
-import com.zenlemon.app.ui.components.shell.MoviePosterCard
-import com.zenlemon.app.ui.components.shell.SeriesPosterCard
-import com.zenlemon.app.ui.components.shell.StatusPill
-import com.zenlemon.app.ui.model.formatVodRatingLabel
-import com.zenlemon.app.ui.model.archivePlaybackCapability
-import com.zenlemon.app.ui.theme.AccentAmber
-import com.zenlemon.app.ui.theme.AccentCyan
-import com.zenlemon.app.ui.theme.AccentRed
-import com.zenlemon.app.ui.theme.FocusBorder
-import com.zenlemon.app.ui.theme.GradientOverlayBottom
-import com.zenlemon.app.ui.theme.Primary
-import com.zenlemon.app.ui.theme.Surface
-import com.zenlemon.app.ui.theme.SurfaceElevated
-import com.zenlemon.app.ui.theme.SurfaceHighlight
-import com.zenlemon.app.ui.theme.TextPrimary
-import com.zenlemon.app.ui.theme.TextSecondary
-import com.zenlemon.app.ui.theme.TextTertiary
+import com.streamvault.app.R
+import com.streamvault.app.ui.components.rememberCrossfadeImageModel
+import com.streamvault.app.ui.components.shell.MoviePosterCard
+import com.streamvault.app.ui.components.shell.SeriesPosterCard
+import com.streamvault.app.ui.components.shell.StatusPill
+import com.streamvault.app.ui.model.formatVodRatingLabel
+import com.streamvault.app.ui.model.archivePlaybackCapability
+import com.streamvault.app.ui.theme.AccentAmber
+import com.streamvault.app.ui.theme.AccentCyan
+import com.streamvault.app.ui.theme.AccentRed
+import com.streamvault.app.ui.theme.FocusBorder
+import com.streamvault.app.ui.theme.GradientOverlayBottom
+import com.streamvault.app.ui.theme.Primary
+import com.streamvault.app.ui.theme.Surface
+import com.streamvault.app.ui.theme.SurfaceElevated
+import com.streamvault.app.ui.theme.SurfaceHighlight
+import com.streamvault.app.ui.theme.TextPrimary
+import com.streamvault.app.ui.theme.TextSecondary
+import com.streamvault.app.ui.theme.TextTertiary
 import com.streamvault.domain.model.Channel
 import com.streamvault.domain.model.Movie
 import com.streamvault.domain.model.Series
-import com.zenlemon.app.ui.design.FocusSpec
-import com.zenlemon.app.ui.interaction.mouseClickable
-import com.zenlemon.app.ui.interaction.rememberTvInteractionSounds
+import com.streamvault.app.ui.design.FocusSpec
+import com.streamvault.app.ui.interaction.mouseClickable
+import com.streamvault.app.ui.interaction.rememberTvInteractionSounds
 
 private object ChannelProgressTicker {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)

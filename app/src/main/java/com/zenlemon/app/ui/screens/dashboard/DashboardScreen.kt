@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.dashboard
+package com.streamvault.app.ui.screens.dashboard
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -50,31 +50,31 @@ import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import com.zenlemon.app.R
-import com.zenlemon.app.device.rememberIsTelevisionDevice
-import com.zenlemon.app.ui.components.ChannelLogoBadge
-import com.zenlemon.app.navigation.Routes
-import com.zenlemon.app.ui.components.CategoryRow
-import com.zenlemon.app.ui.components.ChannelCard
-import com.zenlemon.app.ui.components.ContinueWatchingRow
-import com.zenlemon.app.ui.components.MovieCard
-import com.zenlemon.app.ui.components.rememberCrossfadeImageModel
-import com.zenlemon.app.ui.components.SeriesCard
-import com.zenlemon.app.ui.components.shell.AppNavigationChrome
-import com.zenlemon.app.ui.components.shell.AppHeroHeader
-import com.zenlemon.app.ui.components.shell.AppScreenScaffold
-import com.zenlemon.app.ui.components.shell.StatusPill
-import com.zenlemon.app.ui.design.AppColors
-import com.zenlemon.app.ui.time.LocalAppTimeFormat
-import com.zenlemon.app.ui.time.createDateTimeFormat
-import com.zenlemon.app.ui.design.AppColors.Brand as Primary
-import com.zenlemon.app.ui.design.AppColors.Focus as FocusBorder
-import com.zenlemon.app.ui.design.AppColors.SurfaceElevated as SurfaceElevated
-import com.zenlemon.app.ui.design.AppColors.SurfaceEmphasis as SurfaceHighlight
-import com.zenlemon.app.ui.design.AppColors.TextPrimary as OnBackground
-import com.zenlemon.app.ui.design.AppColors.TextPrimary as TextPrimary
-import com.zenlemon.app.ui.design.AppColors.TextTertiary as OnSurfaceDim
-import com.zenlemon.app.ui.design.AppColors.TextTertiary as TextTertiary
+import com.streamvault.app.R
+import com.streamvault.app.device.rememberIsTelevisionDevice
+import com.streamvault.app.ui.components.ChannelLogoBadge
+import com.streamvault.app.navigation.Routes
+import com.streamvault.app.ui.components.CategoryRow
+import com.streamvault.app.ui.components.ChannelCard
+import com.streamvault.app.ui.components.ContinueWatchingRow
+import com.streamvault.app.ui.components.MovieCard
+import com.streamvault.app.ui.components.rememberCrossfadeImageModel
+import com.streamvault.app.ui.components.SeriesCard
+import com.streamvault.app.ui.components.shell.AppNavigationChrome
+import com.streamvault.app.ui.components.shell.AppHeroHeader
+import com.streamvault.app.ui.components.shell.AppScreenScaffold
+import com.streamvault.app.ui.components.shell.StatusPill
+import com.streamvault.app.ui.design.AppColors
+import com.streamvault.app.ui.time.LocalAppTimeFormat
+import com.streamvault.app.ui.time.createDateTimeFormat
+import com.streamvault.app.ui.design.AppColors.Brand as Primary
+import com.streamvault.app.ui.design.AppColors.Focus as FocusBorder
+import com.streamvault.app.ui.design.AppColors.SurfaceElevated as SurfaceElevated
+import com.streamvault.app.ui.design.AppColors.SurfaceEmphasis as SurfaceHighlight
+import com.streamvault.app.ui.design.AppColors.TextPrimary as OnBackground
+import com.streamvault.app.ui.design.AppColors.TextPrimary as TextPrimary
+import com.streamvault.app.ui.design.AppColors.TextTertiary as OnSurfaceDim
+import com.streamvault.app.ui.design.AppColors.TextTertiary as TextTertiary
 import com.streamvault.domain.model.AppHomeDashboardShelf
 import com.streamvault.domain.model.Channel
 import com.streamvault.domain.model.Movie
@@ -85,9 +85,9 @@ import androidx.compose.foundation.BorderStroke
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import com.zenlemon.app.ui.interaction.TvClickableSurface
-import com.zenlemon.app.ui.interaction.TvButton
-import com.zenlemon.app.ui.interaction.TvIconButton
+import com.streamvault.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.ui.interaction.TvButton
+import com.streamvault.app.ui.interaction.TvIconButton
 
 @Composable
 fun DashboardScreen(

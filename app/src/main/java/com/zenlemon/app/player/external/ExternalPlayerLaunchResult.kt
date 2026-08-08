@@ -1,4 +1,4 @@
-package com.zenlemon.app.player.external
+package com.streamvault.app.player.external
 
 /**
  * Infer MIME type from a URL string without Android dependencies.

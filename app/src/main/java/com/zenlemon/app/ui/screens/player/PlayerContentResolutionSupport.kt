@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.player
+package com.streamvault.app.ui.screens.player
 
 import com.streamvault.data.remote.stalker.StalkerPlaybackResolutionException
 import com.streamvault.data.remote.xtream.XtreamStreamUrlResolver

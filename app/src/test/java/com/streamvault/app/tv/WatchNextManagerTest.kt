@@ -1,4 +1,4 @@
-package com.zenlemon.app.tv
+package com.streamvault.app.tv
 
 import com.google.common.truth.Truth.assertThat
 import com.streamvault.domain.model.ContentType

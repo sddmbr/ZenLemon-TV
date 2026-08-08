@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.settings
+package com.streamvault.app.ui.screens.settings
 
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
@@ -19,14 +19,14 @@ import androidx.compose.ui.unit.dp
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.zenlemon.app.BuildConfig
-import com.zenlemon.app.R
-import com.zenlemon.app.update.AppUpdateActionState
-import com.zenlemon.app.ui.interaction.TvClickableSurface
-import com.zenlemon.app.ui.theme.OnSurface
-import com.zenlemon.app.ui.theme.OnSurfaceDim
-import com.zenlemon.app.ui.theme.Primary
-import com.zenlemon.app.ui.theme.Secondary
+import com.streamvault.app.BuildConfig
+import com.streamvault.app.R
+import com.streamvault.app.update.AppUpdateActionState
+import com.streamvault.app.ui.interaction.TvClickableSurface
+import com.streamvault.app.ui.theme.OnSurface
+import com.streamvault.app.ui.theme.OnSurfaceDim
+import com.streamvault.app.ui.theme.Primary
+import com.streamvault.app.ui.theme.Secondary
 import com.streamvault.domain.manager.DriveAuthState
 
 internal fun LazyListScope.settingsBackupSection(
@@ -269,7 +269,7 @@ internal fun LazyListScope.settingsAboutSection(
     item {
         val downloadStatus = uiState.appUpdate.downloadStatus
         LaunchedEffect(downloadStatus) {
-            if (downloadStatus == com.zenlemon.app.update.AppUpdateDownloadStatus.Downloading) {
+            if (downloadStatus == com.streamvault.app.update.AppUpdateDownloadStatus.Downloading) {
                 while (true) {
                     kotlinx.coroutines.delay(2000L)
                     onRefreshDownloadState()

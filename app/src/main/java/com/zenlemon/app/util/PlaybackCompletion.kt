@@ -1,4 +1,4 @@
-package com.zenlemon.app.util
+package com.streamvault.app.util
 
 import com.streamvault.domain.util.isPlaybackComplete as domainIsPlaybackComplete
 

@@ -1,4 +1,4 @@
-package com.zenlemon.app.player
+package com.streamvault.app.player
 
 import com.google.common.truth.Truth.assertThat
 import java.nio.file.Files

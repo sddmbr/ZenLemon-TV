@@ -1,13 +1,13 @@
-package com.zenlemon.app.ui.screens.plugins
+package com.streamvault.app.ui.screens.plugins
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zenlemon.app.plugins.InstalledStreamVaultPlugin
-import com.zenlemon.app.plugins.PluginConfigurationAction
-import com.zenlemon.app.plugins.PluginConfigurationField
-import com.zenlemon.app.plugins.PluginConfigurationSchema
-import com.zenlemon.app.plugins.StreamVaultPluginManager
+import com.streamvault.app.plugins.InstalledStreamVaultPlugin
+import com.streamvault.app.plugins.PluginConfigurationAction
+import com.streamvault.app.plugins.PluginConfigurationField
+import com.streamvault.app.plugins.PluginConfigurationSchema
+import com.streamvault.app.plugins.StreamVaultPluginManager
 import com.streamvault.domain.model.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

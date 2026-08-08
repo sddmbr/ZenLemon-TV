@@ -1,4 +1,4 @@
-package com.zenlemon.app.player
+package com.streamvault.app.player
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

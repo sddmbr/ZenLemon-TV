@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.components.shell
+package com.streamvault.app.ui.components.shell
 
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.grid.LazyGridState
