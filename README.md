@@ -166,9 +166,9 @@ ZenLemon is more than just a media player; it is a sandbox for advanced client-f
 
 ### Plugins
 
-- StreamVault can be extended with companion Android APK plugins.
+- ZenLemonTV can be extended with companion Android APK plugins.
 - Plugin developers can expose provider, playback, Cast URL rewrite, and host-rendered or native configuration capabilities.
-- See the [StreamVault Plugin API](docs/PLUGIN_API.md) docs to create compatible plugins.
+- We are woeking on a suite of plugins.
 
 ## Quick TV Tips
 
@@ -181,14 +181,14 @@ ZenLemon is more than just a media player; it is a sandbox for advanced client-f
 
 ## Download
 
-- [Download latest StreamVault.apk](https://github.com/Davidona/StreamVault-IPTV/releases/latest/download/StreamVault.apk)
+- [Download latest ZenLemonTV.apk][(https://github.com/sddmbr/ZenLemon-TV/releases/download/lemonlime/ZenLemon-TV.apk)]
 - The app can also detect and download newer releases in-app through GitHub Releases.
 - GitHub Actions still runs build and test validation on pushes and pull requests.
 - GitHub Releases are now published only when the workflow is started manually with `workflow_dispatch`, so versioned releases do not get created by mistake on every push.
 
 ## Support
 
-If StreamVault is useful to you, you can support development here:
+Wanna help - checkout the original gangsta StreamVault, you can support development there or here just reach out:
 
 - [Support on Ko-fi](https://ko-fi.com/davidona)
 
