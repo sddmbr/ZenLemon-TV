@@ -1,4 +1,6 @@
-# StreamVault
+# 🍋 ZenLemon TV (zenlemon-iptv)
+
+> *The pinnacle of tailored, enterprise-grade media streaming — where bitter complexity meets sweet user experience.*
 
 <p align="center">
 	<a href="https://github.com/Davidona/StreamVault-IPTV/releases/latest/download/StreamVault.apk"><img src="https://img.shields.io/badge/Download-StreamVault.apk-2ea44f?style=for-the-badge&logo=android" alt="Download StreamVault APK" /></a>
@@ -11,11 +13,28 @@
 	<a href="LICENSE"><img src="https://img.shields.io/badge/License-StreamVault_OSL-0284c7?style=for-the-badge" alt="License" /></a>
 </p>
 
-StreamVault is a TV-first IPTV player for Android TV built with Kotlin, Jetpack Compose, Room, Hilt, and Media3.
 
-It is designed for large playlists, remote-friendly browsing, fast provider switching, and a polished living-room playback experience. StreamVault supports `M3U` playlists, `Xtream Codes`, `Stalker Portal`, and `Jellyfin` providers, with dedicated flows for `Live TV`, `Movies`, and `Series`.
 
-Built for Android TV first, StreamVault focuses on the things generic IPTV apps usually get wrong: D-pad navigation, quick channel movement, large-library organization, and a player that still feels good to use from the couch. Phone and tablet installs are also supported, but the primary UX target is TV.
+---
+
+## 🚀 Why ZenLemon?
+ZenLemon was born out of a desire to move beyond off-the-shelf, restrictive media apps. As a full-stack web developer and enterprise IT professional, I built ZenLemon to take absolute control of the playback stack, introduce native web integrations, and provide a lightning-fast, highly customizable environment for live IPTV, VOD, and external media plugins. 
+
+This project bridges the gap between raw server-side stream orchestration and a polished, modern Android interface.
+
+## ✨ What's New in ZenLemon
+*   **Built-in YouTube Integration Tab:** Bypasses rigid player constraints by embedding a native, highly optimized web-view framework directly into a dedicated application tab.
+*   **Complete White-Label Rebrand:** Fully refactored package structures (`com.zenlemon.app`), clean Hilt dependency injection mapping, and a modern custom theme architecture.
+*   **Enhanced Multi-Source Resilience:** Optimized handling of multi-profile M3U playlists, automated EPG syncs, and robust local database migrations via Room.
+
+## 🔮 Future Roadmap & Consultant Vision
+ZenLemon is more than just a media player; it is a sandbox for advanced client-facing streaming solutions:
+*   **Advanced VPN & Tunneling Integration:** Native routing wrappers to ensure secure, uninterrupted media delivery across strict network topologies.
+*   **Custom Plugin Marketplace:** Expanding the plugin architecture to allow dynamic, modular widget injections.
+*   **Enterprise-Grade Consulting Showcase:** Demonstrating robust Android architecture, reactive state management (Kotlin Flows), and clean modularization for high-tier prospective clients.
+
+---
+*Maintained with precision by Fernando Rivera — IT Professional & Web Development Consultant.*
 
 ## Preview
 <p align="center">
