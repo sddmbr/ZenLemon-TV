@@ -50,27 +50,23 @@ fun computeOfficialSigningCertSha256(): String {
 val officialSigningCertSha256 = computeOfficialSigningCertSha256()
 
 android {
-    namespace = "com.zenlemon.app"
+    namespace = "com.lemontreesites.zenlemontv"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.zenlemon.streamtv"
+        applicationId = "com.lemontreesites.zenlemontv"
         minSdk = 25
         targetSdk = 36
         versionCode = 17
         versionName = "1.0.16"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "OFFICIAL_APPLICATION_ID", "\"com.zenlemon.app\"")
+        buildConfigField("String", "OFFICIAL_APPLICATION_ID", "\"com.lemontreesites.zenlemontv\"")
         buildConfigField("String", "OFFICIAL_SIGNING_CERT_SHA256", "\"$officialSigningCertSha256\"")
         buildConfigField("String", "APP_UPDATE_CHANNEL", "\"stable\"")
         buildConfigField("long", "BUILD_TIMESTAMP_UTC", "0L")
         ndk {
             abiFilters += listOf("arm64-v8a", "armeabi-v7a")
         }
-        // Dev seeding hooks — populated from rootProject/local.properties in the
-        // `debug` build type only. Release builds inherit these empty defaults so
-        // a release APK can never ship a contributor's credentials. See
-        // local.properties.example and docs/DEV_SEEDING.md.
         buildConfigField("String", "XTREAM_DEV_SERVER", "\"\"")
         buildConfigField("String", "XTREAM_DEV_USERNAME", "\"\"")
         buildConfigField("String", "XTREAM_DEV_PASSWORD", "\"\"")
@@ -108,7 +104,6 @@ android {
             buildConfigField("String", "APP_UPDATE_CHANNEL", "\"beta\"")
             buildConfigField("long", "BUILD_TIMESTAMP_UTC", "${System.currentTimeMillis()}L")
             isDebuggable = false
-            // Keep beta close to release behavior but faster for CI/test distribution.
             isMinifyEnabled = false
             isShrinkResources = false
             if (keystorePropertiesFile.exists()) {
@@ -165,7 +160,6 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":player"))
 
-    // Compose BOM
     val composeBom = platform(libs.compose.bom)
     implementation(composeBom)
     implementation(libs.compose.ui)
@@ -176,11 +170,9 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     debugImplementation(libs.leakcanary.android)
 
-    // Compose TV
     implementation(libs.compose.tv.foundation)
     implementation(libs.compose.tv.material)
 
-    // Media3
     implementation(libs.media3.exoplayer)
     implementation(libs.media3.exoplayer.hls)
     implementation(libs.media3.exoplayer.dash)
@@ -190,11 +182,9 @@ dependencies {
     implementation(libs.media3.ui)
     implementation(files("../player/libs/media3-decoder-ffmpeg-1.9.2.aar"))
 
-    // Room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
 
-    // Networking
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
     implementation(libs.okhttp)
@@ -202,30 +192,24 @@ dependencies {
     implementation(libs.zxing.core)
     implementation(libs.kotlinx.serialization.json)
 
-    // Activity & Lifecycle
     implementation(libs.activity.compose)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.runtime.compose)
 
-    // Navigation
     implementation(libs.navigation.compose)
 
-    // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.hilt.work)
     ksp(libs.hilt.work.compiler)
 
-    // WorkManager
     implementation(libs.work.runtime.ktx)
 
-    // Image Loading
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
 
-    // Core
     implementation(libs.core.ktx)
     implementation(libs.documentfile)
     implementation(libs.coroutines.android)
@@ -233,7 +217,6 @@ dependencies {
     implementation(libs.mediarouter)
     implementation(libs.play.services.cast.framework)
 
-    // Test
     testImplementation(libs.junit)
     testImplementation(libs.truth)
     testImplementation(libs.coroutines.test)
