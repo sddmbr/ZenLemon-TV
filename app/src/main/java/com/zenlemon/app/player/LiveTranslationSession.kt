@@ -1,9 +1,9 @@
-package com.streamvault.app.player
+package com.zenlemon.app.player
 
 import androidx.media3.common.C
 import androidx.media3.common.text.Cue
-import com.streamvault.player.LiveAudioPcmBuffer
-import com.streamvault.player.PlayerEngine
+import com.zenlemon.player.LiveAudioPcmBuffer
+import com.zenlemon.player.PlayerEngine
 import java.io.ByteArrayOutputStream
 import kotlin.coroutines.coroutineContext
 import kotlinx.coroutines.CoroutineScope

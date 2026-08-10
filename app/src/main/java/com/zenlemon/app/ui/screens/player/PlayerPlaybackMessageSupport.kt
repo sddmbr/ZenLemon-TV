@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
-import com.streamvault.app.ui.model.archivePlaybackCapability
-import com.streamvault.domain.model.Channel
+import com.zenlemon.app.ui.model.archivePlaybackCapability
+import com.zenlemon.domain.model.Channel
 import java.util.Locale
 
 internal fun isAuthExpiryPlaybackError(message: String?): Boolean {

@@ -1,8 +1,8 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.ui.model.isArchivePlayable
-import com.streamvault.domain.model.ContentType
+import com.zenlemon.app.ui.model.isArchivePlayable
+import com.zenlemon.domain.model.ContentType
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -62,7 +62,7 @@ internal fun PlayerViewModel.showPlayerNotice(
     }
 }
 
-internal fun PlayerViewModel.showRetryNotice(status: com.streamvault.player.PlayerRetryStatus) {
+internal fun PlayerViewModel.showRetryNotice(status: com.zenlemon.player.PlayerRetryStatus) {
     val formatLabel = resolvePlaybackFormatLabel(
         currentResolvedPlaybackUrl = currentResolvedPlaybackUrl,
         currentStreamUrl = currentStreamUrl
@@ -78,7 +78,7 @@ internal fun PlayerViewModel.showRetryNotice(status: com.streamvault.player.Play
 
 internal fun buildRetryNoticeMessage(
     formatLabel: String,
-    status: com.streamvault.player.PlayerRetryStatus
+    status: com.zenlemon.player.PlayerRetryStatus
 ): String {
     val retryLabel = "Retrying $formatLabel ${status.attempt}/${status.maxAttempts}"
     val delaySeconds = status.delayMs / 1_000L

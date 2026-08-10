@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.multiview
+package com.zenlemon.app.ui.screens.multiview
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -37,18 +37,18 @@ import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.dialogs.PremiumDialog
-import com.streamvault.app.ui.components.dialogs.PremiumDialogFooterButton
-import com.streamvault.app.ui.components.shell.AppMessageState
-import com.streamvault.app.ui.components.shell.StatusPill
-import com.streamvault.app.ui.design.AppColors
-import com.streamvault.app.ui.design.FocusSpec
-import com.streamvault.domain.model.Channel
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.dialogs.PremiumDialog
+import com.zenlemon.app.ui.components.dialogs.PremiumDialogFooterButton
+import com.zenlemon.app.ui.components.shell.AppMessageState
+import com.zenlemon.app.ui.components.shell.StatusPill
+import com.zenlemon.app.ui.design.AppColors
+import com.zenlemon.app.ui.design.FocusSpec
+import com.zenlemon.domain.model.Channel
 import kotlinx.coroutines.delay
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.interaction.TvButton
-import com.streamvault.app.ui.interaction.TvIconButton
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.interaction.TvButton
+import com.zenlemon.app.ui.interaction.TvIconButton
 
 @Composable
 fun MultiViewPlannerDialog(

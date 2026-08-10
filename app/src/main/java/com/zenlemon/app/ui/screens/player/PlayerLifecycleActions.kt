@@ -1,9 +1,9 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
-import com.streamvault.domain.model.ContentType
-import com.streamvault.player.PlaybackState
-import com.streamvault.player.PlayerEngine
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.player.PlaybackState
+import com.zenlemon.player.PlayerEngine
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -161,7 +161,7 @@ internal fun PlayerViewModel.cleanupAfterCleared(mainPlayerEngine: PlayerEngine)
             channel = channel!!,
             streamInfo = streamInfo!!,
             engine = activeEngine,
-            source = com.streamvault.app.player.PreviewHandoffSource.HOME
+            source = com.zenlemon.app.player.PreviewHandoffSource.HOME
         )
         mainPlayerEngine.resetForReuse()
     } else {

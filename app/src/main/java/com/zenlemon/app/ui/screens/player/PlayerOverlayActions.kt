@@ -1,11 +1,11 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.VirtualCategoryIds
-import com.streamvault.domain.repository.ChannelRepository
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.VirtualCategoryIds
+import com.zenlemon.domain.repository.ChannelRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

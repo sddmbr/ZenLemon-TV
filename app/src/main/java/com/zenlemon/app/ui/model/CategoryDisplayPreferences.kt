@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.model
+package com.zenlemon.app.ui.model
 
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.CategorySortMode
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.CategorySortMode
 
 fun applyProviderCategoryDisplayPreferences(
     categories: List<Category>,

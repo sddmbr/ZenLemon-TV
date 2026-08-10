@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.model
+package com.zenlemon.app.ui.model
 
 enum class VodViewMode(val storageValue: String) {
     MODERN("modern"),

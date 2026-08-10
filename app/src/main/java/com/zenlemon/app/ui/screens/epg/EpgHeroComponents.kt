@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.epg
+package com.zenlemon.app.ui.screens.epg
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -41,25 +41,25 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.ChannelLogoBadge
-import com.streamvault.app.ui.components.PlayerRenderView
-import com.streamvault.app.ui.model.isArchivePlayable
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.model.guideLookupKey
-import com.streamvault.app.ui.time.LocalAppTimeFormat
-import com.streamvault.app.ui.time.createTimeFormat
-import com.streamvault.app.ui.theme.FocusBorder
-import com.streamvault.app.ui.theme.OnSurface
-import com.streamvault.app.ui.theme.OnSurfaceDim
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.app.ui.theme.SurfaceElevated
-import com.streamvault.app.ui.theme.SurfaceHighlight
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.Program
-import com.streamvault.player.PlayerEngine
-import com.streamvault.player.PlayerRenderSurfaceType
-import com.streamvault.player.PlayerSurfaceResizeMode
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.ChannelLogoBadge
+import com.zenlemon.app.ui.components.PlayerRenderView
+import com.zenlemon.app.ui.model.isArchivePlayable
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.model.guideLookupKey
+import com.zenlemon.app.ui.time.LocalAppTimeFormat
+import com.zenlemon.app.ui.time.createTimeFormat
+import com.zenlemon.app.ui.theme.FocusBorder
+import com.zenlemon.app.ui.theme.OnSurface
+import com.zenlemon.app.ui.theme.OnSurfaceDim
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.app.ui.theme.SurfaceElevated
+import com.zenlemon.app.ui.theme.SurfaceHighlight
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.Program
+import com.zenlemon.player.PlayerEngine
+import com.zenlemon.player.PlayerRenderSurfaceType
+import com.zenlemon.player.PlayerSurfaceResizeMode
 import java.util.Date
 
 internal data class GuideHeroSelection(

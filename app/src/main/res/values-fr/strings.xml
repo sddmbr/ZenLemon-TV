@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">StreamVault</string>
+    <string name="app_name">ZenLemon</string>
     <string name="nav_home">Accueil</string>
     <string name="nav_live_tv">Télévision en direct</string>
     <string name="nav_movies">Films</string>
@@ -111,7 +111,7 @@
     <string name="dashboard_provider_no_expiry">Aucune expiration signalée</string>
     <string name="dashboard_warning_title">Le fournisseur a besoin d’attention</string>
     <string name="dashboard_warning_review">Détails du fournisseur ouvert</string>
-    <string name="dashboard_update_title">StreamVault %1$s est disponible</string>
+    <string name="dashboard_update_title">ZenLemon %1$s est disponible</string>
     <string name="dashboard_update_available">Une nouvelle version de l’application est en cache et prête à être consultée dans Paramètres.</string>
     <string name="dashboard_update_install_ready">La dernière mise à jour a déjà été téléchargée. Ouvrez Paramètres pour l’installer.</string>
     <string name="dashboard_update_open_settings">Ouvrir les mises à jour</string>
@@ -418,7 +418,7 @@
     <string name="settings_about_subtitle">Détails de la version, de la build et du support pour cette installation.</string>
     <string name="settings_app_version">Version de l’application</string>
     <string name="settings_build">Construire</string>
-    <string name="settings_build_desc">StreamVault pour Android TV</string>
+    <string name="settings_build_desc">ZenLemon pour Android TV</string>
     <string name="settings_enabled">Activé</string>
     <string name="settings_disabled">Désactivé</string>
     <string name="settings_developed_by">Développé par</string>
@@ -428,7 +428,7 @@
     <string name="settings_donate">Assistance sur Ko-fi</string>
     <string name="settings_donate_url">https://ko-fi.com/davidona</string>
     <string name="settings_updates_title">Mises à jour</string>
-    <string name="settings_updates_subtitle">Consultez les versions GitHub pour trouver des versions plus récentes de StreamVault sans quitter l’application.</string>
+    <string name="settings_updates_subtitle">Consultez les versions GitHub pour trouver des versions plus récentes de ZenLemon sans quitter l’application.</string>
     <string name="settings_update_auto_check">Vérifier automatiquement les mises à jour</string>
     <string name="settings_update_latest_release">Dernière version</string>
     <string name="settings_update_status">État de la mise à jour</string>
@@ -452,8 +452,8 @@
     <string name="settings_update_status_check_failed">Dernière vérification échouée</string>
     <string name="settings_update_status_downloading">Téléchargement de la mise à jour</string>
     <string name="settings_update_status_ready_to_install">Prêt à installer</string>
-    <string name="settings_update_available_message">StreamVault %1$s est disponible.</string>
-    <string name="settings_update_current_message">Vous avez déjà la dernière version de StreamVault.</string>
+    <string name="settings_update_available_message">ZenLemon %1$s est disponible.</string>
+    <string name="settings_update_current_message">Vous avez déjà la dernière version de ZenLemon.</string>
     <string name="settings_syncing">Synchronisation des données, veuillez patienter...</string>
     <string name="settings_syncing_title">Synchronisation des données...</string>
     <string name="settings_syncing_subtitle">Veuillez patienter pendant que votre liste de lecture est importée.</string>
@@ -716,7 +716,7 @@
     <string name="a11y_catch_up_available">Rattrapage disponible</string>
     <string name="a11y_now_playing">Je joue actuellement à %1$s</string>
     <string name="a11y_channel_with_number">Canal %1$d, %2$s</string>
-    <string name="setup_title_streamvault">StreamVault</string>
+    <string name="setup_title_zenlemon">ZenLemon</string>
     <string name="setup_provider_title">Ajouter un fournisseur</string>
     <string name="setup_edit_provider">Modifier le fournisseur</string>
     <string name="setup_update_desc">Mettez à jour les détails de votre fournisseur IPTV</string>
@@ -1181,21 +1181,21 @@
     <string name="settings_history_cleared">Regarder l’historique et les événements récents effacés</string>
     <string name="settings_pin_changed">PIN enregistré avec succès</string>
     <string name="home_reorder_channels">Réorganiser les chaînes</string>
-    <string name="tv_input_setup_scanning_title">Analyse des canaux StreamVault</string>
+    <string name="tv_input_setup_scanning_title">Analyse des canaux ZenLemon</string>
     <string name="tv_input_setup_success_title">La TV en direct est prête</string>
     <string name="tv_input_setup_no_provider_title">Aucun fournisseur IPTV configuré</string>
     <string name="tv_input_setup_error_title">Analyse automatique échouée</string>
     <string name="tv_input_setup_idle_title">Préparation de l’intégration TV en direct</string>
-    <string name="tv_input_setup_scanning_body">StreamVault synchronise votre fournisseur actif avec Android TV TV en direct.</string>
+    <string name="tv_input_setup_scanning_body">ZenLemon synchronise votre fournisseur actif avec Android TV TV en direct.</string>
     <string name="tv_input_setup_success_body">Vos chaînes ont été synchronisées avec succès.</string>
-    <string name="tv_input_setup_no_provider_body">Ajoutez au moins un fournisseur IPTV dans StreamVault, puis revenez ici pour analyser les chaînes dans Android TV TV en direct.</string>
+    <string name="tv_input_setup_no_provider_body">Ajoutez au moins un fournisseur IPTV dans ZenLemon, puis revenez ici pour analyser les chaînes dans Android TV TV en direct.</string>
     <string name="tv_input_setup_error_body">La synchronisation de l’entrée TV n’a pas abouti.</string>
     <string name="tv_input_setup_idle_body">Veuillez patienter.</string>
     <string name="tv_input_setup_source_format">Source : %1$s</string>
-    <string name="tv_input_setup_open_setup">Ouvrez la configuration de StreamVault</string>
+    <string name="tv_input_setup_open_setup">Ouvrez la configuration de ZenLemon</string>
     <string name="tv_input_setup_try_scan_again">Réessayer l’analyse automatique</string>
     <string name="tv_input_setup_retry_scan">Relancer l’analyse automatique</string>
-    <string name="tv_input_setup_success_hint">Android TV TV en direct peut maintenant ouvrir vos chaînes StreamVault.</string>
+    <string name="tv_input_setup_success_hint">Android TV TV en direct peut maintenant ouvrir vos chaînes ZenLemon.</string>
     <string name="badge_beta">Bêta</string>
     <string name="badge_recording">REC</string>
     <string name="badge_scheduled">SCHED</string>
@@ -1222,8 +1222,8 @@
     <string name="label_slots_count_dynamic">%1$d/%2$d emplacements</string>
     <string name="movie_detail_related">Plus comme ça</string>
     <string name="movie_detail_resume_from">Reprendre à %1$s</string>
-    <string name="notification_permission_recording_alert_required">Activez les notifications pour StreamVault afin de recevoir des alertes d’échec d’enregistrement.</string>
-    <string name="notification_permission_reminder_required">Activez les notifications pour StreamVault afin de recevoir des rappels de programmes.</string>
+    <string name="notification_permission_recording_alert_required">Activez les notifications pour ZenLemon afin de recevoir des alertes d’échec d’enregistrement.</string>
+    <string name="notification_permission_reminder_required">Activez les notifications pour ZenLemon afin de recevoir des rappels de programmes.</string>
     <string name="player_action_variants">Variantes</string>
     <string name="player_auto_play_cancel">Annuler</string>
     <string name="player_auto_play_countdown">Lecture dans %1$d s</string>
@@ -1397,7 +1397,7 @@
     <string name="settings_recording_skipped">Occurrence ignorée</string>
     <string name="settings_recording_wifi_only">Enregistrer sur Wi-Fi uniquement</string>
     <string name="settings_reset">Réinitialiser</string>
-    <string name="settings_restore_subtitle">Choisissez un fichier de sauvegarde ou ouvrez une sauvegarde avec StreamVault depuis un gestionnaire de fichiers.</string>
+    <string name="settings_restore_subtitle">Choisissez un fichier de sauvegarde ou ouvrez une sauvegarde avec ZenLemon depuis un gestionnaire de fichiers.</string>
     <string name="settings_select_guide_default_category">Sélectionner la catégorie par défaut du guide</string>
     <string name="settings_select_live_timeshift_depth">Sélectionner la profondeur du retour en arrière local</string>
     <string name="settings_select_time_format">Sélectionner le format d’heure</string>
@@ -1474,7 +1474,7 @@
 
     <!-- M2 : sauvegarde Google Drive -->
     <string name="settings_drive_section_title">Sauvegarde Google Drive</string>
-    <string name="settings_drive_section_subtitle">Envoyez et récupérez la configuration StreamVault dans un dossier Drive privé.</string>
+    <string name="settings_drive_section_subtitle">Envoyez et récupérez la configuration ZenLemon dans un dossier Drive privé.</string>
     <string name="settings_drive_signin">Se connecter à Google Drive</string>
     <string name="settings_drive_signin_description">Connectez un compte Google pour activer la sauvegarde dans le cloud.</string>
     <string name="settings_drive_signout">Se déconnecter</string>

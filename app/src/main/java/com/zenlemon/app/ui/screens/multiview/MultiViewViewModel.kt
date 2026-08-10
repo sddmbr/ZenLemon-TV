@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.multiview
+package com.zenlemon.app.ui.screens.multiview
 
 import android.app.ActivityManager
 import android.content.Context
@@ -6,21 +6,21 @@ import android.os.Build
 import android.os.PowerManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.di.AuxiliaryPlayerEngine
-import com.streamvault.app.ui.model.associateByAnyRawId
-import com.streamvault.data.preferences.PreferencesRepository
-import com.streamvault.domain.manager.ParentalControlManager
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.Result
-import com.streamvault.domain.model.ProviderType
-import com.streamvault.domain.repository.ChannelRepository
-import com.streamvault.domain.repository.FavoriteRepository
-import com.streamvault.domain.repository.PlaybackHistoryRepository
-import com.streamvault.domain.repository.ProviderRepository
-import com.streamvault.domain.usecase.UnlockParentalCategory
-import com.streamvault.domain.usecase.UnlockParentalCategoryCommand
-import com.streamvault.player.PlayerEngine
+import com.zenlemon.app.di.AuxiliaryPlayerEngine
+import com.zenlemon.app.ui.model.associateByAnyRawId
+import com.zenlemon.data.preferences.PreferencesRepository
+import com.zenlemon.domain.manager.ParentalControlManager
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.Result
+import com.zenlemon.domain.model.ProviderType
+import com.zenlemon.domain.repository.ChannelRepository
+import com.zenlemon.domain.repository.FavoriteRepository
+import com.zenlemon.domain.repository.PlaybackHistoryRepository
+import com.zenlemon.domain.repository.ProviderRepository
+import com.zenlemon.domain.usecase.UnlockParentalCategory
+import com.zenlemon.domain.usecase.UnlockParentalCategoryCommand
+import com.zenlemon.player.PlayerEngine
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -265,7 +265,7 @@ class MultiViewViewModel @Inject constructor(
                     try {
                         localEngine = playerEngineProvider.get()
                         // Cap each multi-view slot to 720p so slots don't compete for 4K bandwidth
-                        (localEngine as? com.streamvault.player.Media3PlayerEngine)
+                        (localEngine as? com.zenlemon.player.Media3PlayerEngine)
                             ?.let {
                                 it.constrainResolutionForMultiView = true
                                 it.bypassAudioFocus = true
@@ -461,7 +461,7 @@ class MultiViewViewModel @Inject constructor(
             val channels = channelRepository.getChannelsByIds(validIds).first()
                 .associateByAnyRawId()
             // Rebuild a fixed-size plan preserving slot positions; 0L entries become empty slots.
-            val plan: List<com.streamvault.domain.model.Channel?> = List(MultiViewManager.MAX_SLOTS) { index ->
+            val plan: List<com.zenlemon.domain.model.Channel?> = List(MultiViewManager.MAX_SLOTS) { index ->
                 val id = channelIds.getOrNull(index) ?: 0L
                 if (id > 0L) channels[id] else null
             }
@@ -550,7 +550,7 @@ class MultiViewViewModel @Inject constructor(
                     filteredChannels = emptyList()
                 )
             )
-            val channels = if (category.id == com.streamvault.domain.repository.ChannelRepository.ALL_CHANNELS_ID) {
+            val channels = if (category.id == com.zenlemon.domain.repository.ChannelRepository.ALL_CHANNELS_ID) {
                 channelRepository.getChannels(providerId).first()
             } else {
                 channelRepository.getChannelsByCategory(providerId, category.id).first()
@@ -601,7 +601,7 @@ class MultiViewViewModel @Inject constructor(
                 }
                 currentProviderId = providerId
                 combine(
-                    favoriteRepository.getFavorites(providerId, com.streamvault.domain.model.ContentType.LIVE),
+                    favoriteRepository.getFavorites(providerId, com.zenlemon.domain.model.ContentType.LIVE),
                     playbackHistoryRepository.getRecentlyWatchedByProvider(providerId, limit = 12)
                 ) { favorites, history ->
                     val favoriteIds = favorites.map { it.contentId }
@@ -747,8 +747,8 @@ class MultiViewViewModel @Inject constructor(
 
         engines.forEach { (index, engine) ->
             when (engine.playbackState.value) {
-                com.streamvault.player.PlaybackState.BUFFERING -> bufferingSlots += 1
-                com.streamvault.player.PlaybackState.ERROR -> errorSlots += 1
+                com.zenlemon.player.PlaybackState.BUFFERING -> bufferingSlots += 1
+                com.zenlemon.player.PlaybackState.ERROR -> errorSlots += 1
                 else -> Unit
             }
 

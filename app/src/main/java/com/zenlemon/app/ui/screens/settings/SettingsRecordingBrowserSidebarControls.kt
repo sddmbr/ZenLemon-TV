@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
@@ -30,15 +30,15 @@ import androidx.tv.material3.Border
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.theme.FocusBorder
-import com.streamvault.app.ui.theme.OnBackground
-import com.streamvault.app.ui.theme.OnSurfaceDim
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.app.ui.theme.SurfaceElevated
-import com.streamvault.app.ui.theme.SurfaceHighlight
-import com.streamvault.domain.model.RecordingStatus
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.theme.FocusBorder
+import com.zenlemon.app.ui.theme.OnBackground
+import com.zenlemon.app.ui.theme.OnSurfaceDim
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.app.ui.theme.SurfaceElevated
+import com.zenlemon.app.ui.theme.SurfaceHighlight
+import com.zenlemon.domain.model.RecordingStatus
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -95,7 +95,7 @@ private fun RecordingBrowserSearchField(
     searchQuery: String,
     onSearchQueryChange: (String) -> Unit
 ) {
-    val isTelevisionDevice = com.streamvault.app.device.rememberIsTelevisionDevice()
+    val isTelevisionDevice = com.zenlemon.app.device.rememberIsTelevisionDevice()
     val searchFocusRequester = remember { FocusRequester() }
     val inputFocusRequester = remember { FocusRequester() }
     val keyboardController = LocalSoftwareKeyboardController.current

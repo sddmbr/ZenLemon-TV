@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.components
+package com.zenlemon.app.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -30,16 +30,16 @@ import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.rememberCrossfadeImageModel
-import com.streamvault.app.ui.theme.AccentCyan
-import com.streamvault.app.ui.theme.GradientOverlayBottom
-import com.streamvault.app.ui.theme.SurfaceElevated
-import com.streamvault.app.ui.theme.TextPrimary
-import com.streamvault.app.ui.theme.TextSecondary
-import com.streamvault.app.ui.theme.TextTertiary
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.PlaybackHistory
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.rememberCrossfadeImageModel
+import com.zenlemon.app.ui.theme.AccentCyan
+import com.zenlemon.app.ui.theme.GradientOverlayBottom
+import com.zenlemon.app.ui.theme.SurfaceElevated
+import com.zenlemon.app.ui.theme.TextPrimary
+import com.zenlemon.app.ui.theme.TextSecondary
+import com.zenlemon.app.ui.theme.TextTertiary
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.PlaybackHistory
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable

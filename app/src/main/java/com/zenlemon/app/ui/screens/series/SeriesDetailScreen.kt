@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.series
+package com.zenlemon.app.ui.screens.series
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -57,27 +57,27 @@ import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import com.streamvault.app.MainActivity
-import com.streamvault.app.R
-import com.streamvault.app.cast.CastUiEvent
-import com.streamvault.app.device.rememberIsTelevisionDevice
-import com.streamvault.app.ui.components.rememberCrossfadeImageModel
-import com.streamvault.app.util.formatPositionMs
-import com.streamvault.app.ui.components.shell.ContentMetadataStrip
-import com.streamvault.app.ui.components.shell.EpisodeRowCard
-import com.streamvault.app.ui.components.shell.ExternalRatingsStrip
-import com.streamvault.app.ui.components.shell.StatusPill
-import com.streamvault.app.ui.design.AppColors
-import com.streamvault.app.ui.model.formatVodRatingLabel
-import com.streamvault.domain.model.Episode
-import com.streamvault.domain.model.ExternalRatings
-import com.streamvault.domain.model.Season
-import com.streamvault.domain.model.Series
-import com.streamvault.domain.model.VodSeriesVariant
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.interaction.TvButton
-import com.streamvault.app.ui.interaction.TvIconButton
-import com.streamvault.domain.model.Result
+import com.zenlemon.app.MainActivity
+import com.zenlemon.app.R
+import com.zenlemon.app.cast.CastUiEvent
+import com.zenlemon.app.device.rememberIsTelevisionDevice
+import com.zenlemon.app.ui.components.rememberCrossfadeImageModel
+import com.zenlemon.app.util.formatPositionMs
+import com.zenlemon.app.ui.components.shell.ContentMetadataStrip
+import com.zenlemon.app.ui.components.shell.EpisodeRowCard
+import com.zenlemon.app.ui.components.shell.ExternalRatingsStrip
+import com.zenlemon.app.ui.components.shell.StatusPill
+import com.zenlemon.app.ui.design.AppColors
+import com.zenlemon.app.ui.model.formatVodRatingLabel
+import com.zenlemon.domain.model.Episode
+import com.zenlemon.domain.model.ExternalRatings
+import com.zenlemon.domain.model.Season
+import com.zenlemon.domain.model.Series
+import com.zenlemon.domain.model.VodSeriesVariant
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.interaction.TvButton
+import com.zenlemon.app.ui.interaction.TvIconButton
+import com.zenlemon.domain.model.Result
 import kotlinx.coroutines.launch
 
 private const val EPISODE_DETAIL_PAGE_SIZE = 100

@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.model
+package com.zenlemon.app.ui.model
 
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.Program
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.Program
 import java.util.Locale
 
 private const val MILLIS_PER_DAY = 86_400_000L

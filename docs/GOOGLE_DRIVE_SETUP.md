@@ -1,6 +1,6 @@
 # Google Drive backup sync — setup guide
 
-StreamVault can sync its backup file to a private folder of your Google Drive
+ZenLemon can sync its backup file to a private folder of your Google Drive
 (scope `drive.appdata`). The folder is owned by the app, **invisible** in the
 standard Drive UI, and **wiped automatically** when the user uninstalls the app.
 
@@ -33,7 +33,7 @@ silently with `ApiException` status `DEVELOPER_ERROR (10)`.
 ### 1. Create a Cloud project
 
 Open <https://console.cloud.google.com/projectcreate> and create a project of
-your choice (e.g. `streamvault-dev-<your-handle>`). Select it.
+your choice (e.g. `ZenLemon-dev-<your-handle>`). Select it.
 
 ### 2. Enable the Google Drive API
 
@@ -45,7 +45,7 @@ your choice (e.g. `streamvault-dev-<your-handle>`). Select it.
 <https://console.cloud.google.com/apis/credentials/consent>
 
 - **User type** → External
-- **App name** → `StreamVault` (or your fork name)
+- **App name** → `ZenLemon` (or your fork name)
 - **User support email** + **Developer contact** → your email
 - **Scopes** → add `https://www.googleapis.com/auth/drive.appdata`
 - **Test users** → add the Google account(s) you'll sign in with on the device
@@ -61,8 +61,8 @@ flow to all users, see the publishing section below.
 
 | Field | Value |
 |---|---|
-| Name | `StreamVault — debug (<your handle>)` |
-| Package name | `com.streamvault.app` |
+| Name | `ZenLemon — debug (<your handle>)` |
+| Package name | `com.zenlemon.app` |
 | SHA-1 certificate fingerprint | from `keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android` |
 
 Repeat the step for every signing certificate that will run the feature
@@ -140,7 +140,7 @@ Notes:
 `drive-backup.json` carries the configuration *minus* passwords. The fork
 ships a **second sibling file** in the same `appDataFolder`:
 
-- **`streamvault_credentials.json`** — `[{serverUrl, username, password}]`,
+- **`ZenLemon_credentials.json`** — `[{serverUrl, username, password}]`,
   cleartext.
 
 Why cleartext on Drive:
@@ -167,7 +167,7 @@ ids reshuffled by the SAF import do not break the restore. Providers
 present locally but absent from the credentials file are left
 untouched.
 
-Pre-M3 backups (no `streamvault_credentials.json` in `appDataFolder`)
+Pre-M3 backups (no `ZenLemon_credentials.json` in `appDataFolder`)
 are handled gracefully: `pullCredentials` returns an empty list and
 the import path falls back to the master behavior (providers
 restored without passwords, user must re-enter them manually).

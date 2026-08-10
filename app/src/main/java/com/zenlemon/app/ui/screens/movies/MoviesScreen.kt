@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.movies
+package com.zenlemon.app.ui.screens.movies
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.*
@@ -34,62 +34,62 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.key.onPreviewKeyEvent
-import com.streamvault.app.ui.components.SearchInput
+import com.zenlemon.app.ui.components.SearchInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import com.streamvault.app.device.rememberIsTelevisionDevice
-import com.streamvault.app.navigation.Routes
-import com.streamvault.app.ui.components.CategoryRow
-import com.streamvault.app.ui.components.ContinueWatchingRow
-import com.streamvault.app.ui.components.MovieCard
-import com.streamvault.app.ui.components.SelectionChip
-import com.streamvault.app.ui.components.SelectionChipRow
-import com.streamvault.app.ui.components.SavedCategoryContextCard
-import com.streamvault.app.ui.components.SavedCategoryShortcut
-import com.streamvault.app.ui.components.SavedCategoryShortcutsRow
-import com.streamvault.app.ui.theme.*
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.LibraryFilterType
-import com.streamvault.domain.model.LibrarySortBy
-import com.streamvault.domain.model.Movie
-import com.streamvault.domain.model.PlaybackHistory
+import com.zenlemon.app.device.rememberIsTelevisionDevice
+import com.zenlemon.app.navigation.Routes
+import com.zenlemon.app.ui.components.CategoryRow
+import com.zenlemon.app.ui.components.ContinueWatchingRow
+import com.zenlemon.app.ui.components.MovieCard
+import com.zenlemon.app.ui.components.SelectionChip
+import com.zenlemon.app.ui.components.SelectionChipRow
+import com.zenlemon.app.ui.components.SavedCategoryContextCard
+import com.zenlemon.app.ui.components.SavedCategoryShortcut
+import com.zenlemon.app.ui.components.SavedCategoryShortcutsRow
+import com.zenlemon.app.ui.theme.*
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.LibraryFilterType
+import com.zenlemon.domain.model.LibrarySortBy
+import com.zenlemon.domain.model.Movie
+import com.zenlemon.domain.model.PlaybackHistory
 import kotlinx.coroutines.launch
 import androidx.compose.ui.res.stringResource
-import com.streamvault.app.R
+import com.zenlemon.app.R
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.foundation.border
-import com.streamvault.app.ui.components.ReorderTopBar
-import com.streamvault.app.ui.components.dialogs.DeleteGroupDialog
+import com.zenlemon.app.ui.components.ReorderTopBar
+import com.zenlemon.app.ui.components.dialogs.DeleteGroupDialog
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import com.streamvault.app.ui.components.shell.BrowseSearchLaunchCard
-import com.streamvault.app.ui.components.shell.LoadMoreCard
-import com.streamvault.app.ui.components.shell.InfiniteScrollEffect
-import com.streamvault.app.ui.components.shell.AppNavigationChrome
-import com.streamvault.app.ui.components.shell.AppMessageState
-import com.streamvault.app.ui.components.shell.AppScreenScaffold
+import com.zenlemon.app.ui.components.shell.BrowseSearchLaunchCard
+import com.zenlemon.app.ui.components.shell.LoadMoreCard
+import com.zenlemon.app.ui.components.shell.InfiniteScrollEffect
+import com.zenlemon.app.ui.components.shell.AppNavigationChrome
+import com.zenlemon.app.ui.components.shell.AppMessageState
+import com.zenlemon.app.ui.components.shell.AppScreenScaffold
 import androidx.tv.material3.Border
-import com.streamvault.app.ui.components.dialogs.RenameGroupDialog
-import com.streamvault.app.ui.components.shell.VodActionChip
-import com.streamvault.app.ui.components.shell.VodActionChipRow
-import com.streamvault.app.ui.components.shell.VodCategoryOption
-import com.streamvault.app.ui.components.shell.VodCategoryPickerDialog
-import com.streamvault.app.ui.components.shell.VodBrowseOptionsDialog
-import com.streamvault.app.ui.components.shell.VodClassicCategoryOption
-import com.streamvault.app.ui.components.shell.VodClassicContentHeader
-import com.streamvault.app.ui.components.shell.VodClassicSplitLayout
-import com.streamvault.app.ui.components.shell.VodHeroStrip
-import com.streamvault.app.ui.components.shell.VodSectionHeader
-import com.streamvault.app.ui.design.FocusRestoreHost
-import com.streamvault.app.ui.design.requestFocusSafely
-import com.streamvault.app.ui.model.VodViewMode
-import com.streamvault.app.ui.screens.vod.HandleVodUserMessage
-import com.streamvault.app.ui.screens.vod.ProtectedVodPinDialog
-import com.streamvault.app.ui.screens.vod.VodBrowseDefaults
-import com.streamvault.app.ui.screens.vod.vodActiveFilterSortDetail
+import com.zenlemon.app.ui.components.dialogs.RenameGroupDialog
+import com.zenlemon.app.ui.components.shell.VodActionChip
+import com.zenlemon.app.ui.components.shell.VodActionChipRow
+import com.zenlemon.app.ui.components.shell.VodCategoryOption
+import com.zenlemon.app.ui.components.shell.VodCategoryPickerDialog
+import com.zenlemon.app.ui.components.shell.VodBrowseOptionsDialog
+import com.zenlemon.app.ui.components.shell.VodClassicCategoryOption
+import com.zenlemon.app.ui.components.shell.VodClassicContentHeader
+import com.zenlemon.app.ui.components.shell.VodClassicSplitLayout
+import com.zenlemon.app.ui.components.shell.VodHeroStrip
+import com.zenlemon.app.ui.components.shell.VodSectionHeader
+import com.zenlemon.app.ui.design.FocusRestoreHost
+import com.zenlemon.app.ui.design.requestFocusSafely
+import com.zenlemon.app.ui.model.VodViewMode
+import com.zenlemon.app.ui.screens.vod.HandleVodUserMessage
+import com.zenlemon.app.ui.screens.vod.ProtectedVodPinDialog
+import com.zenlemon.app.ui.screens.vod.VodBrowseDefaults
+import com.zenlemon.app.ui.screens.vod.vodActiveFilterSortDetail
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -270,7 +270,7 @@ fun MoviesScreen(
 
     if (uiState.showDialog && uiState.selectedMovieForDialog != null) {
         val movie = uiState.selectedMovieForDialog!!
-        com.streamvault.app.ui.components.dialogs.AddToGroupDialog(
+        com.zenlemon.app.ui.components.dialogs.AddToGroupDialog(
             contentTitle = movie.name,
             groups = uiState.categories.filter { it.isVirtual && it.id != VodBrowseDefaults.FAVORITES_SENTINEL_ID },
             isFavorite = movie.isFavorite,
@@ -287,7 +287,7 @@ fun MoviesScreen(
 
     if (uiState.selectedCategoryForOptions != null) {
         val category = uiState.selectedCategoryForOptions!!
-        com.streamvault.app.ui.components.dialogs.CategoryOptionsDialog(
+        com.zenlemon.app.ui.components.dialogs.CategoryOptionsDialog(
             category = category,
             onDismissRequest = { viewModel.dismissCategoryOptions() },
             onHide = if (!category.isVirtual) {
@@ -378,7 +378,7 @@ private fun MoviesVodContent(
                 Category(
                     id = VodBrowseDefaults.FAVORITES_SENTINEL_ID,
                     name = uiState.favoriteCategoryName,
-                    type = com.streamvault.domain.model.ContentType.MOVIE,
+                    type = com.zenlemon.domain.model.ContentType.MOVIE,
                     isVirtual = true
                 )
             )
@@ -932,7 +932,7 @@ private fun MoviesVodClassicContent(
                 Category(
                     id = VodBrowseDefaults.FAVORITES_SENTINEL_ID,
                     name = uiState.favoriteCategoryName,
-                    type = com.streamvault.domain.model.ContentType.MOVIE,
+                    type = com.zenlemon.domain.model.ContentType.MOVIE,
                     isVirtual = true
                 )
             )

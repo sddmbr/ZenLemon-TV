@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
-import com.streamvault.domain.model.StreamInfo
-import com.streamvault.domain.model.StreamType
+import com.zenlemon.domain.model.StreamInfo
+import com.zenlemon.domain.model.StreamType
 
 internal fun selectPreferredVodCastStreamInfo(
     activeStreamInfo: StreamInfo?,

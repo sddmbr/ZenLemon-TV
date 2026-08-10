@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.content.Context
 import androidx.compose.foundation.layout.BoxScope
@@ -19,7 +19,7 @@ internal fun BoxScope.SettingsScreenOverlays(
     context: Context,
     scope: CoroutineScope,
     dialogState: SettingsScreenDialogState,
-    mainActivity: com.streamvault.app.MainActivity?,
+    mainActivity: com.zenlemon.app.MainActivity?,
     currentRoute: String,
     modifier: Modifier = Modifier
 ) {

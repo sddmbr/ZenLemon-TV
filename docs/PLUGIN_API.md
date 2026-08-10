@@ -1,14 +1,14 @@
-# StreamVault Plugin API
+# ZenLemon Plugin API
 
-StreamVault plugins are companion Android APKs. They do not inject code into the
-main application. Instead, StreamVault discovers installed APKs that expose a
-bound service with the action `com.streamvault.plugin.API` and talks to them
+ZenLemon plugins are companion Android APKs. They do not inject code into the
+main application. Instead, ZenLemon discovers installed APKs that expose a
+bound service with the action `com.zenlemon.plugin.API` and talks to them
 through Android `Messenger` IPC.
 
 This keeps the plugin boundary installable, removable, and compatible with
 Android package isolation while still allowing plugins to add provider, playback,
 Cast, and configuration capabilities. Configuration can be rendered by
-StreamVault from a declarative schema, or opened as a native plugin Activity when
+ZenLemon from a declarative schema, or opened as a native plugin Activity when
 the plugin needs a richer UI.
 
 ## Package Discovery
@@ -16,7 +16,7 @@ the plugin needs a richer UI.
 The host queries services for:
 
 ```xml
-<action android:name="com.streamvault.plugin.API" />
+<action android:name="com.zenlemon.plugin.API" />
 ```
 
 The host app must declare the same action in `<queries>`. Plugin APKs should
@@ -27,7 +27,7 @@ declare an exported service:
     android:name=".MyPluginService"
     android:exported="true">
     <intent-filter>
-        <action android:name="com.streamvault.plugin.API" />
+        <action android:name="com.zenlemon.plugin.API" />
     </intent-filter>
 </service>
 ```
@@ -36,13 +36,13 @@ Plugins can be installed from:
 
 - A direct HTTP/HTTPS APK URL.
 - A local APK selected with the system file picker.
-- Any manual Android package install. StreamVault detects it after refreshing the
+- Any manual Android package install. ZenLemon detects it after refreshing the
   Plugins screen.
 
 ## Manifest
 
-StreamVault first asks the plugin service for its manifest. As a fallback, it
-reads `com.streamvault.plugin.MANIFEST_JSON` service metadata, then individual
+ZenLemon first asks the plugin service for its manifest. As a fallback, it
+reads `com.zenlemon.plugin.MANIFEST_JSON` service metadata, then individual
 metadata fields if the JSON is missing or invalid.
 
 Example manifest for host-rendered configuration:
@@ -54,7 +54,7 @@ Example manifest for host-rendered configuration:
   "name": "Example Plugin",
   "versionName": "1.0.0",
   "versionCode": 1,
-  "description": "Adds external capabilities to StreamVault.",
+  "description": "Adds external capabilities to ZenLemon.",
   "providerName": "Example Provider",
   "configurationMode": "host.schema",
   "configurationActivityAction": "",
@@ -90,15 +90,15 @@ Example manifest for native Activity configuration:
 Recommended fallback metadata:
 
 ```xml
-<meta-data android:name="com.streamvault.plugin.ID" android:value="com.example.plugin" />
-<meta-data android:name="com.streamvault.plugin.NAME" android:value="Example Plugin" />
-<meta-data android:name="com.streamvault.plugin.VERSION_NAME" android:value="1.0.0" />
-<meta-data android:name="com.streamvault.plugin.VERSION_CODE" android:value="1" />
-<meta-data android:name="com.streamvault.plugin.DESCRIPTION" android:value="Adds external capabilities to StreamVault." />
-<meta-data android:name="com.streamvault.plugin.PROVIDER_NAME" android:value="Example Provider" />
-<meta-data android:name="com.streamvault.plugin.CONFIGURATION_MODE" android:value="host.schema" />
-<meta-data android:name="com.streamvault.plugin.CONFIGURATION_ACTIVITY_ACTION" android:value="" />
-<meta-data android:name="com.streamvault.plugin.CAPABILITIES" android:value="provider.m3u,playback.prepare,cast.rewriteUrl,configuration.schema" />
+<meta-data android:name="com.zenlemon.plugin.ID" android:value="com.example.plugin" />
+<meta-data android:name="com.zenlemon.plugin.NAME" android:value="Example Plugin" />
+<meta-data android:name="com.zenlemon.plugin.VERSION_NAME" android:value="1.0.0" />
+<meta-data android:name="com.zenlemon.plugin.VERSION_CODE" android:value="1" />
+<meta-data android:name="com.zenlemon.plugin.DESCRIPTION" android:value="Adds external capabilities to ZenLemon." />
+<meta-data android:name="com.zenlemon.plugin.PROVIDER_NAME" android:value="Example Provider" />
+<meta-data android:name="com.zenlemon.plugin.CONFIGURATION_MODE" android:value="host.schema" />
+<meta-data android:name="com.zenlemon.plugin.CONFIGURATION_ACTIVITY_ACTION" android:value="" />
+<meta-data android:name="com.zenlemon.plugin.CAPABILITIES" android:value="provider.m3u,playback.prepare,cast.rewriteUrl,configuration.schema" />
 ```
 
 For Activity configuration, set `CONFIGURATION_MODE` to `activity`, set
@@ -106,15 +106,15 @@ For Activity configuration, set `CONFIGURATION_MODE` to `activity`, set
 
 Capability names:
 
-- `provider.m3u`: the plugin can expose an M3U URL that StreamVault imports as a
+- `provider.m3u`: the plugin can expose an M3U URL that ZenLemon imports as a
   provider when enabled.
 - `playback.prepare`: the plugin can prepare a stream URL before playback starts.
 - `cast.rewriteUrl`: the plugin can rewrite a playback URL before Google Cast
   loads it.
 - `configuration.schema`: the plugin exposes a declarative configuration schema
-  that StreamVault renders with its own UI.
+  that ZenLemon renders with its own UI.
 - `configuration.activity`: the plugin exposes a native Android Activity that
-  StreamVault opens for configuration.
+  ZenLemon opens for configuration.
 
 ## IPC Messages
 
@@ -146,10 +146,10 @@ Messages:
 | 10 | `MSG_RUN_CONFIGURATION_ACTION` | Run `configuration_action_id`. |
 
 For `playback.prepare` and `cast.rewriteUrl`, plugins should set
-`handled=false` when the URL is not theirs. StreamVault then continues with other
+`handled=false` when the URL is not theirs. ZenLemon then continues with other
 enabled plugins or the original URL.
 
-`MSG_REWRITE_CAST_URL` is Cast-specific. StreamVault sends the stream context that
+`MSG_REWRITE_CAST_URL` is Cast-specific. ZenLemon sends the stream context that
 made direct receiver playback unsafe:
 
 - `input_url`: original media URL.
@@ -165,10 +165,10 @@ Plugins should return a receiver-reachable `output_url` that no longer requires
 device-local URLs, app-only headers, app-only user agent handling, app proxy
 settings, or invalid TLS handling on the Cast receiver.
 
-`MSG_PREPARE_PLAYBACK` may also enrich the stream that StreamVault sends to the
+`MSG_PREPARE_PLAYBACK` may also enrich the stream that ZenLemon sends to the
 player. When `handled=true` and `success=true`, the plugin can return:
 
-- `output_url`: final playable URL. If omitted, StreamVault keeps `input_url`.
+- `output_url`: final playable URL. If omitted, ZenLemon keeps `input_url`.
 - `stream_type`: optional playback hint. Supported values are `DASH`, `HLS`,
   `SMOOTH_STREAMING`, `MPEG_TS`, `PROGRESSIVE`, and `RTSP`.
 - `headers_json`: JSON object with HTTP request headers for the media request.
@@ -190,7 +190,7 @@ player. When `handled=true` and `success=true`, the plugin can return:
 
 `scheme` accepts `widevine`, `playready`, `clearkey`, or their platform UUID
 aliases (`com.widevine.alpha`, `com.microsoft.playready`, `org.w3.clearkey`).
-For `SMOOTH_STREAMING` + `clearkey`, StreamVault normalizes the ISML
+For `SMOOTH_STREAMING` + `clearkey`, ZenLemon normalizes the ISML
 `ProtectionHeader` into ClearKey PSSH v1 init data before creating the Android
 MediaDrm session.
 
@@ -199,7 +199,7 @@ MediaDrm session.
 Plugins should choose one primary configuration mode.
 
 Use `host.schema` when the configuration is mostly fields, switches, selects, and
-simple actions. StreamVault owns the visual shell, validation placement, focus
+simple actions. ZenLemon owns the visual shell, validation placement, focus
 behavior, typography, controls, and feedback.
 
 Use `activity` when the plugin needs a custom or highly interactive
@@ -211,10 +211,10 @@ configuration surface, for example:
 - Embedded logs.
 - Native pairing, sign-in, or device setup.
 - Custom layouts that must look the same when opened directly and from
-  StreamVault.
+  ZenLemon.
 
 Do not advertise `configuration.schema` for a partial or stale schema. If
-`configurationMode` is `activity`, StreamVault treats the Activity as the active
+`configurationMode` is `activity`, ZenLemon treats the Activity as the active
 configuration path and opens `configurationActivityAction` instead of loading a
 host-rendered schema.
 
@@ -225,7 +225,7 @@ set `configurationMode` explicitly.
 ## Host-Rendered Configuration
 
 Host-rendered configuration lets a plugin describe fields and actions while
-StreamVault owns the visual implementation.
+ZenLemon owns the visual implementation.
 
 A plugin opts in with:
 
@@ -239,7 +239,7 @@ Schema response:
 {
   "schemaVersion": 1,
   "title": "Example Plugin",
-  "description": "Settings rendered by StreamVault.",
+  "description": "Settings rendered by ZenLemon.",
   "sections": [
     {
       "id": "connection",
@@ -296,7 +296,7 @@ Schema response:
 
 Supported field types:
 
-- `info`: read-only text rendered by StreamVault.
+- `info`: read-only text rendered by ZenLemon.
 - `text`: single-line text.
 - `password`: single-line secret text.
 - `url`: URL text field.
@@ -317,19 +317,19 @@ Values response:
 }
 ```
 
-For `MSG_SET_CONFIGURATION_VALUES`, StreamVault sends the same JSON object in
+For `MSG_SET_CONFIGURATION_VALUES`, ZenLemon sends the same JSON object in
 `configuration_values_json`. Plugins should persist supported writable keys,
 ignore unknown or read-only keys, and return `success=false` with `message` when
 validation fails.
 
-For `MSG_RUN_CONFIGURATION_ACTION`, StreamVault sends `configuration_action_id`.
+For `MSG_RUN_CONFIGURATION_ACTION`, ZenLemon sends `configuration_action_id`.
 Plugins should execute the action, return a user-facing `message`, and refresh
 their values when `refreshAfterRun` is true.
 
 ## Configuration Activity Mode
 
 Activity configuration lets the plugin own the complete configuration UI.
-StreamVault starts `configurationActivityAction` with the plugin package set
+ZenLemon starts `configurationActivityAction` with the plugin package set
 explicitly, so the action does not resolve to another app.
 
 A plugin opts in with:
@@ -361,14 +361,14 @@ connected clients, and logs.
 
 ## Native Activity Visual Guidance
 
-Native plugin Activities should feel at home when launched from StreamVault and
+Native plugin Activities should feel at home when launched from ZenLemon and
 remain usable when opened directly from Android or Android TV.
 
 Recommended visual and interaction rules:
 
 - Design TV-first: every important control must be D-pad focusable and readable
   from couch distance.
-- Keep the style restrained and close to StreamVault: dark background, compact
+- Keep the style restrained and close to ZenLemon: dark background, compact
   panels, clear focus states, and meaningful status colors for running, stopped,
   warning, and error states.
 - Collapse heavy or secondary sections by default, especially logs, source
@@ -380,15 +380,15 @@ Recommended visual and interaction rules:
 - Use Android resources and the system locale for all user-facing text.
 - Show direct feedback for loading, validation, success, and failure states.
 - Test both entry points: launched directly from the plugin APK and launched from
-  StreamVault's Plugins screen.
-- Test on the same device classes StreamVault supports, including TV devices such
+  ZenLemon's Plugins screen.
+- Test on the same device classes ZenLemon supports, including TV devices such
   as Chromecast and phone-sized devices such as Nexus 5X.
 
 ## Integration Checklist
 
 Before publishing a plugin:
 
-- Expose exactly one `com.streamvault.plugin.API` service.
+- Expose exactly one `com.zenlemon.plugin.API` service.
 - Return a complete manifest from `MSG_GET_MANIFEST`.
 - Keep service metadata in sync with the runtime manifest as fallback.
 - Choose `host.schema` or `activity` as the primary configuration mode.

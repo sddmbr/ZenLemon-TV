@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.content.ActivityNotFoundException
 import android.content.Context
@@ -26,20 +26,20 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import android.net.Uri
 import androidx.documentfile.provider.DocumentFile
-import com.streamvault.app.backup.BackupFileBridge
-import com.streamvault.app.device.isFireTvDevice
-import com.streamvault.app.device.removableAppStorageDirs
+import com.zenlemon.app.backup.BackupFileBridge
+import com.zenlemon.app.device.isFireTvDevice
+import com.zenlemon.app.device.removableAppStorageDirs
 import java.io.File
-import com.streamvault.app.diagnostics.CrashReportStore
-import com.streamvault.app.util.OfficialBuildVerifier
-import com.streamvault.app.ui.components.shell.AppTopBarCloseAction
-import com.streamvault.app.ui.components.shell.AppNavigationChrome
-import com.streamvault.app.ui.components.shell.AppScreenScaffold
-import com.streamvault.app.ui.theme.*
-import com.streamvault.domain.model.Provider
+import com.zenlemon.app.diagnostics.CrashReportStore
+import com.zenlemon.app.util.OfficialBuildVerifier
+import com.zenlemon.app.ui.components.shell.AppTopBarCloseAction
+import com.zenlemon.app.ui.components.shell.AppNavigationChrome
+import com.zenlemon.app.ui.components.shell.AppScreenScaffold
+import com.zenlemon.app.ui.theme.*
+import com.zenlemon.domain.model.Provider
 import androidx.compose.ui.res.stringResource
-import com.streamvault.app.R
-import com.streamvault.app.ui.design.requestFocusSafely
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.design.requestFocusSafely
 import kotlinx.coroutines.delay
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -47,7 +47,7 @@ import java.time.format.DateTimeFormatter
 private val backupFileNameFormatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")
 
 private fun buildBackupFileName(): String =
-    "streamvault_backup_${LocalDateTime.now().format(backupFileNameFormatter)}.json"
+    "zenlemon_backup_${LocalDateTime.now().format(backupFileNameFormatter)}.json"
 
 // Fire OS strips the AOSP DocumentsUI, so ACTION_CREATE_DOCUMENT and
 // ACTION_OPEN_DOCUMENT have no handler and throw ActivityNotFoundException.
@@ -314,10 +314,10 @@ fun SettingsScreen(
                         val primary: () -> Unit = if (onFireTv) {
                             { exportTreeLauncher.launch(null) }
                         } else {
-                            { createDocumentLauncher.launch("streamvault_backup.json") }
+                            { createDocumentLauncher.launch("zenlemon_backup.json") }
                         }
                         val fallback: () -> Unit = if (onFireTv) {
-                            { createDocumentLauncher.launch("streamvault_backup.json") }
+                            { createDocumentLauncher.launch("zenlemon_backup.json") }
                         } else {
                             { exportTreeLauncher.launch(null) }
                         }

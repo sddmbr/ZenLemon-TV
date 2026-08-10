@@ -1,4 +1,4 @@
-package com.streamvault.app.cast
+package com.zenlemon.app.cast
 
 import kotlinx.coroutines.flow.SharedFlow
 import javax.inject.Inject

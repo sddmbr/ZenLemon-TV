@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.epg
+package com.zenlemon.app.ui.screens.epg
 
 import java.time.Instant
 import java.time.LocalDate

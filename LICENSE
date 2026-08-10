@@ -1,6 +1,6 @@
-StreamVault Source-Available License (Non-Commercial)
+ZenLemon Source-Available License (Non-Commercial)
 
-Copyright (c) 2026 David Nashash (Davidona)
+Copyright (c) 2026 Fernando Rivera
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to use,
@@ -12,10 +12,9 @@ copy, modify, and distribute the Software, subject to the following conditions:
    copyright notice and this permission notice.
 
    Any modified, compiled, or redistributed versions of the Software must
-   clearly credit "David Nashash" (also known as "Davidona") as the original
-   developer. Attribution must be visible both within the application
-   (for example, in an "About", "Credits", or equivalent screen) and in any
-   accompanying documentation.
+   clearly credit "Fernando Rivera" as the original developer. Attribution must
+   be visible both within the application (for example, in an "About", "Credits",
+   or equivalent screen) and in any accompanying documentation.
 
 2. LINKS PRESERVATION
 
@@ -23,19 +22,19 @@ copy, modify, and distribute the Software, subject to the following conditions:
    in any distributed or modified versions of the Software:
 
    - Original GitHub repository:
-     https://github.com/Davidona/StreamVault-IPTV
+     https://github.com/sddmbr/Zenlemon-TV
 
    - Support / donation page:
-     https://ko-fi.com/davidona
+     https://ko-fi.com/sddmbr
 
    These links may not be removed, hidden, or replaced.
 
 3. NAMING AND DERIVATIVE IDENTIFICATION
 
-   The software is named "StreamVault".
+   The software is named "ZenLemon".
 
    Any modified or forked version of the Software must clearly state that it is:
-   "Based on StreamVault" or "Derived from StreamVault" in:
+   "Based on ZenLemon" or "Derived from ZenLemon" in:
    - The application (e.g., About section)
    - Any public distribution pages or descriptions
 
@@ -67,7 +66,7 @@ copy, modify, and distribute the Software, subject to the following conditions:
 
 6. NO ENDORSEMENT
 
-   The name "David Nashash" or "Davidona" may not be used to endorse or
+   The name "Fernando Rivera" may not be used to endorse or
    promote products derived from this Software without specific prior
    written permission.
 

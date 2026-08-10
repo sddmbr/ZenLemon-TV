@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.welcome
+package com.zenlemon.app.ui.screens.welcome
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -34,18 +34,18 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
-import com.streamvault.app.BuildConfig
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.shell.StatusPill
-import com.streamvault.app.ui.design.AppColors
-import com.streamvault.app.ui.interaction.TvButton
-import com.streamvault.data.sync.SyncProgressBus
-import com.streamvault.domain.repository.ProviderRepository
-import com.streamvault.domain.sync.Section
-import com.streamvault.domain.sync.SyncProgress
-import com.streamvault.domain.usecase.M3uProviderSetupCommand
-import com.streamvault.domain.usecase.ValidateAndAddProvider
-import com.streamvault.domain.usecase.XtreamProviderSetupCommand
+import com.zenlemon.app.BuildConfig
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.shell.StatusPill
+import com.zenlemon.app.ui.design.AppColors
+import com.zenlemon.app.ui.interaction.TvButton
+import com.zenlemon.data.sync.SyncProgressBus
+import com.zenlemon.domain.repository.ProviderRepository
+import com.zenlemon.domain.sync.Section
+import com.zenlemon.domain.sync.SyncProgress
+import com.zenlemon.domain.usecase.M3uProviderSetupCommand
+import com.zenlemon.domain.usecase.ValidateAndAddProvider
+import com.zenlemon.domain.usecase.XtreamProviderSetupCommand
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

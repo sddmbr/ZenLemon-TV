@@ -1,13 +1,13 @@
-package com.streamvault.app.ui.components
+package com.zenlemon.app.ui.components
 
 import android.view.View
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
-import com.streamvault.player.PlayerEngine
-import com.streamvault.player.PlayerRenderSurfaceType
-import com.streamvault.player.PlayerSurfaceResizeMode
+import com.zenlemon.player.PlayerEngine
+import com.zenlemon.player.PlayerRenderSurfaceType
+import com.zenlemon.player.PlayerSurfaceResizeMode
 
 @Composable
 fun PlayerRenderView(

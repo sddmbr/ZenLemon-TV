@@ -1,8 +1,8 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
-import com.streamvault.domain.model.RemoteShortcutAction
-import com.streamvault.domain.model.RemoteShortcutProfile
-import com.streamvault.domain.model.RemoteShortcutSelection
+import com.zenlemon.domain.model.RemoteShortcutAction
+import com.zenlemon.domain.model.RemoteShortcutProfile
+import com.zenlemon.domain.model.RemoteShortcutSelection
 
 internal fun availableRemoteShortcutActions(profile: RemoteShortcutProfile): List<RemoteShortcutAction> =
     when (profile) {

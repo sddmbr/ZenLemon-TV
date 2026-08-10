@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.player.overlay
+package com.zenlemon.app.ui.screens.player.overlay
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.basicMarquee
@@ -46,23 +46,23 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.ChannelLogoBadge
-import com.streamvault.app.ui.components.shell.StatusPill
-import com.streamvault.app.ui.design.AppColors
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.model.archivePlaybackCapability
-import com.streamvault.app.ui.model.isArchivePlayable
-import com.streamvault.app.ui.screens.player.PlayerTimeshiftUiState
-import com.streamvault.app.ui.time.LocalAppTimeFormat
-import com.streamvault.app.ui.time.createTimeFormat
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.Program
-import com.streamvault.domain.model.RecordingStatus
-import com.streamvault.player.timeshift.LiveTimeshiftStatus
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.ChannelLogoBadge
+import com.zenlemon.app.ui.components.shell.StatusPill
+import com.zenlemon.app.ui.design.AppColors
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.model.archivePlaybackCapability
+import com.zenlemon.app.ui.model.isArchivePlayable
+import com.zenlemon.app.ui.screens.player.PlayerTimeshiftUiState
+import com.zenlemon.app.ui.time.LocalAppTimeFormat
+import com.zenlemon.app.ui.time.createTimeFormat
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.Program
+import com.zenlemon.domain.model.RecordingStatus
+import com.zenlemon.player.timeshift.LiveTimeshiftStatus
 import java.util.Date
-import com.streamvault.app.ui.design.AppColors.Brand as Primary
-import com.streamvault.app.ui.design.AppColors.TextTertiary as OnSurfaceDim
+import com.zenlemon.app.ui.design.AppColors.Brand as Primary
+import com.zenlemon.app.ui.design.AppColors.TextTertiary as OnSurfaceDim
 
 @Composable
 fun ChannelInfoOverlay(
@@ -704,7 +704,7 @@ private enum class ChannelInfoPanel {
     CATCH_UP
 }
 
-private fun com.streamvault.domain.model.LiveChannelVariantAttributes.toOverlayBadgeLabel(): String {
+private fun com.zenlemon.domain.model.LiveChannelVariantAttributes.toOverlayBadgeLabel(): String {
     val parts = buildList {
         resolutionLabel?.let(::add)
         codecLabel?.takeIf { it == "HEVC" || it == "AV1" }?.let(::add)

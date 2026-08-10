@@ -1,8 +1,8 @@
-package com.streamvault.app.ui.remote
+package com.zenlemon.app.ui.remote
 
 import android.view.KeyEvent
-import com.streamvault.domain.model.RemoteColorButton
-import com.streamvault.domain.model.RemoteShortcutAction
+import com.zenlemon.domain.model.RemoteColorButton
+import com.zenlemon.domain.model.RemoteShortcutAction
 
 data class PlayerRemoteShortcutHandler(
     val isLiveContent: Boolean,

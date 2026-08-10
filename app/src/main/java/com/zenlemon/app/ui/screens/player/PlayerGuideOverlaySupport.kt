@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
-import com.streamvault.domain.model.VirtualCategoryIds
-import com.streamvault.domain.repository.ChannelRepository
+import com.zenlemon.domain.model.VirtualCategoryIds
+import com.zenlemon.domain.repository.ChannelRepository
 
 internal data class PlayerGuideNavigationContext(
     val categoryId: Long?,

@@ -3,14 +3,14 @@
 > *The pinnacle of tailored, enterprise-grade media streaming — where bitter complexity meets sweet user experience.*
 
 <p align="center">
-	<a href="https://github.com/Davidona/StreamVault-IPTV/releases/latest/download/StreamVault.apk"><img src="https://img.shields.io/badge/Download-StreamVault.apk-2ea44f?style=for-the-badge&logo=android" alt="Download StreamVault APK" /></a>
-	<a href="https://github.com/Davidona/StreamVault-IPTV/releases/latest"><img src="https://img.shields.io/github/v/release/Davidona/StreamVault-IPTV?display_name=tag&style=for-the-badge&color=0f766e" alt="Latest StreamVault release" /></a>
-	<a href="https://github.com/Davidona/StreamVault-IPTV/releases"><img src="https://img.shields.io/github/downloads/Davidona/StreamVault-IPTV/total?style=for-the-badge&color=8b5cf6" alt="Total Downloads" /></a>
-	<a href="https://discord.gg/eGPBMygcb"><img src="https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join the StreamVault Discord" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/releases/latest/download/ZenLemon.apk"><img src="https://img.shields.io/badge/Download-ZenLemon.apk-2ea44f?style=for-the-badge&logo=android" alt="Download ZenLemon APK" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/releases/latest"><img src="https://img.shields.io/github/v/release/sddmbr/Zenlemon-TV?display_name=tag&style=for-the-badge&color=0f766e" alt="Latest ZenLemon release" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/releases"><img src="https://img.shields.io/github/downloads/sddmbr/Zenlemon-TV/total?style=for-the-badge&color=8b5cf6" alt="Total Downloads" /></a>
+	<a href="https://discord.gg/eGPBMygcb"><img src="https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join the ZenLemon Discord" /></a>
 	<a href="docs/CHANGELOG.md"><img src="https://img.shields.io/badge/Changelog-View-2563eb?style=for-the-badge" alt="View changelog" /></a>
-	<a href="https://github.com/Davidona/StreamVault-IPTV/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/Davidona/StreamVault-IPTV/release.yml?branch=master&style=for-the-badge&label=CI" alt="GitHub Actions status" /></a>
-	<a href="https://ko-fi.com/davidona"><img src="https://img.shields.io/badge/Support-Ko--fi-ff5f5f?style=for-the-badge&logo=kofi" alt="Support on Ko-fi" /></a>
-	<a href="LICENSE"><img src="https://img.shields.io/badge/License-StreamVault_OSL-0284c7?style=for-the-badge" alt="License" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/sddmbr/Zenlemon-TV/release.yml?branch=master&style=for-the-badge&label=CI" alt="GitHub Actions status" /></a>
+	<a href="https://ko-fi.com/sddmbr"><img src="https://img.shields.io/badge/Support-Ko--fi-ff5f5f?style=for-the-badge&logo=kofi" alt="Support on Ko-fi" /></a>
+	<a href="LICENSE"><img src="https://img.shields.io/badge/License-ZenLemon_OSL-0284c7?style=for-the-badge" alt="License" /></a>
 </p>
 
 
@@ -38,24 +38,24 @@ ZenLemon is more than just a media player; it is a sandbox for advanced client-f
 
 ## Preview
 <p align="center">
-	<a href="https://github.com/Davidona/StreamVault-IPTV/raw/master/docs/images/LiveTV.png"><img src="docs/images/LiveTV.png" alt="Live TV" width="88%" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/raw/master/docs/images/LiveTV.png"><img src="docs/images/LiveTV.png" alt="Live TV" width="88%" /></a>
 </p>
 
 <p align="center">
-	<a href="https://github.com/Davidona/StreamVault-IPTV/raw/master/docs/images/Movies.png"><img src="docs/images/Movies.png" alt="Movies" width="44%" /></a>
-	<a href="https://github.com/Davidona/StreamVault-IPTV/raw/master/docs/images/MovieInfo.png"><img src="docs/images/MovieInfo.png" alt="Movie Details" width="44%" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/raw/master/docs/images/Movies.png"><img src="docs/images/Movies.png" alt="Movies" width="44%" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/raw/master/docs/images/MovieInfo.png"><img src="docs/images/MovieInfo.png" alt="Movie Details" width="44%" /></a>
 </p>
 
 <p align="center">
-	<a href="https://github.com/Davidona/StreamVault-IPTV/raw/master/docs/images/Home.png"><img src="docs/images/Home.png" alt="Home" width="19%" /></a>
-	<a href="https://github.com/Davidona/StreamVault-IPTV/raw/master/docs/images/LiveTV.png"><img src="docs/images/LiveTV.png" alt="Live TV" width="19%" /></a>
-	<a href="https://github.com/Davidona/StreamVault-IPTV/raw/master/docs/images/ChannelView.png"><img src="docs/images/ChannelView.png" alt="Channel Preview" width="19%" /></a>
-	<a href="https://github.com/Davidona/StreamVault-IPTV/raw/master/docs/images/Guide.png"><img src="docs/images/Guide.png" alt="Guide" width="19%" /></a>
-	<a href="https://github.com/Davidona/StreamVault-IPTV/raw/master/docs/images/Settings.png"><img src="docs/images/Settings.png" alt="Settings" width="19%" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/raw/master/docs/images/Home.png"><img src="docs/images/Home.png" alt="Home" width="19%" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/raw/master/docs/images/LiveTV.png"><img src="docs/images/LiveTV.png" alt="Live TV" width="19%" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/raw/master/docs/images/ChannelView.png"><img src="docs/images/ChannelView.png" alt="Channel Preview" width="19%" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/raw/master/docs/images/Guide.png"><img src="docs/images/Guide.png" alt="Guide" width="19%" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/raw/master/docs/images/Settings.png"><img src="docs/images/Settings.png" alt="Settings" width="19%" /></a>
 </p>
 
 <p align="center">
-	<a href="https://github.com/Davidona/StreamVault-IPTV/raw/master/docs/images/SeriesEpisodes.png"><img src="docs/images/SeriesEpisodes.png" alt="Series Episodes" width="32%" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/raw/master/docs/images/SeriesEpisodes.png"><img src="docs/images/SeriesEpisodes.png" alt="Series Episodes" width="32%" /></a>
 </p>
 
 ## Highlights
@@ -166,9 +166,9 @@ ZenLemon is more than just a media player; it is a sandbox for advanced client-f
 
 ### Plugins
 
-- ZenLemonTV can be extended with companion Android APK plugins.
+- ZenLemon TV can be extended with companion Android APK plugins.
 - Plugin developers can expose provider, playback, Cast URL rewrite, and host-rendered or native configuration capabilities.
-- We are woeking on a suite of plugins.
+- We are working on a suite of plugins.
 
 ## Quick TV Tips
 
@@ -181,16 +181,14 @@ ZenLemon is more than just a media player; it is a sandbox for advanced client-f
 
 ## Download
 
-- [Download latest ZenLemonTV.apk][(https://github.com/sddmbr/ZenLemon-TV/releases/download/v1.0.0/ZenLemon-TV.apk)]
+- [Download latest ZenLemonTV.apk](https://github.com/sddmbr/Zenlemon-TV/releases/download/v1.0.0/ZenLemon-TV.apk)
 - The app can also detect and download newer releases in-app through GitHub Releases.
 - GitHub Actions still runs build and test validation on pushes and pull requests.
 - GitHub Releases are now published only when the workflow is started manually with `workflow_dispatch`, so versioned releases do not get created by mistake on every push.
 
 ## Support
 
-Wanna help - checkout the original gangsta StreamVault, you can support development there or here just reach out:
-
-- [Support on Ko-fi](https://ko-fi.com/davidona)
+- [Support on Ko-fi](https://ko-fi.com/sddmbr)
 
 ## Project Structure
 
@@ -219,13 +217,12 @@ Useful commands:
 
 ## Notes
 
-- StreamVault is an IPTV client, not a content provider.
+- ZenLemon is an IPTV client, not a content provider.
 - Use only playlists, streams, and guide sources you are authorized to access.
 - Local configuration and signing files are intentionally excluded from git.
 
 ## License
 
-This project was originally released without an explicit license.  
-As of April 2026, all usage, modification, and distribution are governed by the StreamVault Source-Available License (Non-Commercial).
+As of April 2026, all usage, modification, and distribution are governed by the ZenLemon Source-Available License (Non-Commercial).
 
 Any use of this project must comply with the terms defined in the LICENSE file.

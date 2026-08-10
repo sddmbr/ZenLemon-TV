@@ -1,4 +1,4 @@
-package com.streamvault.app.tv
+package com.zenlemon.app.tv
 
 import android.content.ContentUris
 import android.content.ContentValues
@@ -8,14 +8,14 @@ import android.media.tv.TvContract
 import android.net.Uri
 import android.provider.BaseColumns
 import android.util.Log
-import com.streamvault.app.MainActivity
-import com.streamvault.app.R
-import com.streamvault.app.device.isTelevisionDevice
-import com.streamvault.app.navigation.toPlayerNavigationRequest
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.PlaybackHistory
-import com.streamvault.domain.repository.PlaybackHistoryRepository
-import com.streamvault.domain.repository.ProviderRepository
+import com.zenlemon.app.MainActivity
+import com.zenlemon.app.R
+import com.zenlemon.app.device.isTelevisionDevice
+import com.zenlemon.app.navigation.toPlayerNavigationRequest
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.PlaybackHistory
+import com.zenlemon.domain.repository.PlaybackHistoryRepository
+import com.zenlemon.domain.repository.ProviderRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -128,7 +128,7 @@ class WatchNextManager @Inject constructor(
         if (remoteArtwork != null) {
             return Uri.parse(remoteArtwork)
         }
-        return Uri.parse("android.resource://${context.packageName}/${R.mipmap.ic_launcher_vault}")
+        return Uri.parse("android.resource://${context.packageName}/${R.mipmap.ic_launcher}")
     }
 
     private fun isEligibleForWatchNext(history: PlaybackHistory): Boolean {

@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -24,13 +24,13 @@ import androidx.compose.ui.unit.dp
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.TvEmptyState
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.theme.OnSurfaceDim
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.domain.model.Provider
-import com.streamvault.domain.model.ProviderType
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.TvEmptyState
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.theme.OnSurfaceDim
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.domain.model.Provider
+import com.zenlemon.domain.model.ProviderType
 
 internal fun LazyListScope.providerSection(
     uiState: SettingsUiState,

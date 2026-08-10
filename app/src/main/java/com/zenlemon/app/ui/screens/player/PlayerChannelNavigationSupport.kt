@@ -1,6 +1,6 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
-import com.streamvault.domain.model.Channel
+import com.zenlemon.domain.model.Channel
 
 internal fun resolveLiveChannelIndex(
     channelList: List<Channel>,

@@ -1,15 +1,15 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import android.graphics.Bitmap
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.ChannelQualityOption
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.Episode
-import com.streamvault.domain.model.ExternalPlaybackMode
-import com.streamvault.domain.model.Season
-import com.streamvault.domain.model.Series
-import com.streamvault.domain.model.DecoderMode
-import com.streamvault.player.timeshift.LiveTimeshiftState
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.ChannelQualityOption
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.Episode
+import com.zenlemon.domain.model.ExternalPlaybackMode
+import com.zenlemon.domain.model.Season
+import com.zenlemon.domain.model.Series
+import com.zenlemon.domain.model.DecoderMode
+import com.zenlemon.player.timeshift.LiveTimeshiftState
 import java.util.Locale
 
 data class ResumePromptState(
@@ -234,7 +234,7 @@ internal data class AudioVideoOffsetSnapshot(
     val channelOverrideMs: Int?,
     val previewOffsetMs: Int?,
     val effectiveOffsetMs: Int,
-    val engine: com.streamvault.player.PlayerEngine,
+    val engine: com.zenlemon.player.PlayerEngine,
     val enabled: Boolean
 )
 

@@ -1,4 +1,4 @@
-package com.streamvault.app.diagnostics
+package com.zenlemon.app.diagnostics
 
 import android.app.Application
 import android.content.Context
@@ -6,7 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import androidx.core.content.FileProvider
-import com.streamvault.app.BuildConfig
+import com.zenlemon.app.BuildConfig
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -87,13 +87,13 @@ object CrashReportStore {
             putExtra(Intent.EXTRA_STREAM, uri)
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
-        return Intent.createChooser(sendIntent, "Share StreamVault crash report")
+        return Intent.createChooser(sendIntent, "Share ZenLemon crash report")
             .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     }
 
     private fun buildReport(context: Context, thread: Thread, throwable: Throwable): String {
         return buildString {
-            appendLine("StreamVault Crash Report")
+            appendLine("ZenLemon Crash Report")
             appendLine("========================")
             appendLine("Timestamp: ${OffsetDateTime.now().format(formatter)}")
             appendLine("App Version: ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")

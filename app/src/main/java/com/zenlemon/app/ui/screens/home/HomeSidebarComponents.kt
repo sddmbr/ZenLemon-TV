@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.home
+package com.zenlemon.app.ui.screens.home
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
@@ -49,27 +49,27 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.device.rememberIsTelevisionDevice
-import com.streamvault.app.ui.components.FocusedMarqueeText
-import com.streamvault.app.ui.components.PlayerRenderView
-import com.streamvault.app.ui.interaction.TvButton
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.theme.FocusBorder
-import com.streamvault.app.ui.theme.OnBackground
-import com.streamvault.app.ui.theme.OnSurface
-import com.streamvault.app.ui.theme.OnSurfaceDim
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.app.ui.theme.PrimaryLight
-import com.streamvault.app.ui.theme.SurfaceElevated
-import com.streamvault.app.ui.theme.SurfaceHighlight
-import com.streamvault.app.ui.time.LocalAppTimeFormat
-import com.streamvault.app.ui.time.createTimeFormat
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.Channel
-import com.streamvault.player.PlayerEngine
-import com.streamvault.player.PlayerRenderSurfaceType
-import com.streamvault.player.PlayerSurfaceResizeMode
+import com.zenlemon.app.R
+import com.zenlemon.app.device.rememberIsTelevisionDevice
+import com.zenlemon.app.ui.components.FocusedMarqueeText
+import com.zenlemon.app.ui.components.PlayerRenderView
+import com.zenlemon.app.ui.interaction.TvButton
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.theme.FocusBorder
+import com.zenlemon.app.ui.theme.OnBackground
+import com.zenlemon.app.ui.theme.OnSurface
+import com.zenlemon.app.ui.theme.OnSurfaceDim
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.app.ui.theme.PrimaryLight
+import com.zenlemon.app.ui.theme.SurfaceElevated
+import com.zenlemon.app.ui.theme.SurfaceHighlight
+import com.zenlemon.app.ui.time.LocalAppTimeFormat
+import com.zenlemon.app.ui.time.createTimeFormat
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.player.PlayerEngine
+import com.zenlemon.player.PlayerRenderSurfaceType
+import com.zenlemon.player.PlayerSurfaceResizeMode
 import java.util.Date
 
 @Composable

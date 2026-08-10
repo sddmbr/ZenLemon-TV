@@ -1,8 +1,8 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
-import com.streamvault.data.security.CredentialDecryptionException
-import com.streamvault.domain.model.ContentType
+import com.zenlemon.data.security.CredentialDecryptionException
+import com.zenlemon.domain.model.ContentType
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

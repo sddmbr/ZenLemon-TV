@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,16 +15,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.ui.theme.ErrorColor
-import com.streamvault.app.ui.theme.OnBackground
-import com.streamvault.app.ui.theme.OnSurfaceDim
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.app.ui.theme.Secondary
-import com.streamvault.app.ui.time.LocalAppTimeFormat
-import com.streamvault.app.ui.time.createDateTimeFormat
-import com.streamvault.domain.model.RecordingItem
-import com.streamvault.domain.model.RecordingStatus
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.theme.ErrorColor
+import com.zenlemon.app.ui.theme.OnBackground
+import com.zenlemon.app.ui.theme.OnSurfaceDim
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.app.ui.theme.Secondary
+import com.zenlemon.app.ui.time.LocalAppTimeFormat
+import com.zenlemon.app.ui.time.createDateTimeFormat
+import com.zenlemon.domain.model.RecordingItem
+import com.zenlemon.domain.model.RecordingStatus
 
 @Composable
 internal fun RecordingMetricCard(

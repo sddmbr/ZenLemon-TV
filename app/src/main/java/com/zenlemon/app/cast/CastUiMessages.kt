@@ -1,6 +1,6 @@
-package com.streamvault.app.cast
+package com.zenlemon.app.cast
 
-import com.streamvault.app.R
+import com.zenlemon.app.R
 
 fun CastMediaRequestUnsupportedReason.toCastBuildFailureMessageRes(): Int = when (this) {
     CastMediaRequestUnsupportedReason.STREAM_UNAVAILABLE,

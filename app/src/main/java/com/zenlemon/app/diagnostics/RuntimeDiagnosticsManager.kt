@@ -1,4 +1,4 @@
-package com.streamvault.app.diagnostics
+package com.zenlemon.app.diagnostics
 
 import android.app.Activity
 import android.app.ActivityManager
@@ -9,7 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Debug
 import android.util.Log
-import com.streamvault.app.BuildConfig
+import com.zenlemon.app.BuildConfig
 import java.io.File
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter

@@ -1,4 +1,4 @@
-package com.streamvault.app.service
+package com.zenlemon.app.service
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -12,11 +12,11 @@ import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import com.streamvault.app.MainActivity
-import com.streamvault.app.R
-import com.streamvault.domain.model.DownloadItem
-import com.streamvault.domain.model.DownloadStatus
-import com.streamvault.domain.repository.DownloadManager
+import com.zenlemon.app.MainActivity
+import com.zenlemon.app.R
+import com.zenlemon.domain.model.DownloadItem
+import com.zenlemon.domain.model.DownloadStatus
+import com.zenlemon.domain.repository.DownloadManager
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.EntryPointAccessors
@@ -212,7 +212,7 @@ class DownloadForegroundService : Service() {
 
     companion object {
         private const val TAG = "DownloadFgService"
-        private const val CHANNEL_ID = "streamvault_downloads"
+        private const val CHANNEL_ID = "zenlemon_downloads"
         private const val NOTIFICATION_ID = 2001
         private const val EXTRA_DOWNLOAD_ID = "download_id"
 

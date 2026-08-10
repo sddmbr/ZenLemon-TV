@@ -1,9 +1,9 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
-import com.streamvault.data.remote.xtream.XtreamStreamKind
-import com.streamvault.data.remote.xtream.XtreamUrlFactory
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.LiveChannelVariant
+import com.zenlemon.data.remote.xtream.XtreamStreamKind
+import com.zenlemon.data.remote.xtream.XtreamUrlFactory
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.LiveChannelVariant
 import java.net.URI
 import java.util.Locale
 

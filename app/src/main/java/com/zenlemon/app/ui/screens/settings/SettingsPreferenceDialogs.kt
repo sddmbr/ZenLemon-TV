@@ -1,19 +1,19 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
-import com.streamvault.app.R
-import com.streamvault.app.ui.screens.dashboard.DashboardShelfCustomizationDialog
-import com.streamvault.domain.model.AppTimeFormat
-import com.streamvault.domain.model.AppLandingDestination
-import com.streamvault.domain.model.AppTopLevelDestination
-import com.streamvault.domain.model.CategorySortMode
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.DecoderMode
-import com.streamvault.domain.model.PlayerSurfaceMode
-import com.streamvault.domain.model.RemoteShortcutSelection
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.screens.dashboard.DashboardShelfCustomizationDialog
+import com.zenlemon.domain.model.AppTimeFormat
+import com.zenlemon.domain.model.AppLandingDestination
+import com.zenlemon.domain.model.AppTopLevelDestination
+import com.zenlemon.domain.model.CategorySortMode
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.DecoderMode
+import com.zenlemon.domain.model.PlayerSurfaceMode
+import com.zenlemon.domain.model.RemoteShortcutSelection
 
 @Composable
 internal fun SettingsPreferenceDialogs(

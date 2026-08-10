@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.components.shell
+package com.zenlemon.app.ui.components.shell
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.BorderStroke
@@ -22,7 +22,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.Composable
-import com.streamvault.domain.util.isPlaybackComplete
+import com.zenlemon.domain.util.isPlaybackComplete
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -59,19 +59,19 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.ChannelLogoBadge
-import com.streamvault.app.ui.components.rememberCrossfadeImageModel
-import com.streamvault.app.ui.design.AppColors
-import com.streamvault.app.ui.design.AppMotion
-import com.streamvault.app.ui.design.FocusSpec
-import com.streamvault.app.ui.interaction.mouseClickable
-import com.streamvault.app.ui.interaction.rememberTvInteractionSounds
-import com.streamvault.app.ui.model.archivePlaybackCapability
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.Episode
-import com.streamvault.domain.model.Movie
-import com.streamvault.domain.model.Series
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.ChannelLogoBadge
+import com.zenlemon.app.ui.components.rememberCrossfadeImageModel
+import com.zenlemon.app.ui.design.AppColors
+import com.zenlemon.app.ui.design.AppMotion
+import com.zenlemon.app.ui.design.FocusSpec
+import com.zenlemon.app.ui.interaction.mouseClickable
+import com.zenlemon.app.ui.interaction.rememberTvInteractionSounds
+import com.zenlemon.app.ui.model.archivePlaybackCapability
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.Episode
+import com.zenlemon.domain.model.Movie
+import com.zenlemon.domain.model.Series
 
 private object LiveChannelRowTicker {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)

@@ -1,13 +1,13 @@
-package com.streamvault.app.di
+package com.zenlemon.app.di
 
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory
-import com.streamvault.app.BuildConfig
-import com.streamvault.data.local.StreamVaultDatabase
-import com.streamvault.data.local.dao.*
-import com.streamvault.data.remote.jellyfin.JellyfinProvider
+import com.zenlemon.app.BuildConfig
+import com.zenlemon.data.local.ZenLemonDatabase
+import com.zenlemon.data.local.dao.*
+import com.zenlemon.data.remote.jellyfin.JellyfinProvider
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import dagger.Module
@@ -24,11 +24,11 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): StreamVaultDatabase =
+    fun provideDatabase(@ApplicationContext context: Context): ZenLemonDatabase =
         Room.databaseBuilder(
             context,
-            StreamVaultDatabase::class.java,
-            "streamvault.db"
+            ZenLemonDatabase::class.java,
+            "zenlemon.db"
         )
             .setJournalMode(RoomDatabase.JournalMode.WRITE_AHEAD_LOGGING)
             .openHelperFactory(
@@ -42,107 +42,107 @@ object DatabaseModule {
                 }
             )
             .addMigrations(
-                StreamVaultDatabase.MIGRATION_1_2,
-                StreamVaultDatabase.MIGRATION_2_3,
-                StreamVaultDatabase.MIGRATION_3_4,
-                StreamVaultDatabase.MIGRATION_4_5,
-                StreamVaultDatabase.MIGRATION_5_6,
-                StreamVaultDatabase.MIGRATION_6_7,
-                StreamVaultDatabase.MIGRATION_7_8,
-                StreamVaultDatabase.MIGRATION_8_9,
-                StreamVaultDatabase.MIGRATION_9_10,
-                StreamVaultDatabase.MIGRATION_10_11,
-                StreamVaultDatabase.MIGRATION_11_12,
-                StreamVaultDatabase.MIGRATION_12_13,
-                StreamVaultDatabase.MIGRATION_13_14,
-                StreamVaultDatabase.MIGRATION_14_15,
-                StreamVaultDatabase.MIGRATION_15_16,
-                StreamVaultDatabase.MIGRATION_16_17,
-                StreamVaultDatabase.MIGRATION_17_18,
-                StreamVaultDatabase.MIGRATION_18_19,
-                StreamVaultDatabase.MIGRATION_19_20,
-                StreamVaultDatabase.MIGRATION_20_21,
-                StreamVaultDatabase.MIGRATION_21_22,
-                StreamVaultDatabase.MIGRATION_22_23,
-                StreamVaultDatabase.MIGRATION_23_24,
-                StreamVaultDatabase.MIGRATION_24_25,
-                StreamVaultDatabase.MIGRATION_25_26,
-                StreamVaultDatabase.MIGRATION_26_27,
-                StreamVaultDatabase.MIGRATION_27_28,
-                StreamVaultDatabase.MIGRATION_28_29,
-                StreamVaultDatabase.MIGRATION_29_30,
-                StreamVaultDatabase.MIGRATION_30_31,
-                StreamVaultDatabase.MIGRATION_31_32,
-                StreamVaultDatabase.MIGRATION_32_33,
-                StreamVaultDatabase.MIGRATION_33_34,
-                StreamVaultDatabase.MIGRATION_34_35,
-                StreamVaultDatabase.MIGRATION_35_36,
-                StreamVaultDatabase.MIGRATION_36_37,
-                StreamVaultDatabase.MIGRATION_37_38,
-                StreamVaultDatabase.MIGRATION_38_39,
-                StreamVaultDatabase.MIGRATION_39_40,
-                StreamVaultDatabase.MIGRATION_40_41,
-                StreamVaultDatabase.MIGRATION_41_42,
-                StreamVaultDatabase.MIGRATION_42_43,
-                StreamVaultDatabase.MIGRATION_43_44,
-                StreamVaultDatabase.MIGRATION_44_45,
-                StreamVaultDatabase.MIGRATION_45_46,
-                StreamVaultDatabase.MIGRATION_46_47,
-                StreamVaultDatabase.MIGRATION_47_48,
-                StreamVaultDatabase.MIGRATION_48_49,
-                StreamVaultDatabase.MIGRATION_49_50,
-                StreamVaultDatabase.MIGRATION_50_51,
-                StreamVaultDatabase.MIGRATION_51_52,
-                StreamVaultDatabase.MIGRATION_52_53,
-                StreamVaultDatabase.MIGRATION_53_54,
-                StreamVaultDatabase.MIGRATION_54_55,
-                StreamVaultDatabase.MIGRATION_55_56,
-                StreamVaultDatabase.MIGRATION_56_57,
-                StreamVaultDatabase.MIGRATION_57_58,
-                StreamVaultDatabase.MIGRATION_58_59,
-                StreamVaultDatabase.MIGRATION_59_60,
-                StreamVaultDatabase.MIGRATION_60_61,
-                StreamVaultDatabase.MIGRATION_61_62
+                ZenLemonDatabase.MIGRATION_1_2,
+                ZenLemonDatabase.MIGRATION_2_3,
+                ZenLemonDatabase.MIGRATION_3_4,
+                ZenLemonDatabase.MIGRATION_4_5,
+                ZenLemonDatabase.MIGRATION_5_6,
+                ZenLemonDatabase.MIGRATION_6_7,
+                ZenLemonDatabase.MIGRATION_7_8,
+                ZenLemonDatabase.MIGRATION_8_9,
+                ZenLemonDatabase.MIGRATION_9_10,
+                ZenLemonDatabase.MIGRATION_10_11,
+                ZenLemonDatabase.MIGRATION_11_12,
+                ZenLemonDatabase.MIGRATION_12_13,
+                ZenLemonDatabase.MIGRATION_13_14,
+                ZenLemonDatabase.MIGRATION_14_15,
+                ZenLemonDatabase.MIGRATION_15_16,
+                ZenLemonDatabase.MIGRATION_16_17,
+                ZenLemonDatabase.MIGRATION_17_18,
+                ZenLemonDatabase.MIGRATION_18_19,
+                ZenLemonDatabase.MIGRATION_19_20,
+                ZenLemonDatabase.MIGRATION_20_21,
+                ZenLemonDatabase.MIGRATION_21_22,
+                ZenLemonDatabase.MIGRATION_22_23,
+                ZenLemonDatabase.MIGRATION_23_24,
+                ZenLemonDatabase.MIGRATION_24_25,
+                ZenLemonDatabase.MIGRATION_25_26,
+                ZenLemonDatabase.MIGRATION_26_27,
+                ZenLemonDatabase.MIGRATION_27_28,
+                ZenLemonDatabase.MIGRATION_28_29,
+                ZenLemonDatabase.MIGRATION_29_30,
+                ZenLemonDatabase.MIGRATION_30_31,
+                ZenLemonDatabase.MIGRATION_31_32,
+                ZenLemonDatabase.MIGRATION_32_33,
+                ZenLemonDatabase.MIGRATION_33_34,
+                ZenLemonDatabase.MIGRATION_34_35,
+                ZenLemonDatabase.MIGRATION_35_36,
+                ZenLemonDatabase.MIGRATION_36_37,
+                ZenLemonDatabase.MIGRATION_37_38,
+                ZenLemonDatabase.MIGRATION_38_39,
+                ZenLemonDatabase.MIGRATION_39_40,
+                ZenLemonDatabase.MIGRATION_40_41,
+                ZenLemonDatabase.MIGRATION_41_42,
+                ZenLemonDatabase.MIGRATION_42_43,
+                ZenLemonDatabase.MIGRATION_43_44,
+                ZenLemonDatabase.MIGRATION_44_45,
+                ZenLemonDatabase.MIGRATION_45_46,
+                ZenLemonDatabase.MIGRATION_46_47,
+                ZenLemonDatabase.MIGRATION_47_48,
+                ZenLemonDatabase.MIGRATION_48_49,
+                ZenLemonDatabase.MIGRATION_49_50,
+                ZenLemonDatabase.MIGRATION_50_51,
+                ZenLemonDatabase.MIGRATION_51_52,
+                ZenLemonDatabase.MIGRATION_52_53,
+                ZenLemonDatabase.MIGRATION_53_54,
+                ZenLemonDatabase.MIGRATION_54_55,
+                ZenLemonDatabase.MIGRATION_55_56,
+                ZenLemonDatabase.MIGRATION_56_57,
+                ZenLemonDatabase.MIGRATION_57_58,
+                ZenLemonDatabase.MIGRATION_58_59,
+                ZenLemonDatabase.MIGRATION_59_60,
+                ZenLemonDatabase.MIGRATION_60_61,
+                ZenLemonDatabase.MIGRATION_61_62
             )
             // NOTE: fallbackToDestructiveMigration() intentionally removed.
-            // All future schema changes MUST add a corresponding Migration in StreamVaultDatabase.
+            // All future schema changes MUST add a corresponding Migration in ZenLemonDatabase.
             .build()
 
     @Provides @Singleton
     fun provideJellyfinProvider(okHttpClient: OkHttpClient, gson: Gson): JellyfinProvider = JellyfinProvider(okHttpClient, gson)
 
-    @Provides fun provideProviderDao(db: StreamVaultDatabase): ProviderDao = db.providerDao()
-    @Provides fun provideChannelDao(db: StreamVaultDatabase): ChannelDao = db.channelDao()
-    @Provides fun provideChannelPreferenceDao(db: StreamVaultDatabase): ChannelPreferenceDao = db.channelPreferenceDao()
-    @Provides fun provideMovieDao(db: StreamVaultDatabase): MovieDao = db.movieDao()
-    @Provides fun provideSeriesDao(db: StreamVaultDatabase): SeriesDao = db.seriesDao()
-    @Provides fun provideEpisodeDao(db: StreamVaultDatabase): EpisodeDao = db.episodeDao()
-    @Provides fun provideCategoryDao(db: StreamVaultDatabase): CategoryDao = db.categoryDao()
-    @Provides fun provideCatalogSyncDao(db: StreamVaultDatabase): CatalogSyncDao = db.catalogSyncDao()
-    @Provides fun provideProgramDao(db: StreamVaultDatabase): ProgramDao = db.programDao()
-    @Provides fun provideFavoriteDao(db: StreamVaultDatabase): FavoriteDao = db.favoriteDao()
-    @Provides fun provideVirtualGroupDao(db: StreamVaultDatabase): VirtualGroupDao = db.virtualGroupDao()
-    @Provides fun providePlaybackHistoryDao(db: StreamVaultDatabase): PlaybackHistoryDao = db.playbackHistoryDao()
-    @Provides fun provideTmdbIdentityDao(db: StreamVaultDatabase): TmdbIdentityDao = db.tmdbIdentityDao()
-    @Provides fun provideSearchHistoryDao(db: StreamVaultDatabase): SearchHistoryDao = db.searchHistoryDao()
-    @Provides fun provideSearchDao(db: StreamVaultDatabase): SearchDao = db.searchDao()
-    @Provides fun provideSyncMetadataDao(db: StreamVaultDatabase): SyncMetadataDao = db.syncMetadataDao()
-    @Provides fun provideMovieCategoryHydrationDao(db: StreamVaultDatabase): MovieCategoryHydrationDao = db.movieCategoryHydrationDao()
-    @Provides fun provideSeriesCategoryHydrationDao(db: StreamVaultDatabase): SeriesCategoryHydrationDao = db.seriesCategoryHydrationDao()
-    @Provides fun provideEpgSourceDao(db: StreamVaultDatabase): EpgSourceDao = db.epgSourceDao()
-    @Provides fun provideProviderEpgSourceDao(db: StreamVaultDatabase): ProviderEpgSourceDao = db.providerEpgSourceDao()
-    @Provides fun provideEpgChannelDao(db: StreamVaultDatabase): EpgChannelDao = db.epgChannelDao()
-    @Provides fun provideEpgProgrammeDao(db: StreamVaultDatabase): EpgProgrammeDao = db.epgProgrammeDao()
-    @Provides fun provideChannelEpgMappingDao(db: StreamVaultDatabase): ChannelEpgMappingDao = db.channelEpgMappingDao()
-    @Provides fun provideCombinedM3uProfileDao(db: StreamVaultDatabase): CombinedM3uProfileDao = db.combinedM3uProfileDao()
-    @Provides fun provideCombinedM3uProfileMemberDao(db: StreamVaultDatabase): CombinedM3uProfileMemberDao = db.combinedM3uProfileMemberDao()
-    @Provides fun provideRecordingScheduleDao(db: StreamVaultDatabase): RecordingScheduleDao = db.recordingScheduleDao()
-    @Provides fun provideRecordingRunDao(db: StreamVaultDatabase): RecordingRunDao = db.recordingRunDao()
-    @Provides fun provideProgramReminderDao(db: StreamVaultDatabase): ProgramReminderDao = db.programReminderDao()
-    @Provides fun provideRecordingStorageDao(db: StreamVaultDatabase): RecordingStorageDao = db.recordingStorageDao()
-    @Provides fun providePlaybackCompatibilityDao(db: StreamVaultDatabase): PlaybackCompatibilityDao = db.playbackCompatibilityDao()
-    @Provides fun provideXtreamContentIndexDao(db: StreamVaultDatabase): XtreamContentIndexDao = db.xtreamContentIndexDao()
-    @Provides fun provideXtreamIndexJobDao(db: StreamVaultDatabase): XtreamIndexJobDao = db.xtreamIndexJobDao()
-    @Provides fun provideXtreamLiveOnboardingDao(db: StreamVaultDatabase): XtreamLiveOnboardingDao = db.xtreamLiveOnboardingDao()
-    @Provides fun provideDownloadDao(db: StreamVaultDatabase): DownloadDao = db.downloadDao()
+    @Provides fun provideProviderDao(db: ZenLemonDatabase): ProviderDao = db.providerDao()
+    @Provides fun provideChannelDao(db: ZenLemonDatabase): ChannelDao = db.channelDao()
+    @Provides fun provideChannelPreferenceDao(db: ZenLemonDatabase): ChannelPreferenceDao = db.channelPreferenceDao()
+    @Provides fun provideMovieDao(db: ZenLemonDatabase): MovieDao = db.movieDao()
+    @Provides fun provideSeriesDao(db: ZenLemonDatabase): SeriesDao = db.seriesDao()
+    @Provides fun provideEpisodeDao(db: ZenLemonDatabase): EpisodeDao = db.episodeDao()
+    @Provides fun provideCategoryDao(db: ZenLemonDatabase): CategoryDao = db.categoryDao()
+    @Provides fun provideCatalogSyncDao(db: ZenLemonDatabase): CatalogSyncDao = db.catalogSyncDao()
+    @Provides fun provideProgramDao(db: ZenLemonDatabase): ProgramDao = db.programDao()
+    @Provides fun provideFavoriteDao(db: ZenLemonDatabase): FavoriteDao = db.favoriteDao()
+    @Provides fun provideVirtualGroupDao(db: ZenLemonDatabase): VirtualGroupDao = db.virtualGroupDao()
+    @Provides fun providePlaybackHistoryDao(db: ZenLemonDatabase): PlaybackHistoryDao = db.playbackHistoryDao()
+    @Provides fun provideTmdbIdentityDao(db: ZenLemonDatabase): TmdbIdentityDao = db.tmdbIdentityDao()
+    @Provides fun provideSearchHistoryDao(db: ZenLemonDatabase): SearchHistoryDao = db.searchHistoryDao()
+    @Provides fun provideSearchDao(db: ZenLemonDatabase): SearchDao = db.searchDao()
+    @Provides fun provideSyncMetadataDao(db: ZenLemonDatabase): SyncMetadataDao = db.syncMetadataDao()
+    @Provides fun provideMovieCategoryHydrationDao(db: ZenLemonDatabase): MovieCategoryHydrationDao = db.movieCategoryHydrationDao()
+    @Provides fun provideSeriesCategoryHydrationDao(db: ZenLemonDatabase): SeriesCategoryHydrationDao = db.seriesCategoryHydrationDao()
+    @Provides fun provideEpgSourceDao(db: ZenLemonDatabase): EpgSourceDao = db.epgSourceDao()
+    @Provides fun provideProviderEpgSourceDao(db: ZenLemonDatabase): ProviderEpgSourceDao = db.providerEpgSourceDao()
+    @Provides fun provideEpgChannelDao(db: ZenLemonDatabase): EpgChannelDao = db.epgChannelDao()
+    @Provides fun provideEpgProgrammeDao(db: ZenLemonDatabase): EpgProgrammeDao = db.epgProgrammeDao()
+    @Provides fun provideChannelEpgMappingDao(db: ZenLemonDatabase): ChannelEpgMappingDao = db.channelEpgMappingDao()
+    @Provides fun provideCombinedM3uProfileDao(db: ZenLemonDatabase): CombinedM3uProfileDao = db.combinedM3uProfileDao()
+    @Provides fun provideCombinedM3uProfileMemberDao(db: ZenLemonDatabase): CombinedM3uProfileMemberDao = db.combinedM3uProfileMemberDao()
+    @Provides fun provideRecordingScheduleDao(db: ZenLemonDatabase): RecordingScheduleDao = db.recordingScheduleDao()
+    @Provides fun provideRecordingRunDao(db: ZenLemonDatabase): RecordingRunDao = db.recordingRunDao()
+    @Provides fun provideProgramReminderDao(db: ZenLemonDatabase): ProgramReminderDao = db.programReminderDao()
+    @Provides fun provideRecordingStorageDao(db: ZenLemonDatabase): RecordingStorageDao = db.recordingStorageDao()
+    @Provides fun providePlaybackCompatibilityDao(db: ZenLemonDatabase): PlaybackCompatibilityDao = db.playbackCompatibilityDao()
+    @Provides fun provideXtreamContentIndexDao(db: ZenLemonDatabase): XtreamContentIndexDao = db.xtreamContentIndexDao()
+    @Provides fun provideXtreamIndexJobDao(db: ZenLemonDatabase): XtreamIndexJobDao = db.xtreamIndexJobDao()
+    @Provides fun provideXtreamLiveOnboardingDao(db: ZenLemonDatabase): XtreamLiveOnboardingDao = db.xtreamLiveOnboardingDao()
+    @Provides fun provideDownloadDao(db: ZenLemonDatabase): DownloadDao = db.downloadDao()
 }

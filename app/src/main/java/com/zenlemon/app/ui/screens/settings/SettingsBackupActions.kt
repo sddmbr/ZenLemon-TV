@@ -1,15 +1,15 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
-import com.streamvault.domain.manager.BackupConflictStrategy
-import com.streamvault.domain.manager.BackupImportPlan
-import com.streamvault.domain.usecase.ExportBackup
-import com.streamvault.domain.usecase.ExportBackupCommand
-import com.streamvault.domain.usecase.ExportBackupResult
-import com.streamvault.domain.usecase.ImportBackup
-import com.streamvault.domain.usecase.ImportBackupCommand
-import com.streamvault.domain.usecase.ImportBackupResult
-import com.streamvault.domain.usecase.InspectBackupCommand
-import com.streamvault.domain.usecase.InspectBackupResult
+import com.zenlemon.domain.manager.BackupConflictStrategy
+import com.zenlemon.domain.manager.BackupImportPlan
+import com.zenlemon.domain.usecase.ExportBackup
+import com.zenlemon.domain.usecase.ExportBackupCommand
+import com.zenlemon.domain.usecase.ExportBackupResult
+import com.zenlemon.domain.usecase.ImportBackup
+import com.zenlemon.domain.usecase.ImportBackupCommand
+import com.zenlemon.domain.usecase.ImportBackupResult
+import com.zenlemon.domain.usecase.InspectBackupCommand
+import com.zenlemon.domain.usecase.InspectBackupResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update

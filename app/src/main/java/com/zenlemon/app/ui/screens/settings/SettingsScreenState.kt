@@ -1,22 +1,22 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.content.Context
 import android.content.ContextWrapper
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import com.streamvault.app.MainActivity
-import com.streamvault.app.R
-import com.streamvault.app.ui.time.createDateTimeFormat
-import com.streamvault.app.util.OfficialBuildStatus
-import com.streamvault.domain.model.AppHomeDashboardShelf
-import com.streamvault.domain.model.AppLandingDestination
-import com.streamvault.domain.model.AppTopLevelDestination
-import com.streamvault.domain.model.AppTimeFormat
-import com.streamvault.domain.model.AudioOutputPreference
-import com.streamvault.domain.model.LiveStreamFormatMode
-import com.streamvault.domain.model.PlaybackBufferMode
-import com.streamvault.domain.model.TimeshiftBackendPreference
-import com.streamvault.domain.model.VodHttpProtocolMode
+import com.zenlemon.app.MainActivity
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.time.createDateTimeFormat
+import com.zenlemon.app.util.OfficialBuildStatus
+import com.zenlemon.domain.model.AppHomeDashboardShelf
+import com.zenlemon.domain.model.AppLandingDestination
+import com.zenlemon.domain.model.AppTopLevelDestination
+import com.zenlemon.domain.model.AppTimeFormat
+import com.zenlemon.domain.model.AudioOutputPreference
+import com.zenlemon.domain.model.LiveStreamFormatMode
+import com.zenlemon.domain.model.PlaybackBufferMode
+import com.zenlemon.domain.model.TimeshiftBackendPreference
+import com.zenlemon.domain.model.VodHttpProtocolMode
 
 internal data class SettingsScreenLabels(
     val buildVerificationLabel: String,
@@ -334,10 +334,10 @@ internal fun formatLiveStreamFormatModeLabel(mode: LiveStreamFormatMode): String
 }
 
 private fun formatExternalPlaybackModeLabel(
-    mode: com.streamvault.domain.model.ExternalPlaybackMode,
+    mode: com.zenlemon.domain.model.ExternalPlaybackMode,
     context: Context
 ): String = when (mode) {
-    com.streamvault.domain.model.ExternalPlaybackMode.INTERNAL_PLAYER -> context.getString(R.string.settings_external_playback_mode_internal)
-    com.streamvault.domain.model.ExternalPlaybackMode.ASK_EVERY_TIME -> context.getString(R.string.settings_external_playback_mode_external)
-    com.streamvault.domain.model.ExternalPlaybackMode.EXTERNAL_PLAYER -> context.getString(R.string.settings_external_playback_mode_external)
+    com.zenlemon.domain.model.ExternalPlaybackMode.INTERNAL_PLAYER -> context.getString(R.string.settings_external_playback_mode_internal)
+    com.zenlemon.domain.model.ExternalPlaybackMode.ASK_EVERY_TIME -> context.getString(R.string.settings_external_playback_mode_external)
+    com.zenlemon.domain.model.ExternalPlaybackMode.EXTERNAL_PLAYER -> context.getString(R.string.settings_external_playback_mode_external)
 }

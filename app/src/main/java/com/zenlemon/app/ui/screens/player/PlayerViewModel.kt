@@ -1,71 +1,71 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import android.os.Build
 import android.os.SystemClock
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.cast.CastConnectionState
-import com.streamvault.app.cast.CastManager
-import com.streamvault.app.cast.CastMediaRequestFactory
-import com.streamvault.app.cast.CastPlaybackCoordinator
-import com.streamvault.app.cast.CastPlaybackReportMode
-import com.streamvault.app.di.MainPlayerEngine
-import com.streamvault.app.player.LivePreviewHandoffManager
-import com.streamvault.app.player.LiveTranslationSession
-import com.streamvault.app.plugins.StreamVaultPluginManager
-import com.streamvault.app.util.isPlaybackComplete
-import com.streamvault.app.tv.LauncherRecommendationsManager
-import com.streamvault.app.tv.WatchNextManager
-import com.streamvault.data.sync.SyncManager
-import com.streamvault.data.remote.stalker.StalkerUrlFactory
-import com.streamvault.data.remote.xtream.XtreamStreamUrlResolver
-import com.streamvault.data.security.CredentialDecryptionException
-import com.streamvault.domain.manager.RecordingManager
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.ChannelNumberingMode
-import com.streamvault.domain.model.CombinedCategory
-import com.streamvault.domain.model.CombinedM3uProfileMember
-import com.streamvault.domain.model.Program
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.DecoderMode
-import com.streamvault.domain.model.Episode
-import com.streamvault.domain.model.Favorite
-import com.streamvault.domain.model.LiveChannelObservedQuality
-import com.streamvault.domain.model.PlaybackHistory
-import com.streamvault.domain.model.RecordingItem
-import com.streamvault.domain.model.RecordingRecurrence
-import com.streamvault.domain.model.RecordingRequest
-import com.streamvault.domain.model.RecordingStatus
-import com.streamvault.domain.model.ProviderType
-import com.streamvault.domain.model.Result
-import com.streamvault.domain.model.Series
-import com.streamvault.domain.model.StreamInfo
-import com.streamvault.domain.model.StreamType
-import com.streamvault.domain.model.VirtualCategoryIds
-import com.streamvault.domain.model.VideoFormat
-import com.streamvault.domain.usecase.GetCustomCategories
-import com.streamvault.domain.usecase.MarkAsWatched
-import com.streamvault.domain.usecase.ScheduleRecording
-import com.streamvault.domain.usecase.ScheduleRecordingCommand
-import com.streamvault.domain.repository.ChannelRepository
-import com.streamvault.domain.repository.CombinedM3uRepository
-import com.streamvault.domain.repository.EpgRepository
-import com.streamvault.domain.repository.MovieRepository
-import com.streamvault.domain.repository.PlaybackHistoryRepository
-import com.streamvault.domain.repository.SeriesRepository
-import com.streamvault.domain.repository.DownloadManager
-import com.streamvault.player.Media3PlayerEngine
-import com.streamvault.player.AUDIO_VIDEO_OFFSET_MAX_MS
-import com.streamvault.player.AUDIO_VIDEO_OFFSET_MIN_MS
-import com.streamvault.player.PlaybackState
-import com.streamvault.player.PlayerEngine
-import com.streamvault.player.PlayerError
-import com.streamvault.player.PlayerSubtitleStyle
-import com.streamvault.player.timeshift.LiveTimeshiftBackend
-import com.streamvault.player.timeshift.LiveTimeshiftState
-import com.streamvault.player.timeshift.LiveTimeshiftStatus
-import com.streamvault.player.timeshift.TimeshiftConfig
-import com.streamvault.player.playback.applyUnsafeTlsBypass
+import com.zenlemon.app.cast.CastConnectionState
+import com.zenlemon.app.cast.CastManager
+import com.zenlemon.app.cast.CastMediaRequestFactory
+import com.zenlemon.app.cast.CastPlaybackCoordinator
+import com.zenlemon.app.cast.CastPlaybackReportMode
+import com.zenlemon.app.di.MainPlayerEngine
+import com.zenlemon.app.player.LivePreviewHandoffManager
+import com.zenlemon.app.player.LiveTranslationSession
+import com.zenlemon.app.plugins.ZenLemonPluginManager
+import com.zenlemon.app.util.isPlaybackComplete
+import com.zenlemon.app.tv.LauncherRecommendationsManager
+import com.zenlemon.app.tv.WatchNextManager
+import com.zenlemon.data.sync.SyncManager
+import com.zenlemon.data.remote.stalker.StalkerUrlFactory
+import com.zenlemon.data.remote.xtream.XtreamStreamUrlResolver
+import com.zenlemon.data.security.CredentialDecryptionException
+import com.zenlemon.domain.manager.RecordingManager
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.ChannelNumberingMode
+import com.zenlemon.domain.model.CombinedCategory
+import com.zenlemon.domain.model.CombinedM3uProfileMember
+import com.zenlemon.domain.model.Program
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.DecoderMode
+import com.zenlemon.domain.model.Episode
+import com.zenlemon.domain.model.Favorite
+import com.zenlemon.domain.model.LiveChannelObservedQuality
+import com.zenlemon.domain.model.PlaybackHistory
+import com.zenlemon.domain.model.RecordingItem
+import com.zenlemon.domain.model.RecordingRecurrence
+import com.zenlemon.domain.model.RecordingRequest
+import com.zenlemon.domain.model.RecordingStatus
+import com.zenlemon.domain.model.ProviderType
+import com.zenlemon.domain.model.Result
+import com.zenlemon.domain.model.Series
+import com.zenlemon.domain.model.StreamInfo
+import com.zenlemon.domain.model.StreamType
+import com.zenlemon.domain.model.VirtualCategoryIds
+import com.zenlemon.domain.model.VideoFormat
+import com.zenlemon.domain.usecase.GetCustomCategories
+import com.zenlemon.domain.usecase.MarkAsWatched
+import com.zenlemon.domain.usecase.ScheduleRecording
+import com.zenlemon.domain.usecase.ScheduleRecordingCommand
+import com.zenlemon.domain.repository.ChannelRepository
+import com.zenlemon.domain.repository.CombinedM3uRepository
+import com.zenlemon.domain.repository.EpgRepository
+import com.zenlemon.domain.repository.MovieRepository
+import com.zenlemon.domain.repository.PlaybackHistoryRepository
+import com.zenlemon.domain.repository.SeriesRepository
+import com.zenlemon.domain.repository.DownloadManager
+import com.zenlemon.player.Media3PlayerEngine
+import com.zenlemon.player.AUDIO_VIDEO_OFFSET_MAX_MS
+import com.zenlemon.player.AUDIO_VIDEO_OFFSET_MIN_MS
+import com.zenlemon.player.PlaybackState
+import com.zenlemon.player.PlayerEngine
+import com.zenlemon.player.PlayerError
+import com.zenlemon.player.PlayerSubtitleStyle
+import com.zenlemon.player.timeshift.LiveTimeshiftBackend
+import com.zenlemon.player.timeshift.LiveTimeshiftState
+import com.zenlemon.player.timeshift.LiveTimeshiftStatus
+import com.zenlemon.player.timeshift.TimeshiftConfig
+import com.zenlemon.player.playback.applyUnsafeTlsBypass
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -94,11 +94,11 @@ class PlayerViewModel @Inject constructor(
     internal val channelRepository: ChannelRepository,
     internal val movieRepository: MovieRepository,
     internal val seriesRepository: SeriesRepository,
-    internal val favoriteRepository: com.streamvault.domain.repository.FavoriteRepository,
+    internal val favoriteRepository: com.zenlemon.domain.repository.FavoriteRepository,
     internal val playbackHistoryRepository: PlaybackHistoryRepository,
-    internal val providerRepository: com.streamvault.domain.repository.ProviderRepository,
+    internal val providerRepository: com.zenlemon.domain.repository.ProviderRepository,
     internal val combinedM3uRepository: CombinedM3uRepository,
-    internal val preferencesRepository: com.streamvault.data.preferences.PreferencesRepository,
+    internal val preferencesRepository: com.zenlemon.data.preferences.PreferencesRepository,
     internal val getCustomCategories: GetCustomCategories,
     internal val markAsWatched: MarkAsWatched,
     internal val scheduleRecordingUseCase: ScheduleRecording,
@@ -108,7 +108,7 @@ class PlayerViewModel @Inject constructor(
     internal val castManager: CastManager,
     internal val castMediaRequestFactory: CastMediaRequestFactory,
     internal val castPlaybackCoordinator: CastPlaybackCoordinator,
-    internal val pluginManager: StreamVaultPluginManager,
+    internal val pluginManager: ZenLemonPluginManager,
     internal val xtreamStreamUrlResolver: XtreamStreamUrlResolver,
     internal val seekThumbnailProvider: SeekThumbnailProvider,
     internal val livePreviewHandoffManager: LivePreviewHandoffManager,
@@ -156,8 +156,8 @@ class PlayerViewModel @Inject constructor(
     private val _upcomingPrograms = MutableStateFlow<List<Program>>(emptyList())
     val upcomingPrograms: StateFlow<List<Program>> = _upcomingPrograms.asStateFlow()
 
-    internal val currentChannelFlow = MutableStateFlow<com.streamvault.domain.model.Channel?>(null)
-    val currentChannel: StateFlow<com.streamvault.domain.model.Channel?> = currentChannelFlow.asStateFlow()
+    internal val currentChannelFlow = MutableStateFlow<com.zenlemon.domain.model.Channel?>(null)
+    val currentChannel: StateFlow<com.zenlemon.domain.model.Channel?> = currentChannelFlow.asStateFlow()
 
     private val _currentSeries = MutableStateFlow<Series?>(null)
     val currentSeries: StateFlow<Series?> = _currentSeries.asStateFlow()
@@ -189,11 +189,11 @@ class PlayerViewModel @Inject constructor(
     internal val showFullGuideOverlayFlow = MutableStateFlow(false)
     val showFullGuideOverlay: StateFlow<Boolean> = showFullGuideOverlayFlow.asStateFlow()
 
-    internal val currentChannelFlowList = MutableStateFlow<List<com.streamvault.domain.model.Channel>>(emptyList())
-    val currentChannelList: StateFlow<List<com.streamvault.domain.model.Channel>> = currentChannelFlowList.asStateFlow()
+    internal val currentChannelFlowList = MutableStateFlow<List<com.zenlemon.domain.model.Channel>>(emptyList())
+    val currentChannelList: StateFlow<List<com.zenlemon.domain.model.Channel>> = currentChannelFlowList.asStateFlow()
 
-    internal val recentChannelsFlow = MutableStateFlow<List<com.streamvault.domain.model.Channel>>(emptyList())
-    val recentChannels: StateFlow<List<com.streamvault.domain.model.Channel>> = recentChannelsFlow.asStateFlow()
+    internal val recentChannelsFlow = MutableStateFlow<List<com.zenlemon.domain.model.Channel>>(emptyList())
+    val recentChannels: StateFlow<List<com.zenlemon.domain.model.Channel>> = recentChannelsFlow.asStateFlow()
 
     internal val _lastVisitedCategory = MutableStateFlow<Category?>(null)
     val lastVisitedCategory: StateFlow<Category?> = _lastVisitedCategory.asStateFlow()
@@ -242,7 +242,7 @@ class PlayerViewModel @Inject constructor(
     internal val _sleepTimerExitEvent = MutableStateFlow(0)
     val sleepTimerExitEvent: StateFlow<Int> = _sleepTimerExitEvent.asStateFlow()
     val remoteShortcutPreferences = preferencesRepository.remoteShortcutPreferences
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), com.streamvault.domain.model.RemoteShortcutPreferences())
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), com.zenlemon.domain.model.RemoteShortcutPreferences())
     private val _playerPreferencesUiState = MutableStateFlow(PlayerPreferencesUiState())
     val playerPreferencesUiState: StateFlow<PlayerPreferencesUiState> = _playerPreferencesUiState.asStateFlow()
     private val _externalPlaybackUrl = MutableStateFlow("")
@@ -292,8 +292,8 @@ class PlayerViewModel @Inject constructor(
     internal var diagnosticsTimeoutMs: Long = 15_000L
     private var preferredAudioDecoderMode: DecoderMode = DecoderMode.AUTO
     private var preferredVideoDecoderMode: DecoderMode = DecoderMode.AUTO
-    private var preferredSurfaceMode: com.streamvault.domain.model.PlayerSurfaceMode =
-        com.streamvault.domain.model.PlayerSurfaceMode.AUTO
+    private var preferredSurfaceMode: com.zenlemon.domain.model.PlayerSurfaceMode =
+        com.zenlemon.domain.model.PlayerSurfaceMode.AUTO
     internal var timeshiftConfig: TimeshiftConfig = TimeshiftConfig()
 
     // Zapping state
@@ -307,12 +307,12 @@ class PlayerViewModel @Inject constructor(
      * Ordered list of channels in the current category, set by the playlist [combine]
      * collector. Linked to [currentChannelIndex] — see invariant comment above.
      */
-    internal var channelList: List<com.streamvault.domain.model.Channel> = emptyList()
+    internal var channelList: List<com.zenlemon.domain.model.Channel> = emptyList()
         set(value) {
             field = value
             rebuildChannelNumberIndex()
         }
-    internal var channelNumberIndex: Map<Int, com.streamvault.domain.model.Channel> = emptyMap()
+    internal var channelNumberIndex: Map<Int, com.zenlemon.domain.model.Channel> = emptyMap()
         private set
 
     private fun rebuildChannelNumberIndex() {
@@ -408,8 +408,8 @@ class PlayerViewModel @Inject constructor(
         .flatMapLatest(selector)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), initialValue)
 
-    internal fun logRepositoryFailure(operation: String, result: com.streamvault.domain.model.Result<Unit>) {
-        if (result is com.streamvault.domain.model.Result.Error) {
+    internal fun logRepositoryFailure(operation: String, result: com.zenlemon.domain.model.Result<Unit>) {
+        if (result is com.zenlemon.domain.model.Result.Error) {
             android.util.Log.w("PlayerVM", "$operation failed: ${result.message}", result.exception)
         }
     }
@@ -1021,15 +1021,15 @@ class PlayerViewModel @Inject constructor(
 
     val videoFormat: StateFlow<VideoFormat> = activeEngineState(VideoFormat(0, 0)) { it.videoFormat }
 
-    val playerStats: StateFlow<com.streamvault.player.PlayerStats> =
-        activeEngineState(com.streamvault.player.PlayerStats()) { it.playerStats }
-    val availableAudioTracks: StateFlow<List<com.streamvault.player.PlayerTrack>> by lazy(LazyThreadSafetyMode.NONE) {
+    val playerStats: StateFlow<com.zenlemon.player.PlayerStats> =
+        activeEngineState(com.zenlemon.player.PlayerStats()) { it.playerStats }
+    val availableAudioTracks: StateFlow<List<com.zenlemon.player.PlayerTrack>> by lazy(LazyThreadSafetyMode.NONE) {
         activeEngineState(emptyList()) { it.availableAudioTracks }
     }
-    val availableSubtitleTracks: StateFlow<List<com.streamvault.player.PlayerTrack>> by lazy(LazyThreadSafetyMode.NONE) {
+    val availableSubtitleTracks: StateFlow<List<com.zenlemon.player.PlayerTrack>> by lazy(LazyThreadSafetyMode.NONE) {
         activeEngineState(emptyList()) { it.availableSubtitleTracks }
     }
-    val availableVideoQualities: StateFlow<List<com.streamvault.player.PlayerTrack>> by lazy(LazyThreadSafetyMode.NONE) {
+    val availableVideoQualities: StateFlow<List<com.zenlemon.player.PlayerTrack>> by lazy(LazyThreadSafetyMode.NONE) {
         activeEngineState(emptyList()) { it.availableVideoTracks }
     }
     val isMuted: StateFlow<Boolean> = activeEngineState(false) { it.isMuted }
@@ -1280,7 +1280,7 @@ class PlayerViewModel @Inject constructor(
     }
 
     internal suspend fun preparePlayer(
-        streamInfo: com.streamvault.domain.model.StreamInfo,
+        streamInfo: com.zenlemon.domain.model.StreamInfo,
         requestVersion: Long,
         probeBeforePlayback: Boolean = true,
         showFailureNotice: Boolean = true
@@ -1355,7 +1355,7 @@ class PlayerViewModel @Inject constructor(
         return true
     }
 
-    private suspend fun probePlaybackUrl(streamInfo: com.streamvault.domain.model.StreamInfo): PlaybackProbeFailure? {
+    private suspend fun probePlaybackUrl(streamInfo: com.zenlemon.domain.model.StreamInfo): PlaybackProbeFailure? {
         val url = streamInfo.url
         if (!shouldProbePlaybackUrl(url)) return null
 
@@ -1399,12 +1399,12 @@ class PlayerViewModel @Inject constructor(
             currentStreamUrl = currentStreamUrl,
             url = url
         )
-        if (provider.type != com.streamvault.domain.model.ProviderType.STALKER_PORTAL && cacheKey in probePassedPlaybackKeys) {
+        if (provider.type != com.zenlemon.domain.model.ProviderType.STALKER_PORTAL && cacheKey in probePassedPlaybackKeys) {
             return false
         }
         return (
-            provider.type == com.streamvault.domain.model.ProviderType.XTREAM_CODES ||
-                provider.type == com.streamvault.domain.model.ProviderType.STALKER_PORTAL
+            provider.type == com.zenlemon.domain.model.ProviderType.XTREAM_CODES ||
+                provider.type == com.zenlemon.domain.model.ProviderType.STALKER_PORTAL
             ) &&
             (xtreamStreamUrlResolver.isInternalStreamUrl(currentStreamUrl) || xtreamStreamUrlResolver.isInternalStreamUrl(url))
     }
@@ -1555,10 +1555,10 @@ class PlayerViewModel @Inject constructor(
                         it.copy(
                             providerName = provider.name,
                             providerSourceLabel = when (provider.type) {
-                                com.streamvault.domain.model.ProviderType.XTREAM_CODES -> "Xtream Codes"
-                                com.streamvault.domain.model.ProviderType.M3U -> "M3U Playlist"
-                                com.streamvault.domain.model.ProviderType.STALKER_PORTAL -> "Stalker/MAG Portal"
-                                com.streamvault.domain.model.ProviderType.JELLYFIN -> "Jellyfin"
+                                com.zenlemon.domain.model.ProviderType.XTREAM_CODES -> "Xtream Codes"
+                                com.zenlemon.domain.model.ProviderType.M3U -> "M3U Playlist"
+                                com.zenlemon.domain.model.ProviderType.STALKER_PORTAL -> "Stalker/MAG Portal"
+                                com.zenlemon.domain.model.ProviderType.JELLYFIN -> "Jellyfin"
                             }
                         )
                     }
@@ -1710,7 +1710,7 @@ class PlayerViewModel @Inject constructor(
         _playerDiagnostics.update { it.copy(streamClassLabel = label) }
     }
 
-    internal fun updateChannelDiagnostics(channel: com.streamvault.domain.model.Channel) {
+    internal fun updateChannelDiagnostics(channel: com.zenlemon.domain.model.Channel) {
         _playerDiagnostics.update { currentState ->
             updateChannelDiagnosticsState(
                 currentState = currentState,
@@ -1735,7 +1735,7 @@ class PlayerViewModel @Inject constructor(
         internalContentId: Long,
         providerId: Long,
         contentType: ContentType
-    ): com.streamvault.domain.model.StreamInfo? {
+    ): com.zenlemon.domain.model.StreamInfo? {
         val resolution = resolvePlayerPlaybackStreamInfo(
             logicalUrl = logicalUrl,
             internalContentId = internalContentId,

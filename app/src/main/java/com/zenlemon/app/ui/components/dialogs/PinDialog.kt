@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.components.dialogs
+package com.zenlemon.app.ui.components.dialogs
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -20,17 +20,17 @@ import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.streamvault.app.device.rememberIsTelevisionDevice
-import com.streamvault.app.ui.interaction.mouseClickable
-import com.streamvault.app.ui.theme.ErrorColor
-import com.streamvault.app.ui.theme.FocusBorder
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.app.ui.theme.SurfaceElevated
-import com.streamvault.app.ui.design.requestFocusSafely
+import com.zenlemon.app.device.rememberIsTelevisionDevice
+import com.zenlemon.app.ui.interaction.mouseClickable
+import com.zenlemon.app.ui.theme.ErrorColor
+import com.zenlemon.app.ui.theme.FocusBorder
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.app.ui.theme.SurfaceElevated
+import com.zenlemon.app.ui.design.requestFocusSafely
 import kotlinx.coroutines.delay
 import androidx.compose.ui.res.stringResource
-import com.streamvault.app.R
-import com.streamvault.app.ui.design.FocusSpec
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.design.FocusSpec
 import androidx.tv.material3.Border
 
 /**

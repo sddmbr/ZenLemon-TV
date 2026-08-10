@@ -1,6 +1,6 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
-import com.streamvault.domain.model.ProviderType
+import com.zenlemon.domain.model.ProviderType
 import java.net.URI
 import java.util.Locale
 

@@ -1,4 +1,4 @@
-package com.streamvault.app.device
+package com.zenlemon.app.device
 
 import android.app.UiModeManager
 import android.content.Context

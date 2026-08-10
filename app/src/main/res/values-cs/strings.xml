@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">StreamVault</string>
+    <string name="app_name">ZenLemon</string>
     <string name="nav_home">Domů</string>
     <string name="nav_live_tv">Živé TV</string>
     <string name="nav_movies">Filmy</string>
@@ -106,7 +106,7 @@
     <string name="dashboard_provider_no_expiry">Není uvedena žádná platnost</string>
     <string name="dashboard_warning_title">Poskytovatel vyžaduje pozornost</string>
     <string name="dashboard_warning_review">Otevřete Podrobnosti poskytovatele</string>
-    <string name="dashboard_update_title">StreamVault %1$s je k dispozici</string>
+    <string name="dashboard_update_title">ZenLemon %1$s je k dispozici</string>
     <string name="dashboard_update_available">Novější verze aplikace je uložená v mezipaměti a připravená ke kontrole v Nastavení.</string>
     <string name="dashboard_update_install_ready">Nejnovější aktualizace už byla stažena. Otevřete Nastavení a nainstalujte ji.</string>
     <string name="dashboard_update_open_settings">Otevřít aktualizace</string>
@@ -404,7 +404,7 @@
     <string name="settings_about_subtitle">Podrobnosti o verzi, sestavení a podpoře pro tuto instalaci.</string>
     <string name="settings_app_version">Verze aplikace</string>
     <string name="settings_build">Stavět</string>
-    <string name="settings_build_desc">StreamVault pro Android TV</string>
+    <string name="settings_build_desc">ZenLemon pro Android TV</string>
     <string name="settings_enabled">Zapnuto</string>
     <string name="settings_disabled">Vypnuto</string>
     <string name="settings_developed_by">Vyvinuto</string>
@@ -414,7 +414,7 @@
     <string name="settings_donate">Podpora na Ko-fi</string>
     <string name="settings_donate_url">https://ko-fi.com/davidona</string>
     <string name="settings_updates_title">Aktualizace</string>
-    <string name="settings_updates_subtitle">Zkontrolujte novější verze StreamVault na GitHub Releases, aniž byste opustili aplikaci.</string>
+    <string name="settings_updates_subtitle">Zkontrolujte novější verze ZenLemon na GitHub Releases, aniž byste opustili aplikaci.</string>
     <string name="settings_update_auto_check">Automaticky kontrolovat aktualizace</string>
     <string name="settings_update_latest_release">Nejnovější verze</string>
     <string name="settings_update_status">Stav aktualizace</string>
@@ -438,8 +438,8 @@
     <string name="settings_update_status_check_failed">Poslední kontrola selhala</string>
     <string name="settings_update_status_downloading">Stahování aktualizace</string>
     <string name="settings_update_status_ready_to_install">Připraveno k instalaci</string>
-    <string name="settings_update_available_message">StreamVault %1$s je k dispozici.</string>
-    <string name="settings_update_current_message">Máte již nejnovější verzi StreamVault.</string>
+    <string name="settings_update_available_message">ZenLemon %1$s je k dispozici.</string>
+    <string name="settings_update_current_message">Máte již nejnovější verzi ZenLemon.</string>
     <string name="settings_syncing">Probíhá synchronizace dat, čekejte prosím...</string>
     <string name="settings_syncing_title">Synchronizace dat...</string>
     <string name="settings_syncing_subtitle">Počkejte prosím, než se importuje váš playlist.</string>
@@ -702,7 +702,7 @@
     <string name="a11y_catch_up_available">Catch-up k dispozici</string>
     <string name="a11y_now_playing">Právě hraje %1$s</string>
     <string name="a11y_channel_with_number">Kanál %1$d, %2$s</string>
-    <string name="setup_title_streamvault">StreamVault</string>
+    <string name="setup_title_zenlemon">ZenLemon</string>
     <string name="setup_provider_title">Přidejte poskytovatele</string>
     <string name="setup_edit_provider">Upravit poskytovatele</string>
     <string name="setup_update_desc">Aktualizujte podrobnosti svého poskytovatele IPTV</string>
@@ -1167,21 +1167,21 @@
     <string name="settings_history_cleared">Historie sledování a nedávné události byly vymazány</string>
     <string name="settings_pin_changed">PIN byl úspěšně uložen</string>
     <string name="home_reorder_channels">Uspořádat kanály</string>
-    <string name="tv_input_setup_scanning_title">Prohledávají se kanály StreamVault</string>
+    <string name="tv_input_setup_scanning_title">Prohledávají se kanály ZenLemon</string>
     <string name="tv_input_setup_success_title">Živé TV je připraveno</string>
     <string name="tv_input_setup_no_provider_title">Není nakonfigurován žádný IPTV poskytovatel</string>
     <string name="tv_input_setup_error_title">Automatické vyhledávání selhalo</string>
     <string name="tv_input_setup_idle_title">Připravuje se integrace Živé TV</string>
-    <string name="tv_input_setup_scanning_body">StreamVault synchronizuje vašeho aktivního poskytovatele do Android TV Live TV.</string>
+    <string name="tv_input_setup_scanning_body">ZenLemon synchronizuje vašeho aktivního poskytovatele do Android TV Live TV.</string>
     <string name="tv_input_setup_success_body">Vaše kanály byly úspěšně synchronizovány.</string>
-    <string name="tv_input_setup_no_provider_body">Přidejte alespoň jednoho IPTV poskytovatele ve StreamVault a pak se vraťte sem, abyste prohledali kanály do Android TV Live TV.</string>
+    <string name="tv_input_setup_no_provider_body">Přidejte alespoň jednoho IPTV poskytovatele ve ZenLemon a pak se vraťte sem, abyste prohledali kanály do Android TV Live TV.</string>
     <string name="tv_input_setup_error_body">Synchronizace vstupu televizoru nebyla dokončena.</string>
     <string name="tv_input_setup_idle_body">Prosím, čekejte.</string>
     <string name="tv_input_setup_source_format">Zdroj: %1$s</string>
-    <string name="tv_input_setup_open_setup">Otevřít nastavení StreamVault</string>
+    <string name="tv_input_setup_open_setup">Otevřít nastavení ZenLemon</string>
     <string name="tv_input_setup_try_scan_again">Zkuste znovu Auto Scan</string>
     <string name="tv_input_setup_retry_scan">Zopakovat automatické vyhledávání</string>
-    <string name="tv_input_setup_success_hint">Android TV Live TV nyní může otevřít vaše kanály StreamVault.</string>
+    <string name="tv_input_setup_success_hint">Android TV Live TV nyní může otevřít vaše kanály ZenLemon.</string>
     <string name="badge_beta">Beta</string>
     <string name="badge_recording">REC</string>
     <string name="badge_scheduled">SCHED</string>
@@ -1208,8 +1208,8 @@
     <string name="label_slots_count_dynamic">%1$d/%2$d slotů</string>
     <string name="movie_detail_related">Více podobného</string>
     <string name="movie_detail_resume_from">Pokračovat od %1$s</string>
-    <string name="notification_permission_recording_alert_required">Povolte oznámení pro StreamVault, abyste dostávali upozornění na selhání nahrávání.</string>
-    <string name="notification_permission_reminder_required">Povolte oznámení pro StreamVault, abyste dostávali připomínky pořadů.</string>
+    <string name="notification_permission_recording_alert_required">Povolte oznámení pro ZenLemon, abyste dostávali upozornění na selhání nahrávání.</string>
+    <string name="notification_permission_reminder_required">Povolte oznámení pro ZenLemon, abyste dostávali připomínky pořadů.</string>
     <string name="player_action_variants">Varianty</string>
     <string name="player_auto_play_cancel">Zrušit</string>
     <string name="player_auto_play_countdown">Přehrávání za %1$d s</string>
@@ -1383,7 +1383,7 @@
     <string name="settings_recording_skipped">Událost přeskočena</string>
     <string name="settings_recording_wifi_only">Nahrávat pouze na Wi-Fi</string>
     <string name="settings_reset">Obnovit</string>
-    <string name="settings_restore_subtitle">Vyberte záložní soubor nebo otevřete zálohu pomocí StreamVault ze správce souborů.</string>
+    <string name="settings_restore_subtitle">Vyberte záložní soubor nebo otevřete zálohu pomocí ZenLemon ze správce souborů.</string>
     <string name="settings_select_guide_default_category">Vybrat výchozí kategorii průvodce</string>
     <string name="settings_select_live_timeshift_depth">Vybrat hloubku místního přetáčení</string>
     <string name="settings_select_time_format">Vybrat formát času</string>
@@ -1429,7 +1429,7 @@
     <string name="vod_sync_needed_title">Synchronizace potřebná</string>
     <!-- M2: Google Drive backup sync -->
     <string name="settings_drive_section_title">Google Drive backup</string>
-    <string name="settings_drive_section_subtitle">Push and pull your StreamVault configuration to a private Drive folder.</string>
+    <string name="settings_drive_section_subtitle">Push and pull your ZenLemon configuration to a private Drive folder.</string>
     <string name="settings_drive_signin">Sign in to Google Drive</string>
     <string name="settings_drive_signin_description">Connect a Google account to enable cloud backup.</string>
     <string name="settings_drive_signout">Sign out</string>

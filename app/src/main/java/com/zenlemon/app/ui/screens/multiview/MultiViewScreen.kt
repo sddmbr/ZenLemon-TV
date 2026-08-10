@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.ui.screens.multiview
+﻿package com.zenlemon.app.ui.screens.multiview
 
 import android.app.Activity
 import android.view.View
@@ -76,19 +76,19 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.PlayerRenderView
-import com.streamvault.app.ui.components.dialogs.PinDialog
-import com.streamvault.app.ui.components.dialogs.PremiumDialog
-import com.streamvault.app.ui.components.dialogs.PremiumDialogActionButton
-import com.streamvault.app.ui.components.dialogs.PremiumDialogFooterButton
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.player.PlayerRenderSurfaceType
-import com.streamvault.player.PlayerSurfaceResizeMode
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.PlayerRenderView
+import com.zenlemon.app.ui.components.dialogs.PinDialog
+import com.zenlemon.app.ui.components.dialogs.PremiumDialog
+import com.zenlemon.app.ui.components.dialogs.PremiumDialogActionButton
+import com.zenlemon.app.ui.components.dialogs.PremiumDialogFooterButton
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.player.PlayerRenderSurfaceType
+import com.zenlemon.player.PlayerSurfaceResizeMode
 import kotlinx.coroutines.launch
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.interaction.TvButton
-import com.streamvault.app.ui.interaction.TvIconButton
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.interaction.TvButton
+import com.zenlemon.app.ui.interaction.TvIconButton
 
 @Composable
 fun MultiViewScreen(
@@ -573,7 +573,7 @@ private fun PlayerCell(
 
                     // Buffering indicator for active streams
                     val playbackState = slot.playerEngine?.playbackState?.collectAsStateWithLifecycle()
-                    if (playbackState?.value == com.streamvault.player.PlaybackState.BUFFERING) {
+                    if (playbackState?.value == com.zenlemon.player.PlaybackState.BUFFERING) {
                         CircularProgressIndicator(
                             color = Color.White.copy(alpha = 0.7f),
                             modifier = Modifier
@@ -737,12 +737,12 @@ private fun ReplaceSlotDialog(
     pickerState: MultiViewPickerState,
     parentalControlLevel: Int,
     onDismiss: () -> Unit,
-    onSelectCategory: (com.streamvault.domain.model.Category) -> Unit,
+    onSelectCategory: (com.zenlemon.domain.model.Category) -> Unit,
     onBackToCategories: () -> Unit,
     onUpdateSearch: (String) -> Unit,
     onVerifyPin: suspend (String) -> Boolean,
     onUnlockCategory: (Long) -> Unit,
-    onReplace: (com.streamvault.domain.model.Channel) -> Unit
+    onReplace: (com.zenlemon.domain.model.Channel) -> Unit
 ) {
     var catSearch by remember { mutableStateOf("") }
     val selectedCategory = pickerState.selectedCategory
@@ -758,9 +758,9 @@ private fun ReplaceSlotDialog(
     val context = LocalContext.current
     var showPinDialog by remember { mutableStateOf(false) }
     var pinError by remember { mutableStateOf<String?>(null) }
-    var pendingLockedCategory by remember { mutableStateOf<com.streamvault.domain.model.Category?>(null) }
+    var pendingLockedCategory by remember { mutableStateOf<com.zenlemon.domain.model.Category?>(null) }
 
-    fun isCategoryLocked(cat: com.streamvault.domain.model.Category): Boolean =
+    fun isCategoryLocked(cat: com.zenlemon.domain.model.Category): Boolean =
         parentalControlLevel in 1..2 && (cat.isAdult || cat.isUserProtected)
 
     PremiumDialog(

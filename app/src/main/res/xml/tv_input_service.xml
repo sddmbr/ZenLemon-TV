@@ -2,4 +2,4 @@
 <tv-input xmlns:android="http://schemas.android.com/apk/res/android"
     android:canRecord="false"
     android:label="@string/app_name"
-    android:setupActivity="com.streamvault.app.tvinput.TvInputSetupActivity" />
+    android:setupActivity="com.zenlemon.app.tvinput.TvInputSetupActivity" />

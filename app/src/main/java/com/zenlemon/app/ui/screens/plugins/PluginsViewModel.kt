@@ -1,14 +1,14 @@
-package com.streamvault.app.ui.screens.plugins
+package com.zenlemon.app.ui.screens.plugins
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.plugins.InstalledStreamVaultPlugin
-import com.streamvault.app.plugins.PluginConfigurationAction
-import com.streamvault.app.plugins.PluginConfigurationField
-import com.streamvault.app.plugins.PluginConfigurationSchema
-import com.streamvault.app.plugins.StreamVaultPluginManager
-import com.streamvault.domain.model.Result
+import com.zenlemon.app.plugins.InstalledZenLemonPlugin
+import com.zenlemon.app.plugins.PluginConfigurationAction
+import com.zenlemon.app.plugins.PluginConfigurationField
+import com.zenlemon.app.plugins.PluginConfigurationSchema
+import com.zenlemon.app.plugins.ZenLemonPluginManager
+import com.zenlemon.domain.model.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,7 +27,7 @@ import kotlinx.serialization.json.longOrNull
 import kotlinx.serialization.json.put
 
 data class PluginsUiState(
-    val plugins: List<InstalledStreamVaultPlugin> = emptyList(),
+    val plugins: List<InstalledZenLemonPlugin> = emptyList(),
     val installUrl: String = "",
     val isLoading: Boolean = false,
     val isInstalling: Boolean = false,
@@ -39,7 +39,7 @@ data class PluginsUiState(
 )
 
 data class ActivePluginConfiguration(
-    val plugin: InstalledStreamVaultPlugin,
+    val plugin: InstalledZenLemonPlugin,
     val schema: PluginConfigurationSchema,
     val values: JsonObject,
     val draftValues: Map<String, String>,
@@ -53,7 +53,7 @@ data class ActivePluginConfiguration(
 
 @HiltViewModel
 class PluginsViewModel @Inject constructor(
-    private val pluginManager: StreamVaultPluginManager
+    private val pluginManager: ZenLemonPluginManager
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(PluginsUiState(isLoading = true))
     val uiState: StateFlow<PluginsUiState> = _uiState.asStateFlow()
@@ -119,7 +119,7 @@ class PluginsViewModel @Inject constructor(
         }
     }
 
-    fun setPluginEnabled(plugin: InstalledStreamVaultPlugin, enabled: Boolean) {
+    fun setPluginEnabled(plugin: InstalledZenLemonPlugin, enabled: Boolean) {
         viewModelScope.launch {
             _uiState.update {
                 it.copy(
@@ -143,7 +143,7 @@ class PluginsViewModel @Inject constructor(
         }
     }
 
-    fun openPluginConfiguration(plugin: InstalledStreamVaultPlugin) {
+    fun openPluginConfiguration(plugin: InstalledZenLemonPlugin) {
         if (plugin.manifest.usesActivityConfiguration || !plugin.manifest.supportsHostRenderedConfiguration) {
             val result = pluginManager.openPluginConfiguration(plugin)
             _uiState.update { it.copy(userMessage = result.message) }

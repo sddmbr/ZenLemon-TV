@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -27,23 +27,23 @@ import androidx.compose.ui.unit.dp
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.model.VodViewMode
-import com.streamvault.app.ui.theme.AccentAmber
-import com.streamvault.app.ui.theme.AccentCyan
-import com.streamvault.app.ui.theme.AccentGreen
-import com.streamvault.app.ui.theme.AccentRed
-import com.streamvault.app.ui.theme.OnBackground
-import com.streamvault.app.ui.theme.OnSurface
-import com.streamvault.app.ui.theme.OnSurfaceDim
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.domain.model.CategorySortMode
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.LiveChannelGroupingMode
-import com.streamvault.domain.model.RemoteColorButton
-import com.streamvault.domain.model.RemoteShortcutProfile
-import com.streamvault.domain.model.VodDuplicateHandlingMode
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.model.VodViewMode
+import com.zenlemon.app.ui.theme.AccentAmber
+import com.zenlemon.app.ui.theme.AccentCyan
+import com.zenlemon.app.ui.theme.AccentGreen
+import com.zenlemon.app.ui.theme.AccentRed
+import com.zenlemon.app.ui.theme.OnBackground
+import com.zenlemon.app.ui.theme.OnSurface
+import com.zenlemon.app.ui.theme.OnSurfaceDim
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.domain.model.CategorySortMode
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.LiveChannelGroupingMode
+import com.zenlemon.domain.model.RemoteColorButton
+import com.zenlemon.domain.model.RemoteShortcutProfile
+import com.zenlemon.domain.model.VodDuplicateHandlingMode
 
 internal fun LazyListScope.settingsBrowsingSection(
     uiState: SettingsUiState,

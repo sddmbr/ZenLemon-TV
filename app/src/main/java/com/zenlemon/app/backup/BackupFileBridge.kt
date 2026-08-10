@@ -1,11 +1,11 @@
-package com.streamvault.app.backup
+package com.zenlemon.app.backup
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Environment
 import androidx.core.content.FileProvider
-import com.streamvault.app.BuildConfig
+import com.zenlemon.app.BuildConfig
 import java.io.File
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -28,7 +28,7 @@ object BackupFileBridge {
      */
     fun createExportFile(baseDir: File): File {
         val backupsDir = File(baseDir, BACKUP_EXPORTS_DIR).apply { mkdirs() }
-        return File(backupsDir, "streamvault_backup_${LocalDateTime.now().format(exportNameFormatter)}.json")
+        return File(backupsDir, "zenlemon_backup_${LocalDateTime.now().format(exportNameFormatter)}.json")
             .also { file ->
                 file.parentFile?.mkdirs()
                 if (!file.exists()) file.createNewFile()
@@ -45,7 +45,7 @@ object BackupFileBridge {
     fun copyToImportInbox(context: Context, sourceUri: Uri): Uri? {
         pruneImportInbox(context)
         val inboxDir = File(context.cacheDir, BACKUP_IMPORTS_DIR).apply { mkdirs() }
-        val targetFile = File(inboxDir, "streamvault_import_${System.currentTimeMillis()}.json")
+        val targetFile = File(inboxDir, "zenlemon_import_${System.currentTimeMillis()}.json")
         return runCatching {
             context.contentResolver.openInputStream(sourceUri)?.use { input ->
                 targetFile.outputStream().use { output -> input.copyTo(output) }
@@ -64,7 +64,7 @@ object BackupFileBridge {
             putExtra(Intent.EXTRA_STREAM, uri)
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
-        return Intent.createChooser(sendIntent, "Share StreamVault backup")
+        return Intent.createChooser(sendIntent, "Share ZenLemon backup")
             .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     }
 

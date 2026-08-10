@@ -1,6 +1,6 @@
-package com.streamvault.app.ui.screens.dashboard
+package com.zenlemon.app.ui.screens.dashboard
 
-import com.streamvault.domain.model.AppHomeDashboardShelf
+import com.zenlemon.domain.model.AppHomeDashboardShelf
 
 internal fun resolveVisibleDashboardShelves(
     uiState: DashboardUiState

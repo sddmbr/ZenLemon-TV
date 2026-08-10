@@ -1,7 +1,7 @@
-package com.streamvault.app.update
+package com.zenlemon.app.update
 
-import com.streamvault.app.BuildConfig
-import com.streamvault.domain.model.Result
+import com.zenlemon.app.BuildConfig
+import com.zenlemon.domain.model.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
@@ -14,8 +14,8 @@ import java.net.URI
 import javax.inject.Inject
 import javax.inject.Singleton
 
-private const val GITHUB_RELEASES_LATEST_URL = "https://api.github.com/repos/Davidona/StreamVault-IPTV/releases/latest"
-private const val GITHUB_RELEASES_LIST_URL = "https://api.github.com/repos/Davidona/StreamVault-IPTV/releases?per_page=20"
+private const val GITHUB_RELEASES_LATEST_URL = "https://api.github.com/repos/sddmbr/Zenlemon-TV/releases/latest"
+private const val GITHUB_RELEASES_LIST_URL = "https://api.github.com/repos/sddmbr/Zenlemon-TV/releases?per_page=20"
 
 data class GitHubReleaseInfo(
     val versionName: String,
@@ -42,7 +42,7 @@ class GitHubReleaseChecker @Inject constructor(
             val request = Request.Builder()
                 .url(updateChannel.releaseApiUrl)
                 .header("Accept", "application/vnd.github+json")
-                .header("User-Agent", "StreamVault-Update-Checker")
+                .header("User-Agent", "ZenLemon-Update-Checker")
                 .build()
 
             okHttpClient.newCall(request).execute().use { response ->
@@ -163,7 +163,7 @@ class GitHubReleaseChecker @Inject constructor(
             )
             when (updateChannel) {
                 AppUpdateChannel.Stable -> {
-                    if (name.equals("StreamVault.apk", ignoreCase = true)) {
+                    if (name.equals("ZenLemon.apk", ignoreCase = true)) {
                         return releaseAsset
                     }
                     if (fallback == null &&
@@ -174,7 +174,7 @@ class GitHubReleaseChecker @Inject constructor(
                     }
                 }
                 AppUpdateChannel.Beta -> {
-                    if (name.equals("StreamVault-beta.apk", ignoreCase = true)) {
+                    if (name.equals("ZenLemon-beta.apk", ignoreCase = true)) {
                         return releaseAsset
                     }
                     if (fallback == null &&

@@ -1,16 +1,16 @@
 @file:OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
 
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.ui.model.orderedByRequestedRawIds
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.ChannelNumberingMode
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.Favorite
-import com.streamvault.domain.model.VirtualCategoryIds
-import com.streamvault.domain.repository.ChannelRepository
+import com.zenlemon.app.ui.model.orderedByRequestedRawIds
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.ChannelNumberingMode
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.Favorite
+import com.zenlemon.domain.model.VirtualCategoryIds
+import com.zenlemon.domain.repository.ChannelRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
@@ -344,7 +344,7 @@ private fun PlayerViewModel.observeRecentLiveIds(providerIds: List<Long>, limit:
 }
 
 private fun buildCombinedLiveCategories(
-    combinedCategories: List<com.streamvault.domain.model.CombinedCategory>,
+    combinedCategories: List<com.zenlemon.domain.model.CombinedCategory>,
     customCategories: List<Category>
 ): List<Category> = buildList {
     val favoritesCategory = customCategories.find { it.id == VirtualCategoryIds.FAVORITES }

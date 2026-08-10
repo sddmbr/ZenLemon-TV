@@ -1,8 +1,8 @@
-package com.streamvault.app.player
+package com.zenlemon.app.player
 
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.StreamInfo
-import com.streamvault.player.PlayerEngine
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.StreamInfo
+import com.zenlemon.player.PlayerEngine
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope

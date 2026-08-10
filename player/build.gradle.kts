@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.streamvault.player"
+    namespace = "com.zenlemon.player"
     compileSdk = 36
 
     defaultConfig {

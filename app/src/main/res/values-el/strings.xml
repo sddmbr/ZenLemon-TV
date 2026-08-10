@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">StreamVault</string>
+    <string name="app_name">ZenLemon</string>
     <string name="nav_home">Αρχική</string>
     <string name="nav_live_tv">Ζωντανή TV</string>
     <string name="nav_movies">Ταινίες</string>
@@ -106,7 +106,7 @@
     <string name="dashboard_provider_no_expiry">Δεν αναφέρθηκε λήξη</string>
     <string name="dashboard_warning_title">Ο πάροχος χρειάζεται προσοχή</string>
     <string name="dashboard_warning_review">Άνοιγμα λεπτομερειών παρόχου</string>
-    <string name="dashboard_update_title">Το StreamVault %1$s είναι διαθέσιμο</string>
+    <string name="dashboard_update_title">Το ZenLemon %1$s είναι διαθέσιμο</string>
     <string name="dashboard_update_available">Μια νεότερη έκδοση της εφαρμογής είναι αποθηκευμένη και έτοιμη για έλεγχο από τις Ρυθμίσεις.</string>
     <string name="dashboard_update_install_ready">Η τελευταία ενημέρωση έχει ήδη ληφθεί. Ανοίξτε τις Ρυθμίσεις για να την εγκαταστήσετε.</string>
     <string name="dashboard_update_open_settings">Άνοιγμα ενημερώσεων</string>
@@ -404,7 +404,7 @@
     <string name="settings_about_subtitle">Έκδοση, build και στοιχεία υποστήριξης για αυτήν την εγκατάσταση.</string>
     <string name="settings_app_version">Έκδοση εφαρμογής</string>
     <string name="settings_build">Έκδοση</string>
-    <string name="settings_build_desc">StreamVault για Android TV</string>
+    <string name="settings_build_desc">ZenLemon για Android TV</string>
     <string name="settings_enabled">Ενεργό</string>
     <string name="settings_disabled">Ανενεργό</string>
     <string name="settings_developed_by">Αναπτύχθηκε από</string>
@@ -414,7 +414,7 @@
     <string name="settings_donate">Υποστήριξη στο Ko-fi</string>
     <string name="settings_donate_url">https://ko-fi.com/davidona</string>
     <string name="settings_updates_title">Ενημερώσεις</string>
-    <string name="settings_updates_subtitle">Ελέγξτε τα GitHub Releases για νεότερες εκδόσεις του StreamVault χωρίς να φύγετε από την εφαρμογή.</string>
+    <string name="settings_updates_subtitle">Ελέγξτε τα GitHub Releases για νεότερες εκδόσεις του ZenLemon χωρίς να φύγετε από την εφαρμογή.</string>
     <string name="settings_update_auto_check">Αυτόματος έλεγχος για ενημερώσεις</string>
     <string name="settings_update_latest_release">Τελευταία έκδοση</string>
     <string name="settings_update_status">Κατάσταση ενημέρωσης</string>
@@ -438,8 +438,8 @@
     <string name="settings_update_status_check_failed">Ο τελευταίος έλεγχος απέτυχε</string>
     <string name="settings_update_status_downloading">Λήψη ενημέρωσης</string>
     <string name="settings_update_status_ready_to_install">Έτοιμο για εγκατάσταση</string>
-    <string name="settings_update_available_message">Το StreamVault %1$s είναι διαθέσιμο.</string>
-    <string name="settings_update_current_message">Έχετε ήδη την πιο πρόσφατη έκδοση του StreamVault.</string>
+    <string name="settings_update_available_message">Το ZenLemon %1$s είναι διαθέσιμο.</string>
+    <string name="settings_update_current_message">Έχετε ήδη την πιο πρόσφατη έκδοση του ZenLemon.</string>
     <string name="settings_syncing">Γίνεται συγχρονισμός δεδομένων, περιμένετε...</string>
     <string name="settings_syncing_title">Γίνεται συγχρονισμός δεδομένων...</string>
     <string name="settings_syncing_subtitle">Περιμένετε όσο γίνεται εισαγωγή της λίστας αναπαραγωγής σας.</string>
@@ -702,7 +702,7 @@
     <string name="a11y_catch_up_available">Διαθέσιμο catch-up</string>
     <string name="a11y_now_playing">Αναπαράγεται τώρα %1$s</string>
     <string name="a11y_channel_with_number">Κανάλι %1$d, %2$s</string>
-    <string name="setup_title_streamvault">StreamVault</string>
+    <string name="setup_title_zenlemon">ZenLemon</string>
     <string name="setup_provider_title">Προσθήκη παρόχου</string>
     <string name="setup_edit_provider">Επεξεργασία παρόχου</string>
     <string name="setup_update_desc">Ενημερώστε τα στοιχεία του παρόχου IPTV</string>
@@ -1167,21 +1167,21 @@
     <string name="settings_history_cleared">Το ιστορικό παρακολούθησης και τα πρόσφατα διαγράφηκαν</string>
     <string name="settings_pin_changed">Το PIN αποθηκεύτηκε με επιτυχία</string>
     <string name="home_reorder_channels">Αναδιάταξη καναλιών</string>
-    <string name="tv_input_setup_scanning_title">Σάρωση καναλιών StreamVault</string>
+    <string name="tv_input_setup_scanning_title">Σάρωση καναλιών ZenLemon</string>
     <string name="tv_input_setup_success_title">Η ζωντανή τηλεόραση είναι έτοιμη</string>
     <string name="tv_input_setup_no_provider_title">Δεν έχει διαμορφωθεί πάροχος IPTV</string>
     <string name="tv_input_setup_error_title">Η αυτόματη σάρωση απέτυχε</string>
     <string name="tv_input_setup_idle_title">Προετοιμασία ενσωμάτωσης ζωντανής τηλεόρασης</string>
-    <string name="tv_input_setup_scanning_body">Το StreamVault συγχρονίζει τον ενεργό πάροχο σας με το Android TV Live TV.</string>
+    <string name="tv_input_setup_scanning_body">Το ZenLemon συγχρονίζει τον ενεργό πάροχο σας με το Android TV Live TV.</string>
     <string name="tv_input_setup_success_body">Τα κανάλια σας συγχρονίστηκαν με επιτυχία.</string>
-    <string name="tv_input_setup_no_provider_body">Προσθέστε τουλάχιστον έναν πάροχο IPTV στο StreamVault και, στη συνέχεια, επιστρέψτε εδώ για να σαρώσετε κανάλια στο Android TV Live TV.</string>
+    <string name="tv_input_setup_no_provider_body">Προσθέστε τουλάχιστον έναν πάροχο IPTV στο ZenLemon και, στη συνέχεια, επιστρέψτε εδώ για να σαρώσετε κανάλια στο Android TV Live TV.</string>
     <string name="tv_input_setup_error_body">Ο συγχρονισμός εισόδου τηλεόρασης δεν ολοκληρώθηκε.</string>
     <string name="tv_input_setup_idle_body">Παρακαλώ περιμένετε.</string>
     <string name="tv_input_setup_source_format">Πηγή: %1$s</string>
-    <string name="tv_input_setup_open_setup">Ανοίξτε το StreamVault Setup</string>
+    <string name="tv_input_setup_open_setup">Ανοίξτε το ZenLemon Setup</string>
     <string name="tv_input_setup_try_scan_again">Δοκιμάστε ξανά την αυτόματη σάρωση</string>
     <string name="tv_input_setup_retry_scan">Δοκιμάστε ξανά την αυτόματη σάρωση</string>
-    <string name="tv_input_setup_success_hint">Το Android TV Live TV μπορεί πλέον να ανοίξει τα κανάλια σας StreamVault.</string>
+    <string name="tv_input_setup_success_hint">Το Android TV Live TV μπορεί πλέον να ανοίξει τα κανάλια σας ZenLemon.</string>
     <string name="badge_beta">Beta</string>
     <string name="badge_recording">REC</string>
     <string name="badge_scheduled">SCHED</string>
@@ -1208,8 +1208,8 @@
     <string name="label_slots_count_dynamic">%1$d/%2$d θέσεις</string>
     <string name="movie_detail_related">Παρόμοια</string>
     <string name="movie_detail_resume_from">Συνέχεια από %1$s</string>
-    <string name="notification_permission_recording_alert_required">Ενεργοποιήστε ειδοποιήσεις για StreamVault για λήψη ειδοποιήσεων αποτυχίας εγγραφής.</string>
-    <string name="notification_permission_reminder_required">Ενεργοποιήστε ειδοποιήσεις για StreamVault για λήψη υπενθυμίσεων προγράμματος.</string>
+    <string name="notification_permission_recording_alert_required">Ενεργοποιήστε ειδοποιήσεις για ZenLemon για λήψη ειδοποιήσεων αποτυχίας εγγραφής.</string>
+    <string name="notification_permission_reminder_required">Ενεργοποιήστε ειδοποιήσεις για ZenLemon για λήψη υπενθυμίσεων προγράμματος.</string>
     <string name="player_action_variants">Παραλλαγές</string>
     <string name="player_auto_play_cancel">Ακύρωση</string>
     <string name="player_auto_play_countdown">Αναπαραγωγή σε %1$d δ.</string>
@@ -1383,7 +1383,7 @@
     <string name="settings_recording_skipped">Εμφάνιση παραλείφθηκε</string>
     <string name="settings_recording_wifi_only">Εγγραφή μόνο με Wi-Fi</string>
     <string name="settings_reset">Επαναφορά</string>
-    <string name="settings_restore_subtitle">Επιλέξτε αρχείο αντιγράφου ή ανοίξτε ένα αντίγραφο με StreamVault από διαχειριστή αρχείων.</string>
+    <string name="settings_restore_subtitle">Επιλέξτε αρχείο αντιγράφου ή ανοίξτε ένα αντίγραφο με ZenLemon από διαχειριστή αρχείων.</string>
     <string name="settings_select_guide_default_category">Επιλογή προεπιλεγμένης κατηγορίας οδηγού</string>
     <string name="settings_select_live_timeshift_depth">Επιλογή Βάθους Τοπικής Επανάληψης</string>
     <string name="settings_select_time_format">Επιλογή μορφής ώρας</string>
@@ -1429,7 +1429,7 @@
     <string name="vod_sync_needed_title">Απαιτείται συγχρονισμός</string>
     <!-- M2: Google Drive backup sync -->
     <string name="settings_drive_section_title">Google Drive backup</string>
-    <string name="settings_drive_section_subtitle">Push and pull your StreamVault configuration to a private Drive folder.</string>
+    <string name="settings_drive_section_subtitle">Push and pull your ZenLemon configuration to a private Drive folder.</string>
     <string name="settings_drive_signin">Sign in to Google Drive</string>
     <string name="settings_drive_signin_description">Connect a Google account to enable cloud backup.</string>
     <string name="settings_drive_signout">Sign out</string>

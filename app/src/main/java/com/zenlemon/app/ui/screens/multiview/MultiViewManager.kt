@@ -1,6 +1,6 @@
-package com.streamvault.app.ui.screens.multiview
+package com.zenlemon.app.ui.screens.multiview
 
-import com.streamvault.domain.model.Channel
+import com.zenlemon.domain.model.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

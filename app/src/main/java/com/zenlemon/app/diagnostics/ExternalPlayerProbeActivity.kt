@@ -1,4 +1,4 @@
-package com.streamvault.app.diagnostics
+package com.zenlemon.app.diagnostics
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
-import com.streamvault.domain.model.Result
-import com.streamvault.domain.repository.ChannelRepository
+import com.zenlemon.domain.model.Result
+import com.zenlemon.domain.repository.ChannelRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlinx.coroutines.launch

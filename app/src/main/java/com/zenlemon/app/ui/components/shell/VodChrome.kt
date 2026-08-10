@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.components.shell
+package com.zenlemon.app.ui.components.shell
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -30,32 +30,32 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
-import com.streamvault.app.device.rememberIsTelevisionDevice
+import com.zenlemon.app.device.rememberIsTelevisionDevice
 import androidx.tv.material3.Border
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
-import com.streamvault.app.ui.design.AppColors
-import com.streamvault.app.ui.components.ChipRowItem
-import com.streamvault.app.ui.components.ChipRowSection
-import com.streamvault.app.ui.design.AppColors.Brand as Primary
-import com.streamvault.app.ui.design.AppColors.Focus as FocusBorder
-import com.streamvault.app.ui.design.AppColors.SurfaceElevated as SurfaceElevated
-import com.streamvault.app.ui.design.AppColors.SurfaceEmphasis as SurfaceHighlight
-import com.streamvault.app.ui.design.AppColors.TextPrimary as TextPrimary
-import com.streamvault.app.ui.design.AppColors.TextTertiary as OnSurfaceDim
+import com.zenlemon.app.ui.design.AppColors
+import com.zenlemon.app.ui.components.ChipRowItem
+import com.zenlemon.app.ui.components.ChipRowSection
+import com.zenlemon.app.ui.design.AppColors.Brand as Primary
+import com.zenlemon.app.ui.design.AppColors.Focus as FocusBorder
+import com.zenlemon.app.ui.design.AppColors.SurfaceElevated as SurfaceElevated
+import com.zenlemon.app.ui.design.AppColors.SurfaceEmphasis as SurfaceHighlight
+import com.zenlemon.app.ui.design.AppColors.TextPrimary as TextPrimary
+import com.zenlemon.app.ui.design.AppColors.TextTertiary as OnSurfaceDim
 import androidx.compose.foundation.BorderStroke
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.SearchInput
-import com.streamvault.app.ui.components.SelectionChip
-import com.streamvault.app.ui.components.SelectionChipRow
-import com.streamvault.app.ui.components.dialogs.PremiumDialog
-import com.streamvault.app.ui.components.dialogs.PremiumDialogFooterButton
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.interaction.TvButton
-import com.streamvault.app.ui.interaction.TvIconButton
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.SearchInput
+import com.zenlemon.app.ui.components.SelectionChip
+import com.zenlemon.app.ui.components.SelectionChipRow
+import com.zenlemon.app.ui.components.dialogs.PremiumDialog
+import com.zenlemon.app.ui.components.dialogs.PremiumDialogFooterButton
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.interaction.TvButton
+import com.zenlemon.app.ui.interaction.TvIconButton
 
 @Composable
 fun VodSectionHeader(

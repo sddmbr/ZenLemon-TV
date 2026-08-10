@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,24 +12,24 @@ import androidx.compose.ui.unit.dp
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.dialogs.PremiumDialog
-import com.streamvault.app.ui.components.dialogs.PremiumDialogFooterButton
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.model.VodViewMode
-import com.streamvault.app.ui.theme.OnBackground
-import com.streamvault.app.ui.theme.OnSurfaceDim
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.app.ui.theme.SurfaceElevated
-import com.streamvault.domain.model.ChannelNumberingMode
-import com.streamvault.domain.model.GroupedChannelLabelMode
-import com.streamvault.domain.model.LiveChannelGroupingMode
-import com.streamvault.domain.model.LiveVariantPreferenceMode
-import com.streamvault.domain.model.RemoteColorButton
-import com.streamvault.domain.model.RemoteShortcutProfile
-import com.streamvault.domain.model.RemoteShortcutSelection
-import com.streamvault.domain.model.VodDuplicateHandlingMode
-import com.streamvault.domain.model.VodVariantPreferenceMode
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.dialogs.PremiumDialog
+import com.zenlemon.app.ui.components.dialogs.PremiumDialogFooterButton
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.model.VodViewMode
+import com.zenlemon.app.ui.theme.OnBackground
+import com.zenlemon.app.ui.theme.OnSurfaceDim
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.app.ui.theme.SurfaceElevated
+import com.zenlemon.domain.model.ChannelNumberingMode
+import com.zenlemon.domain.model.GroupedChannelLabelMode
+import com.zenlemon.domain.model.LiveChannelGroupingMode
+import com.zenlemon.domain.model.LiveVariantPreferenceMode
+import com.zenlemon.domain.model.RemoteColorButton
+import com.zenlemon.domain.model.RemoteShortcutProfile
+import com.zenlemon.domain.model.RemoteShortcutSelection
+import com.zenlemon.domain.model.VodDuplicateHandlingMode
+import com.zenlemon.domain.model.VodVariantPreferenceMode
 
 @Composable
 internal fun VodViewModeDialog(

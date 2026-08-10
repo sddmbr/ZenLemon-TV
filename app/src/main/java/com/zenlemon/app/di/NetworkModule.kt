@@ -1,25 +1,25 @@
-package com.streamvault.app.di
+package com.zenlemon.app.di
 
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.util.Log
-import com.streamvault.app.BuildConfig
+import com.zenlemon.app.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.streamvault.data.remote.NetworkTimeoutConfig
-import com.streamvault.data.remote.http.DefaultUserAgentInterceptor
-import com.streamvault.data.remote.http.buildAppRequestProfile
-import com.streamvault.data.remote.http.buildAppUserAgent
-import com.streamvault.data.remote.stalker.OkHttpStalkerApiService
-import com.streamvault.data.remote.stalker.StalkerApiService
-import com.streamvault.data.remote.xtream.XtreamApiService
-import com.streamvault.data.remote.xtream.OkHttpXtreamApiService
-import com.streamvault.data.remote.xtream.XtreamUrlFactory
-import com.streamvault.data.parser.XmltvParser
-import com.streamvault.player.AudioCompatibilityMemoryStore
-import com.streamvault.player.Media3PlayerEngine
-import com.streamvault.player.PlayerEngine
-import com.streamvault.player.PlaybackSupportSnapshotStore
+import com.zenlemon.data.remote.NetworkTimeoutConfig
+import com.zenlemon.data.remote.http.DefaultUserAgentInterceptor
+import com.zenlemon.data.remote.http.buildAppRequestProfile
+import com.zenlemon.data.remote.http.buildAppUserAgent
+import com.zenlemon.data.remote.stalker.OkHttpStalkerApiService
+import com.zenlemon.data.remote.stalker.StalkerApiService
+import com.zenlemon.data.remote.xtream.XtreamApiService
+import com.zenlemon.data.remote.xtream.OkHttpXtreamApiService
+import com.zenlemon.data.remote.xtream.XtreamUrlFactory
+import com.zenlemon.data.parser.XmltvParser
+import com.zenlemon.player.AudioCompatibilityMemoryStore
+import com.zenlemon.player.Media3PlayerEngine
+import com.zenlemon.player.PlayerEngine
+import com.zenlemon.player.PlaybackSupportSnapshotStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -64,7 +64,7 @@ object NetworkModule {
         return OkHttpClient.Builder()
             .cache(
                 Cache(
-                    directory = File(context.cacheDir, "streamvault_http_cache"),
+                    directory = File(context.cacheDir, "zenlemon_http_cache"),
                     maxSize = 256L * 1024 * 1024
                 )
             )
@@ -133,7 +133,7 @@ object NetworkModule {
     fun provideMainPlayerEngine(
         @ApplicationContext context: Context,
         okHttpClient: OkHttpClient,
-        playbackCompatibilityRepository: com.streamvault.domain.repository.PlaybackCompatibilityRepository,
+        playbackCompatibilityRepository: com.zenlemon.domain.repository.PlaybackCompatibilityRepository,
         audioCompatibilityMemoryStore: AudioCompatibilityMemoryStore,
         playbackSupportSnapshotStore: PlaybackSupportSnapshotStore
     ): PlayerEngine = Media3PlayerEngine(
@@ -153,7 +153,7 @@ object NetworkModule {
     fun provideAuxiliaryPlayerEngine(
         @ApplicationContext context: Context,
         okHttpClient: OkHttpClient,
-        playbackCompatibilityRepository: com.streamvault.domain.repository.PlaybackCompatibilityRepository,
+        playbackCompatibilityRepository: com.zenlemon.domain.repository.PlaybackCompatibilityRepository,
         audioCompatibilityMemoryStore: AudioCompatibilityMemoryStore,
         playbackSupportSnapshotStore: PlaybackSupportSnapshotStore
     ): PlayerEngine = Media3PlayerEngine(

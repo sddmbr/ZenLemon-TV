@@ -1,17 +1,17 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
-import com.streamvault.data.remote.stalker.StalkerPlaybackResolutionException
-import com.streamvault.data.remote.xtream.XtreamStreamUrlResolver
-import com.streamvault.data.security.CredentialDecryptionException
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.Episode
-import com.streamvault.domain.model.Result
-import com.streamvault.domain.model.Series
-import com.streamvault.domain.model.StreamInfo
-import com.streamvault.domain.model.StreamType
-import com.streamvault.domain.repository.ChannelRepository
-import com.streamvault.domain.repository.MovieRepository
-import com.streamvault.domain.repository.SeriesRepository
+import com.zenlemon.data.remote.stalker.StalkerPlaybackResolutionException
+import com.zenlemon.data.remote.xtream.XtreamStreamUrlResolver
+import com.zenlemon.data.security.CredentialDecryptionException
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.Episode
+import com.zenlemon.domain.model.Result
+import com.zenlemon.domain.model.Series
+import com.zenlemon.domain.model.StreamInfo
+import com.zenlemon.domain.model.StreamType
+import com.zenlemon.domain.repository.ChannelRepository
+import com.zenlemon.domain.repository.MovieRepository
+import com.zenlemon.domain.repository.SeriesRepository
 
 internal data class SeriesEpisodeResolution(
     val resolvedEpisode: Episode?,

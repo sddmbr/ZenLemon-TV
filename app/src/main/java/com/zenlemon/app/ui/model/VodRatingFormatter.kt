@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.model
+package com.zenlemon.app.ui.model
 
 import java.util.Locale
 

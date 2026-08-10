@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.interaction
+package com.zenlemon.app.ui.interaction
 
 import android.view.KeyEvent
 import androidx.compose.foundation.interaction.MutableInteractionSource

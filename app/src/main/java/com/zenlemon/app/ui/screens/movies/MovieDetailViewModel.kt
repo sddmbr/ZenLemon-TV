@@ -1,41 +1,41 @@
-package com.streamvault.app.ui.screens.movies
+package com.zenlemon.app.ui.screens.movies
 
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.R
-import com.streamvault.app.cast.CastMediaRequest
-import com.streamvault.app.cast.CastMediaRequestFactory
-import com.streamvault.app.cast.CastMediaRequestBuildResult
-import com.streamvault.app.cast.CastPlaybackEvent
-import com.streamvault.app.cast.CastPlaybackCoordinator
-import com.streamvault.app.cast.CastPlaybackReportMode
-import com.streamvault.app.cast.CastStartResult
-import com.streamvault.app.cast.CastUiEvent
-import com.streamvault.app.cast.toCastBuildFailureMessageRes
-import com.streamvault.app.cast.toCastPlaybackMessageRes
-import com.streamvault.app.cast.toCastUnsupportedMessageRes
-import com.streamvault.app.navigation.MOVIE_DETAIL_PRESENTATION_HINT_KEY
-import com.streamvault.app.plugins.StreamVaultPluginManager
-import com.streamvault.app.service.DownloadForegroundService
-import com.streamvault.app.util.isPlaybackComplete
-import com.streamvault.data.preferences.PreferencesRepository
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.DownloadContentType
-import com.streamvault.domain.model.DownloadRequest
-import com.streamvault.domain.model.ExternalRatings
-import com.streamvault.domain.model.ExternalRatingsLookup
-import com.streamvault.domain.model.MovieDetailPresentationHint
-import com.streamvault.domain.model.Movie
-import com.streamvault.domain.model.Result
-import com.streamvault.domain.repository.DownloadManager
-import com.streamvault.domain.repository.ExternalRatingsRepository
-import com.streamvault.domain.repository.FavoriteRepository
-import com.streamvault.domain.repository.MovieRepository
-import com.streamvault.domain.repository.PlaybackHistoryRepository
-import com.streamvault.domain.repository.ProviderRepository
+import com.zenlemon.app.R
+import com.zenlemon.app.cast.CastMediaRequest
+import com.zenlemon.app.cast.CastMediaRequestFactory
+import com.zenlemon.app.cast.CastMediaRequestBuildResult
+import com.zenlemon.app.cast.CastPlaybackEvent
+import com.zenlemon.app.cast.CastPlaybackCoordinator
+import com.zenlemon.app.cast.CastPlaybackReportMode
+import com.zenlemon.app.cast.CastStartResult
+import com.zenlemon.app.cast.CastUiEvent
+import com.zenlemon.app.cast.toCastBuildFailureMessageRes
+import com.zenlemon.app.cast.toCastPlaybackMessageRes
+import com.zenlemon.app.cast.toCastUnsupportedMessageRes
+import com.zenlemon.app.navigation.MOVIE_DETAIL_PRESENTATION_HINT_KEY
+import com.zenlemon.app.plugins.ZenLemonPluginManager
+import com.zenlemon.app.service.DownloadForegroundService
+import com.zenlemon.app.util.isPlaybackComplete
+import com.zenlemon.data.preferences.PreferencesRepository
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.DownloadContentType
+import com.zenlemon.domain.model.DownloadRequest
+import com.zenlemon.domain.model.ExternalRatings
+import com.zenlemon.domain.model.ExternalRatingsLookup
+import com.zenlemon.domain.model.MovieDetailPresentationHint
+import com.zenlemon.domain.model.Movie
+import com.zenlemon.domain.model.Result
+import com.zenlemon.domain.repository.DownloadManager
+import com.zenlemon.domain.repository.ExternalRatingsRepository
+import com.zenlemon.domain.repository.FavoriteRepository
+import com.zenlemon.domain.repository.MovieRepository
+import com.zenlemon.domain.repository.PlaybackHistoryRepository
+import com.zenlemon.domain.repository.ProviderRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -57,7 +57,7 @@ class MovieDetailViewModel @Inject constructor(
     private val externalRatingsRepository: ExternalRatingsRepository,
     private val favoriteRepository: FavoriteRepository,
     private val preferencesRepository: PreferencesRepository,
-    private val pluginManager: StreamVaultPluginManager,
+    private val pluginManager: ZenLemonPluginManager,
     private val downloadManager: DownloadManager,
     private val castMediaRequestFactory: CastMediaRequestFactory,
     private val castPlaybackCoordinator: CastPlaybackCoordinator

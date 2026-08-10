@@ -1,9 +1,9 @@
-package com.streamvault.app.ui.screens.vod
+package com.zenlemon.app.ui.screens.vod
 
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.Favorite
-import com.streamvault.domain.repository.FavoriteRepository
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.Favorite
+import com.zenlemon.domain.repository.FavoriteRepository
 import kotlinx.coroutines.flow.first
 
 suspend fun <Item> loadVodReorderItems(

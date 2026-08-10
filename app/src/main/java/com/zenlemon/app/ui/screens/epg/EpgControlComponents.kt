@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.epg
+package com.zenlemon.app.ui.screens.epg
 
 import android.view.inputmethod.InputMethodManager
 import androidx.compose.foundation.BorderStroke
@@ -55,17 +55,17 @@ import androidx.tv.material3.Border
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.device.rememberIsTelevisionDevice
-import com.streamvault.app.ui.components.SelectionChip
-import com.streamvault.app.ui.components.SelectionChipRow
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.theme.FocusBorder
-import com.streamvault.app.ui.theme.OnSurface
-import com.streamvault.app.ui.theme.OnSurfaceDim
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.app.ui.theme.SurfaceElevated
-import com.streamvault.app.ui.theme.SurfaceHighlight
+import com.zenlemon.app.R
+import com.zenlemon.app.device.rememberIsTelevisionDevice
+import com.zenlemon.app.ui.components.SelectionChip
+import com.zenlemon.app.ui.components.SelectionChipRow
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.theme.FocusBorder
+import com.zenlemon.app.ui.theme.OnSurface
+import com.zenlemon.app.ui.theme.OnSurfaceDim
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.app.ui.theme.SurfaceElevated
+import com.zenlemon.app.ui.theme.SurfaceHighlight
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

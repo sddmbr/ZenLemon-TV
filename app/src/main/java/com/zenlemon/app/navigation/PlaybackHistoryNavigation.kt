@@ -1,6 +1,6 @@
-package com.streamvault.app.navigation
+package com.zenlemon.app.navigation
 
-import com.streamvault.domain.model.PlaybackHistory
+import com.zenlemon.domain.model.PlaybackHistory
 
 internal fun PlaybackHistory.toPlayerNavigationRequest(): PlayerNavigationRequest =
     PlayerNavigationRequest(

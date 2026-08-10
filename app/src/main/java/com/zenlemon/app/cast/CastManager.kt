@@ -1,4 +1,4 @@
-package com.streamvault.app.cast
+package com.zenlemon.app.cast
 
 import android.content.Context
 import android.net.Uri
@@ -13,7 +13,7 @@ import com.google.android.gms.cast.MediaMetadata
 import com.google.android.gms.cast.framework.CastContext
 import com.google.android.gms.cast.framework.CastSession
 import com.google.android.gms.cast.framework.SessionManagerListener
-import com.streamvault.app.plugins.StreamVaultPluginManager
+import com.zenlemon.app.plugins.ZenLemonPluginManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,7 +27,7 @@ import javax.inject.Singleton
 @Singleton
 class CastManager @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val pluginManager: StreamVaultPluginManager
+    private val pluginManager: ZenLemonPluginManager
 ) {
 
     private val _connectionState = MutableStateFlow(CastConnectionState.UNAVAILABLE)

@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.dashboard
+package com.zenlemon.app.ui.screens.dashboard
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -50,44 +50,44 @@ import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import com.streamvault.app.R
-import com.streamvault.app.device.rememberIsTelevisionDevice
-import com.streamvault.app.ui.components.ChannelLogoBadge
-import com.streamvault.app.navigation.Routes
-import com.streamvault.app.ui.components.CategoryRow
-import com.streamvault.app.ui.components.ChannelCard
-import com.streamvault.app.ui.components.ContinueWatchingRow
-import com.streamvault.app.ui.components.MovieCard
-import com.streamvault.app.ui.components.rememberCrossfadeImageModel
-import com.streamvault.app.ui.components.SeriesCard
-import com.streamvault.app.ui.components.shell.AppNavigationChrome
-import com.streamvault.app.ui.components.shell.AppHeroHeader
-import com.streamvault.app.ui.components.shell.AppScreenScaffold
-import com.streamvault.app.ui.components.shell.StatusPill
-import com.streamvault.app.ui.design.AppColors
-import com.streamvault.app.ui.time.LocalAppTimeFormat
-import com.streamvault.app.ui.time.createDateTimeFormat
-import com.streamvault.app.ui.design.AppColors.Brand as Primary
-import com.streamvault.app.ui.design.AppColors.Focus as FocusBorder
-import com.streamvault.app.ui.design.AppColors.SurfaceElevated as SurfaceElevated
-import com.streamvault.app.ui.design.AppColors.SurfaceEmphasis as SurfaceHighlight
-import com.streamvault.app.ui.design.AppColors.TextPrimary as OnBackground
-import com.streamvault.app.ui.design.AppColors.TextPrimary as TextPrimary
-import com.streamvault.app.ui.design.AppColors.TextTertiary as OnSurfaceDim
-import com.streamvault.app.ui.design.AppColors.TextTertiary as TextTertiary
-import com.streamvault.domain.model.AppHomeDashboardShelf
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.Movie
-import com.streamvault.domain.model.PlaybackHistory
-import com.streamvault.domain.model.Series
+import com.zenlemon.app.R
+import com.zenlemon.app.device.rememberIsTelevisionDevice
+import com.zenlemon.app.ui.components.ChannelLogoBadge
+import com.zenlemon.app.navigation.Routes
+import com.zenlemon.app.ui.components.CategoryRow
+import com.zenlemon.app.ui.components.ChannelCard
+import com.zenlemon.app.ui.components.ContinueWatchingRow
+import com.zenlemon.app.ui.components.MovieCard
+import com.zenlemon.app.ui.components.rememberCrossfadeImageModel
+import com.zenlemon.app.ui.components.SeriesCard
+import com.zenlemon.app.ui.components.shell.AppNavigationChrome
+import com.zenlemon.app.ui.components.shell.AppHeroHeader
+import com.zenlemon.app.ui.components.shell.AppScreenScaffold
+import com.zenlemon.app.ui.components.shell.StatusPill
+import com.zenlemon.app.ui.design.AppColors
+import com.zenlemon.app.ui.time.LocalAppTimeFormat
+import com.zenlemon.app.ui.time.createDateTimeFormat
+import com.zenlemon.app.ui.design.AppColors.Brand as Primary
+import com.zenlemon.app.ui.design.AppColors.Focus as FocusBorder
+import com.zenlemon.app.ui.design.AppColors.SurfaceElevated as SurfaceElevated
+import com.zenlemon.app.ui.design.AppColors.SurfaceEmphasis as SurfaceHighlight
+import com.zenlemon.app.ui.design.AppColors.TextPrimary as OnBackground
+import com.zenlemon.app.ui.design.AppColors.TextPrimary as TextPrimary
+import com.zenlemon.app.ui.design.AppColors.TextTertiary as OnSurfaceDim
+import com.zenlemon.app.ui.design.AppColors.TextTertiary as TextTertiary
+import com.zenlemon.domain.model.AppHomeDashboardShelf
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.Movie
+import com.zenlemon.domain.model.PlaybackHistory
+import com.zenlemon.domain.model.Series
 import androidx.compose.ui.res.stringResource
 import androidx.compose.foundation.BorderStroke
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.interaction.TvButton
-import com.streamvault.app.ui.interaction.TvIconButton
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.interaction.TvButton
+import com.zenlemon.app.ui.interaction.TvIconButton
 
 @Composable
 fun DashboardScreen(
@@ -136,8 +136,8 @@ fun DashboardScreen(
             val onContinueWatchingItemClick: (PlaybackHistory) -> Unit = { history ->
                 val rawSeriesId = history.seriesId ?: history.contentId
                 val presentedSeries = if (
-                    history.contentType == com.streamvault.domain.model.ContentType.SERIES ||
-                    history.contentType == com.streamvault.domain.model.ContentType.SERIES_EPISODE
+                    history.contentType == com.zenlemon.domain.model.ContentType.SERIES ||
+                    history.contentType == com.zenlemon.domain.model.ContentType.SERIES_EPISODE
                 ) {
                     uiState.continueWatchingSeries.firstOrNull { series ->
                         series.rawSeriesIdsForNavigation().contains(rawSeriesId)
@@ -201,7 +201,7 @@ fun DashboardScreen(
                     AppHomeDashboardShelf.FAVORITE_CHANNELS -> FavoriteChannelsRow(
                         title = stringResource(R.string.dashboard_favorite_channels),
                         channels = uiState.favoriteChannels,
-                        onSeeAll = { onNavigate(Routes.liveTv(com.streamvault.domain.model.VirtualCategoryIds.FAVORITES)) },
+                        onSeeAll = { onNavigate(Routes.liveTv(com.zenlemon.domain.model.VirtualCategoryIds.FAVORITES)) },
                         onChannelClick = { channel ->
                             onFavoriteChannelClick(channel, uiState.currentCombinedProfileId)
                         }
@@ -211,7 +211,7 @@ fun DashboardScreen(
                         title = stringResource(R.string.dashboard_recent_channels),
                         items = uiState.recentChannels,
                         keySelector = { it.id },
-                        onSeeAll = { onNavigate(Routes.liveTv(com.streamvault.domain.model.VirtualCategoryIds.RECENT)) }
+                        onSeeAll = { onNavigate(Routes.liveTv(com.zenlemon.domain.model.VirtualCategoryIds.RECENT)) }
                     ) { channel ->
                         ChannelCard(
                             channel = channel,
@@ -602,18 +602,18 @@ private fun DashboardProviderHealthCard(
         } ?: context.getString(R.string.dashboard_provider_no_expiry)
     }
     val statusLabel = when (health.status) {
-        com.streamvault.domain.model.ProviderStatus.ACTIVE -> stringResource(R.string.settings_status_active)
-        com.streamvault.domain.model.ProviderStatus.PARTIAL -> stringResource(R.string.settings_status_partial)
-        com.streamvault.domain.model.ProviderStatus.ERROR -> stringResource(R.string.settings_status_error)
-        com.streamvault.domain.model.ProviderStatus.EXPIRED -> stringResource(R.string.settings_status_expired)
-        com.streamvault.domain.model.ProviderStatus.DISABLED -> stringResource(R.string.settings_status_disabled)
-        com.streamvault.domain.model.ProviderStatus.UNKNOWN -> stringResource(R.string.settings_status_unknown)
+        com.zenlemon.domain.model.ProviderStatus.ACTIVE -> stringResource(R.string.settings_status_active)
+        com.zenlemon.domain.model.ProviderStatus.PARTIAL -> stringResource(R.string.settings_status_partial)
+        com.zenlemon.domain.model.ProviderStatus.ERROR -> stringResource(R.string.settings_status_error)
+        com.zenlemon.domain.model.ProviderStatus.EXPIRED -> stringResource(R.string.settings_status_expired)
+        com.zenlemon.domain.model.ProviderStatus.DISABLED -> stringResource(R.string.settings_status_disabled)
+        com.zenlemon.domain.model.ProviderStatus.UNKNOWN -> stringResource(R.string.settings_status_unknown)
     }
     val sourceLabel = when (health.type) {
-        com.streamvault.domain.model.ProviderType.XTREAM_CODES -> stringResource(R.string.dashboard_provider_xtream)
-        com.streamvault.domain.model.ProviderType.M3U -> stringResource(R.string.dashboard_provider_m3u)
-        com.streamvault.domain.model.ProviderType.STALKER_PORTAL -> "Stalker/MAG Portal"
-        com.streamvault.domain.model.ProviderType.JELLYFIN -> "Jellyfin"
+        com.zenlemon.domain.model.ProviderType.XTREAM_CODES -> stringResource(R.string.dashboard_provider_xtream)
+        com.zenlemon.domain.model.ProviderType.M3U -> stringResource(R.string.dashboard_provider_m3u)
+        com.zenlemon.domain.model.ProviderType.STALKER_PORTAL -> "Stalker/MAG Portal"
+        com.zenlemon.domain.model.ProviderType.JELLYFIN -> "Jellyfin"
     }
 
     Surface(

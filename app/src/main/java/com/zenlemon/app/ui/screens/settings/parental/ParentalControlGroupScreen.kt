@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.settings.parental
+package com.zenlemon.app.ui.screens.settings.parental
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -48,14 +48,14 @@ import androidx.tv.material3.IconButton
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.SearchInput
-import com.streamvault.app.ui.components.dialogs.PinDialog
-import com.streamvault.app.ui.components.shell.AppNavigationChrome
-import com.streamvault.app.ui.components.shell.AppScreenScaffold
-import com.streamvault.domain.model.ContentType
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.interaction.TvIconButton
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.SearchInput
+import com.zenlemon.app.ui.components.dialogs.PinDialog
+import com.zenlemon.app.ui.components.shell.AppNavigationChrome
+import com.zenlemon.app.ui.components.shell.AppScreenScaffold
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.interaction.TvIconButton
 import kotlinx.coroutines.launch
 
 private enum class CategoryControlsMode {

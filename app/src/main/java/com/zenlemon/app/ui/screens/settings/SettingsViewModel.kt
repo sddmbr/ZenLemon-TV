@@ -1,90 +1,90 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.app.Application
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.R
-import com.streamvault.app.BuildConfig
-import com.streamvault.app.diagnostics.CrashReportStore
-import com.streamvault.app.tv.LauncherRecommendationsManager
-import com.streamvault.app.tv.WatchNextManager
-import com.streamvault.app.tvinput.TvInputChannelSyncManager
-import com.streamvault.app.ui.model.LiveTvChannelMode
-import com.streamvault.app.ui.model.LiveTvQuickFilterVisibilityMode
-import com.streamvault.app.ui.model.VodViewMode
-import com.streamvault.app.update.AppUpdateInstaller
-import com.streamvault.app.update.GitHubReleaseChecker
-import com.streamvault.app.update.isRemoteVersionNewer
-import com.streamvault.data.local.dao.ProgramDao
-import com.streamvault.data.local.dao.XtreamIndexJobDao
-import com.streamvault.data.local.dao.XtreamLiveOnboardingDao
-import com.streamvault.data.local.entity.XtreamIndexJobEntity
-import com.streamvault.data.preferences.PreferencesRepository
-import com.streamvault.data.sync.SyncManager
-import com.streamvault.data.sync.SyncRepairSection
-import com.streamvault.domain.manager.BackupConflictStrategy
-import com.streamvault.domain.manager.BackupImportPlan
-import com.streamvault.domain.manager.BackupManager
-import com.streamvault.domain.manager.BackupPreview
-import com.streamvault.domain.manager.DriveBackupSyncManager
-import com.streamvault.domain.manager.ParentalControlManager
-import com.streamvault.domain.manager.RecordingManager
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.AppHomeDashboardShelf
-import com.streamvault.domain.model.AppLandingDestination
-import com.streamvault.domain.model.AppTimeFormat
-import com.streamvault.domain.model.AppTopLevelDestination
-import com.streamvault.domain.model.ChannelLogoSourcePolicy
-import com.streamvault.domain.model.CategorySortMode
-import com.streamvault.domain.model.ChannelNumberingMode
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.DecoderMode
-import com.streamvault.domain.model.ExternalPlaybackMode
-import com.streamvault.domain.model.ActiveLiveSource
-import com.streamvault.domain.model.CombinedM3uProfile
-import com.streamvault.domain.model.GroupedChannelLabelMode
-import com.streamvault.domain.model.AudioOutputPreference
-import com.streamvault.domain.model.LiveChannelGroupingMode
-import com.streamvault.domain.model.LiveStreamFormatMode
-import com.streamvault.domain.model.LiveVariantPreferenceMode
-import com.streamvault.domain.model.PlaybackBufferMode
-import com.streamvault.domain.model.VodDuplicateHandlingMode
-import com.streamvault.domain.model.VodHttpProtocolMode
-import com.streamvault.domain.model.ProviderStatus
-import com.streamvault.domain.model.RecordingItem
-import com.streamvault.domain.model.RecordingStorageConfig
-import com.streamvault.domain.model.RecordingStorageState
-import com.streamvault.domain.model.RemoteColorButton
-import com.streamvault.domain.model.RemoteShortcutProfile
-import com.streamvault.domain.model.RemoteShortcutSelection
-import com.streamvault.domain.model.EpgResolutionSummary
-import com.streamvault.domain.model.GuideSourcePolicy
-import com.streamvault.domain.model.Result
-import com.streamvault.domain.model.TimeshiftBackendPreference
-import com.streamvault.domain.model.VirtualCategoryIds
-import com.streamvault.domain.model.VodVariantPreferenceMode
-import com.streamvault.domain.usecase.ExportBackup
-import com.streamvault.domain.usecase.ExportBackupCommand
-import com.streamvault.domain.usecase.ExportBackupResult
-import com.streamvault.domain.usecase.ImportBackup
-import com.streamvault.domain.usecase.ImportBackupCommand
-import com.streamvault.domain.usecase.ImportBackupResult
-import com.streamvault.domain.usecase.InspectBackupCommand
-import com.streamvault.domain.usecase.InspectBackupResult
-import com.streamvault.domain.repository.ProviderRepository
-import com.streamvault.domain.repository.CombinedM3uRepository
-import com.streamvault.domain.repository.CategoryRepository
-import com.streamvault.domain.repository.ChannelRepository
-import com.streamvault.domain.repository.MovieRepository
-import com.streamvault.domain.repository.SeriesRepository
-import com.streamvault.domain.repository.SyncMetadataRepository
-import com.streamvault.domain.usecase.GetCustomCategories
-import com.streamvault.domain.usecase.SyncProvider
-import com.streamvault.domain.usecase.SyncProviderCommand
-import com.streamvault.domain.usecase.SyncProviderResult
-import com.streamvault.player.AudioCompatibilityMemoryStore
+import com.zenlemon.app.R
+import com.zenlemon.app.BuildConfig
+import com.zenlemon.app.diagnostics.CrashReportStore
+import com.zenlemon.app.tv.LauncherRecommendationsManager
+import com.zenlemon.app.tv.WatchNextManager
+import com.zenlemon.app.tvinput.TvInputChannelSyncManager
+import com.zenlemon.app.ui.model.LiveTvChannelMode
+import com.zenlemon.app.ui.model.LiveTvQuickFilterVisibilityMode
+import com.zenlemon.app.ui.model.VodViewMode
+import com.zenlemon.app.update.AppUpdateInstaller
+import com.zenlemon.app.update.GitHubReleaseChecker
+import com.zenlemon.app.update.isRemoteVersionNewer
+import com.zenlemon.data.local.dao.ProgramDao
+import com.zenlemon.data.local.dao.XtreamIndexJobDao
+import com.zenlemon.data.local.dao.XtreamLiveOnboardingDao
+import com.zenlemon.data.local.entity.XtreamIndexJobEntity
+import com.zenlemon.data.preferences.PreferencesRepository
+import com.zenlemon.data.sync.SyncManager
+import com.zenlemon.data.sync.SyncRepairSection
+import com.zenlemon.domain.manager.BackupConflictStrategy
+import com.zenlemon.domain.manager.BackupImportPlan
+import com.zenlemon.domain.manager.BackupManager
+import com.zenlemon.domain.manager.BackupPreview
+import com.zenlemon.domain.manager.DriveBackupSyncManager
+import com.zenlemon.domain.manager.ParentalControlManager
+import com.zenlemon.domain.manager.RecordingManager
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.AppHomeDashboardShelf
+import com.zenlemon.domain.model.AppLandingDestination
+import com.zenlemon.domain.model.AppTimeFormat
+import com.zenlemon.domain.model.AppTopLevelDestination
+import com.zenlemon.domain.model.ChannelLogoSourcePolicy
+import com.zenlemon.domain.model.CategorySortMode
+import com.zenlemon.domain.model.ChannelNumberingMode
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.DecoderMode
+import com.zenlemon.domain.model.ExternalPlaybackMode
+import com.zenlemon.domain.model.ActiveLiveSource
+import com.zenlemon.domain.model.CombinedM3uProfile
+import com.zenlemon.domain.model.GroupedChannelLabelMode
+import com.zenlemon.domain.model.AudioOutputPreference
+import com.zenlemon.domain.model.LiveChannelGroupingMode
+import com.zenlemon.domain.model.LiveStreamFormatMode
+import com.zenlemon.domain.model.LiveVariantPreferenceMode
+import com.zenlemon.domain.model.PlaybackBufferMode
+import com.zenlemon.domain.model.VodDuplicateHandlingMode
+import com.zenlemon.domain.model.VodHttpProtocolMode
+import com.zenlemon.domain.model.ProviderStatus
+import com.zenlemon.domain.model.RecordingItem
+import com.zenlemon.domain.model.RecordingStorageConfig
+import com.zenlemon.domain.model.RecordingStorageState
+import com.zenlemon.domain.model.RemoteColorButton
+import com.zenlemon.domain.model.RemoteShortcutProfile
+import com.zenlemon.domain.model.RemoteShortcutSelection
+import com.zenlemon.domain.model.EpgResolutionSummary
+import com.zenlemon.domain.model.GuideSourcePolicy
+import com.zenlemon.domain.model.Result
+import com.zenlemon.domain.model.TimeshiftBackendPreference
+import com.zenlemon.domain.model.VirtualCategoryIds
+import com.zenlemon.domain.model.VodVariantPreferenceMode
+import com.zenlemon.domain.usecase.ExportBackup
+import com.zenlemon.domain.usecase.ExportBackupCommand
+import com.zenlemon.domain.usecase.ExportBackupResult
+import com.zenlemon.domain.usecase.ImportBackup
+import com.zenlemon.domain.usecase.ImportBackupCommand
+import com.zenlemon.domain.usecase.ImportBackupResult
+import com.zenlemon.domain.usecase.InspectBackupCommand
+import com.zenlemon.domain.usecase.InspectBackupResult
+import com.zenlemon.domain.repository.ProviderRepository
+import com.zenlemon.domain.repository.CombinedM3uRepository
+import com.zenlemon.domain.repository.CategoryRepository
+import com.zenlemon.domain.repository.ChannelRepository
+import com.zenlemon.domain.repository.MovieRepository
+import com.zenlemon.domain.repository.SeriesRepository
+import com.zenlemon.domain.repository.SyncMetadataRepository
+import com.zenlemon.domain.usecase.GetCustomCategories
+import com.zenlemon.domain.usecase.SyncProvider
+import com.zenlemon.domain.usecase.SyncProviderCommand
+import com.zenlemon.domain.usecase.SyncProviderResult
+import com.zenlemon.player.AudioCompatibilityMemoryStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
@@ -115,12 +115,12 @@ class SettingsViewModel @Inject constructor(
     private val xtreamIndexJobDao: XtreamIndexJobDao,
     private val xtreamLiveOnboardingDao: XtreamLiveOnboardingDao,
     private val syncMetadataRepository: SyncMetadataRepository,
-    private val playbackHistoryRepository: com.streamvault.domain.repository.PlaybackHistoryRepository,
+    private val playbackHistoryRepository: com.zenlemon.domain.repository.PlaybackHistoryRepository,
     private val watchNextManager: WatchNextManager,
     private val launcherRecommendationsManager: LauncherRecommendationsManager,
     private val tvInputChannelSyncManager: TvInputChannelSyncManager,
     private val syncProvider: SyncProvider,
-    private val epgSourceRepository: com.streamvault.domain.repository.EpgSourceRepository,
+    private val epgSourceRepository: com.zenlemon.domain.repository.EpgSourceRepository,
     private val gitHubReleaseChecker: GitHubReleaseChecker,
     private val appUpdateInstaller: AppUpdateInstaller,
     private val getCustomCategories: GetCustomCategories,
@@ -280,7 +280,7 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    private fun com.streamvault.app.diagnostics.CrashReportSummary.toUiModel(): CrashReportUiModel =
+    private fun com.zenlemon.app.diagnostics.CrashReportSummary.toUiModel(): CrashReportUiModel =
         CrashReportUiModel(
             timestamp = timestamp,
             exception = exception,
@@ -867,7 +867,7 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun setPlayerSurfaceMode(mode: com.streamvault.domain.model.PlayerSurfaceMode) {
+    fun setPlayerSurfaceMode(mode: com.zenlemon.domain.model.PlayerSurfaceMode) {
         viewModelScope.launch {
             preferencesRepository.setPlayerSurfaceMode(mode)
         }

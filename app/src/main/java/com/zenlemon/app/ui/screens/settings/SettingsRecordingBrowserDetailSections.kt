@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -9,13 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.streamvault.app.R
-import com.streamvault.app.ui.theme.ErrorColor
-import com.streamvault.app.ui.theme.OnBackground
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.app.ui.theme.Secondary
-import com.streamvault.domain.model.RecordingItem
-import com.streamvault.domain.model.RecordingStatus
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.theme.ErrorColor
+import com.zenlemon.app.ui.theme.OnBackground
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.app.ui.theme.Secondary
+import com.zenlemon.domain.model.RecordingItem
+import com.zenlemon.domain.model.RecordingStatus
 
 @Composable
 internal fun RecordingDetailMetricsRow(

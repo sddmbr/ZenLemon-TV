@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.components
+package com.zenlemon.app.ui.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,11 +12,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
 import androidx.tv.material3.*
-import com.streamvault.app.R
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.interaction.TvButton
-import com.streamvault.app.ui.interaction.TvIconButton
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.interaction.TvButton
+import com.zenlemon.app.ui.interaction.TvIconButton
 
 @Composable
 fun TvKeyboard(

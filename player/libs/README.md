@@ -1,6 +1,6 @@
 # Media3 FFmpeg Extension Artifact
 
-This directory holds the bundled Media3 FFmpeg decoder artifact used by StreamVault builds.
+This directory holds the bundled Media3 FFmpeg decoder artifact used by ZenLemon builds.
 
 Bundled artifact:
 

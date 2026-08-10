@@ -1,7 +1,7 @@
-package com.streamvault.app.cast
+package com.zenlemon.app.cast
 
-import com.streamvault.domain.model.StreamInfo
-import com.streamvault.domain.model.StreamType
+import com.zenlemon.domain.model.StreamInfo
+import com.zenlemon.domain.model.StreamType
 import java.net.URI
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -78,7 +78,7 @@ class CastMediaRequestFactory @Inject constructor() {
         const val MIME_SMOOTH_STREAMING = "application/vnd.ms-sstr+xml"
         const val MIME_MPEG_TS = "video/mp2t"
         const val MIME_VIDEO = "video/*"
-        private const val DEFAULT_TITLE = "StreamVault"
+        private const val DEFAULT_TITLE = "ZenLemon"
     }
 }
 

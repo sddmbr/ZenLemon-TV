@@ -37,7 +37,7 @@ jobs:
           echo "short_sha=$SHORT_SHA" >> "$GITHUB_OUTPUT"
           echo "beta_sequence=$BETA_SEQUENCE" >> "$GITHUB_OUTPUT"
           echo "beta_tag=v$VERSION_NAME-beta.$BETA_SEQUENCE" >> "$GITHUB_OUTPUT"
-          echo "apk_name=StreamVault-$VERSION_NAME-beta.$BETA_SEQUENCE.apk" >> "$GITHUB_OUTPUT"
+          echo "apk_name=ZenLemon-$VERSION_NAME-beta.$BETA_SEQUENCE.apk" >> "$GITHUB_OUTPUT"
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -89,7 +89,7 @@ jobs:
           fi
 
           cp "$APK_PATH" "dist/${{ steps.app_version.outputs.apk_name }}"
-          cp "$APK_PATH" dist/StreamVault-beta.apk
+          cp "$APK_PATH" dist/ZenLemon-beta.apk
 
       - name: Upload beta APK artifact
         uses: actions/upload-artifact@v4
@@ -97,7 +97,7 @@ jobs:
           name: beta-apk
           path: |
             dist/${{ steps.app_version.outputs.apk_name }}
-            dist/StreamVault-beta.apk
+            dist/ZenLemon-beta.apk
 
   publish-beta:
     needs: build-beta
@@ -137,7 +137,7 @@ jobs:
         with:
           tag_name: ${{ steps.app_version.outputs.beta_tag }}
           target_commitish: ${{ github.sha }}
-          name: StreamVault Beta ${{ steps.app_version.outputs.version_name }} build ${{ steps.app_version.outputs.beta_sequence }}
+          name: ZenLemon Beta ${{ steps.app_version.outputs.version_name }} build ${{ steps.app_version.outputs.beta_sequence }}
           body: |
             Automated beta build from `master`.
 

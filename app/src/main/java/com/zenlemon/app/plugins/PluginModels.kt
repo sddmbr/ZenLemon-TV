@@ -1,4 +1,4 @@
-package com.streamvault.app.plugins
+package com.zenlemon.app.plugins
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -6,7 +6,7 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 
 @Serializable
-data class StreamVaultPluginManifest(
+data class ZenLemonPluginManifest(
     val schemaVersion: Int = 1,
     val id: String,
     val name: String,
@@ -21,26 +21,26 @@ data class StreamVaultPluginManifest(
     fun hasCapability(capability: String): Boolean = capability in capabilities
 
     val supportsConfigurationActivity: Boolean
-        get() = hasCapability(StreamVaultPluginContract.CAPABILITY_CONFIGURATION_ACTIVITY) &&
+        get() = hasCapability(ZenLemonPluginContract.CAPABILITY_CONFIGURATION_ACTIVITY) &&
             !configurationActivityAction.isNullOrBlank()
 
     val usesActivityConfiguration: Boolean
-        get() = configurationMode == StreamVaultPluginContract.CONFIGURATION_MODE_ACTIVITY
+        get() = configurationMode == ZenLemonPluginContract.CONFIGURATION_MODE_ACTIVITY
 
     val supportsHostRenderedConfiguration: Boolean
-        get() = configurationMode == StreamVaultPluginContract.CONFIGURATION_MODE_HOST_SCHEMA ||
-            (configurationMode != StreamVaultPluginContract.CONFIGURATION_MODE_ACTIVITY &&
-                hasCapability(StreamVaultPluginContract.CAPABILITY_CONFIGURATION_SCHEMA))
+        get() = configurationMode == ZenLemonPluginContract.CONFIGURATION_MODE_HOST_SCHEMA ||
+            (configurationMode != ZenLemonPluginContract.CONFIGURATION_MODE_ACTIVITY &&
+                hasCapability(ZenLemonPluginContract.CAPABILITY_CONFIGURATION_SCHEMA))
 
     val canConfigure: Boolean
         get() = supportsHostRenderedConfiguration || supportsConfigurationActivity
 }
 
-data class InstalledStreamVaultPlugin(
+data class InstalledZenLemonPlugin(
     val packageName: String,
     val serviceClassName: String,
     val appLabel: String,
-    val manifest: StreamVaultPluginManifest,
+    val manifest: ZenLemonPluginManifest,
     val enabled: Boolean,
     val statusLabel: String = "",
     val lastMessage: String = ""
@@ -55,7 +55,7 @@ data class PluginActionResult(
 )
 
 data class PluginConfigurationSnapshot(
-    val plugin: InstalledStreamVaultPlugin,
+    val plugin: InstalledZenLemonPlugin,
     val schema: PluginConfigurationSchema,
     val values: JsonObject
 )

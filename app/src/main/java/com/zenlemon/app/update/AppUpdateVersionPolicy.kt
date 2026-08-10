@@ -1,6 +1,6 @@
-package com.streamvault.app.update
+package com.zenlemon.app.update
 
-import com.streamvault.app.BuildConfig
+import com.zenlemon.app.BuildConfig
 import java.time.Instant
 import kotlin.math.max
 

@@ -1,11 +1,11 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
-import com.streamvault.data.local.entity.XtreamLiveOnboardingStateEntity
-import com.streamvault.data.preferences.DatabaseMaintenanceSnapshot
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.CategorySortMode
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.VodSyncMode
+import com.zenlemon.data.local.entity.XtreamLiveOnboardingStateEntity
+import com.zenlemon.data.preferences.DatabaseMaintenanceSnapshot
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.CategorySortMode
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.VodSyncMode
 
 enum class ProviderCatalogCountStatus {
     PENDING,

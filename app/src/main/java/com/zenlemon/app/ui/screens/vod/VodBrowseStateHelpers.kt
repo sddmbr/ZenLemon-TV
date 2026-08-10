@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.screens.vod
+package com.zenlemon.app.ui.screens.vod
 
-import com.streamvault.domain.model.LibraryFilterType
-import com.streamvault.domain.model.LibrarySortBy
+import com.zenlemon.domain.model.LibraryFilterType
+import com.zenlemon.domain.model.LibrarySortBy
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update

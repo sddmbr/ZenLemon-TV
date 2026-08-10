@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
@@ -70,7 +70,7 @@ internal suspend fun PlayerViewModel.applyRemoteProgramFallback(
         epgChannelId = epgChannelId,
         limit = 12
     )
-    val programs = (result as? com.streamvault.domain.model.Result.Success)?.data
+    val programs = (result as? com.zenlemon.domain.model.Result.Success)?.data
         ?.sortedBy { it.startTime }
         .orEmpty()
 

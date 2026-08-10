@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.components
+package com.zenlemon.app.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -24,14 +24,14 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.ui.design.FocusSpec
-import com.streamvault.app.ui.theme.FocusBorder
-import com.streamvault.app.ui.theme.OnSurface
-import com.streamvault.app.ui.theme.OnSurfaceDim
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.app.ui.theme.SurfaceElevated
-import com.streamvault.app.ui.interaction.mouseClickable
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.design.FocusSpec
+import com.zenlemon.app.ui.theme.FocusBorder
+import com.zenlemon.app.ui.theme.OnSurface
+import com.zenlemon.app.ui.theme.OnSurfaceDim
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.app.ui.theme.SurfaceElevated
+import com.zenlemon.app.ui.interaction.mouseClickable
 
 @Composable
 fun SavedCategoryContextCard(

@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.time
+package com.zenlemon.app.ui.time
 
 import androidx.compose.runtime.compositionLocalOf
-import com.streamvault.domain.model.AppTimeFormat
+import com.zenlemon.domain.model.AppTimeFormat
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter

@@ -1,20 +1,20 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.R
-import com.streamvault.app.cast.CastMediaRequest
-import com.streamvault.app.cast.CastMediaRequestBuildResult
-import com.streamvault.app.cast.CastMediaRequestUnsupportedReason
-import com.streamvault.app.cast.CastPlaybackEvent
-import com.streamvault.app.cast.CastPlaybackReportMode
-import com.streamvault.app.cast.CastRewriteRequiredReason
-import com.streamvault.app.cast.CastStartResult
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.RecordingRecurrence
-import com.streamvault.domain.model.RecordingRequest
-import com.streamvault.domain.model.Result
-import com.streamvault.domain.model.StreamInfo
-import com.streamvault.domain.usecase.ScheduleRecordingCommand
+import com.zenlemon.app.R
+import com.zenlemon.app.cast.CastMediaRequest
+import com.zenlemon.app.cast.CastMediaRequestBuildResult
+import com.zenlemon.app.cast.CastMediaRequestUnsupportedReason
+import com.zenlemon.app.cast.CastPlaybackEvent
+import com.zenlemon.app.cast.CastPlaybackReportMode
+import com.zenlemon.app.cast.CastRewriteRequiredReason
+import com.zenlemon.app.cast.CastStartResult
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.RecordingRecurrence
+import com.zenlemon.domain.model.RecordingRequest
+import com.zenlemon.domain.model.Result
+import com.zenlemon.domain.model.StreamInfo
+import com.zenlemon.domain.usecase.ScheduleRecordingCommand
 import kotlinx.coroutines.launch
 
 fun PlayerViewModel.castCurrentMedia(onRouteSelectionRequired: () -> Unit) {

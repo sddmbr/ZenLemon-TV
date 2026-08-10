@@ -1,17 +1,17 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
-import com.streamvault.app.R
-import com.streamvault.domain.model.AppTimeFormat
-import com.streamvault.domain.model.AudioOutputPreference
-import com.streamvault.domain.model.DecoderMode
-import com.streamvault.domain.model.PlaybackBufferMode
-import com.streamvault.domain.model.PlayerSurfaceMode
-import com.streamvault.domain.model.TimeshiftBackendPreference
-import com.streamvault.domain.model.VodHttpProtocolMode
+import com.zenlemon.app.R
+import com.zenlemon.domain.model.AppTimeFormat
+import com.zenlemon.domain.model.AudioOutputPreference
+import com.zenlemon.domain.model.DecoderMode
+import com.zenlemon.domain.model.PlaybackBufferMode
+import com.zenlemon.domain.model.PlayerSurfaceMode
+import com.zenlemon.domain.model.TimeshiftBackendPreference
+import com.zenlemon.domain.model.VodHttpProtocolMode
 
 @Composable
 internal fun SettingsPlayerPreferenceDialogs(

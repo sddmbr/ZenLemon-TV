@@ -1,41 +1,41 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
-import com.streamvault.app.ui.model.LiveTvChannelMode
-import com.streamvault.app.ui.model.LiveTvQuickFilterVisibilityMode
-import com.streamvault.app.ui.model.VodViewMode
-import com.streamvault.domain.manager.BackupImportPlan
-import com.streamvault.domain.manager.BackupPreview
-import com.streamvault.domain.manager.DriveAuthState
-import com.streamvault.domain.manager.DriveSignInRequest
-import com.streamvault.domain.manager.DriveSyncStatus
-import com.streamvault.domain.manager.ProviderCredentials
-import com.streamvault.domain.model.ActiveLiveSource
-import com.streamvault.domain.model.AppHomeDashboardShelf
-import com.streamvault.domain.model.AppLandingDestination
-import com.streamvault.domain.model.AppTopLevelDestination
-import com.streamvault.domain.model.AppTimeFormat
-import com.streamvault.domain.model.AudioOutputPreference
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.CategorySortMode
-import com.streamvault.domain.model.ChannelNumberingMode
-import com.streamvault.domain.model.CombinedM3uProfile
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.DecoderMode
-import com.streamvault.domain.model.EpgResolutionSummary
-import com.streamvault.domain.model.GroupedChannelLabelMode
-import com.streamvault.domain.model.LiveChannelGroupingMode
-import com.streamvault.domain.model.LiveVariantPreferenceMode
-import com.streamvault.domain.model.PlaybackBufferMode
-import com.streamvault.domain.model.VodDuplicateHandlingMode
-import com.streamvault.domain.model.VodHttpProtocolMode
-import com.streamvault.domain.model.ExternalPlaybackMode
-import com.streamvault.domain.model.PlayerSurfaceMode
-import com.streamvault.domain.model.Provider
-import com.streamvault.domain.model.RecordingItem
-import com.streamvault.domain.model.RecordingStorageState
-import com.streamvault.domain.model.RemoteShortcutPreferences
-import com.streamvault.domain.model.TimeshiftBackendPreference
-import com.streamvault.domain.model.VodVariantPreferenceMode
+import com.zenlemon.app.ui.model.LiveTvChannelMode
+import com.zenlemon.app.ui.model.LiveTvQuickFilterVisibilityMode
+import com.zenlemon.app.ui.model.VodViewMode
+import com.zenlemon.domain.manager.BackupImportPlan
+import com.zenlemon.domain.manager.BackupPreview
+import com.zenlemon.domain.manager.DriveAuthState
+import com.zenlemon.domain.manager.DriveSignInRequest
+import com.zenlemon.domain.manager.DriveSyncStatus
+import com.zenlemon.domain.manager.ProviderCredentials
+import com.zenlemon.domain.model.ActiveLiveSource
+import com.zenlemon.domain.model.AppHomeDashboardShelf
+import com.zenlemon.domain.model.AppLandingDestination
+import com.zenlemon.domain.model.AppTopLevelDestination
+import com.zenlemon.domain.model.AppTimeFormat
+import com.zenlemon.domain.model.AudioOutputPreference
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.CategorySortMode
+import com.zenlemon.domain.model.ChannelNumberingMode
+import com.zenlemon.domain.model.CombinedM3uProfile
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.DecoderMode
+import com.zenlemon.domain.model.EpgResolutionSummary
+import com.zenlemon.domain.model.GroupedChannelLabelMode
+import com.zenlemon.domain.model.LiveChannelGroupingMode
+import com.zenlemon.domain.model.LiveVariantPreferenceMode
+import com.zenlemon.domain.model.PlaybackBufferMode
+import com.zenlemon.domain.model.VodDuplicateHandlingMode
+import com.zenlemon.domain.model.VodHttpProtocolMode
+import com.zenlemon.domain.model.ExternalPlaybackMode
+import com.zenlemon.domain.model.PlayerSurfaceMode
+import com.zenlemon.domain.model.Provider
+import com.zenlemon.domain.model.RecordingItem
+import com.zenlemon.domain.model.RecordingStorageState
+import com.zenlemon.domain.model.RemoteShortcutPreferences
+import com.zenlemon.domain.model.TimeshiftBackendPreference
+import com.zenlemon.domain.model.VodVariantPreferenceMode
 
 data class CrashReportUiModel(
     val timestamp: String = "",
@@ -149,15 +149,15 @@ data class SettingsUiState(
     val vodInfiniteScroll: Boolean = true,
     val vodDuplicateHandlingMode: VodDuplicateHandlingMode = VodDuplicateHandlingMode.SHOW_ALL,
     val vodVariantPreferenceMode: VodVariantPreferenceMode = VodVariantPreferenceMode.BALANCED,
-    val guideDefaultCategoryId: Long = com.streamvault.domain.model.VirtualCategoryIds.FAVORITES,
+    val guideDefaultCategoryId: Long = com.zenlemon.domain.model.VirtualCategoryIds.FAVORITES,
     val guideDefaultCategoryOptions: List<Category> = emptyList(),
     val preventStandbyDuringPlayback: Boolean = true,
     val zapAutoRevert: Boolean = true,
     val autoPlayNextEpisode: Boolean = true,
     val categorySortModes: Map<ContentType, CategorySortMode> = emptyMap(),
     val hiddenCategories: List<Category> = emptyList(),
-    val epgSources: List<com.streamvault.domain.model.EpgSource> = emptyList(),
-    val epgSourceAssignments: Map<Long, List<com.streamvault.domain.model.ProviderEpgSourceAssignment>> = emptyMap(),
+    val epgSources: List<com.zenlemon.domain.model.EpgSource> = emptyList(),
+    val epgSourceAssignments: Map<Long, List<com.zenlemon.domain.model.ProviderEpgSourceAssignment>> = emptyMap(),
     val epgResolutionSummaries: Map<Long, EpgResolutionSummary> = emptyMap(),
     val refreshingEpgSourceIds: Set<Long> = emptySet(),
     val epgPendingDeleteSourceId: Long? = null,

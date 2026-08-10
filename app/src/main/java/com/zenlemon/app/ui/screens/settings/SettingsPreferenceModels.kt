@@ -1,30 +1,30 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.app.Application
-import com.streamvault.app.R
-import com.streamvault.app.ui.model.LiveTvChannelMode
-import com.streamvault.app.ui.model.LiveTvQuickFilterVisibilityMode
-import com.streamvault.app.ui.model.VodViewMode
-import com.streamvault.domain.model.AppTimeFormat
-import com.streamvault.domain.model.AppHomeDashboardShelf
-import com.streamvault.domain.model.AppLandingDestination
-import com.streamvault.domain.model.AppTopLevelDestination
-import com.streamvault.domain.model.AudioOutputPreference
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.ExternalPlaybackMode
-import com.streamvault.domain.model.ChannelNumberingMode
-import com.streamvault.domain.model.DecoderMode
-import com.streamvault.domain.model.GroupedChannelLabelMode
-import com.streamvault.domain.model.LiveChannelGroupingMode
-import com.streamvault.domain.model.LiveVariantPreferenceMode
-import com.streamvault.domain.model.PlaybackBufferMode
-import com.streamvault.domain.model.VodDuplicateHandlingMode
-import com.streamvault.domain.model.VodHttpProtocolMode
-import com.streamvault.domain.model.VodVariantPreferenceMode
-import com.streamvault.domain.model.PlayerSurfaceMode
-import com.streamvault.domain.model.Provider
-import com.streamvault.domain.model.RemoteShortcutPreferences
-import com.streamvault.domain.model.TimeshiftBackendPreference
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.model.LiveTvChannelMode
+import com.zenlemon.app.ui.model.LiveTvQuickFilterVisibilityMode
+import com.zenlemon.app.ui.model.VodViewMode
+import com.zenlemon.domain.model.AppTimeFormat
+import com.zenlemon.domain.model.AppHomeDashboardShelf
+import com.zenlemon.domain.model.AppLandingDestination
+import com.zenlemon.domain.model.AppTopLevelDestination
+import com.zenlemon.domain.model.AudioOutputPreference
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.ExternalPlaybackMode
+import com.zenlemon.domain.model.ChannelNumberingMode
+import com.zenlemon.domain.model.DecoderMode
+import com.zenlemon.domain.model.GroupedChannelLabelMode
+import com.zenlemon.domain.model.LiveChannelGroupingMode
+import com.zenlemon.domain.model.LiveVariantPreferenceMode
+import com.zenlemon.domain.model.PlaybackBufferMode
+import com.zenlemon.domain.model.VodDuplicateHandlingMode
+import com.zenlemon.domain.model.VodHttpProtocolMode
+import com.zenlemon.domain.model.VodVariantPreferenceMode
+import com.zenlemon.domain.model.PlayerSurfaceMode
+import com.zenlemon.domain.model.Provider
+import com.zenlemon.domain.model.RemoteShortcutPreferences
+import com.zenlemon.domain.model.TimeshiftBackendPreference
 
 enum class ProviderWarningAction {
     EPG,

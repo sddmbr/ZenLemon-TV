@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.components
+package com.zenlemon.app.ui.components
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
@@ -33,15 +33,15 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.ui.theme.FocusBorder
-import com.streamvault.app.ui.interaction.mouseClickable
-import com.streamvault.app.ui.theme.OnBackground
-import com.streamvault.app.ui.theme.OnSurfaceDim
-import com.streamvault.app.ui.theme.Primary
-import com.streamvault.app.ui.theme.SurfaceElevated
-import com.streamvault.domain.model.ActiveLiveSource
-import com.streamvault.domain.model.ActiveLiveSourceOption
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.theme.FocusBorder
+import com.zenlemon.app.ui.interaction.mouseClickable
+import com.zenlemon.app.ui.theme.OnBackground
+import com.zenlemon.app.ui.theme.OnSurfaceDim
+import com.zenlemon.app.ui.theme.Primary
+import com.zenlemon.app.ui.theme.SurfaceElevated
+import com.zenlemon.domain.model.ActiveLiveSource
+import com.zenlemon.domain.model.ActiveLiveSourceOption
 import androidx.compose.foundation.BorderStroke
 import androidx.tv.material3.Border
 

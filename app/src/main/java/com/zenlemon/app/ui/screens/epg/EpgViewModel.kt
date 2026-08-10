@@ -1,41 +1,41 @@
-package com.streamvault.app.ui.screens.epg
+package com.zenlemon.app.ui.screens.epg
 
-import com.streamvault.app.ui.model.isArchivePlayable
-import com.streamvault.app.ui.model.guideLookupKey
+import com.zenlemon.app.ui.model.isArchivePlayable
+import com.zenlemon.app.ui.model.guideLookupKey
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.ui.model.applyProviderCategoryDisplayPreferences
-import com.streamvault.app.ui.model.orderedByRequestedRawIds
-import com.streamvault.domain.manager.ParentalControlManager
-import com.streamvault.domain.manager.ProgramReminderManager
-import com.streamvault.domain.model.ActiveLiveSource
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.ChannelEpgMapping
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.CombinedCategory
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.EpgOverrideCandidate
-import com.streamvault.domain.model.Favorite
-import com.streamvault.domain.model.GuideSourcePolicy
-import com.streamvault.domain.model.Program
-import com.streamvault.domain.model.VirtualCategoryIds
-import com.streamvault.domain.repository.ChannelRepository
-import com.streamvault.domain.repository.CombinedM3uRepository
-import com.streamvault.domain.repository.EpgRepository
-import com.streamvault.domain.repository.EpgSourceRepository
-import com.streamvault.domain.repository.FavoriteRepository
-import com.streamvault.domain.repository.LiveStreamProgramRequest
-import com.streamvault.domain.repository.ProviderRepository
-import com.streamvault.domain.model.RecordingRecurrence
-import com.streamvault.domain.model.RecordingItem
-import com.streamvault.domain.model.RecordingRequest
-import com.streamvault.domain.model.Result
-import com.streamvault.domain.manager.RecordingManager
-import com.streamvault.domain.usecase.GetCustomCategories
-import com.streamvault.domain.usecase.ScheduleRecording
-import com.streamvault.domain.usecase.ScheduleRecordingCommand
-import com.streamvault.domain.util.AdultContentVisibilityPolicy
-import com.streamvault.data.preferences.PreferencesRepository
+import com.zenlemon.app.ui.model.applyProviderCategoryDisplayPreferences
+import com.zenlemon.app.ui.model.orderedByRequestedRawIds
+import com.zenlemon.domain.manager.ParentalControlManager
+import com.zenlemon.domain.manager.ProgramReminderManager
+import com.zenlemon.domain.model.ActiveLiveSource
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.ChannelEpgMapping
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.CombinedCategory
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.EpgOverrideCandidate
+import com.zenlemon.domain.model.Favorite
+import com.zenlemon.domain.model.GuideSourcePolicy
+import com.zenlemon.domain.model.Program
+import com.zenlemon.domain.model.VirtualCategoryIds
+import com.zenlemon.domain.repository.ChannelRepository
+import com.zenlemon.domain.repository.CombinedM3uRepository
+import com.zenlemon.domain.repository.EpgRepository
+import com.zenlemon.domain.repository.EpgSourceRepository
+import com.zenlemon.domain.repository.FavoriteRepository
+import com.zenlemon.domain.repository.LiveStreamProgramRequest
+import com.zenlemon.domain.repository.ProviderRepository
+import com.zenlemon.domain.model.RecordingRecurrence
+import com.zenlemon.domain.model.RecordingItem
+import com.zenlemon.domain.model.RecordingRequest
+import com.zenlemon.domain.model.Result
+import com.zenlemon.domain.manager.RecordingManager
+import com.zenlemon.domain.usecase.GetCustomCategories
+import com.zenlemon.domain.usecase.ScheduleRecording
+import com.zenlemon.domain.usecase.ScheduleRecordingCommand
+import com.zenlemon.domain.util.AdultContentVisibilityPolicy
+import com.zenlemon.data.preferences.PreferencesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -63,13 +63,13 @@ import java.time.Instant
 import java.time.ZoneId
 import javax.inject.Inject
 import android.app.Application
-import com.streamvault.app.R
-import com.streamvault.app.di.AuxiliaryPlayerEngine
-import com.streamvault.app.player.LivePreviewHandoffManager
-import com.streamvault.app.player.PreviewHandoffSource
-import com.streamvault.app.plugins.StreamVaultPluginManager
-import com.streamvault.player.PlaybackState
-import com.streamvault.player.PlayerEngine
+import com.zenlemon.app.R
+import com.zenlemon.app.di.AuxiliaryPlayerEngine
+import com.zenlemon.app.player.LivePreviewHandoffManager
+import com.zenlemon.app.player.PreviewHandoffSource
+import com.zenlemon.app.plugins.ZenLemonPluginManager
+import com.zenlemon.player.PlaybackState
+import com.zenlemon.player.PlayerEngine
 import javax.inject.Provider as InjectProvider
 
 data class RecordingConflictInfo(
@@ -268,7 +268,7 @@ class EpgViewModel @Inject constructor(
     private val scheduleRecording: ScheduleRecording,
     private val recordingManager: RecordingManager,
     @param:AuxiliaryPlayerEngine private val playerEngineProvider: InjectProvider<PlayerEngine>,
-    private val pluginManager: StreamVaultPluginManager,
+    private val pluginManager: ZenLemonPluginManager,
     private val livePreviewHandoffManager: LivePreviewHandoffManager,
     application: Application,
 ) : ViewModel() {
@@ -472,7 +472,7 @@ class EpgViewModel @Inject constructor(
         previewPlayerEngine?.stop()
         previewPlayerEngine?.release()
         previewPlayerEngine = engine
-        (engine as? com.streamvault.player.Media3PlayerEngine)?.let {
+        (engine as? com.zenlemon.player.Media3PlayerEngine)?.let {
             it.enableMediaSession = false
             it.bypassAudioFocus = true
         }
@@ -860,7 +860,7 @@ class EpgViewModel @Inject constructor(
                 epgSourceId = candidate.epgSourceId,
                 xmltvChannelId = candidate.xmltvChannelId
             )) {
-                is com.streamvault.domain.model.Result.Error -> {
+                is com.zenlemon.domain.model.Result.Error -> {
                     _overrideUiState.update { it.copy(isSaving = false, error = result.message) }
                 }
                 else -> {
@@ -876,7 +876,7 @@ class EpgViewModel @Inject constructor(
         viewModelScope.launch {
             _overrideUiState.update { it.copy(isSaving = true, error = null) }
             when (val result = epgSourceRepository.clearManualOverride(channel.providerId, channel.id)) {
-                is com.streamvault.domain.model.Result.Error -> {
+                is com.zenlemon.domain.model.Result.Error -> {
                     _overrideUiState.update { it.copy(isSaving = false, error = result.message) }
                 }
                 else -> {
@@ -1036,7 +1036,7 @@ class EpgViewModel @Inject constructor(
         }
     }
 
-    private suspend fun observeSingleProviderGuide(provider: com.streamvault.domain.model.Provider) {
+    private suspend fun observeSingleProviderGuide(provider: com.zenlemon.domain.model.Provider) {
         combine(
             channelRepository.getCategories(provider.id),
             getCustomCategories(provider.id, ContentType.LIVE),
@@ -1495,32 +1495,32 @@ class EpgViewModel @Inject constructor(
         }
     }
 
-    private fun buildProviderSourceLabel(provider: com.streamvault.domain.model.Provider): String {
+    private fun buildProviderSourceLabel(provider: com.zenlemon.domain.model.Provider): String {
         return when (provider.type) {
-            com.streamvault.domain.model.ProviderType.XTREAM_CODES -> "Xtream Codes"
-            com.streamvault.domain.model.ProviderType.M3U -> "M3U Playlist"
-            com.streamvault.domain.model.ProviderType.STALKER_PORTAL -> "Stalker/MAG Portal"
-            com.streamvault.domain.model.ProviderType.JELLYFIN -> "Jellyfin"
+            com.zenlemon.domain.model.ProviderType.XTREAM_CODES -> "Xtream Codes"
+            com.zenlemon.domain.model.ProviderType.M3U -> "M3U Playlist"
+            com.zenlemon.domain.model.ProviderType.STALKER_PORTAL -> "Stalker/MAG Portal"
+            com.zenlemon.domain.model.ProviderType.JELLYFIN -> "Jellyfin"
         }
     }
 
-    private fun buildProviderArchiveSummary(provider: com.streamvault.domain.model.Provider): String {
+    private fun buildProviderArchiveSummary(provider: com.zenlemon.domain.model.Provider): String {
         return when (provider.type) {
-            com.streamvault.domain.model.ProviderType.XTREAM_CODES ->
+            com.zenlemon.domain.model.ProviderType.XTREAM_CODES ->
                 "Xtream replay depends on archive-enabled channels and valid replay stream ids from the provider."
-            com.streamvault.domain.model.ProviderType.M3U ->
+            com.zenlemon.domain.model.ProviderType.M3U ->
                 if (provider.epgUrl.isBlank()) {
                     "M3U replay is limited: archive depends on provider templates and guide coverage is weaker without XMLTV."
                 } else {
                     "M3U replay depends on the provider catch-up template and matching guide data."
                 }
-            com.streamvault.domain.model.ProviderType.STALKER_PORTAL ->
+            com.zenlemon.domain.model.ProviderType.STALKER_PORTAL ->
                 if (provider.epgUrl.isBlank()) {
                     "Portal guide falls back to on-demand Stalker data when XMLTV is unavailable."
                 } else {
                     "Guide combines optional XMLTV with on-demand Stalker portal data."
                 }
-            com.streamvault.domain.model.ProviderType.JELLYFIN ->
+            com.zenlemon.domain.model.ProviderType.JELLYFIN ->
                 if (provider.epgUrl.isBlank()) {
                     "Jellyfin replay depends on the server guide data being populated."
                 } else {
@@ -1767,7 +1767,7 @@ class EpgViewModel @Inject constructor(
     }
 
     private suspend fun fetchXtreamGuideFallback(
-        provider: com.streamvault.domain.model.Provider,
+        provider: com.zenlemon.domain.model.Provider,
         providerId: Long,
         channels: List<Channel>,
         existingProgramsByChannel: Map<String, List<Program>>,
@@ -1780,8 +1780,8 @@ class EpgViewModel @Inject constructor(
             return emptyMap()
         }
         if (
-            provider.type != com.streamvault.domain.model.ProviderType.XTREAM_CODES &&
-            provider.type != com.streamvault.domain.model.ProviderType.STALKER_PORTAL
+            provider.type != com.zenlemon.domain.model.ProviderType.XTREAM_CODES &&
+            provider.type != com.zenlemon.domain.model.ProviderType.STALKER_PORTAL
         ) {
             return emptyMap()
         }
@@ -1814,7 +1814,7 @@ class EpgViewModel @Inject constructor(
                     streamId = channel.streamId,
                     epgChannelId = channel.epgChannelId
                 )
-            ] as? com.streamvault.domain.model.Result.Success)?.data
+            ] as? com.zenlemon.domain.model.Result.Success)?.data
                 .orEmpty()
                 .filter { program -> program.endTime > windowStart && program.startTime < windowEnd }
                 .sortedBy { program -> program.startTime }
@@ -2063,6 +2063,6 @@ private data class GuideCategoryData(
     val providerCategories: List<Category>,
     val customCategories: List<Category>,
     val hiddenCategoryIds: Set<Long>,
-    val sortMode: com.streamvault.domain.model.CategorySortMode,
+    val sortMode: com.zenlemon.domain.model.CategorySortMode,
     val showAllChannels: Boolean = true
 )

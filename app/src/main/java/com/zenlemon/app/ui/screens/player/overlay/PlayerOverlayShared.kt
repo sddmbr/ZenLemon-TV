@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.player.overlay
+package com.zenlemon.app.ui.screens.player.overlay
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
@@ -31,11 +31,11 @@ import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.Text
-import com.streamvault.app.R
-import com.streamvault.app.ui.design.AppColors
-import com.streamvault.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.design.AppColors
+import com.zenlemon.app.ui.interaction.TvClickableSurface
 import java.util.Locale
-import com.streamvault.app.ui.design.AppColors.Brand as Primary
+import com.zenlemon.app.ui.design.AppColors.Brand as Primary
 
 @Composable
 internal fun PlayerOverlayPanel(

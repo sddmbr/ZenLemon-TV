@@ -1,29 +1,29 @@
 @file:OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
 
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
-import com.streamvault.app.ui.model.LiveTvChannelMode
-import com.streamvault.app.ui.model.LiveTvQuickFilterVisibilityMode
-import com.streamvault.app.ui.model.VodViewMode
-import com.streamvault.domain.model.AppHomeDashboardShelf
-import com.streamvault.domain.model.AppLandingDestination
-import com.streamvault.domain.model.AppTopLevelDestination
-import com.streamvault.data.preferences.PreferencesRepository
-import com.streamvault.domain.model.AppTimeFormat
-import com.streamvault.domain.model.AudioOutputPreference
-import com.streamvault.domain.model.ChannelNumberingMode
-import com.streamvault.domain.model.DecoderMode
-import com.streamvault.domain.model.ExternalPlaybackMode
-import com.streamvault.domain.model.GroupedChannelLabelMode
-import com.streamvault.domain.model.LiveChannelGroupingMode
-import com.streamvault.domain.model.LiveVariantPreferenceMode
-import com.streamvault.domain.model.PlaybackBufferMode
-import com.streamvault.domain.model.TimeshiftBackendPreference
-import com.streamvault.domain.model.VodDuplicateHandlingMode
-import com.streamvault.domain.model.VodHttpProtocolMode
-import com.streamvault.domain.model.VodVariantPreferenceMode
-import com.streamvault.domain.model.VirtualCategoryIds
-import com.streamvault.domain.repository.ProviderRepository
+import com.zenlemon.app.ui.model.LiveTvChannelMode
+import com.zenlemon.app.ui.model.LiveTvQuickFilterVisibilityMode
+import com.zenlemon.app.ui.model.VodViewMode
+import com.zenlemon.domain.model.AppHomeDashboardShelf
+import com.zenlemon.domain.model.AppLandingDestination
+import com.zenlemon.domain.model.AppTopLevelDestination
+import com.zenlemon.data.preferences.PreferencesRepository
+import com.zenlemon.domain.model.AppTimeFormat
+import com.zenlemon.domain.model.AudioOutputPreference
+import com.zenlemon.domain.model.ChannelNumberingMode
+import com.zenlemon.domain.model.DecoderMode
+import com.zenlemon.domain.model.ExternalPlaybackMode
+import com.zenlemon.domain.model.GroupedChannelLabelMode
+import com.zenlemon.domain.model.LiveChannelGroupingMode
+import com.zenlemon.domain.model.LiveVariantPreferenceMode
+import com.zenlemon.domain.model.PlaybackBufferMode
+import com.zenlemon.domain.model.TimeshiftBackendPreference
+import com.zenlemon.domain.model.VodDuplicateHandlingMode
+import com.zenlemon.domain.model.VodHttpProtocolMode
+import com.zenlemon.domain.model.VodVariantPreferenceMode
+import com.zenlemon.domain.model.VirtualCategoryIds
+import com.zenlemon.domain.repository.ProviderRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -57,7 +57,7 @@ internal fun observeSettingsPreferenceSnapshot(
             playerPlaybackBufferMode = PlaybackBufferMode.AUTO,
             playerAudioOutputPreference = AudioOutputPreference.AUTO,
             playerCompatibilityMemoryEnabled = true,
-            playerSurfaceMode = com.streamvault.domain.model.PlayerSurfaceMode.AUTO,
+            playerSurfaceMode = com.zenlemon.domain.model.PlayerSurfaceMode.AUTO,
             playerVodHttpProtocolMode = VodHttpProtocolMode.COMPATIBILITY_HTTP1,
             playerPlaybackSpeed = 1f,
             playerExternalPlaybackMode = ExternalPlaybackMode.INTERNAL_PLAYER,
@@ -94,7 +94,7 @@ internal fun observeSettingsPreferenceSnapshot(
             showFavoritesCategory = true,
             showAllChannelsCategory = true,
             showRecentChannelsCategory = true,
-            remoteShortcutPreferences = com.streamvault.domain.model.RemoteShortcutPreferences(),
+            remoteShortcutPreferences = com.zenlemon.domain.model.RemoteShortcutPreferences(),
             liveTvCategoryFilters = emptyList(),
             liveTvQuickFilterVisibilityMode = LiveTvQuickFilterVisibilityMode.ALWAYS_VISIBLE,
             hideDecorativeLiveRows = true,

@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -35,26 +35,26 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.tv.material3.*
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.TvEmptyState
-import com.streamvault.app.ui.components.dialogs.PremiumDialog
-import com.streamvault.app.ui.components.dialogs.PremiumDialogActionButton
-import com.streamvault.app.ui.components.dialogs.PremiumDialogFooterButton
-import com.streamvault.app.ui.design.FocusSpec
-import com.streamvault.app.ui.interaction.TvButton
-import com.streamvault.app.ui.interaction.TvClickableSurface
-import com.streamvault.app.ui.interaction.mouseClickable
-import com.streamvault.app.ui.theme.*
-import com.streamvault.app.ui.time.LocalAppTimeFormat
-import com.streamvault.app.ui.time.createDateTimeFormat
-import com.streamvault.domain.manager.BackupConflictStrategy
-import com.streamvault.domain.manager.BackupImportPlan
-import com.streamvault.domain.manager.BackupPreview
-import com.streamvault.domain.model.RecordingFailureCategory
-import com.streamvault.domain.model.RecordingItem
-import com.streamvault.domain.model.RecordingRecurrence
-import com.streamvault.domain.model.RecordingSourceType
-import com.streamvault.domain.model.RecordingStatus
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.TvEmptyState
+import com.zenlemon.app.ui.components.dialogs.PremiumDialog
+import com.zenlemon.app.ui.components.dialogs.PremiumDialogActionButton
+import com.zenlemon.app.ui.components.dialogs.PremiumDialogFooterButton
+import com.zenlemon.app.ui.design.FocusSpec
+import com.zenlemon.app.ui.interaction.TvButton
+import com.zenlemon.app.ui.interaction.TvClickableSurface
+import com.zenlemon.app.ui.interaction.mouseClickable
+import com.zenlemon.app.ui.theme.*
+import com.zenlemon.app.ui.time.LocalAppTimeFormat
+import com.zenlemon.app.ui.time.createDateTimeFormat
+import com.zenlemon.domain.manager.BackupConflictStrategy
+import com.zenlemon.domain.manager.BackupImportPlan
+import com.zenlemon.domain.manager.BackupPreview
+import com.zenlemon.domain.model.RecordingFailureCategory
+import com.zenlemon.domain.model.RecordingItem
+import com.zenlemon.domain.model.RecordingRecurrence
+import com.zenlemon.domain.model.RecordingSourceType
+import com.zenlemon.domain.model.RecordingStatus
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 
 @Composable

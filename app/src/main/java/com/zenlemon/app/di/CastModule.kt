@@ -1,7 +1,7 @@
-package com.streamvault.app.di
+package com.zenlemon.app.di
 
-import com.streamvault.app.cast.CastPlaybackCoordinator
-import com.streamvault.app.cast.DefaultCastPlaybackCoordinator
+import com.zenlemon.app.cast.CastPlaybackCoordinator
+import com.zenlemon.app.cast.DefaultCastPlaybackCoordinator
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

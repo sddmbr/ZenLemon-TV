@@ -1,14 +1,14 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
-import com.streamvault.app.ui.model.applyProviderCategoryDisplayPreferences
-import com.streamvault.data.preferences.PreferencesRepository
-import com.streamvault.domain.model.ActiveLiveSource
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.VirtualCategoryIds
-import com.streamvault.domain.repository.ChannelRepository
-import com.streamvault.domain.repository.CombinedM3uRepository
-import com.streamvault.domain.usecase.GetCustomCategories
+import com.zenlemon.app.ui.model.applyProviderCategoryDisplayPreferences
+import com.zenlemon.data.preferences.PreferencesRepository
+import com.zenlemon.domain.model.ActiveLiveSource
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.VirtualCategoryIds
+import com.zenlemon.domain.repository.ChannelRepository
+import com.zenlemon.domain.repository.CombinedM3uRepository
+import com.zenlemon.domain.usecase.GetCustomCategories
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine

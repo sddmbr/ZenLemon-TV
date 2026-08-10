@@ -1,10 +1,10 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.ProviderType
-import com.streamvault.player.PlaybackState
-import com.streamvault.player.PlayerError
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.ProviderType
+import com.zenlemon.player.PlaybackState
+import com.zenlemon.player.PlayerError
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Locale

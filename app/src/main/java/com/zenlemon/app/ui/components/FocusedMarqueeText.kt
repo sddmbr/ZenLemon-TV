@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.components
+package com.zenlemon.app.ui.components
 
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.runtime.Composable

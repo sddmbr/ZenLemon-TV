@@ -1,8 +1,8 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
-import com.streamvault.domain.model.Movie
-import com.streamvault.domain.model.VodMovieVariant
-import com.streamvault.domain.util.movieVariantQualityScore
+import com.zenlemon.domain.model.Movie
+import com.zenlemon.domain.model.VodMovieVariant
+import com.zenlemon.domain.util.movieVariantQualityScore
 import java.util.Locale
 
 private val AVC_CODEC_TOKENS = listOf("avc", "h264", "x264")
@@ -13,7 +13,7 @@ internal suspend fun PlayerViewModel.tryFallbackToAvcMovieVariant(
     requestVersion: Long,
     playbackUrl: String
 ): Boolean {
-    if (currentContentType != com.streamvault.domain.model.ContentType.MOVIE) return false
+    if (currentContentType != com.zenlemon.domain.model.ContentType.MOVIE) return false
     if (currentProviderId <= 0L || currentContentId <= 0L) return false
     if (hasRetriedWithAvcMovieVariant) return false
     if (!isActivePlaybackSession(requestVersion, playbackUrl)) return false

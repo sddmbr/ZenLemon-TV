@@ -1,4 +1,4 @@
-Ôªø# Changelog
+# Changelog
 
 All notable product changes are recorded in this document.
 
@@ -19,7 +19,7 @@ All notable product changes are recorded in this document.
 ### Fixed
 
 - Fixed bare-hostname URL resolution so Jellyfin, M3U playlist, and EPG source paths now probe for HTTPS and fall back to HTTP the same way Xtream and Stalker already did; previously a bare hostname entered for Jellyfin was silently forced to HTTPS with no fallback, and bare-hostname playlists or EPG sources passed validation but failed at fetch because no scheme was stored.
-- Fixed URL scheme detection in bare-hostname resolution so `file://` and `content://` local playlist and EPG URIs are no longer mangled into `http://file://‚Ä¶` by the protocol probe.
+- Fixed URL scheme detection in bare-hostname resolution so `file://` and `content://` local playlist and EPG URIs are no longer mangled into `http://file://Ö` by the protocol probe.
 - Fixed HTTPS protocol probe to treat any non-redirect response (including 4xx and 5xx) as proof that the TLS endpoint is reachable, and only fall back to HTTP when the server issues a 3xx redirect or the connection fails entirely.
 - Fixed bare-hostname validation in playlist and EPG URL fields so schemeless input is accepted consistently across all provider setup flows, matching the behavior already present for Xtream and Stalker.
 - Fixed in-app update handling so downloaded APKs are recognized as install-ready, stale downloaded APKs no longer block newer releases, unknown-sources permission prompts preserve the downloaded update for retry, and Home/Settings use the same channel-aware newer-version logic.
@@ -176,7 +176,7 @@ All notable product changes are recorded in this document.
 
 ### Changed
 
-- Refreshed the Plugins screen with denser StreamVault-styled controls and a dedicated icon.
+- Refreshed the Plugins screen with denser ZenLemon-styled controls and a dedicated icon.
 - Expanded plugin API docs for manifests, installation, IPC, configuration, and UI integration.
 - Clarified the Google Drive maintainer guide for `drive.appdata` and production rollout.
 
@@ -268,26 +268,26 @@ All notable product changes are recorded in this document.
 ### Added
 
 #### Player
-- A/V sync offset controls ‚Äî global and per-channel overrides; accessible from the channel info overlay (live) and player controls overlay (VOD).
-- Compatibility Mode ‚Äî improved decoder/surface fallback for stalled video playback.
-- Video Surface selection ‚Äî choose Auto, SurfaceView, or TextureView in Playback settings for device-specific rendering issues.
+- A/V sync offset controls ó global and per-channel overrides; accessible from the channel info overlay (live) and player controls overlay (VOD).
+- Compatibility Mode ó improved decoder/surface fallback for stalled video playback.
+- Video Surface selection ó choose Auto, SurfaceView, or TextureView in Playback settings for device-specific rendering issues.
 - Time format preference (System default, 12-hour, 24-hour) in Settings.
-- Sleep timers ‚Äî Stop Playback After and Allow Standby After Idle, with presets, countdowns, and warning overlays; defaults saved in Playback settings.
-- Auto-Play Next Episode for series ‚Äî 10-second **Up Next** countdown with Play Now and Cancel; toggle in Playback settings (on by default).
+- Sleep timers ó Stop Playback After and Allow Standby After Idle, with presets, countdowns, and warning overlays; defaults saved in Playback settings.
+- Auto-Play Next Episode for series ó 10-second **Up Next** countdown with Play Now and Cancel; toggle in Playback settings (on by default).
 
 #### VOD
-- Infinite scroll preference for Movies and Series ‚Äî auto-load more rows and posters while browsing, or keep a manual Load More button.
+- Infinite scroll preference for Movies and Series ó auto-load more rows and posters while browsing, or keep a manual Load More button.
 
 ### Fixed
 
-- Fixed excessive live TV buffering from 1.0.8 ‚Äî minimum buffer threshold reduced to 8 seconds (was effectively 30 seconds).
-- Fixed inconsistent AM/PM and 24-hour timestamps ‚Äî selected time format now applied consistently across Guide, Player overlays, Home, History, Dashboard, and Settings.
-- Fixed EPG guide cutting off at 60 channels per category ‚Äî additional channels now load automatically on scroll.
-- Fixed a crash when opening Settings ‚Üí EPG Sources on some devices by making the EPG source and provider list item keys unique.
+- Fixed excessive live TV buffering from 1.0.8 ó minimum buffer threshold reduced to 8 seconds (was effectively 30 seconds).
+- Fixed inconsistent AM/PM and 24-hour timestamps ó selected time format now applied consistently across Guide, Player overlays, Home, History, Dashboard, and Settings.
+- Fixed EPG guide cutting off at 60 channels per category ó additional channels now load automatically on scroll.
+- Fixed a crash when opening Settings ? EPG Sources on some devices by making the EPG source and provider list item keys unique.
 - Fixed background EPG sync from stalling Live TV category loading after provider add.
 - Fixed Stalker live sync loading large `get_all_channels` catalogs in a streaming, batched path to avoid out-of-memory crashes.
-- Fixed Stalker live sync when portal category requests fail ‚Äî the app now stages bulk live channels first and recovers fallback categories instead of leaving Live TV empty.
-- Fixed Stalker native EPG fallback on portals that ignore per-channel `ch_id` requests and keep returning the full bulk guide ‚Äî sync now detects the broken response shape and stops repeating the large download loop.
+- Fixed Stalker live sync when portal category requests fail ó the app now stages bulk live channels first and recovers fallback categories instead of leaving Live TV empty.
+- Fixed Stalker native EPG fallback on portals that ignore per-channel `ch_id` requests and keep returning the full bulk guide ó sync now detects the broken response shape and stops repeating the large download loop.
 - Fixed modern VOD/series shelves to load on demand in smaller visible batches, with paged Stalker category loading and throttled Xtream category previews.
 - Fixed Stalker series details using local numeric IDs instead of provider-native series IDs, which broke series info loading on portals that use composite IDs.
 - Fixed Stalker series titles being overwritten by season-shell or numeric fallback names when detail payloads omitted the real title.
@@ -299,7 +299,7 @@ All notable product changes are recorded in this document.
 
 ### Added
 
-- Added resume action on movie and series detail screens ‚Äî shows formatted position and episode context (e.g. "Resume ¬∑ S2 E3 ¬∑ 23:45").
+- Added resume action on movie and series detail screens ó shows formatted position and episode context (e.g. "Resume ∑ S2 E3 ∑ 23:45").
 
 ### Fixed
 
@@ -315,7 +315,7 @@ All notable product changes are recorded in this document.
 - Fixed Xtream fast sync leaving movie and series categories temporarily empty.
 - Fixed VOD browse pagination skipping items or leaving groups incomplete.
 - Fixed VOD resume position, episode progress, and continue-watching state not updating reliably.
-- Fixed silent audio when a stream's codec (e.g. EAC3, AC3) is unsupported ‚Äî player now surfaces a clear error.
+- Fixed silent audio when a stream's codec (e.g. EAC3, AC3) is unsupported ó player now surfaces a clear error.
 - Fixed Xtream Live TV taking a very long time to load on first sync with large providers (50k+ channels).
 
 ---
@@ -349,7 +349,7 @@ All notable product changes are recorded in this document.
 ### Added
 
 #### Live Playback & DVR
-- Added live rewind (timeshift) for live channels ‚Äî up to 30 minutes buffer.
+- Added live rewind (timeshift) for live channels ó up to 30 minutes buffer.
 - Added timeline scrubber with live-edge indicator and seek controls.
 - Added recording, catch-up, and restart controls directly in the player overlay.
 - Added DASH stream support to the rewind engine.
@@ -358,48 +358,48 @@ All notable product changes are recorded in this document.
 - Added incremental channel loading for large providers.
 - Added incremental search results with automatic loading on scroll.
 - Added automatic paging when reaching the end of the channel list.
-- Added HTTP conditional requests (`ETag` / `If-Modified-Since`) to EPG refresh ‚Äî unchanged feeds return `304 Not Modified` and skip download and parse entirely.
-- Added EPG channel icon fallback ‚Äî channels without a provider logo now use the icon from their matched EPG source.
+- Added HTTP conditional requests (`ETag` / `If-Modified-Since`) to EPG refresh ó unchanged feeds return `304 Not Modified` and skip download and parse entirely.
+- Added EPG channel icon fallback ó channels without a provider logo now use the icon from their matched EPG source.
 
 #### System & Settings
 - Added timeshift storage manager with automatic cleanup.
 - Added auto-return on failed channels toggle.
 - Added automatic update download option.
-- Added options to show/hide ‚ÄúAll Channels‚Äù and ‚ÄúRecent Channels‚Äù.
-- Added "Hidden" option to Live TV Channel Numbering ‚Äî hides channel numbers everywhere in the app (channel lists, player overlay, EPG, zap banner).
+- Added options to show/hide ìAll Channelsî and ìRecent Channelsî.
+- Added "Hidden" option to Live TV Channel Numbering ó hides channel numbers everywhere in the app (channel lists, player overlay, EPG, zap banner).
 - Added live channel grouping settings with grouped/raw modes, grouped label style, and variant preference options.
 - Added live channel variant selection in the player overlay, separate from adaptive stream quality selection.
 #### Recording
-- Schedule recordings directly from the EPG guide ‚Äî Record, Record Daily, and Record Weekly buttons on any future program.
-- Configurable pre/post recording padding (start early / end late) ‚Äî applied automatically to all scheduled recordings.
-- WiFi-only recording restriction ‚Äî optionally prevent recordings from starting on mobile data.
-- HLS recording quality cap ‚Äî respects the per-network video quality preference instead of always picking the highest bandwidth variant.
-- Recording conflict resolution dialog ‚Äî shows which recordings overlap and offers to replace them instead of just showing an error.
-- Recording status indicators on channel cards ‚Äî REC and Scheduled badges on Dashboard and Search screens.
+- Schedule recordings directly from the EPG guide ó Record, Record Daily, and Record Weekly buttons on any future program.
+- Configurable pre/post recording padding (start early / end late) ó applied automatically to all scheduled recordings.
+- WiFi-only recording restriction ó optionally prevent recordings from starting on mobile data.
+- HLS recording quality cap ó respects the per-network video quality preference instead of always picking the highest bandwidth variant.
+- Recording conflict resolution dialog ó shows which recordings overlap and offers to replace them instead of just showing an error.
+- Recording status indicators on channel cards ó REC and Scheduled badges on Dashboard and Search screens.
 - Skip single occurrence of a recurring recording without cancelling the series.
 - Search and filter in the recordings browser by title, channel, or status.
-- Stalled-capture watchdog ‚Äî recordings that stop receiving data for 60 seconds are automatically aborted.
+- Stalled-capture watchdog ó recordings that stop receiving data for 60 seconds are automatically aborted.
 - Automatic retry with exponential backoff on transient network failures during capture.
-- Low disk space pre-flight check ‚Äî scheduled recordings fail early with a clear message instead of writing partial files.
+- Low disk space pre-flight check ó scheduled recordings fail early with a clear message instead of writing partial files.
 - Push notification on recording failure with channel name and reason.
 - Completed recordings open in the player with resume position tracking.
 #### VOD
-- "Filter & Sort" button now shows active selections as a subtitle (e.g. "Favorites ¬∑ Rating") and highlights with brand colour when non-default settings are applied ‚Äî applies to both Movies and Series, modern and classic views.
+- "Filter & Sort" button now shows active selections as a subtitle (e.g. "Favorites ∑ Rating") and highlights with brand colour when non-default settings are applied ó applies to both Movies and Series, modern and classic views.
 
 #### Search
-- Long-pressing a channel, movie, or series in Search now opens a context menu with Add/Remove Favorites, Hide, and Parental Lock/Unlock actions ‚Äî consistent with the same actions available in other screens.
+- Long-pressing a channel, movie, or series in Search now opens a context menu with Add/Remove Favorites, Hide, and Parental Lock/Unlock actions ó consistent with the same actions available in other screens.
 
 #### Parental Controls
-- Added **PRIVATE** protection level ‚Äî adult categories appear in the sidebar with a PIN lock, but are excluded from Search, EPG Guide, All Channels, and Recent so individual channel names (e.g. explicit titles) are never shown in mixed lists.
+- Added **PRIVATE** protection level ó adult categories appear in the sidebar with a PIN lock, but are excluded from Search, EPG Guide, All Channels, and Recent so individual channel names (e.g. explicit titles) are never shown in mixed lists.
 - PRIVATE is now the default protection level for new installs.
 - Existing users with the old HIDDEN level are automatically migrated to the new HIDDEN (level 3); users previously on LOCKED remain on LOCKED.
 - Protection level selection dialog upgraded to a title + description card layout matching other mode-selection dialogs.
-- LOCKED level now correctly shows adult content in all views (EPG, Search, All Channels, Recent) ‚Äî it previously blocked adult content from the EPG guide despite that not being the intended behaviour.
+- LOCKED level now correctly shows adult content in all views (EPG, Search, All Channels, Recent) ó it previously blocked adult content from the EPG guide despite that not being the intended behaviour.
 
 #### Database & Sync
-- Search now indexes title, cast, director, and genre with BM25 relevance ranking ‚Äî results are ordered by match quality.
-- Program reminders ‚Äî tap any guide entry to be notified before a show starts without scheduling a full recording.
-- Watch progress and favorites are unified across providers for the same TMDB title ‚Äî resume a movie on any provider from where you left off.
+- Search now indexes title, cast, director, and genre with BM25 relevance ranking ó results are ordered by match quality.
+- Program reminders ó tap any guide entry to be notified before a show starts without scheduling a full recording.
+- Watch progress and favorites are unified across providers for the same TMDB title ó resume a movie on any provider from where you left off.
 - Provider catalogs now enforce per-provider row limits to prevent malformed feeds from consuming device storage.
 - EPG channel match quality is tracked per channel; channels with weak or missing EPG assignments surface in provider settings.
 - Database diagnostics in Settings showing storage usage, per-table row counts, fragmentation level, and maintenance history.
@@ -421,17 +421,17 @@ All notable product changes are recorded in this document.
 - EPG source delete now requires confirmation to prevent accidental removal.
 - Refreshing an EPG source shows a per-source loading indicator instead of a global spinner, so multiple sources can refresh independently.
 - Settings screen content scrolls up correctly when the keyboard opens, keeping text fields visible while typing.
-- EPG feeds with non-UTF-8 encodings (ISO-8859-1/2, Windows-1252, etc.) now parse correctly ‚Äî channel names and programme titles no longer appear garbled.
+- EPG feeds with non-UTF-8 encodings (ISO-8859-1/2, Windows-1252, etc.) now parse correctly ó channel names and programme titles no longer appear garbled.
 - EPG download read timeout increased from 30 s to 120 s for large or slow feeds.
-- Catalog sync for large providers is significantly faster ‚Äî field changes are diffed in Kotlin and applied in a single batched update instead of per-column correlated subqueries.
+- Catalog sync for large providers is significantly faster ó field changes are diffed in Kotlin and applied in a single batched update instead of per-column correlated subqueries.
 - EPG program data is now retained for the full catch-up window of each channel (up to 7 days) instead of a fixed 24-hour cutoff.
-- EPG staging writes for large feeds are committed in a single transaction, cutting write time for 50 000-program feeds by roughly 10√ó.
+- EPG staging writes for large feeds are committed in a single transaction, cutting write time for 50 000-program feeds by roughly 10◊.
 - Series sync now skips unchanged series using server-provided last-modified timestamps, reducing API traffic on repeat refreshes.
 - EPG and Xtream API responses are cached using server Cache-Control and ETag headers, eliminating redundant downloads on unchanged feeds.
-- Channel and VOD browse lists now use keyset pagination ‚Äî no items are skipped or duplicated during concurrent syncs and deep pages load faster.
-- Movie and series watch-count sort no longer runs a subquery per row ‚Äî watch count is stored on the content record.
+- Channel and VOD browse lists now use keyset pagination ó no items are skipped or duplicated during concurrent syncs and deep pages load faster.
+- Movie and series watch-count sort no longer runs a subquery per row ó watch count is stored on the content record.
 - Playback progress is batched and flushed on a 30-second interval instead of writing to the database on every player tick.
-- Partial sync no longer resets the provider refresh timer ‚Äî only a complete successful sync marks a provider as up to date.
+- Partial sync no longer resets the provider refresh timer ó only a complete successful sync marks a provider as up to date.
 
 ---
 
@@ -456,7 +456,7 @@ All notable product changes are recorded in this document.
 - Fixed playback restarting due to EPG updates.
 
 #### UI & Behavior
-- Fixed update status stuck on ‚ÄúDownloading‚Äù.
+- Fixed update status stuck on ìDownloadingî.
 - Fixed numeric channel input issues (0 handling).
 - Fixed Picture-in-Picture activating incorrectly.
 - Fixed missing channel handling after playlist refresh.
@@ -469,14 +469,14 @@ All notable product changes are recorded in this document.
 - Fixed `.gz` EPG feeds being double-decompressed and failing to parse.
 - Fixed blank URL accepted past the scheme validator when adding an EPG source.
 - Fixed EPG list always appearing empty after a fresh install (list was never populated into the UI state).
-- Fixed EPG sync rejecting plain HTTP URLs ‚Äî M3U playlist header EPG (`x-tvg-url`), manual EPG sources, and M3U provider EPG fields now accept HTTP and HTTPS, matching the same policy already applied to Xtream providers.
+- Fixed EPG sync rejecting plain HTTP URLs ó M3U playlist header EPG (`x-tvg-url`), manual EPG sources, and M3U provider EPG fields now accept HTTP and HTTPS, matching the same policy already applied to Xtream providers.
 - Fixed EPG search not escaping `%` and `_` wildcards, returning too many results on certain queries.
 - Fixed "now & next" picking the wrong next program when programs had gaps.
 - Fixed EPG channel-matching trimming whitespace inconsistently between ID index build and lookup.
 - Fixed EPG source refresh not recording errors on failure, leaving stale "refreshing" status.
-- Fixed EPG source refresh replacing live data non-atomically ‚Äî writes now go to a staging area and swap in a single transaction.
+- Fixed EPG source refresh replacing live data non-atomically ó writes now go to a staging area and swap in a single transaction.
 - Fixed EPG override-candidates query loading all channels into memory instead of filtering in SQL.
-- Fixed `MAX_EPG_SIZE_BYTES` duplicated across two repositories ‚Äî now defined once in shared config.
+- Fixed `MAX_EPG_SIZE_BYTES` duplicated across two repositories ó now defined once in shared config.
 - Fixed EPG source refresh not being rate-limited, allowing rapid repeated fetches.
 - Fixed `jumpToDay` and `jumpToPrimeTime` using UTC epoch modulo instead of local-timezone arithmetic.
 - Fixed guide timeline and program times using hardcoded 24-hour format instead of respecting the device locale.
@@ -490,22 +490,22 @@ All notable product changes are recorded in this document.
 
 #### Provider Sync
 - Fixed sync failing with "Login succeeded, but the initial sync failed" for live-only providers with no VOD or series content.
-- Fixed providers with fast sync enabled showing **Partial** status incorrectly ‚Äî providers now show **Active** when fast sync completes as intended.
+- Fixed providers with fast sync enabled showing **Partial** status incorrectly ó providers now show **Active** when fast sync completes as intended.
 - Fixed VOD-only providers (no live TV) failing on first sync when the server returns an empty live-streams response.
 
 #### Database & Cache
-- Fixed watch status not updating correctly after history was cleared ‚Äî unwatched state is now read from the authoritative history table.
+- Fixed watch status not updating correctly after history was cleared ó unwatched state is now read from the authoritative history table.
 - Fixed stale data left behind when a provider was deleted while a sync was in progress.
 - Fixed a background EPG job leaking a phantom reference when the job completed before it was registered.
-- Fixed "now playing" showing an ended program on long-lived guide screens ‚Äî current time is refreshed on each display tick.
+- Fixed "now playing" showing an ended program on long-lived guide screens ó current time is refreshed on each display tick.
 - Fixed a forward clock jump suppressing cache refreshes beyond the corrected window.
-- Fixed FTS search queries with unbalanced quotes or SQLite reserved operators causing crashes ‚Äî malformed input is now sanitized before reaching the database.
+- Fixed FTS search queries with unbalanced quotes or SQLite reserved operators causing crashes ó malformed input is now sanitized before reaching the database.
 - Fixed EPG provider mutex entries not being removed on provider deletion, leaking memory over long sessions.
 - Fixed VACUUM maintenance running concurrently with an active sync, causing spurious sync failures.
-- Fixed VACUUM pre-flight silently truncating the WAL file ‚Äî replaced with a non-destructive passive checkpoint.
-- Fixed favorites reordering issuing one database write per item ‚Äî reordering now uses a single bulk update.
+- Fixed VACUUM pre-flight silently truncating the WAL file ó replaced with a non-destructive passive checkpoint.
+- Fixed favorites reordering issuing one database write per item ó reordering now uses a single bulk update.
 - Fixed category protection not being cleared when category IDs were remapped during a provider catalog restructure.
-- Fixed sync session ID collisions after a clock correction ‚Äî sessions now use random identifiers.
+- Fixed sync session ID collisions after a clock correction ó sessions now use random identifiers.
 - Fixed database migrations that rebuild tables not verifying foreign key integrity before completing.
 ---
 

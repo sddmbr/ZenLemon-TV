@@ -1,4 +1,4 @@
-package com.streamvault.app.pairing
+package com.zenlemon.app.pairing
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -11,18 +11,18 @@ import android.util.Log
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
 import com.google.zxing.qrcode.QRCodeWriter
-import com.streamvault.domain.model.ProviderEpgSyncMode
-import com.streamvault.domain.model.ChannelLogoSourcePolicy
-import com.streamvault.domain.model.GuideSourcePolicy
-import com.streamvault.domain.model.ProviderXtreamLiveSyncMode
-import com.streamvault.domain.model.StalkerAuthMode
-import com.streamvault.domain.repository.ProviderRepository
-import com.streamvault.domain.usecase.JellyfinProviderSetupCommand
-import com.streamvault.domain.usecase.M3uProviderSetupCommand
-import com.streamvault.domain.usecase.StalkerProviderSetupCommand
-import com.streamvault.domain.usecase.ValidateAndAddProvider
-import com.streamvault.domain.usecase.ValidateAndAddProviderResult
-import com.streamvault.domain.usecase.XtreamProviderSetupCommand
+import com.zenlemon.domain.model.ProviderEpgSyncMode
+import com.zenlemon.domain.model.ChannelLogoSourcePolicy
+import com.zenlemon.domain.model.GuideSourcePolicy
+import com.zenlemon.domain.model.ProviderXtreamLiveSyncMode
+import com.zenlemon.domain.model.StalkerAuthMode
+import com.zenlemon.domain.repository.ProviderRepository
+import com.zenlemon.domain.usecase.JellyfinProviderSetupCommand
+import com.zenlemon.domain.usecase.M3uProviderSetupCommand
+import com.zenlemon.domain.usecase.StalkerProviderSetupCommand
+import com.zenlemon.domain.usecase.ValidateAndAddProvider
+import com.zenlemon.domain.usecase.ValidateAndAddProviderResult
+import com.zenlemon.domain.usecase.XtreamProviderSetupCommand
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -411,7 +411,7 @@ class ProviderQrPairingManager @Inject constructor(
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>StreamVault Pairing</title>
+          <title>ZenLemon Pairing</title>
           <style>
             body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#101820;color:#f8fafc;margin:0;padding:24px}
             main{max-width:560px;margin:0 auto;background:#172635;border:1px solid #2b4258;border-radius:22px;padding:22px;box-shadow:0 18px 60px rgba(0,0,0,.35)}
@@ -424,7 +424,7 @@ class ProviderQrPairingManager @Inject constructor(
         </head>
         <body>
         <main>
-          <h1>Add provider to StreamVault</h1>
+          <h1>Add provider to ZenLemon</h1>
           <p>Enter details on your phone. They are sent directly to your TV over your local Wi-Fi only.</p>
           <form method="post" action="/submit">
             <input type="hidden" name="token" value="${token.escapeHtml()}">
@@ -476,7 +476,7 @@ class ProviderQrPairingManager @Inject constructor(
     private fun successPage(providerName: String): String = """
         <!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1">
         <style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#101820;color:#f8fafc;padding:28px}main{max-width:520px;margin:auto;background:#172635;border-radius:22px;padding:24px}h1{color:#32d6a0}</style>
-        </head><body><main><h1>Sent to TV</h1><p>${providerName.escapeHtml()} was added to StreamVault. You can close this page.</p></main></body></html>
+        </head><body><main><h1>Sent to TV</h1><p>${providerName.escapeHtml()} was added to ZenLemon. You can close this page.</p></main></body></html>
     """.trimIndent()
 
     private fun errorPage(message: String): String = """

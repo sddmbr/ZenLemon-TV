@@ -1,13 +1,13 @@
-package com.streamvault.app.ui.screens.settings.parental
+package com.zenlemon.app.ui.screens.settings.parental
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.streamvault.data.preferences.PreferencesRepository
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.Result
-import com.streamvault.domain.repository.CategoryRepository
+import com.zenlemon.data.preferences.PreferencesRepository
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.Result
+import com.zenlemon.domain.repository.CategoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

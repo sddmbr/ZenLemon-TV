@@ -1,11 +1,11 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.ui.model.isArchivePlayable
-import com.streamvault.data.security.CredentialDecryptionException
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.Program
-import com.streamvault.domain.model.StreamInfo
+import com.zenlemon.app.ui.model.isArchivePlayable
+import com.zenlemon.data.security.CredentialDecryptionException
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.Program
+import com.zenlemon.domain.model.StreamInfo
 import kotlinx.coroutines.launch
 
 internal suspend fun resolveCatchUpStreamInfo(

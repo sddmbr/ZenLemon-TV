@@ -1,10 +1,10 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.player.LiveTranslationClient
-import com.streamvault.app.player.LiveTranslationSession
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.ProviderType
+import com.zenlemon.app.player.LiveTranslationClient
+import com.zenlemon.app.player.LiveTranslationSession
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.ProviderType
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 

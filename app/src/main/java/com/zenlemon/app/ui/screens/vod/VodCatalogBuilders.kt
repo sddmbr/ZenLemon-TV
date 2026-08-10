@@ -1,8 +1,8 @@
-package com.streamvault.app.ui.screens.vod
+package com.zenlemon.app.ui.screens.vod
 
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.Favorite
-import com.streamvault.app.ui.screens.vod.matchesVodGroupMembership
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.Favorite
+import com.zenlemon.app.ui.screens.vod.matchesVodGroupMembership
 
 data class VodCatalogSnapshot<Item>(
     val grouped: Map<String, List<Item>>,

@@ -1,4 +1,4 @@
-package com.streamvault.app
+package com.zenlemon.app
 
 import android.app.SearchManager
 import android.content.Intent
@@ -10,29 +10,29 @@ import android.util.Rational
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.lifecycle.lifecycleScope
-import com.streamvault.app.cast.CastManager
-import com.streamvault.app.cast.CastRouteChooserActivity
-import com.streamvault.app.backup.BackupFileBridge
-import com.streamvault.app.device.isTelevisionDevice
-import com.streamvault.app.localization.resolveAppLocale
-import com.streamvault.app.navigation.AppNavigation
-import com.streamvault.app.navigation.ExternalDestination
-import com.streamvault.app.navigation.ExternalNavigationRequest
-import com.streamvault.app.navigation.PlayerNavigationRequest
-import com.streamvault.app.tv.LauncherRecommendationsManager
-import com.streamvault.app.tv.WatchNextManager
-import com.streamvault.app.tvinput.TvInputChannelSyncManager
-import com.streamvault.app.ui.theme.StreamVaultTheme
-import com.streamvault.app.ui.time.LocalAppTimeFormat
-import com.streamvault.domain.repository.ChannelRepository
-import com.streamvault.domain.repository.CombinedM3uRepository
-import com.streamvault.domain.repository.FavoriteRepository
-import com.streamvault.domain.repository.PlaybackHistoryRepository
-import com.streamvault.domain.repository.ProviderRepository
+import com.zenlemon.app.cast.CastManager
+import com.zenlemon.app.cast.CastRouteChooserActivity
+import com.zenlemon.app.backup.BackupFileBridge
+import com.zenlemon.app.device.isTelevisionDevice
+import com.zenlemon.app.localization.resolveAppLocale
+import com.zenlemon.app.navigation.AppNavigation
+import com.zenlemon.app.navigation.ExternalDestination
+import com.zenlemon.app.navigation.ExternalNavigationRequest
+import com.zenlemon.app.navigation.PlayerNavigationRequest
+import com.zenlemon.app.tv.LauncherRecommendationsManager
+import com.zenlemon.app.tv.WatchNextManager
+import com.zenlemon.app.tvinput.TvInputChannelSyncManager
+import com.zenlemon.app.ui.theme.ZenLemonTheme
+import com.zenlemon.app.ui.time.LocalAppTimeFormat
+import com.zenlemon.domain.repository.ChannelRepository
+import com.zenlemon.domain.repository.CombinedM3uRepository
+import com.zenlemon.domain.repository.FavoriteRepository
+import com.zenlemon.domain.repository.PlaybackHistoryRepository
+import com.zenlemon.domain.repository.ProviderRepository
 import dagger.hilt.android.AndroidEntryPoint
 
 import javax.inject.Inject
-import com.streamvault.data.preferences.PreferencesRepository
+import com.zenlemon.data.preferences.PreferencesRepository
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -62,9 +62,9 @@ import kotlinx.coroutines.launch
 class MainActivity : ComponentActivity() {
 
     companion object {
-        const val EXTRA_PLAYER_REQUEST = "com.streamvault.app.extra.PLAYER_REQUEST"
-        const val EXTRA_EXTERNAL_DESTINATION = "com.streamvault.app.extra.EXTERNAL_DESTINATION"
-        const val EXTRA_EXTERNAL_ROUTE = "com.streamvault.app.extra.EXTERNAL_ROUTE"
+        const val EXTRA_PLAYER_REQUEST = "com.zenlemon.app.extra.PLAYER_REQUEST"
+        const val EXTRA_EXTERNAL_DESTINATION = "com.zenlemon.app.extra.EXTERNAL_DESTINATION"
+        const val EXTRA_EXTERNAL_ROUTE = "com.zenlemon.app.extra.EXTERNAL_ROUTE"
         private const val MAX_PIP_ASPECT_RATIO = 2.39f
         private const val MIN_PIP_ASPECT_RATIO = 1f / MAX_PIP_ASPECT_RATIO
     }
@@ -140,7 +140,7 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             val appLanguage by preferencesRepository.appLanguage.collectAsState(initial = "system")
-            val appTimeFormat by preferencesRepository.appTimeFormat.collectAsState(initial = com.streamvault.domain.model.AppTimeFormat.SYSTEM)
+            val appTimeFormat by preferencesRepository.appTimeFormat.collectAsState(initial = com.zenlemon.domain.model.AppTimeFormat.SYSTEM)
             val currentContext = LocalContext.current
             
             val configuration = remember(appLanguage) {
@@ -182,7 +182,7 @@ class MainActivity : ComponentActivity() {
                 LocalLayoutDirection provides layoutDirection,
                 LocalAppTimeFormat provides appTimeFormat
             ) {
-                StreamVaultTheme {
+                ZenLemonTheme {
                     AppNavigation(mainActivity = this@MainActivity)
                 }
             }

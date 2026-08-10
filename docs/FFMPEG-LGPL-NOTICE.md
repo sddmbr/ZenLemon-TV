@@ -1,6 +1,6 @@
 # FFmpeg LGPL Notice
 
-StreamVault distributes a bundled Media3 FFmpeg audio decoder artifact built for LGPL-compatible use.
+ZenLemon distributes a bundled Media3 FFmpeg audio decoder artifact built for LGPL-compatible use.
 
 Distribution rules for this repo:
 

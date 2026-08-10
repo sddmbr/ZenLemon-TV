@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">StreamVault</string>
+    <string name="app_name">ZenLemon</string>
     <string name="nav_home">Acasă</string>
     <string name="nav_live_tv">TV în direct</string>
     <string name="nav_movies">Filme</string>
@@ -106,7 +106,7 @@
     <string name="dashboard_provider_no_expiry">Nicio expirare raportată</string>
     <string name="dashboard_warning_title">Furnizorul are nevoie de atenție</string>
     <string name="dashboard_warning_review">Deschideți detaliile furnizorului</string>
-    <string name="dashboard_update_title">StreamVault %1$s este disponibil</string>
+    <string name="dashboard_update_title">ZenLemon %1$s este disponibil</string>
     <string name="dashboard_update_available">O versiune mai nouă a aplicației este memorată în cache și gata de verificat din Setări.</string>
     <string name="dashboard_update_install_ready">Cea mai recentă actualizare a fost deja descărcată. Deschide Setări pentru a o instala.</string>
     <string name="dashboard_update_open_settings">Deschide actualizările</string>
@@ -404,7 +404,7 @@
     <string name="settings_about_subtitle">Versiune, versiune și detalii de asistență pentru această instalare.</string>
     <string name="settings_app_version">Versiunea aplicației</string>
     <string name="settings_build">Construiește</string>
-    <string name="settings_build_desc">StreamVault pentru Android TV</string>
+    <string name="settings_build_desc">ZenLemon pentru Android TV</string>
     <string name="settings_enabled">Activat</string>
     <string name="settings_disabled">Dezactivat</string>
     <string name="settings_developed_by">Dezvoltat de</string>
@@ -414,7 +414,7 @@
     <string name="settings_donate">Asistență pe Ko-fi</string>
     <string name="settings_donate_url">https://ko-fi.com/davidona</string>
     <string name="settings_updates_title">Actualizări</string>
-    <string name="settings_updates_subtitle">Verifică versiunile noi StreamVault pe GitHub Releases fără a părăsi aplicația.</string>
+    <string name="settings_updates_subtitle">Verifică versiunile noi ZenLemon pe GitHub Releases fără a părăsi aplicația.</string>
     <string name="settings_update_auto_check">Verifică automat actualizările</string>
     <string name="settings_update_latest_release">Ultima versiune</string>
     <string name="settings_update_status">Stare actualizare</string>
@@ -438,8 +438,8 @@
     <string name="settings_update_status_check_failed">Ultima verificare a eșuat</string>
     <string name="settings_update_status_downloading">Se descarcă actualizarea</string>
     <string name="settings_update_status_ready_to_install">Gata de instalare</string>
-    <string name="settings_update_available_message">StreamVault %1$s este disponibil.</string>
-    <string name="settings_update_current_message">Ai deja cea mai recentă versiune StreamVault.</string>
+    <string name="settings_update_available_message">ZenLemon %1$s este disponibil.</string>
+    <string name="settings_update_current_message">Ai deja cea mai recentă versiune ZenLemon.</string>
     <string name="settings_syncing">Se sincronizează datele, așteptați...</string>
     <string name="settings_syncing_title">Se sincronizează datele...</string>
     <string name="settings_syncing_subtitle">Vă rugăm să așteptați până când lista de redare este importată.</string>
@@ -702,7 +702,7 @@
     <string name="a11y_catch_up_available">Catch-up disponibil</string>
     <string name="a11y_now_playing">Se joacă acum %1$s</string>
     <string name="a11y_channel_with_number">Canalul %1$d, %2$s</string>
-    <string name="setup_title_streamvault">StreamVault</string>
+    <string name="setup_title_zenlemon">ZenLemon</string>
     <string name="setup_provider_title">Adăugați un furnizor</string>
     <string name="setup_edit_provider">Editați furnizorul</string>
     <string name="setup_update_desc">Actualizați detaliile furnizorului dvs. IPTV</string>
@@ -1167,21 +1167,21 @@
     <string name="settings_history_cleared">Istoricul vizionărilor și recentele au fost șters</string>
     <string name="settings_pin_changed">PIN-ul a fost salvat cu succes</string>
     <string name="home_reorder_channels">Reordonați canalele</string>
-    <string name="tv_input_setup_scanning_title">Scanarea canalelor StreamVault</string>
+    <string name="tv_input_setup_scanning_title">Scanarea canalelor ZenLemon</string>
     <string name="tv_input_setup_success_title">Live TV este gata</string>
     <string name="tv_input_setup_no_provider_title">Nu a fost configurat niciun furnizor IPTV</string>
     <string name="tv_input_setup_error_title">Scanarea automată a eșuat</string>
     <string name="tv_input_setup_idle_title">Pregătirea integrării Live TV</string>
-    <string name="tv_input_setup_scanning_body">StreamVault sincronizează furnizorul dvs. activ cu Android TV Live TV.</string>
+    <string name="tv_input_setup_scanning_body">ZenLemon sincronizează furnizorul dvs. activ cu Android TV Live TV.</string>
     <string name="tv_input_setup_success_body">Canalele dvs. au fost sincronizate cu succes.</string>
-    <string name="tv_input_setup_no_provider_body">Adaugă cel puțin un furnizor IPTV în StreamVault, apoi revino aici pentru a scana canalele în Android TV Live TV.</string>
+    <string name="tv_input_setup_no_provider_body">Adaugă cel puțin un furnizor IPTV în ZenLemon, apoi revino aici pentru a scana canalele în Android TV Live TV.</string>
     <string name="tv_input_setup_error_body">Sincronizarea intrării televizorului nu s-a finalizat.</string>
     <string name="tv_input_setup_idle_body">Va rugam asteptati.</string>
     <string name="tv_input_setup_source_format">Sursa: %1$s</string>
-    <string name="tv_input_setup_open_setup">Deschideți StreamVault Setup</string>
+    <string name="tv_input_setup_open_setup">Deschideți ZenLemon Setup</string>
     <string name="tv_input_setup_try_scan_again">Încearcă din nou scanarea automată</string>
     <string name="tv_input_setup_retry_scan">Reîncearcă scanarea automată</string>
-    <string name="tv_input_setup_success_hint">Android TV Live TV vă poate deschide acum canalele StreamVault.</string>
+    <string name="tv_input_setup_success_hint">Android TV Live TV vă poate deschide acum canalele ZenLemon.</string>
     <string name="badge_beta">Beta</string>
     <string name="badge_recording">REC</string>
     <string name="badge_scheduled">SCHED</string>
@@ -1208,8 +1208,8 @@
     <string name="label_slots_count_dynamic">%1$d/%2$d sloturi</string>
     <string name="movie_detail_related">Mai multe ca asta</string>
     <string name="movie_detail_resume_from">Continuă din %1$s</string>
-    <string name="notification_permission_recording_alert_required">Activează notificările pentru StreamVault pentru a primi alerte de eșec înregistrare.</string>
-    <string name="notification_permission_reminder_required">Activează notificările pentru StreamVault pentru a primi remindere de programe.</string>
+    <string name="notification_permission_recording_alert_required">Activează notificările pentru ZenLemon pentru a primi alerte de eșec înregistrare.</string>
+    <string name="notification_permission_reminder_required">Activează notificările pentru ZenLemon pentru a primi remindere de programe.</string>
     <string name="player_action_variants">Variante</string>
     <string name="player_auto_play_cancel">Anulează</string>
     <string name="player_auto_play_countdown">Redare în %1$d s</string>
@@ -1383,7 +1383,7 @@
     <string name="settings_recording_skipped">Apariție omisă</string>
     <string name="settings_recording_wifi_only">Înregistrează doar pe Wi-Fi</string>
     <string name="settings_reset">Resetare</string>
-    <string name="settings_restore_subtitle">Alege un fișier backup sau deschide un backup cu StreamVault dintr-un manager de fișiere.</string>
+    <string name="settings_restore_subtitle">Alege un fișier backup sau deschide un backup cu ZenLemon dintr-un manager de fișiere.</string>
     <string name="settings_select_guide_default_category">Selectează categoria implicită a ghidului</string>
     <string name="settings_select_live_timeshift_depth">Selectează Adâncimea Rewind Live Local</string>
     <string name="settings_select_time_format">Selectează formatul orei</string>
@@ -1429,7 +1429,7 @@
     <string name="vod_sync_needed_title">Sincronizare necesară</string>
     <!-- M2: Google Drive backup sync -->
     <string name="settings_drive_section_title">Google Drive backup</string>
-    <string name="settings_drive_section_subtitle">Push and pull your StreamVault configuration to a private Drive folder.</string>
+    <string name="settings_drive_section_subtitle">Push and pull your ZenLemon configuration to a private Drive folder.</string>
     <string name="settings_drive_signin">Sign in to Google Drive</string>
     <string name="settings_drive_signin_description">Connect a Google account to enable cloud backup.</string>
     <string name="settings_drive_signout">Sign out</string>

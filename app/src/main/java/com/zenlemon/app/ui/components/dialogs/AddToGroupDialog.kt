@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.components.dialogs
+package com.zenlemon.app.ui.components.dialogs
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.border
@@ -20,18 +20,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.Category
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.Category
 import androidx.compose.ui.res.stringResource
-import com.streamvault.app.R
-import com.streamvault.app.ui.design.AppColors
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.design.AppColors
 import androidx.compose.ui.input.key.*
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.foundation.shape.CircleShape
 import kotlinx.coroutines.delay
 import androidx.tv.material3.*
-import com.streamvault.app.device.rememberIsTelevisionDevice
-import com.streamvault.app.ui.interaction.mouseClickable
+import com.zenlemon.app.device.rememberIsTelevisionDevice
+import com.zenlemon.app.ui.interaction.mouseClickable
 import android.view.KeyEvent as AndroidKeyEvent
 
 @Composable

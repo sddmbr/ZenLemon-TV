@@ -1,4 +1,4 @@
-package com.streamvault.app.update
+package com.zenlemon.app.update
 
 import android.app.DownloadManager
 import android.content.ActivityNotFoundException
@@ -11,9 +11,9 @@ import android.os.Build
 import android.os.Environment
 import android.provider.Settings
 import androidx.core.content.FileProvider
-import com.streamvault.app.BuildConfig
-import com.streamvault.data.preferences.PreferencesRepository
-import com.streamvault.domain.model.Result
+import com.zenlemon.app.BuildConfig
+import com.zenlemon.data.preferences.PreferencesRepository
+import com.zenlemon.domain.model.Result
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -182,8 +182,8 @@ class AppUpdateInstaller @Inject constructor(
             }
 
             val request = DownloadManager.Request(Uri.parse(downloadUrl))
-                .setTitle("StreamVault ${releaseInfo.versionName}")
-                .setDescription("Downloading the latest StreamVault update")
+                .setTitle("ZenLemon ${releaseInfo.versionName}")
+                .setDescription("Downloading the latest ZenLemon update")
                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                 .setMimeType("application/vnd.android.package-archive")
                 .setAllowedOverMetered(true)
@@ -312,7 +312,7 @@ class AppUpdateInstaller @Inject constructor(
         val sanitizedVersion = versionName.replace(Regex("[^A-Za-z0-9._-]"), "_")
         val downloadsDir = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
             ?: File(context.cacheDir, "downloads")
-        return File(downloadsDir, "StreamVault-$sanitizedVersion.apk")
+        return File(downloadsDir, "ZenLemon-$sanitizedVersion.apk")
     }
 
     private fun downloadedState(versionName: String): AppUpdateDownloadState {

@@ -1,8 +1,8 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
-import com.streamvault.app.ui.model.isArchivePlayable
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.Program
+import com.zenlemon.app.ui.model.isArchivePlayable
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.Program
 
 internal data class PlayerProgramTimeline(
     val currentProgram: Program?,

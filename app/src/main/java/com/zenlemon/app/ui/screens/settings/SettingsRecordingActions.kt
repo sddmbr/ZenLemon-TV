@@ -1,10 +1,10 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.app.Application
-import com.streamvault.app.R
-import com.streamvault.domain.manager.RecordingManager
-import com.streamvault.domain.model.RecordingStorageConfig
-import com.streamvault.domain.model.Result
+import com.zenlemon.app.R
+import com.zenlemon.domain.manager.RecordingManager
+import com.zenlemon.domain.model.RecordingStorageConfig
+import com.zenlemon.domain.model.Result
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update

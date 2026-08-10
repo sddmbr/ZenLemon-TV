@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.theme
+package com.zenlemon.app.ui.theme
 
-import com.streamvault.app.ui.design.AppSpacing
-import com.streamvault.app.ui.design.LocalAppSpacing
+import com.zenlemon.app.ui.design.AppSpacing
+import com.zenlemon.app.ui.design.LocalAppSpacing
 
 typealias Spacing = AppSpacing
 

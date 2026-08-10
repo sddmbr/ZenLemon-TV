@@ -1,8 +1,8 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
-import com.streamvault.app.R
-import com.streamvault.app.update.AppUpdateActionState
-import com.streamvault.app.update.AppUpdateDownloadStatus
+import com.zenlemon.app.R
+import com.zenlemon.app.update.AppUpdateActionState
+import com.zenlemon.app.update.AppUpdateDownloadStatus
 import java.text.DateFormat
 
 internal fun formatLatestReleaseLabel(update: AppUpdateUiModel, context: android.content.Context): String {

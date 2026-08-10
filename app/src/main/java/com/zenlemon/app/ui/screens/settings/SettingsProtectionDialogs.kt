@@ -1,10 +1,10 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import com.streamvault.app.R
-import com.streamvault.app.ui.components.dialogs.PinDialog
+import com.zenlemon.app.R
+import com.zenlemon.app.ui.components.dialogs.PinDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

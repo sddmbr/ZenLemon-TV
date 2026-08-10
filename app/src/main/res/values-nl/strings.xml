@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">StreamVault</string>
+    <string name="app_name">ZenLemon</string>
     <string name="nav_home">Thuis</string>
     <string name="nav_live_tv">Live-tv</string>
     <string name="nav_movies">Films</string>
@@ -106,7 +106,7 @@
     <string name="dashboard_provider_no_expiry">Geen vervaldatum gemeld</string>
     <string name="dashboard_warning_title">Aanbieder heeft aandacht nodig</string>
     <string name="dashboard_warning_review">Open Providergegevens</string>
-    <string name="dashboard_update_title">StreamVault %1$s is beschikbaar</string>
+    <string name="dashboard_update_title">ZenLemon %1$s is beschikbaar</string>
     <string name="dashboard_update_available">Een nieuwere appversie is in de cache opgeslagen en klaar om te bekijken via Instellingen.</string>
     <string name="dashboard_update_install_ready">De nieuwste update is al gedownload. Open Instellingen om deze te installeren.</string>
     <string name="dashboard_update_open_settings">Updates openen</string>
@@ -404,7 +404,7 @@
     <string name="settings_about_subtitle">Versie-, build- en ondersteuningsgegevens voor deze installatie.</string>
     <string name="settings_app_version">App-versie</string>
     <string name="settings_build">Bouw</string>
-    <string name="settings_build_desc">StreamVault voor Android TV</string>
+    <string name="settings_build_desc">ZenLemon voor Android TV</string>
     <string name="settings_enabled">Ingeschakeld</string>
     <string name="settings_disabled">Uitgeschakeld</string>
     <string name="settings_developed_by">Ontwikkeld door</string>
@@ -414,7 +414,7 @@
     <string name="settings_donate">Ondersteuning op Ko-fi</string>
     <string name="settings_donate_url">https://ko-fi.com/davidona</string>
     <string name="settings_updates_title">Updates</string>
-    <string name="settings_updates_subtitle">Controleer GitHub Releases voor nieuwere StreamVault-versies zonder de app te verlaten.</string>
+    <string name="settings_updates_subtitle">Controleer GitHub Releases voor nieuwere ZenLemon-versies zonder de app te verlaten.</string>
     <string name="settings_update_auto_check">Automatisch op updates controleren</string>
     <string name="settings_update_latest_release">Nieuwste release</string>
     <string name="settings_update_status">Updatestatus</string>
@@ -438,8 +438,8 @@
     <string name="settings_update_status_check_failed">Laatste controle mislukt</string>
     <string name="settings_update_status_downloading">Update wordt gedownload</string>
     <string name="settings_update_status_ready_to_install">Klaar om te installeren</string>
-    <string name="settings_update_available_message">StreamVault %1$s is beschikbaar.</string>
-    <string name="settings_update_current_message">Je hebt al de nieuwste StreamVault-release.</string>
+    <string name="settings_update_available_message">ZenLemon %1$s is beschikbaar.</string>
+    <string name="settings_update_current_message">Je hebt al de nieuwste ZenLemon-release.</string>
     <string name="settings_syncing">Gegevens worden gesynchroniseerd. Even geduld a.u.b....</string>
     <string name="settings_syncing_title">Gegevens synchroniseren...</string>
     <string name="settings_syncing_subtitle">Wacht even terwijl je afspeellijst wordt geïmporteerd.</string>
@@ -702,7 +702,7 @@
     <string name="a11y_catch_up_available">Inhaalmogelijkheid beschikbaar</string>
     <string name="a11y_now_playing">Speelt nu %1$s</string>
     <string name="a11y_channel_with_number">Kanaal %1$d, %2$s</string>
-    <string name="setup_title_streamvault">StreamVault</string>
+    <string name="setup_title_zenlemon">ZenLemon</string>
     <string name="setup_provider_title">Voeg een aanbieder toe</string>
     <string name="setup_edit_provider">Aanbieder bewerken</string>
     <string name="setup_update_desc">Update de gegevens van uw IPTV-provider</string>
@@ -1167,21 +1167,21 @@
     <string name="settings_history_cleared">Kijkgeschiedenis en recente beelden gewist</string>
     <string name="settings_pin_changed">Pincode succesvol opgeslagen</string>
     <string name="home_reorder_channels">Kanalen opnieuw rangschikken</string>
-    <string name="tv_input_setup_scanning_title">StreamVault-kanalen scannen</string>
+    <string name="tv_input_setup_scanning_title">ZenLemon-kanalen scannen</string>
     <string name="tv_input_setup_success_title">Live-tv is klaar</string>
     <string name="tv_input_setup_no_provider_title">Geen IPTV-provider geconfigureerd</string>
     <string name="tv_input_setup_error_title">Automatische scan mislukt</string>
     <string name="tv_input_setup_idle_title">Live TV-integratie voorbereiden</string>
-    <string name="tv_input_setup_scanning_body">StreamVault synchroniseert uw actieve provider met Android TV Live TV.</string>
+    <string name="tv_input_setup_scanning_body">ZenLemon synchroniseert uw actieve provider met Android TV Live TV.</string>
     <string name="tv_input_setup_success_body">Je kanalen zijn succesvol gesynchroniseerd.</string>
-    <string name="tv_input_setup_no_provider_body">Voeg ten minste één IPTV-provider toe in StreamVault en kom dan hier terug om kanalen te scannen voor Android TV Live TV.</string>
+    <string name="tv_input_setup_no_provider_body">Voeg ten minste één IPTV-provider toe in ZenLemon en kom dan hier terug om kanalen te scannen voor Android TV Live TV.</string>
     <string name="tv_input_setup_error_body">De tv-invoersynchronisatie is niet voltooid.</string>
     <string name="tv_input_setup_idle_body">Wacht alstublieft.</string>
     <string name="tv_input_setup_source_format">Bron: %1$s</string>
-    <string name="tv_input_setup_open_setup">Open StreamVault-installatie</string>
+    <string name="tv_input_setup_open_setup">Open ZenLemon-installatie</string>
     <string name="tv_input_setup_try_scan_again">Probeer Automatisch scannen opnieuw</string>
     <string name="tv_input_setup_retry_scan">Probeer de automatische scan opnieuw</string>
-    <string name="tv_input_setup_success_hint">Android TV Live TV kan nu uw StreamVault-kanalen openen.</string>
+    <string name="tv_input_setup_success_hint">Android TV Live TV kan nu uw ZenLemon-kanalen openen.</string>
     <string name="badge_beta">Beta</string>
     <string name="badge_recording">REC</string>
     <string name="badge_scheduled">SCHED</string>
@@ -1208,8 +1208,8 @@
     <string name="label_slots_count_dynamic">%1$d/%2$d slots</string>
     <string name="movie_detail_related">Meer zoals dit</string>
     <string name="movie_detail_resume_from">Hervatten vanaf %1$s</string>
-    <string name="notification_permission_recording_alert_required">Schakel meldingen voor StreamVault in om opnamefoutmeldingen te ontvangen.</string>
-    <string name="notification_permission_reminder_required">Schakel meldingen voor StreamVault in om programmaherinneringen te ontvangen.</string>
+    <string name="notification_permission_recording_alert_required">Schakel meldingen voor ZenLemon in om opnamefoutmeldingen te ontvangen.</string>
+    <string name="notification_permission_reminder_required">Schakel meldingen voor ZenLemon in om programmaherinneringen te ontvangen.</string>
     <string name="player_action_variants">Varianten</string>
     <string name="player_auto_play_cancel">Annuleren</string>
     <string name="player_auto_play_countdown">Afspelen over %1$d s</string>
@@ -1383,7 +1383,7 @@
     <string name="settings_recording_skipped">Herhaling overgeslagen</string>
     <string name="settings_recording_wifi_only">Alleen opnemen via Wi-Fi</string>
     <string name="settings_reset">Resetten</string>
-    <string name="settings_restore_subtitle">Kies een back-upbestand of open een back-up met StreamVault via een bestandsbeheerder.</string>
+    <string name="settings_restore_subtitle">Kies een back-upbestand of open een back-up met ZenLemon via een bestandsbeheerder.</string>
     <string name="settings_select_guide_default_category">Selecteer standaardcategorie gids</string>
     <string name="settings_select_live_timeshift_depth">Selecteer diepte lokaal terugspelen</string>
     <string name="settings_select_time_format">Selecteer tijdformaat</string>
@@ -1429,7 +1429,7 @@
     <string name="vod_sync_needed_title">Synchronisatie vereist</string>
     <!-- M2: Google Drive backup sync -->
     <string name="settings_drive_section_title">Google Drive backup</string>
-    <string name="settings_drive_section_subtitle">Push and pull your StreamVault configuration to a private Drive folder.</string>
+    <string name="settings_drive_section_subtitle">Push and pull your ZenLemon configuration to a private Drive folder.</string>
     <string name="settings_drive_signin">Sign in to Google Drive</string>
     <string name="settings_drive_signin_description">Connect a Google account to enable cloud backup.</string>
     <string name="settings_drive_signout">Sign out</string>

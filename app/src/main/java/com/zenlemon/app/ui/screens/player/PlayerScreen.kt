@@ -1,4 +1,4 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import android.app.Activity
 import android.view.KeyEvent
@@ -43,22 +43,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.util.UnstableApi
 import androidx.tv.material3.*
-import com.streamvault.app.device.rememberIsTelevisionDevice
-import com.streamvault.app.ui.theme.*
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.DecoderMode
-import com.streamvault.domain.model.StreamInfo
-import com.streamvault.domain.model.VideoFormat
-import com.streamvault.domain.model.Program
-import com.streamvault.domain.repository.EpgRepository
-import com.streamvault.player.PlaybackState
-import com.streamvault.player.PLAYER_TRACK_AUTO_ID
-import com.streamvault.player.PlayerEngine
-import com.streamvault.player.PlayerError
-import com.streamvault.player.PlayerRenderSurfaceType
-import com.streamvault.player.PlayerSurfaceResizeMode
-import com.streamvault.player.PlayerTrack
-import com.streamvault.player.TrackType
+import com.zenlemon.app.device.rememberIsTelevisionDevice
+import com.zenlemon.app.ui.theme.*
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.DecoderMode
+import com.zenlemon.domain.model.StreamInfo
+import com.zenlemon.domain.model.VideoFormat
+import com.zenlemon.domain.model.Program
+import com.zenlemon.domain.repository.EpgRepository
+import com.zenlemon.player.PlaybackState
+import com.zenlemon.player.PLAYER_TRACK_AUTO_ID
+import com.zenlemon.player.PlayerEngine
+import com.zenlemon.player.PlayerError
+import com.zenlemon.player.PlayerRenderSurfaceType
+import com.zenlemon.player.PlayerSurfaceResizeMode
+import com.zenlemon.player.PlayerTrack
+import com.zenlemon.player.TrackType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
@@ -72,38 +72,38 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import com.streamvault.app.ui.components.dialogs.ProgramHistoryDialog
+import com.zenlemon.app.ui.components.dialogs.ProgramHistoryDialog
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.Lifecycle
-import com.streamvault.app.R
-import com.streamvault.app.MainActivity
-import com.streamvault.app.cast.CastConnectionState
-import com.streamvault.app.ui.components.PlayerRenderView
-import com.streamvault.app.ui.design.requestFocusSafely
-import com.streamvault.app.ui.notifications.rememberNotificationPermissionGate
-import com.streamvault.app.ui.screens.player.overlay.ChannelInfoOverlay
-import com.streamvault.app.ui.screens.player.overlay.ChannelVariantSelectionDialog
-import com.streamvault.app.ui.screens.player.overlay.CategoryListOverlay
-import com.streamvault.app.ui.screens.player.overlay.ChannelListOverlay
-import com.streamvault.app.ui.screens.player.overlay.DiagnosticsOverlay
-import com.streamvault.app.ui.screens.player.overlay.EpgOverlay
-import com.streamvault.app.ui.screens.player.overlay.PlayerErrorOverlay
-import com.streamvault.app.ui.screens.player.overlay.PlayerNoticeBanner
-import com.streamvault.app.ui.screens.player.overlay.PlayerEpisodeSelectionDialog
-import com.streamvault.app.ui.screens.player.overlay.PlayerResumePrompt
-import com.streamvault.app.ui.screens.player.overlay.PlayerTrackSelectionDialog
-import com.streamvault.app.ui.screens.player.overlay.PlayerAspectRatioToast
-import com.streamvault.app.ui.screens.player.overlay.PlayerControlsOverlay
-import com.streamvault.app.ui.screens.player.overlay.PlayerNumericInputOverlay
-import com.streamvault.app.ui.screens.player.overlay.PlayerResolutionBadge
-import com.streamvault.app.ui.screens.player.overlay.PlayerAudioVideoOffsetDialog
-import com.streamvault.app.ui.screens.player.overlay.PlayerSpeedSelectionDialog
-import com.streamvault.app.ui.screens.player.overlay.PlayerSleepTimerDialog
-import com.streamvault.app.ui.screens.player.overlay.PlayerSleepTimerWarningOverlay
-import com.streamvault.app.ui.screens.player.overlay.NextEpisodeCountdownOverlay
-import com.streamvault.app.ui.screens.multiview.MultiViewViewModel
-import com.streamvault.app.ui.screens.multiview.MultiViewPlannerDialog
-import com.streamvault.app.navigation.Routes
+import com.zenlemon.app.R
+import com.zenlemon.app.MainActivity
+import com.zenlemon.app.cast.CastConnectionState
+import com.zenlemon.app.ui.components.PlayerRenderView
+import com.zenlemon.app.ui.design.requestFocusSafely
+import com.zenlemon.app.ui.notifications.rememberNotificationPermissionGate
+import com.zenlemon.app.ui.screens.player.overlay.ChannelInfoOverlay
+import com.zenlemon.app.ui.screens.player.overlay.ChannelVariantSelectionDialog
+import com.zenlemon.app.ui.screens.player.overlay.CategoryListOverlay
+import com.zenlemon.app.ui.screens.player.overlay.ChannelListOverlay
+import com.zenlemon.app.ui.screens.player.overlay.DiagnosticsOverlay
+import com.zenlemon.app.ui.screens.player.overlay.EpgOverlay
+import com.zenlemon.app.ui.screens.player.overlay.PlayerErrorOverlay
+import com.zenlemon.app.ui.screens.player.overlay.PlayerNoticeBanner
+import com.zenlemon.app.ui.screens.player.overlay.PlayerEpisodeSelectionDialog
+import com.zenlemon.app.ui.screens.player.overlay.PlayerResumePrompt
+import com.zenlemon.app.ui.screens.player.overlay.PlayerTrackSelectionDialog
+import com.zenlemon.app.ui.screens.player.overlay.PlayerAspectRatioToast
+import com.zenlemon.app.ui.screens.player.overlay.PlayerControlsOverlay
+import com.zenlemon.app.ui.screens.player.overlay.PlayerNumericInputOverlay
+import com.zenlemon.app.ui.screens.player.overlay.PlayerResolutionBadge
+import com.zenlemon.app.ui.screens.player.overlay.PlayerAudioVideoOffsetDialog
+import com.zenlemon.app.ui.screens.player.overlay.PlayerSpeedSelectionDialog
+import com.zenlemon.app.ui.screens.player.overlay.PlayerSleepTimerDialog
+import com.zenlemon.app.ui.screens.player.overlay.PlayerSleepTimerWarningOverlay
+import com.zenlemon.app.ui.screens.player.overlay.NextEpisodeCountdownOverlay
+import com.zenlemon.app.ui.screens.multiview.MultiViewViewModel
+import com.zenlemon.app.ui.screens.multiview.MultiViewPlannerDialog
+import com.zenlemon.app.navigation.Routes
 
 
 
@@ -936,7 +936,7 @@ fun PlayerScreen(
             )
         }
 
-        if (currentChannelRecording?.status == com.streamvault.domain.model.RecordingStatus.RECORDING) {
+        if (currentChannelRecording?.status == com.zenlemon.domain.model.RecordingStatus.RECORDING) {
             val recordingPulse = rememberInfiniteTransition(label = "recordingPulse")
             val recordingAlpha by recordingPulse.animateFloat(
                 initialValue = 1f,
@@ -1417,7 +1417,7 @@ private fun PlayerControlsOverlayHost(
     liveTranslationAvailable: Boolean,
     audioTrackCount: Int,
     videoQualityCount: Int,
-    currentRecordingStatus: com.streamvault.domain.model.RecordingStatus?,
+    currentRecordingStatus: com.zenlemon.domain.model.RecordingStatus?,
     isMuted: Boolean,
     playbackSpeed: Float,
     mediaTitle: String?,

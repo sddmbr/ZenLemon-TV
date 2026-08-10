@@ -1,6 +1,6 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
-import com.streamvault.player.PlayerError
+import com.zenlemon.player.PlayerError
 
 internal fun classifyPlaybackError(error: PlayerError): PlayerRecoveryType = when (error) {
     is PlayerError.NetworkError -> {

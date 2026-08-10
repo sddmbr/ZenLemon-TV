@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
-import com.streamvault.domain.model.Episode
-import com.streamvault.domain.model.Series
+import com.zenlemon.domain.model.Episode
+import com.zenlemon.domain.model.Series
 
 internal fun resolveEpisode(
     series: Series,

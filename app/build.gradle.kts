@@ -54,7 +54,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.zenlemon.streamtv"
+        applicationId = "com.zenlemon.tv"
         minSdk = 25
         targetSdk = 36
         versionCode = 17

@@ -1,12 +1,12 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.app.Application
-import com.streamvault.app.R
-import com.streamvault.app.tvinput.TvInputChannelSyncManager
-import com.streamvault.data.sync.SyncManager
-import com.streamvault.data.sync.SyncRepairSection
-import com.streamvault.domain.model.ProviderType
-import com.streamvault.domain.model.Result
+import com.zenlemon.app.R
+import com.zenlemon.app.tvinput.TvInputChannelSyncManager
+import com.zenlemon.data.sync.SyncManager
+import com.zenlemon.data.sync.SyncRepairSection
+import com.zenlemon.domain.model.ProviderType
+import com.zenlemon.domain.model.Result
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.CancellationException

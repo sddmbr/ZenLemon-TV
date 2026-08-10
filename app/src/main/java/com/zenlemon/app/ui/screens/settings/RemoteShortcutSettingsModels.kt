@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
-import com.streamvault.domain.model.RemoteColorButton
-import com.streamvault.domain.model.RemoteShortcutProfile
+import com.zenlemon.domain.model.RemoteColorButton
+import com.zenlemon.domain.model.RemoteShortcutProfile
 
 internal data class RemoteShortcutDialogTarget(
     val profile: RemoteShortcutProfile,

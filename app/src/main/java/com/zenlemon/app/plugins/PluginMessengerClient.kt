@@ -1,4 +1,4 @@
-package com.streamvault.app.plugins
+package com.zenlemon.app.plugins
 
 import android.content.ComponentName
 import android.content.Context
@@ -40,7 +40,7 @@ class PluginMessengerClient @Inject constructor(
 
         val replyMessenger = Messenger(Handler(Looper.getMainLooper()) { message ->
             val response = message.data ?: Bundle.EMPTY
-            if (response.getString(StreamVaultPluginContract.KEY_REQUEST_ID) == requestId &&
+            if (response.getString(ZenLemonPluginContract.KEY_REQUEST_ID) == requestId &&
                 !responseDeferred.isCompleted
             ) {
                 responseDeferred.complete(Bundle(response))
@@ -66,7 +66,7 @@ class PluginMessengerClient @Inject constructor(
 
         try {
             withContext(Dispatchers.Main.immediate) {
-                val intent = Intent(StreamVaultPluginContract.ACTION_PLUGIN_SERVICE).apply {
+                val intent = Intent(ZenLemonPluginContract.ACTION_PLUGIN_SERVICE).apply {
                     component = ComponentName(packageName, serviceClassName)
                 }
                 bound = appContext.bindService(intent, connection, Context.BIND_AUTO_CREATE)
@@ -79,8 +79,8 @@ class PluginMessengerClient @Inject constructor(
             val request = Message.obtain(null, what).apply {
                 replyTo = replyMessenger
                 this.data = Bundle(data).apply {
-                    putInt(StreamVaultPluginContract.KEY_API_VERSION, StreamVaultPluginContract.API_VERSION)
-                    putString(StreamVaultPluginContract.KEY_REQUEST_ID, requestId)
+                    putInt(ZenLemonPluginContract.KEY_API_VERSION, ZenLemonPluginContract.API_VERSION)
+                    putString(ZenLemonPluginContract.KEY_REQUEST_ID, requestId)
                 }
             }
             try {

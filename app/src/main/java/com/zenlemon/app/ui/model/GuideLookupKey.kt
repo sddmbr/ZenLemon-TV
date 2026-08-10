@@ -1,6 +1,6 @@
-package com.streamvault.app.ui.model
+package com.zenlemon.app.ui.model
 
-import com.streamvault.domain.model.Channel
+import com.zenlemon.domain.model.Channel
 
 fun Channel.guideLookupKey(): String? {
     return epgChannelId?.trim()?.takeIf { it.isNotEmpty() }

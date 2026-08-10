@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.screens.multiview
+package com.zenlemon.app.ui.screens.multiview
 
-import com.streamvault.domain.model.Channel
-import com.streamvault.player.PlayerEngine
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.player.PlayerEngine
 
 enum class DevicePerformanceTier {
     LOW,
@@ -89,8 +89,8 @@ data class MultiViewPresetUiModel(
 )
 
 data class MultiViewPickerState(
-    val categories: List<com.streamvault.domain.model.Category> = emptyList(),
-    val selectedCategory: com.streamvault.domain.model.Category? = null,
+    val categories: List<com.zenlemon.domain.model.Category> = emptyList(),
+    val selectedCategory: com.zenlemon.domain.model.Category? = null,
     val channels: List<Channel> = emptyList(),
     val filteredChannels: List<Channel> = emptyList(),
     val searchQuery: String = "",

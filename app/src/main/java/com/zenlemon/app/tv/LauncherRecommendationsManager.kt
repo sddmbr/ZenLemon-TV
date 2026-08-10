@@ -1,4 +1,4 @@
-package com.streamvault.app.tv
+package com.zenlemon.app.tv
 
 import android.content.ContentUris
 import android.content.ContentValues
@@ -10,25 +10,25 @@ import android.media.tv.TvContract
 import android.net.Uri
 import android.provider.BaseColumns
 import android.util.Log
-import com.streamvault.app.MainActivity
-import com.streamvault.app.R
-import com.streamvault.app.device.isTelevisionDevice
-import com.streamvault.app.navigation.ExternalDestination
-import com.streamvault.app.navigation.PlayerNavigationRequest
-import com.streamvault.app.navigation.toPlayerNavigationRequest
-import com.streamvault.domain.model.ActiveLiveSource
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.PlaybackHistory
-import com.streamvault.domain.model.Provider
-import com.streamvault.domain.repository.CombinedM3uRepository
-import com.streamvault.domain.repository.MovieRepository
-import com.streamvault.domain.repository.PlaybackHistoryRepository
-import com.streamvault.domain.repository.ProviderRepository
-import com.streamvault.domain.repository.SeriesRepository
-import com.streamvault.domain.usecase.GetRecommendations
-import com.streamvault.domain.usecase.GetContinueWatching
-import com.streamvault.domain.usecase.ContinueWatchingResult
-import com.streamvault.domain.usecase.RecommendationsResult
+import com.zenlemon.app.MainActivity
+import com.zenlemon.app.R
+import com.zenlemon.app.device.isTelevisionDevice
+import com.zenlemon.app.navigation.ExternalDestination
+import com.zenlemon.app.navigation.PlayerNavigationRequest
+import com.zenlemon.app.navigation.toPlayerNavigationRequest
+import com.zenlemon.domain.model.ActiveLiveSource
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.PlaybackHistory
+import com.zenlemon.domain.model.Provider
+import com.zenlemon.domain.repository.CombinedM3uRepository
+import com.zenlemon.domain.repository.MovieRepository
+import com.zenlemon.domain.repository.PlaybackHistoryRepository
+import com.zenlemon.domain.repository.ProviderRepository
+import com.zenlemon.domain.repository.SeriesRepository
+import com.zenlemon.domain.usecase.GetRecommendations
+import com.zenlemon.domain.usecase.GetContinueWatching
+import com.zenlemon.domain.usecase.ContinueWatchingResult
+import com.zenlemon.domain.usecase.RecommendationsResult
 import kotlinx.coroutines.Dispatchers
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.first
@@ -379,7 +379,7 @@ class LauncherRecommendationsManager @Inject constructor(
     }
 
     private fun writeDefaultLogo(stream: OutputStream) {
-        val bitmap = BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher_vault)
+        val bitmap = BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher)
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
     }
 
@@ -400,7 +400,7 @@ class LauncherRecommendationsManager @Inject constructor(
         if (remoteArtwork != null) {
             return Uri.parse(remoteArtwork)
         }
-        return Uri.parse("android.resource://${context.packageName}/${R.mipmap.ic_launcher_vault}")
+        return Uri.parse("android.resource://${context.packageName}/${R.mipmap.ic_launcher}")
     }
 
     private data class RecommendationChannelSpec(
@@ -426,9 +426,9 @@ class LauncherRecommendationsManager @Inject constructor(
     private companion object {
         const val TAG = "LauncherRecommendations"
         const val MIN_REFRESH_INTERVAL_MS = 15 * 60 * 1000L
-        const val CHANNEL_CONTINUE_WATCHING = "streamvault_continue_watching"
-        const val CHANNEL_TOP_MOVIES = "streamvault_top_movies"
-        const val CHANNEL_FRESH_SERIES = "streamvault_fresh_series"
+        const val CHANNEL_CONTINUE_WATCHING = "zenlemon_continue_watching"
+        const val CHANNEL_TOP_MOVIES = "zenlemon_top_movies"
+        const val CHANNEL_FRESH_SERIES = "zenlemon_fresh_series"
         val MANAGED_CHANNEL_KEYS = setOf(
             CHANNEL_CONTINUE_WATCHING,
             CHANNEL_TOP_MOVIES,

@@ -1,43 +1,43 @@
-package com.streamvault.app.ui.screens.dashboard
+package com.zenlemon.app.ui.screens.dashboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.ui.model.orderedByRequestedRawIds
-import com.streamvault.data.preferences.PreferencesRepository
-import com.streamvault.data.sync.SyncManager
-import com.streamvault.app.update.AppUpdateActionState
-import com.streamvault.app.update.AppUpdateInstaller
-import com.streamvault.app.update.isRemoteVersionNewer
-import com.streamvault.app.update.latestAppUpdateAction
-import com.streamvault.domain.model.ActiveLiveSource
-import com.streamvault.domain.model.AppHomeDashboardShelf
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.Favorite
-import com.streamvault.domain.model.Movie
-import com.streamvault.domain.model.PlaybackHistory
-import com.streamvault.domain.model.Provider
-import com.streamvault.domain.model.ProviderStatus
-import com.streamvault.domain.model.ProviderType
-import com.streamvault.domain.model.Series
-import com.streamvault.domain.model.SyncState
-import com.streamvault.domain.model.VirtualCategoryIds
-import com.streamvault.domain.repository.ChannelRepository
-import com.streamvault.domain.repository.CombinedM3uRepository
-import com.streamvault.domain.repository.FavoriteRepository
-import com.streamvault.domain.repository.MovieRepository
-import com.streamvault.domain.repository.PlaybackHistoryRepository
-import com.streamvault.domain.repository.ProviderRepository
-import com.streamvault.domain.repository.SeriesRepository
-import com.streamvault.domain.usecase.ContinueWatchingResult
-import com.streamvault.domain.usecase.ContinueWatchingScope
-import com.streamvault.domain.usecase.GetContinueWatching
-import com.streamvault.domain.usecase.GetCustomCategories
-import com.streamvault.domain.manager.RecordingManager
-import com.streamvault.domain.model.RecordingStatus
+import com.zenlemon.app.ui.model.orderedByRequestedRawIds
+import com.zenlemon.data.preferences.PreferencesRepository
+import com.zenlemon.data.sync.SyncManager
+import com.zenlemon.app.update.AppUpdateActionState
+import com.zenlemon.app.update.AppUpdateInstaller
+import com.zenlemon.app.update.isRemoteVersionNewer
+import com.zenlemon.app.update.latestAppUpdateAction
+import com.zenlemon.domain.model.ActiveLiveSource
+import com.zenlemon.domain.model.AppHomeDashboardShelf
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.Favorite
+import com.zenlemon.domain.model.Movie
+import com.zenlemon.domain.model.PlaybackHistory
+import com.zenlemon.domain.model.Provider
+import com.zenlemon.domain.model.ProviderStatus
+import com.zenlemon.domain.model.ProviderType
+import com.zenlemon.domain.model.Series
+import com.zenlemon.domain.model.SyncState
+import com.zenlemon.domain.model.VirtualCategoryIds
+import com.zenlemon.domain.repository.ChannelRepository
+import com.zenlemon.domain.repository.CombinedM3uRepository
+import com.zenlemon.domain.repository.FavoriteRepository
+import com.zenlemon.domain.repository.MovieRepository
+import com.zenlemon.domain.repository.PlaybackHistoryRepository
+import com.zenlemon.domain.repository.ProviderRepository
+import com.zenlemon.domain.repository.SeriesRepository
+import com.zenlemon.domain.usecase.ContinueWatchingResult
+import com.zenlemon.domain.usecase.ContinueWatchingScope
+import com.zenlemon.domain.usecase.GetContinueWatching
+import com.zenlemon.domain.usecase.GetCustomCategories
+import com.zenlemon.domain.manager.RecordingManager
+import com.zenlemon.domain.model.RecordingStatus
 import android.content.Context
-import com.streamvault.app.R
+import com.zenlemon.app.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.time.LocalDate
@@ -54,7 +54,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
-import com.streamvault.domain.util.AdultContentVisibilityPolicy
+import com.zenlemon.domain.util.AdultContentVisibilityPolicy
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
@@ -776,10 +776,10 @@ class DashboardViewModel @Inject constructor(
         viewModelScope.launch {
             val expectedSha256 = _uiState.value.updateNotice?.downloadSha256
             when (val result = appUpdateInstaller.installDownloadedUpdate(expectedSha256)) {
-                is com.streamvault.domain.model.Result.Error -> {
+                is com.zenlemon.domain.model.Result.Error -> {
                     _uiState.value = _uiState.value.copy(userMessage = result.message)
                 }
-                is com.streamvault.domain.model.Result.Success -> {
+                is com.zenlemon.domain.model.Result.Success -> {
                     _uiState.value = _uiState.value.copy(
                         userMessage = appContext.getString(R.string.settings_update_install_started)
                     )

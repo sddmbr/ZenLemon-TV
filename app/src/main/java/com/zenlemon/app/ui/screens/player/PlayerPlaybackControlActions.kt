@@ -1,10 +1,10 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
 import android.os.SystemClock
 import androidx.lifecycle.viewModelScope
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.Episode
-import com.streamvault.player.timeshift.LiveTimeshiftStatus
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.Episode
+import com.zenlemon.player.timeshift.LiveTimeshiftStatus
 import kotlinx.coroutines.launch
 
 private const val PLAYBACK_CONTROL_MUTE_TOGGLE_DEBOUNCE_MS = 250L

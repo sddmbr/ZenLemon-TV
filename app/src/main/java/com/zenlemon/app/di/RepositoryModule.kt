@@ -1,19 +1,19 @@
-package com.streamvault.app.di
+package com.zenlemon.app.di
 
-import com.streamvault.data.local.DatabaseTransactionRunner
-import com.streamvault.data.local.RoomDatabaseTransactionRunner
-import com.streamvault.data.manager.DownloadManagerImpl
-import com.streamvault.data.preferences.PreferencesRepository
-import com.streamvault.data.security.AndroidKeystoreCredentialCrypto
-import com.streamvault.data.security.CredentialCrypto
-import com.streamvault.data.sync.ProviderSyncStateReaderImpl
-import com.streamvault.data.validation.ProviderSetupInputValidatorImpl
-import com.streamvault.domain.manager.ParentalPinVerifier
-import com.streamvault.domain.manager.ProviderSetupInputValidator
-import com.streamvault.domain.manager.ProviderSyncStateReader
-import com.streamvault.data.repository.*
-import com.streamvault.domain.manager.ParentalControlSessionStore
-import com.streamvault.domain.repository.*
+import com.zenlemon.data.local.DatabaseTransactionRunner
+import com.zenlemon.data.local.RoomDatabaseTransactionRunner
+import com.zenlemon.data.manager.DownloadManagerImpl
+import com.zenlemon.data.preferences.PreferencesRepository
+import com.zenlemon.data.security.AndroidKeystoreCredentialCrypto
+import com.zenlemon.data.security.CredentialCrypto
+import com.zenlemon.data.sync.ProviderSyncStateReaderImpl
+import com.zenlemon.data.validation.ProviderSetupInputValidatorImpl
+import com.zenlemon.domain.manager.ParentalPinVerifier
+import com.zenlemon.domain.manager.ProviderSetupInputValidator
+import com.zenlemon.domain.manager.ProviderSyncStateReader
+import com.zenlemon.data.repository.*
+import com.zenlemon.domain.manager.ParentalControlSessionStore
+import com.zenlemon.domain.repository.*
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -74,19 +74,19 @@ abstract class RepositoryModule {
     abstract fun bindDatabaseTransactionRunner(impl: RoomDatabaseTransactionRunner): DatabaseTransactionRunner
 
     @Binds @Singleton
-    abstract fun bindBackupManager(impl: com.streamvault.data.manager.BackupManagerImpl): com.streamvault.domain.manager.BackupManager
+    abstract fun bindBackupManager(impl: com.zenlemon.data.manager.BackupManagerImpl): com.zenlemon.domain.manager.BackupManager
 
     @Binds @Singleton
-    abstract fun bindDriveBackupSyncManager(impl: com.streamvault.data.manager.GoogleDriveBackupSyncManager): com.streamvault.domain.manager.DriveBackupSyncManager
+    abstract fun bindDriveBackupSyncManager(impl: com.zenlemon.data.manager.GoogleDriveBackupSyncManager): com.zenlemon.domain.manager.DriveBackupSyncManager
 
     @Binds @Singleton
-    abstract fun bindRecordingManager(impl: com.streamvault.data.manager.RecordingManagerImpl): com.streamvault.domain.manager.RecordingManager
+    abstract fun bindRecordingManager(impl: com.zenlemon.data.manager.RecordingManagerImpl): com.zenlemon.domain.manager.RecordingManager
 
     @Binds @Singleton
     abstract fun bindDownloadManager(impl: DownloadManagerImpl): DownloadManager
 
     @Binds @Singleton
-    abstract fun bindProgramReminderManager(impl: com.streamvault.data.manager.ProgramReminderManagerImpl): com.streamvault.domain.manager.ProgramReminderManager
+    abstract fun bindProgramReminderManager(impl: com.zenlemon.data.manager.ProgramReminderManagerImpl): com.zenlemon.domain.manager.ProgramReminderManager
 
     @Binds @Singleton
     abstract fun bindParentalControlSessionStore(impl: PreferencesRepository): ParentalControlSessionStore
@@ -112,8 +112,8 @@ abstract class RepositoryModule {
 
         @Provides
         @Singleton
-        fun provideM3uParser(): com.streamvault.data.parser.M3uParser {
-            return com.streamvault.data.parser.M3uParser()
+        fun provideM3uParser(): com.zenlemon.data.parser.M3uParser {
+            return com.zenlemon.data.parser.M3uParser()
         }
     }
 }

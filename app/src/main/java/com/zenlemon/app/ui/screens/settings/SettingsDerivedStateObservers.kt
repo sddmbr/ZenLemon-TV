@@ -1,21 +1,21 @@
 @file:OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
 
-package com.streamvault.app.ui.screens.settings
+package com.zenlemon.app.ui.screens.settings
 
 import android.app.Application
-import com.streamvault.app.R
-import com.streamvault.data.local.dao.ProgramDao
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.CategorySortMode
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.Provider
-import com.streamvault.domain.model.ProviderType
-import com.streamvault.domain.model.VodSyncMode
-import com.streamvault.domain.repository.CategoryRepository
-import com.streamvault.domain.repository.MovieRepository
-import com.streamvault.domain.repository.ProviderRepository
-import com.streamvault.domain.repository.SeriesRepository
-import com.streamvault.domain.repository.SyncMetadataRepository
+import com.zenlemon.app.R
+import com.zenlemon.data.local.dao.ProgramDao
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.CategorySortMode
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.Provider
+import com.zenlemon.domain.model.ProviderType
+import com.zenlemon.domain.model.VodSyncMode
+import com.zenlemon.domain.repository.CategoryRepository
+import com.zenlemon.domain.repository.MovieRepository
+import com.zenlemon.domain.repository.ProviderRepository
+import com.zenlemon.domain.repository.SeriesRepository
+import com.zenlemon.domain.repository.SyncMetadataRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -89,7 +89,7 @@ internal fun observeProviderDiagnostics(
 
 internal fun observeCategoryManagement(
     activeProviderIdFlow: Flow<Long?>,
-    preferencesRepository: com.streamvault.data.preferences.PreferencesRepository,
+    preferencesRepository: com.zenlemon.data.preferences.PreferencesRepository,
     categoryRepository: CategoryRepository
 ): Flow<CategoryManagementSnapshot> {
     return activeProviderIdFlow.flatMapLatest { providerId ->
@@ -114,7 +114,7 @@ internal fun observeCategoryManagement(
 
 private fun observeCategorySortModes(
     providerId: Long,
-    preferencesRepository: com.streamvault.data.preferences.PreferencesRepository
+    preferencesRepository: com.zenlemon.data.preferences.PreferencesRepository
 ): Flow<Map<ContentType, CategorySortMode>> {
     return combine(
         preferencesRepository.getCategorySortMode(providerId, ContentType.LIVE),
@@ -131,7 +131,7 @@ private fun observeCategorySortModes(
 
 private fun observeHiddenCategoryIdsByType(
     providerId: Long,
-    preferencesRepository: com.streamvault.data.preferences.PreferencesRepository
+    preferencesRepository: com.zenlemon.data.preferences.PreferencesRepository
 ): Flow<Map<ContentType, Set<Long>>> {
     return combine(
         preferencesRepository.getHiddenCategoryIds(providerId, ContentType.LIVE),

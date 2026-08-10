@@ -1,7 +1,7 @@
-package com.streamvault.app.ui.screens.downloads
+package com.zenlemon.app.ui.screens.downloads
 
-import com.streamvault.domain.model.DownloadItem
-import com.streamvault.domain.model.DownloadStorageConfig
+import com.zenlemon.domain.model.DownloadItem
+import com.zenlemon.domain.model.DownloadStorageConfig
 
 /**
  * UI state for the Downloads screen.

@@ -1,4 +1,4 @@
-package com.streamvault.app.tvinput
+package com.zenlemon.app.tvinput
 
 import android.content.ComponentName
 import android.content.ContentResolver
@@ -9,14 +9,14 @@ import android.content.Intent
 import android.media.tv.TvContract
 import android.provider.BaseColumns
 import android.util.Log
-import com.streamvault.app.MainActivity
-import com.streamvault.app.device.isTelevisionDevice
-import com.streamvault.app.navigation.PlayerNavigationRequest
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.Program
-import com.streamvault.domain.repository.ChannelRepository
-import com.streamvault.domain.repository.EpgRepository
-import com.streamvault.domain.repository.ProviderRepository
+import com.zenlemon.app.MainActivity
+import com.zenlemon.app.device.isTelevisionDevice
+import com.zenlemon.app.navigation.PlayerNavigationRequest
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.Program
+import com.zenlemon.domain.repository.ChannelRepository
+import com.zenlemon.domain.repository.EpgRepository
+import com.zenlemon.domain.repository.ProviderRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -265,7 +265,7 @@ class TvInputChannelSyncManager @Inject constructor(
         )
     }
 
-    private fun inputId(): String = ComponentName(context, StreamVaultTvInputService::class.java).flattenToShortString()
+    private fun inputId(): String = ComponentName(context, ZenLemonTvInputService::class.java).flattenToShortString()
 
     private fun channelKey(channel: Channel): String = "${channel.providerId}:${channel.id}"
 

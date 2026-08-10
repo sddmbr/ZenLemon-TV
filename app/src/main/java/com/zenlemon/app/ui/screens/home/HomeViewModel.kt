@@ -1,56 +1,56 @@
-package com.streamvault.app.ui.screens.home
+package com.zenlemon.app.ui.screens.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.di.AuxiliaryPlayerEngine
-import com.streamvault.app.player.LivePreviewHandoffManager
-import com.streamvault.app.player.PreviewHandoffSource
-import com.streamvault.app.plugins.StreamVaultPluginManager
-import com.streamvault.app.tvinput.TvInputChannelSyncManager
-import com.streamvault.app.ui.screens.multiview.MultiViewManager
-import com.streamvault.app.ui.model.applyProviderCategoryDisplayPreferences
-import com.streamvault.app.ui.model.orderedByRequestedRawIds
-import com.streamvault.app.ui.model.guideLookupKey
-import com.streamvault.app.ui.model.LiveTvChannelMode
-import com.streamvault.app.ui.model.LiveTvQuickFilterVisibilityMode
-import com.streamvault.data.preferences.PreferencesRepository
-import com.streamvault.data.sync.SyncManager
-import com.streamvault.domain.manager.ParentalControlManager
-import com.streamvault.domain.model.ActiveLiveSource
-import com.streamvault.domain.model.ActiveLiveSourceOption
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.CategorySortMode
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.ChannelNumberingMode
-import com.streamvault.domain.model.CombinedCategory
-import com.streamvault.domain.model.CombinedM3uProfileMember
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.Favorite
-import com.streamvault.domain.model.PlaybackHistory
-import com.streamvault.domain.model.Program
-import com.streamvault.domain.model.Provider
-import com.streamvault.domain.model.ProviderType
-import com.streamvault.domain.model.Result
-import com.streamvault.domain.model.StreamInfo
-import com.streamvault.domain.model.StreamType
-import com.streamvault.domain.model.SyncState
-import com.streamvault.domain.model.VirtualCategoryIds
-import com.streamvault.domain.repository.CategoryRepository
-import com.streamvault.domain.repository.ChannelRepository
-import com.streamvault.domain.repository.CombinedM3uRepository
-import com.streamvault.domain.repository.EpgRepository
-import com.streamvault.domain.repository.FavoriteRepository
-import com.streamvault.domain.repository.LiveStreamProgramRequest
-import com.streamvault.domain.repository.PlaybackHistoryRepository
-import com.streamvault.domain.repository.ProviderRepository
-import com.streamvault.domain.util.AdultContentVisibilityPolicy
-import com.streamvault.domain.usecase.GetCustomCategories
-import com.streamvault.domain.usecase.UnlockParentalCategory
-import com.streamvault.domain.usecase.UnlockParentalCategoryCommand
-import com.streamvault.player.PlaybackState
-import com.streamvault.player.PlayerEngine
+import com.zenlemon.app.di.AuxiliaryPlayerEngine
+import com.zenlemon.app.player.LivePreviewHandoffManager
+import com.zenlemon.app.player.PreviewHandoffSource
+import com.zenlemon.app.plugins.ZenLemonPluginManager
+import com.zenlemon.app.tvinput.TvInputChannelSyncManager
+import com.zenlemon.app.ui.screens.multiview.MultiViewManager
+import com.zenlemon.app.ui.model.applyProviderCategoryDisplayPreferences
+import com.zenlemon.app.ui.model.orderedByRequestedRawIds
+import com.zenlemon.app.ui.model.guideLookupKey
+import com.zenlemon.app.ui.model.LiveTvChannelMode
+import com.zenlemon.app.ui.model.LiveTvQuickFilterVisibilityMode
+import com.zenlemon.data.preferences.PreferencesRepository
+import com.zenlemon.data.sync.SyncManager
+import com.zenlemon.domain.manager.ParentalControlManager
+import com.zenlemon.domain.model.ActiveLiveSource
+import com.zenlemon.domain.model.ActiveLiveSourceOption
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.CategorySortMode
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.ChannelNumberingMode
+import com.zenlemon.domain.model.CombinedCategory
+import com.zenlemon.domain.model.CombinedM3uProfileMember
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.Favorite
+import com.zenlemon.domain.model.PlaybackHistory
+import com.zenlemon.domain.model.Program
+import com.zenlemon.domain.model.Provider
+import com.zenlemon.domain.model.ProviderType
+import com.zenlemon.domain.model.Result
+import com.zenlemon.domain.model.StreamInfo
+import com.zenlemon.domain.model.StreamType
+import com.zenlemon.domain.model.SyncState
+import com.zenlemon.domain.model.VirtualCategoryIds
+import com.zenlemon.domain.repository.CategoryRepository
+import com.zenlemon.domain.repository.ChannelRepository
+import com.zenlemon.domain.repository.CombinedM3uRepository
+import com.zenlemon.domain.repository.EpgRepository
+import com.zenlemon.domain.repository.FavoriteRepository
+import com.zenlemon.domain.repository.LiveStreamProgramRequest
+import com.zenlemon.domain.repository.PlaybackHistoryRepository
+import com.zenlemon.domain.repository.ProviderRepository
+import com.zenlemon.domain.util.AdultContentVisibilityPolicy
+import com.zenlemon.domain.usecase.GetCustomCategories
+import com.zenlemon.domain.usecase.UnlockParentalCategory
+import com.zenlemon.domain.usecase.UnlockParentalCategoryCommand
+import com.zenlemon.player.PlaybackState
+import com.zenlemon.player.PlayerEngine
 import dagger.hilt.android.lifecycle.HiltViewModel
-import com.streamvault.app.R
+import com.zenlemon.app.R
 import java.util.concurrent.CancellationException
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -84,7 +84,7 @@ class HomeViewModel @Inject constructor(
     private val tvInputChannelSyncManager: TvInputChannelSyncManager,
     private val multiViewManager: MultiViewManager,
     private val livePreviewHandoffManager: LivePreviewHandoffManager,
-    private val pluginManager: StreamVaultPluginManager,
+    private val pluginManager: ZenLemonPluginManager,
     @param:AuxiliaryPlayerEngine
     private val playerEngineProvider: InjectProvider<PlayerEngine>
 ) : ViewModel() {
@@ -101,7 +101,7 @@ class HomeViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
     val remoteShortcutPreferences = preferencesRepository.remoteShortcutPreferences
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), com.streamvault.domain.model.RemoteShortcutPreferences())
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), com.zenlemon.domain.model.RemoteShortcutPreferences())
 
     private val _localChannels = MutableStateFlow<List<Channel>>(emptyList())
     private val _channelBrowseLimit = MutableStateFlow(CHANNEL_PAGE_SIZE)
@@ -1169,7 +1169,7 @@ class HomeViewModel @Inject constructor(
         previewPlayerEngine?.release()
         previewPlayerEngine = engine
         // Restore auxiliary-engine defaults that the fullscreen handoff flipped.
-        (engine as? com.streamvault.player.Media3PlayerEngine)?.let {
+        (engine as? com.zenlemon.player.Media3PlayerEngine)?.let {
             it.enableMediaSession = false
             it.bypassAudioFocus = true
         }
@@ -1277,8 +1277,8 @@ class HomeViewModel @Inject constructor(
     ): Map<String, Program> {
         val providerType = _uiState.value.provider?.type
         if (
-            providerType != com.streamvault.domain.model.ProviderType.XTREAM_CODES &&
-            providerType != com.streamvault.domain.model.ProviderType.STALKER_PORTAL
+            providerType != com.zenlemon.domain.model.ProviderType.XTREAM_CODES &&
+            providerType != com.zenlemon.domain.model.ProviderType.STALKER_PORTAL
         ) {
             return emptyMap()
         }

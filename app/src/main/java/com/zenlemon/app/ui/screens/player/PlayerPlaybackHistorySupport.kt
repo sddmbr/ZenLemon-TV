@@ -1,8 +1,8 @@
-package com.streamvault.app.ui.screens.player
+package com.zenlemon.app.ui.screens.player
 
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.Episode
-import com.streamvault.domain.model.PlaybackHistory
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.Episode
+import com.zenlemon.domain.model.PlaybackHistory
 
 internal fun buildPlaybackHistorySnapshot(
     positionMs: Long,

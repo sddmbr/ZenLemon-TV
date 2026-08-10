@@ -1,47 +1,47 @@
-package com.streamvault.app.ui.screens.series
+package com.zenlemon.app.ui.screens.series
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.streamvault.app.ui.model.applyProviderCategoryDisplayPreferences
-import com.streamvault.app.ui.model.VodViewMode
-import com.streamvault.data.preferences.PreferencesRepository
-import com.streamvault.domain.manager.ParentalControlManager
-import com.streamvault.domain.model.Category
-import com.streamvault.domain.model.CategorySortMode
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.LibraryFilterBy
-import com.streamvault.domain.model.LibraryFilterType
-import com.streamvault.domain.model.LibraryBrowseQuery
-import com.streamvault.domain.model.LibrarySortBy
-import com.streamvault.domain.model.PlaybackHistory
-import com.streamvault.domain.model.ProviderType
-import com.streamvault.domain.model.Result
-import com.streamvault.domain.model.Series
-import com.streamvault.domain.repository.FavoriteRepository
-import com.streamvault.domain.repository.PlaybackHistoryRepository
-import com.streamvault.domain.repository.ProviderRepository
-import com.streamvault.domain.repository.SeriesRepository
-import com.streamvault.domain.usecase.ContinueWatchingResult
-import com.streamvault.domain.usecase.ContinueWatchingScope
-import com.streamvault.domain.usecase.GetContinueWatching
-import com.streamvault.domain.usecase.GetCustomCategories
-import com.streamvault.app.ui.screens.vod.createVodGroup
-import com.streamvault.app.ui.screens.vod.incrementVodSelectedCategoryLoadLimit
-import com.streamvault.app.ui.screens.vod.buildVodPreviewCatalog
-import com.streamvault.app.ui.screens.vod.buildVodSearchCatalog
-import com.streamvault.app.ui.screens.vod.loadVodReorderItems
-import com.streamvault.app.ui.screens.vod.markVodFavorites
-import com.streamvault.app.ui.screens.vod.matchesVodGroupMembership
-import com.streamvault.app.ui.screens.vod.moveVodItemDown
-import com.streamvault.app.ui.screens.vod.moveVodItemUp
-import com.streamvault.app.ui.screens.vod.selectVodCategory
-import com.streamvault.app.ui.screens.vod.saveVodReorder
-import com.streamvault.app.ui.screens.vod.setVodLibraryFilterType
-import com.streamvault.app.ui.screens.vod.setVodLibrarySortBy
-import com.streamvault.app.ui.screens.vod.setVodSearchQuery
-import com.streamvault.app.ui.screens.vod.setVodFavorite
-import com.streamvault.app.ui.screens.vod.updateVodGroupMembership
-import com.streamvault.app.ui.screens.vod.VodBrowseDefaults
+import com.zenlemon.app.ui.model.applyProviderCategoryDisplayPreferences
+import com.zenlemon.app.ui.model.VodViewMode
+import com.zenlemon.data.preferences.PreferencesRepository
+import com.zenlemon.domain.manager.ParentalControlManager
+import com.zenlemon.domain.model.Category
+import com.zenlemon.domain.model.CategorySortMode
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.LibraryFilterBy
+import com.zenlemon.domain.model.LibraryFilterType
+import com.zenlemon.domain.model.LibraryBrowseQuery
+import com.zenlemon.domain.model.LibrarySortBy
+import com.zenlemon.domain.model.PlaybackHistory
+import com.zenlemon.domain.model.ProviderType
+import com.zenlemon.domain.model.Result
+import com.zenlemon.domain.model.Series
+import com.zenlemon.domain.repository.FavoriteRepository
+import com.zenlemon.domain.repository.PlaybackHistoryRepository
+import com.zenlemon.domain.repository.ProviderRepository
+import com.zenlemon.domain.repository.SeriesRepository
+import com.zenlemon.domain.usecase.ContinueWatchingResult
+import com.zenlemon.domain.usecase.ContinueWatchingScope
+import com.zenlemon.domain.usecase.GetContinueWatching
+import com.zenlemon.domain.usecase.GetCustomCategories
+import com.zenlemon.app.ui.screens.vod.createVodGroup
+import com.zenlemon.app.ui.screens.vod.incrementVodSelectedCategoryLoadLimit
+import com.zenlemon.app.ui.screens.vod.buildVodPreviewCatalog
+import com.zenlemon.app.ui.screens.vod.buildVodSearchCatalog
+import com.zenlemon.app.ui.screens.vod.loadVodReorderItems
+import com.zenlemon.app.ui.screens.vod.markVodFavorites
+import com.zenlemon.app.ui.screens.vod.matchesVodGroupMembership
+import com.zenlemon.app.ui.screens.vod.moveVodItemDown
+import com.zenlemon.app.ui.screens.vod.moveVodItemUp
+import com.zenlemon.app.ui.screens.vod.selectVodCategory
+import com.zenlemon.app.ui.screens.vod.saveVodReorder
+import com.zenlemon.app.ui.screens.vod.setVodLibraryFilterType
+import com.zenlemon.app.ui.screens.vod.setVodLibrarySortBy
+import com.zenlemon.app.ui.screens.vod.setVodSearchQuery
+import com.zenlemon.app.ui.screens.vod.setVodFavorite
+import com.zenlemon.app.ui.screens.vod.updateVodGroupMembership
+import com.zenlemon.app.ui.screens.vod.VodBrowseDefaults
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -151,7 +151,7 @@ class SeriesViewModel @Inject constructor(
                         preferencesRepository.getHiddenCategoryIds(provider.id, ContentType.SERIES),
                         preferencesRepository.getCategorySortMode(provider.id, ContentType.SERIES)
                     ) { values ->
-                        val allFavorites = values[0] as List<com.streamvault.domain.model.Favorite>
+                        val allFavorites = values[0] as List<com.zenlemon.domain.model.Favorite>
                         val customCategories = values[1] as List<Category>
                         val providerCategories = values[2] as List<Category>
                         val providerCategoryCounts = values[3] as Map<Long, Int>
@@ -310,7 +310,7 @@ class SeriesViewModel @Inject constructor(
                         preferencesRepository.getHiddenCategoryIds(provider.id, ContentType.SERIES),
                         preferencesRepository.getCategorySortMode(provider.id, ContentType.SERIES)
                     ) { values ->
-                        val allFavorites = values[0] as List<com.streamvault.domain.model.Favorite>
+                        val allFavorites = values[0] as List<com.zenlemon.domain.model.Favorite>
                         val customCategories = values[1] as List<Category>
                         val providerCategories = values[2] as List<Category>
                         val history = values[3] as List<PlaybackHistory>
@@ -961,7 +961,7 @@ class SeriesViewModel @Inject constructor(
 
     private fun buildSearchCatalog(
         series: List<Series>,
-        allFavorites: List<com.streamvault.domain.model.Favorite>,
+        allFavorites: List<com.zenlemon.domain.model.Favorite>,
         customCategories: List<Category>,
         providerCategories: List<Category>,
         hiddenCategoryIds: Set<Long>
@@ -1210,7 +1210,7 @@ class SeriesViewModel @Inject constructor(
 
 private data class SeriesCatalogParams(
     val providerId: Long,
-    val allFavorites: List<com.streamvault.domain.model.Favorite>,
+    val allFavorites: List<com.zenlemon.domain.model.Favorite>,
     val customCategories: List<Category>,
     val providerCategories: List<Category>,
     val providerCategoryCounts: Map<Long, Int>,
@@ -1221,7 +1221,7 @@ private data class SeriesCatalogParams(
 )
 
 private data class SeriesCatalogDependencies(
-    val allFavorites: List<com.streamvault.domain.model.Favorite>,
+    val allFavorites: List<com.zenlemon.domain.model.Favorite>,
     val customCategories: List<Category>,
     val providerCategories: List<Category>,
     val providerCategoryCounts: Map<Long, Int>,
@@ -1240,14 +1240,14 @@ private data class SeriesCatalogSnapshot(
 
 private data class SeriesLibraryLensDependencies(
     val providerId: Long,
-    val allFavorites: List<com.streamvault.domain.model.Favorite>,
+    val allFavorites: List<com.zenlemon.domain.model.Favorite>,
     val history: List<PlaybackHistory>,
     val topRated: List<Series>,
     val fresh: List<Series>
 )
 
 private data class SeriesCategorySelectionDependencies(
-    val allFavorites: List<com.streamvault.domain.model.Favorite>,
+    val allFavorites: List<com.zenlemon.domain.model.Favorite>,
     val history: List<PlaybackHistory>,
     val customCategories: List<Category>,
     val providerCategories: List<Category>,
@@ -1261,7 +1261,7 @@ private data class SelectedSeriesCategoryRequest(
     val query: String,
     val filterType: LibraryFilterType,
     val sortBy: LibrarySortBy,
-    val allFavorites: List<com.streamvault.domain.model.Favorite>,
+    val allFavorites: List<com.zenlemon.domain.model.Favorite>,
     val history: List<PlaybackHistory>,
     val customCategories: List<Category>,
     val providerCategories: List<Category>,

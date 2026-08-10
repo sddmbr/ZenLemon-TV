@@ -1,4 +1,4 @@
-package com.streamvault.app.util
+package com.zenlemon.app.util
 
 /**
  * Formats a playback position in milliseconds as a human-readable time string.

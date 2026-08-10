@@ -22,10 +22,10 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.zenlemon.app.ui.model.isArchivePlayable
-import com.streamvault.domain.model.Channel
-import com.streamvault.domain.model.Episode
-import com.streamvault.domain.model.Movie
-import com.streamvault.domain.repository.ChannelRepository
+import com.zenlemon.domain.model.Channel
+import com.zenlemon.domain.model.Episode
+import com.zenlemon.domain.model.Movie
+import com.zenlemon.domain.repository.ChannelRepository
 import com.zenlemon.app.ui.screens.dashboard.DashboardScreen
 import com.zenlemon.app.ui.screens.multiview.MultiViewScreen
 import com.zenlemon.app.ui.screens.home.HomeScreen
@@ -39,14 +39,14 @@ import com.zenlemon.app.ui.screens.welcome.WelcomeScreen
 import com.zenlemon.app.ui.screens.downloads.DownloadsScreen
 import com.zenlemon.app.ui.screens.youtube.YouTubeScreen
 import com.zenlemon.app.MainActivity
-import com.streamvault.domain.model.AppLandingDestination
-import com.streamvault.domain.model.AppTopLevelDestination
-import com.streamvault.domain.model.ContentType
-import com.streamvault.domain.model.MovieDetailPresentationHint
-import com.streamvault.domain.model.ActiveLiveSource
-import com.streamvault.domain.model.Series
-import com.streamvault.domain.model.SeriesDetailPresentationHint
-import com.streamvault.domain.model.VirtualCategoryIds
+import com.zenlemon.domain.model.AppLandingDestination
+import com.zenlemon.domain.model.AppTopLevelDestination
+import com.zenlemon.domain.model.ContentType
+import com.zenlemon.domain.model.MovieDetailPresentationHint
+import com.zenlemon.domain.model.ActiveLiveSource
+import com.zenlemon.domain.model.Series
+import com.zenlemon.domain.model.SeriesDetailPresentationHint
+import com.zenlemon.domain.model.VirtualCategoryIds
 import java.io.Serializable
 import kotlin.coroutines.resume
 import kotlinx.coroutines.flow.first
@@ -505,7 +505,7 @@ fun AppNavigation(mainActivity: MainActivity) {
                     navController.navigateToPlayer(
                         Routes.livePlayer(
                             channel = channel,
-                            categoryId = com.streamvault.domain.model.VirtualCategoryIds.RECENT,
+                            categoryId = com.zenlemon.domain.model.VirtualCategoryIds.RECENT,
                             providerId = channel.providerId,
                             isVirtual = true,
                             combinedProfileId = combinedProfileId,
@@ -517,7 +517,7 @@ fun AppNavigation(mainActivity: MainActivity) {
                     navController.navigateToPlayer(
                         Routes.livePlayer(
                             channel = channel,
-                            categoryId = com.streamvault.domain.model.VirtualCategoryIds.FAVORITES,
+                            categoryId = com.zenlemon.domain.model.VirtualCategoryIds.FAVORITES,
                             providerId = channel.providerId,
                             isVirtual = true,
                             combinedProfileId = combinedProfileId,
@@ -533,7 +533,7 @@ fun AppNavigation(mainActivity: MainActivity) {
                 },
                 onPlaybackHistoryClick = { history ->
                     val route = when (history.contentType) {
-                        com.streamvault.domain.model.ContentType.LIVE -> {
+                        com.zenlemon.domain.model.ContentType.LIVE -> {
                             Routes.player(
                                 streamUrl = history.streamUrl,
                                 title = history.title,
@@ -543,7 +543,7 @@ fun AppNavigation(mainActivity: MainActivity) {
                                 returnRoute = Routes.HOME
                             )
                         }
-                        com.streamvault.domain.model.ContentType.MOVIE -> {
+                        com.zenlemon.domain.model.ContentType.MOVIE -> {
                             Routes.player(
                                 streamUrl = history.streamUrl,
                                 title = history.title,
@@ -553,10 +553,10 @@ fun AppNavigation(mainActivity: MainActivity) {
                                 returnRoute = Routes.HOME
                             )
                         }
-                        com.streamvault.domain.model.ContentType.SERIES -> {
+                        com.zenlemon.domain.model.ContentType.SERIES -> {
                             Routes.seriesDetail(history.contentId, Routes.HOME)
                         }
-                        com.streamvault.domain.model.ContentType.SERIES_EPISODE -> {
+                        com.zenlemon.domain.model.ContentType.SERIES_EPISODE -> {
                             Routes.player(
                                 streamUrl = history.streamUrl,
                                 title = history.title,
