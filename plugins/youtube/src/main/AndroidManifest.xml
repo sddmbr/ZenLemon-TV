@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <service
+            android:name=".YoutubePluginService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.zenlemon.plugin.API" />
+            </intent-filter>
+            <meta-data
+                android:name="plugin_name"
+                android:value="ZenLemon YouTube Plugin" />
+            <meta-data
+                android:name="plugin_description"
+                android:value="YouTube playback support for ZenLemon" />
+        </service>
+    </application>
+
+</manifest>
