@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.zenlemon.plugin.youtube"
+    namespace = "com.zenlemon.plugin.squeeze"
     compileSdk = 36
 
     defaultConfig {

@@ -3,7 +3,7 @@
 
     <application>
         <service
-            android:name=".YoutubePluginService"
+            android:name=".SqueezePluginService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -11,10 +11,10 @@
             </intent-filter>
             <meta-data
                 android:name="plugin_name"
-                android:value="ZenLemon YouTube Plugin" />
+                android:value="ZenLemon Squeeze" />
             <meta-data
                 android:name="plugin_description"
-                android:value="YouTube playback support for ZenLemon" />
+                android:value="Fresh YouTube feeds for ZenLemon TV" />
         </service>
     </application>
 

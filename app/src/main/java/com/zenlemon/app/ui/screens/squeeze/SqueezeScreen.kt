@@ -1,4 +1,4 @@
-package com.zenlemon.app.ui.screens.youtube
+package com.zenlemon.app.ui.screens.squeeze
 
 import android.annotation.SuppressLint
 import android.webkit.WebChromeClient
@@ -22,8 +22,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
-fun YouTubeScreen(
-    viewModel: YouTubeViewModel = hiltViewModel()
+fun SqueezeScreen(
+    viewModel: SqueezeViewModel = hiltViewModel()
 ) {
     val currentVideoId by viewModel.currentVideoId.collectAsStateWithLifecycle()
     val queue by viewModel.queue.collectAsStateWithLifecycle()
@@ -68,13 +68,13 @@ fun YouTubeScreen(
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(
-                    text = "Video Queue",
+                    text = "ZenLemon Squeeze",
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     items(queue) { video ->
-                        QueueItem(
+                        SqueezeQueueItem(
                             video = video,
                             isSelected = video.id == currentVideoId,
                             onClick = { viewModel.playVideo(video.id) }
@@ -87,8 +87,8 @@ fun YouTubeScreen(
 }
 
 @Composable
-fun QueueItem(
-    video: YouTubeVideo,
+fun SqueezeQueueItem(
+    video: SqueezeVideo,
     isSelected: Boolean,
     onClick: () -> Unit
 ) {

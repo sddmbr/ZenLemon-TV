@@ -23,7 +23,7 @@ ZenLemon was born out of a desire to move beyond off-the-shelf, restrictive medi
 This project bridges the gap between raw server-side stream orchestration and a polished, modern Android interface.
 
 ## ✨ What's New in ZenLemon
-*   **Built-in YouTube Integration Tab:** Bypasses rigid player constraints by embedding a native, highly optimized web-view framework directly into a dedicated application tab.
+*   **ZenLemon Squeeze (YouTube Integration):** Bypasses rigid player constraints by embedding a native, highly optimized web-view framework directly into a dedicated application tab.
 *   **Complete White-Label Rebrand:** Fully refactored package structures (`com.zenlemon.app`), clean Hilt dependency injection mapping, and a modern custom theme architecture.
 *   **Enhanced Multi-Source Resilience:** Optimized handling of multi-profile M3U playlists, automated EPG syncs, and robust local database migrations via Room.
 

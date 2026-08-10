@@ -1,4 +1,4 @@
-package com.zenlemon.plugin.youtube
+package com.zenlemon.plugin.squeeze
 
 import android.app.Service
 import android.content.Intent
@@ -13,7 +13,7 @@ import java.net.URL
 import java.util.Scanner
 import kotlin.concurrent.thread
 
-class YoutubePluginService : Service() {
+class SqueezePluginService : Service() {
 
     internal inner class IncomingHandler : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
@@ -56,7 +56,7 @@ class YoutubePluginService : Service() {
                     }
                 } else if (msg.what == 1) {
                     responseData.putBoolean("success", true)
-                    responseData.putString("manifest_json", """{"name": "ZenLemon YouTube Plugin", "capabilities": ["playback.prepare"]}""")
+                    responseData.putString("manifest_json", """{"name": "ZenLemon Squeeze", "capabilities": ["playback.prepare"]}""")
                 } else {
                     responseData.putBoolean("success", true)
                     responseData.putBoolean("handled", false)

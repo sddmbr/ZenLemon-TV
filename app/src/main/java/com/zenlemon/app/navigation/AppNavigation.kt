@@ -37,7 +37,7 @@ import com.zenlemon.app.ui.screens.series.SeriesScreen
 import com.zenlemon.app.ui.screens.settings.SettingsScreen
 import com.zenlemon.app.ui.screens.welcome.WelcomeScreen
 import com.zenlemon.app.ui.screens.downloads.DownloadsScreen
-import com.zenlemon.app.ui.screens.youtube.YouTubeScreen
+import com.zenlemon.app.ui.screens.squeeze.SqueezeScreen
 import com.zenlemon.app.MainActivity
 import com.zenlemon.domain.model.AppLandingDestination
 import com.zenlemon.domain.model.AppTopLevelDestination
@@ -926,7 +926,7 @@ fun AppNavigation(mainActivity: MainActivity) {
         }
 
         composable(Routes.YOUTUBE) {
-            YouTubeScreen()
+            SqueezeScreen()
         }
     }
 }
