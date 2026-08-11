@@ -259,7 +259,7 @@ fun SearchInput(
 
             Icon(
                 imageVector = if (value.isBlank()) Icons.Default.Search else Icons.Default.Close,
-                contentDescription = null,
+                contentDescription = if (value.isBlank()) null else androidx.compose.ui.res.stringResource(com.zenlemon.app.R.string.action_clear),
                 tint = if (value.isBlank()) {
                     if (isFocused) Primary else OnSurfaceDim
                 } else {
