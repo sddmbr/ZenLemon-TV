@@ -167,6 +167,7 @@ ZenLemon is more than just a media player; it is a sandbox for advanced client-f
 ### Plugins
 
 - ZenLemon TV can be extended with companion Android APK plugins.
+- Try our YouTube plugin - because sometimes you just want to watch your favorite YouTube feed and not have to switch apps, right.
 - Plugin developers can expose provider, playback, Cast URL rewrite, and host-rendered or native configuration capabilities.
 - We are working on a suite of plugins.
 
@@ -181,7 +182,7 @@ ZenLemon is more than just a media player; it is a sandbox for advanced client-f
 
 ## Download
 
-- [Download latest ZenLemonTV.apk](https://github.com/sddmbr/Zenlemon-TV/releases/download/v1.0.0/ZenLemon-TV.apk)
+- [Download latest ZenLemonTV.apk][(https://github.com/sddmbr/ZenLemon-TV/releases/download/v1.0.0/ZenLemon-v1.0.21.apk)]
 - The app can also detect and download newer releases in-app through GitHub Releases.
 - GitHub Actions still runs build and test validation on pushes and pull requests.
 - GitHub Releases are now published only when the workflow is started manually with `workflow_dispatch`, so versioned releases do not get created by mistake on every push.
