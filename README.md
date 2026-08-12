@@ -167,7 +167,7 @@ ZenLemon is more than just a media player; it is a sandbox for advanced client-f
 ### Plugins
 
 - ZenLemon TV can be extended with companion Android APK plugins.
-- Try our YouTube plugin - because sometimes you just want to watch your favorite YouTube feed and not have to switch apps, right.
+- Try our YouTube plugin - Lemon Squeeze [(https://github.com/sddmbr/ZenLemon-TV/releases/download/v1.0.0/Lemon.Squeeze.YouTube.apk)]because sometimes you just want to watch your favorite YouTube feed and not have to switch apps, right.
 - Plugin developers can expose provider, playback, Cast URL rewrite, and host-rendered or native configuration capabilities.
 - We are working on a suite of plugins.
 
