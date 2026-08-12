@@ -23,7 +23,7 @@ ZenLemon was born out of a desire to move beyond off-the-shelf, restrictive medi
 This project bridges the gap between raw server-side stream orchestration and a polished, modern Android interface.
 
 ## ✨ What's New in ZenLemon
-*   **ZenLemon Squeeze (YouTube Integration):** Bypasses rigid player constraints by embedding a native, highly optimized web-view framework directly into a dedicated application tab.
+*   **ZenLemon Squeeze (Native YouTube):** Seamless YouTube integration using a high-performance extraction plugin and the app's native player engine, replacing restrictive web-views.
 *   **Complete White-Label Rebrand:** Fully refactored package structures (`com.zenlemon.app`), clean Hilt dependency injection mapping, and a modern custom theme architecture.
 *   **Enhanced Multi-Source Resilience:** Optimized handling of multi-profile M3U playlists, automated EPG syncs, and robust local database migrations via Room.
 
@@ -71,7 +71,7 @@ ZenLemon is more than just a media player; it is a sandbox for advanced client-f
 - Full EPG support with guide search, XMLTV support, and provider archive or catch-up when available
 - Built-in DVR with scheduled recording, background capture, recording playback, and app-managed default storage
 - Multi-view split-screen playback for watching multiple channels at once
-- Plugin API for creating companion Android APKs that extend providers, playback, Cast URL handling, or configuration flows
+- Advanced Plugin SDK: Extend the ecosystem with companion APKs for custom stream extraction (like Squeeze), Cast URL rewriting, and dynamic provider configuration.
 - Strong parental controls with PIN-protected categories and automatic adult-category detection
 - TV integrations including Watch Next, launcher recommendations, TV input sync, Cast support, external-player handoff, and in-app update delivery
 
