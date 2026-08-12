@@ -1,64 +1,67 @@
 package com.zenlemon.app.ui.screens.squeeze
 
-import android.annotation.SuppressLint
-import android.webkit.WebChromeClient
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.zenlemon.app.ui.components.PlayerRenderView
+import com.zenlemon.player.PlayerRenderSurfaceType
+import com.zenlemon.player.PlayerSurfaceResizeMode
 
-@SuppressLint("SetJavaScriptEnabled")
 @Composable
 fun SqueezeScreen(
     viewModel: SqueezeViewModel = hiltViewModel()
 ) {
     val currentVideoId by viewModel.currentVideoId.collectAsStateWithLifecycle()
     val queue by viewModel.queue.collectAsStateWithLifecycle()
+    val playerEngine by viewModel.playerEngine.collectAsStateWithLifecycle()
+    val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()
+    val errorMessage by viewModel.errorMessage.collectAsStateWithLifecycle()
 
     Row(modifier = Modifier.fillMaxSize()) {
         // Player section
-        Box(modifier = Modifier.weight(0.7f).fillMaxHeight()) {
-            AndroidView(
-                modifier = Modifier.fillMaxSize(),
-                factory = { context ->
-                    WebView(context).apply {
-                        settings.javaScriptEnabled = true
-                        settings.mediaPlaybackRequiresUserGesture = false
-                        webChromeClient = WebChromeClient()
-                        webViewClient = WebViewClient()
-                    }
-                },
-                update = { webView ->
-                    val html = """
-                        <!DOCTYPE html>
-                        <html>
-                        <body style="margin:0;padding:0;background-color:#000;">
-                            <iframe width="100%" height="100%" 
-                                src="https://www.youtube.com/embed/$currentVideoId?autoplay=1&controls=1&showinfo=1&modestbranding=1&fs=1" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
-                        </body>
-                        </html>
-                    """.trimIndent()
-                    
-                    webView.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "UTF-8", null)
-                }
-            )
+        Box(
+            modifier = Modifier
+                .weight(0.7f)
+                .fillMaxHeight()
+                .background(Color.Black),
+            contentAlignment = Alignment.Center
+        ) {
+            val engine = playerEngine
+            if (engine != null) {
+                PlayerRenderView(
+                    playerEngine = engine,
+                    resizeMode = PlayerSurfaceResizeMode.FIT,
+                    surfaceType = PlayerRenderSurfaceType.AUTO,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
+
+            if (isLoading) {
+                CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+            }
+
+            errorMessage?.let { error ->
+                Text(
+                    text = error,
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
         }
 
         // Queue section

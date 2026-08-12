@@ -12,6 +12,7 @@ enum class AppTopLevelDestination(
     DOWNLOADS("downloads", AppLandingDestination.DOWNLOADS),
     GUIDE("guide", AppLandingDestination.GUIDE),
     SEARCH("search"),
+    SQUEEZE("squeeze", AppLandingDestination.SQUEEZE),
     PLUGINS("plugins", AppLandingDestination.PLUGINS),
     SETTINGS("settings", AppLandingDestination.SETTINGS, isRequired = true);
 
@@ -21,6 +22,7 @@ enum class AppTopLevelDestination(
             LIVE_TV,
             MOVIES,
             SERIES,
+            SQUEEZE,
             DOWNLOADS,
             GUIDE,
             SEARCH,

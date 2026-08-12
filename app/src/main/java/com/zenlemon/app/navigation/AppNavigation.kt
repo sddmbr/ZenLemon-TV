@@ -323,6 +323,7 @@ internal fun AppLandingDestination.toAppRoute(): String = when (this) {
     AppLandingDestination.MOVIES -> Routes.MOVIES
     AppLandingDestination.SERIES -> Routes.SERIES
     AppLandingDestination.GUIDE -> Routes.EPG
+    AppLandingDestination.SQUEEZE -> Routes.YOUTUBE
     AppLandingDestination.DOWNLOADS -> Routes.DOWNLOADS
     AppLandingDestination.PLUGINS -> Routes.PLUGINS
     AppLandingDestination.SETTINGS -> Routes.SETTINGS
@@ -333,6 +334,7 @@ internal fun AppTopLevelDestination.toAppRoute(): String = when (this) {
     AppTopLevelDestination.LIVE_TV -> Routes.LIVE_TV
     AppTopLevelDestination.MOVIES -> Routes.MOVIES
     AppTopLevelDestination.SERIES -> Routes.SERIES
+    AppTopLevelDestination.SQUEEZE -> Routes.YOUTUBE
     AppTopLevelDestination.DOWNLOADS -> Routes.DOWNLOADS
     AppTopLevelDestination.GUIDE -> Routes.EPG
     AppTopLevelDestination.SEARCH -> Routes.SEARCH
