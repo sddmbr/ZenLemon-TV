@@ -143,7 +143,7 @@ class SeriesViewModel @Inject constructor(
                 .flatMapLatest { provider ->
                     activeProviderId = provider.id
                     combine(
-                        favoriteRepository.getAllFavorites(provider.id, ContentType.SERIES),
+                        favoriteRepository.getFavorites(provider.id, ContentType.SERIES),
                         getCustomCategories(provider.id, ContentType.SERIES),
                         seriesRepository.getCategories(provider.id),
                         seriesRepository.getCategoryItemCounts(provider.id),
@@ -303,7 +303,7 @@ class SeriesViewModel @Inject constructor(
                 .filterNotNull()
                 .flatMapLatest { provider ->
                     combine(
-                        favoriteRepository.getAllFavorites(provider.id, ContentType.SERIES),
+                        favoriteRepository.getFavorites(provider.id, ContentType.SERIES),
                         getCustomCategories(provider.id, ContentType.SERIES),
                         seriesRepository.getCategories(provider.id),
                         playbackHistoryRepository.getRecentlyWatchedByProvider(provider.id, limit = 100),
@@ -406,7 +406,7 @@ class SeriesViewModel @Inject constructor(
                 .filterNotNull()
                 .flatMapLatest { provider ->
                     combine(
-                        favoriteRepository.getAllFavorites(provider.id, ContentType.SERIES),
+                        favoriteRepository.getFavorites(provider.id, ContentType.SERIES),
                         playbackHistoryRepository.getRecentlyWatchedByProvider(provider.id, limit = 24),
                         seriesRepository.getTopRatedPreview(provider.id, VodBrowseDefaults.PREVIEW_ROW_LIMIT),
                         seriesRepository.getFreshPreview(provider.id, VodBrowseDefaults.PREVIEW_ROW_LIMIT)

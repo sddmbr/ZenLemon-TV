@@ -107,17 +107,6 @@ class GetCustomCategoriesTest {
                 }
             )
 
-        override fun getAllFavorites(providerIds: List<Long>, contentType: ContentType): Flow<List<Favorite>> =
-            flowOf(
-                favorites.filter { favorite ->
-                    favorite.providerId in providerIds && favorite.contentType == contentType
-                }
-            )
-
-        @Deprecated("Use getFavorites(providerId, contentType) instead")
-        override fun getAllFavorites(providerId: Long, contentType: ContentType): Flow<List<Favorite>> =
-            getAllFavorites(listOf(providerId), contentType)
-
         override fun getFavoritesByGroup(groupId: Long): Flow<List<Favorite>> =
             flowOf(favorites.filter { it.groupId == groupId })
 

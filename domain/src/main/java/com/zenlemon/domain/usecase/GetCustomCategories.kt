@@ -31,7 +31,7 @@ class GetCustomCategories @Inject constructor(
             return flowOf(emptyList())
         }
 
-        val favoritesFlow = favoriteRepository.getAllFavorites(providerIds, contentType)
+        val favoritesFlow = favoriteRepository.getFavorites(providerIds, contentType)
         val visibleLiveChannelsFlow = if (contentType == ContentType.LIVE) {
             favoritesFlow
                 .map { favorites -> favorites.map(Favorite::contentId).distinct() }
