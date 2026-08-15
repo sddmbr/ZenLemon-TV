@@ -7,6 +7,38 @@ import org.junit.Test
 class DecoderPreferencePolicyTest {
 
     @Test
+    fun `preferredMode resolves SOFTWARE to SOFTWARE`() {
+        val policy = DefaultDecoderPreferencePolicy()
+        assertThat(policy.preferredMode(DecoderMode.SOFTWARE, "media-1")).isEqualTo(DecoderMode.SOFTWARE)
+    }
+
+    @Test
+    fun `preferredMode resolves COMPATIBILITY to SOFTWARE`() {
+        val policy = DefaultDecoderPreferencePolicy()
+        assertThat(policy.preferredMode(DecoderMode.COMPATIBILITY, "media-1")).isEqualTo(DecoderMode.SOFTWARE)
+    }
+
+    @Test
+    fun `preferredMode resolves HARDWARE to HARDWARE`() {
+        val policy = DefaultDecoderPreferencePolicy()
+        assertThat(policy.preferredMode(DecoderMode.HARDWARE, "media-1")).isEqualTo(DecoderMode.HARDWARE)
+    }
+
+    @Test
+    fun `preferredMode resolves AUTO to HARDWARE by default`() {
+        val policy = DefaultDecoderPreferencePolicy()
+        assertThat(policy.preferredMode(DecoderMode.AUTO, "media-1")).isEqualTo(DecoderMode.HARDWARE)
+    }
+
+    @Test
+    fun `preferredMode resolves AUTO to SOFTWARE if media id has retried software`() {
+        val policy = DefaultDecoderPreferencePolicy()
+        val mediaId = "channel-1"
+        policy.onDecoderInitFailure(DecoderMode.AUTO, mediaId)
+        assertThat(policy.preferredMode(DecoderMode.AUTO, mediaId)).isEqualTo(DecoderMode.SOFTWARE)
+    }
+
+    @Test
     fun `auto retries with software after decoder init failure`() {
         val policy = DefaultDecoderPreferencePolicy()
         val mediaId = "channel-1"
