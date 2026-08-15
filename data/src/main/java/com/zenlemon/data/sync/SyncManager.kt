@@ -1501,8 +1501,8 @@ class SyncManager @Inject constructor(
             }.exceptionOrNull()
             if (failure != null) {
                 val state = xtreamIndexFailureState(failure)
-                val currentJob = xtreamIndexJobDao.get(providerId, contentType.name)
-                if (currentJob?.state != "PARTIAL") {
+                val isPartial = job?.state == "PARTIAL" || xtreamIndexJobDao.get(providerId, contentType.name)?.state == "PARTIAL"
+                if (!isPartial) {
                     val failureAt = System.currentTimeMillis()
                     upsertXtreamIndexJob(
                         providerId = providerId,
