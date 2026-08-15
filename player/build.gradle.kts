@@ -145,4 +145,5 @@ dependencies {
     // Test
     testImplementation(libs.junit)
     testImplementation(libs.truth)
+    testImplementation(libs.mockito.kotlin)
 }
