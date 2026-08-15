@@ -344,7 +344,47 @@ class MainActivity : ComponentActivity() {
         _externalNavigationRequestFlow.value = request
     }
 
+    private fun isIntentSafe(intent: Intent): Boolean {
+        val appDataDir = applicationInfo.dataDir
+
+        fun isUriSafe(uri: Uri?): Boolean {
+            if (uri == null) return true
+            if (uri.scheme?.lowercase(Locale.ROOT) != "file") return true
+
+            val path = uri.path ?: return true
+            val file = java.io.File(path)
+
+            return try {
+                val canonicalPath = file.canonicalPath
+                !canonicalPath.startsWith(appDataDir)
+            } catch (e: Exception) {
+                false
+            }
+        }
+
+        if (!isUriSafe(intent.data)) return false
+
+        val streamUri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(Intent.EXTRA_STREAM) as? Uri
+        }
+        if (!isUriSafe(streamUri)) return false
+
+        val clipData = intent.clipData
+        if (clipData != null) {
+            for (i in 0 until clipData.itemCount) {
+                if (!isUriSafe(clipData.getItemAt(i).uri)) return false
+            }
+        }
+
+        return true
+    }
+
     private fun Intent.toExternalNavigationRequest(): ExternalNavigationRequest? {
+        if (!isIntentSafe(this)) return null
+
         readPlayerRequestExtra()?.let { return ExternalNavigationRequest.Player(it) }
         readExternalDestinationExtra()?.let { return ExternalNavigationRequest.Destination(it) }
         getStringExtra(EXTRA_EXTERNAL_ROUTE)
