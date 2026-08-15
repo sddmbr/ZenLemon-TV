@@ -143,7 +143,7 @@ class MoviesViewModel @Inject constructor(
                 .flatMapLatest { provider ->
                     activeProviderId = provider.id
                     combine(
-                        favoriteRepository.getAllFavorites(provider.id, ContentType.MOVIE),
+                        favoriteRepository.getFavorites(provider.id, ContentType.MOVIE),
                         getCustomCategories(provider.id, ContentType.MOVIE),
                         movieRepository.getCategories(provider.id),
                         movieRepository.getCategoryItemCounts(provider.id),
@@ -303,7 +303,7 @@ class MoviesViewModel @Inject constructor(
                 .filterNotNull()
                 .flatMapLatest { provider ->
                     combine(
-                        favoriteRepository.getAllFavorites(provider.id, ContentType.MOVIE),
+                        favoriteRepository.getFavorites(provider.id, ContentType.MOVIE),
                         getCustomCategories(provider.id, ContentType.MOVIE),
                         movieRepository.getCategories(provider.id),
                         preferencesRepository.getHiddenCategoryIds(provider.id, ContentType.MOVIE),
@@ -402,7 +402,7 @@ class MoviesViewModel @Inject constructor(
                 .filterNotNull()
                 .flatMapLatest { provider ->
                     combine(
-                        favoriteRepository.getAllFavorites(provider.id, ContentType.MOVIE),
+                        favoriteRepository.getFavorites(provider.id, ContentType.MOVIE),
                         playbackHistoryRepository.getRecentlyWatchedByProvider(provider.id, limit = 24),
                         movieRepository.getTopRatedPreview(provider.id, VodBrowseDefaults.PREVIEW_ROW_LIMIT),
                         movieRepository.getFreshPreview(provider.id, VodBrowseDefaults.PREVIEW_ROW_LIMIT)
