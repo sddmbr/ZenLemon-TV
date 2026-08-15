@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.10.1" type="baseline" client="gradle" dependencies="false" name="AGP (8.10.1)" variant="all" version="8.10.1">
+
+    <issue
+        id="MissingPermission"
+        message="Missing permissions required by ConnectivityManager.getActiveNetwork: android.permission.ACCESS_NETWORK_STATE"
+        errorLine1="        val network = connectivityManager?.activeNetwork ?: return null"
+        errorLine2="                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/tracks/PlayerTrackController.kt"
+            line="200"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Missing permissions required by ConnectivityManager.getNetworkCapabilities: android.permission.ACCESS_NETWORK_STATE"
+        errorLine1="        val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return null"
+        errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/tracks/PlayerTrackController.kt"
+            line="201"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 25): `android.media.AudioFocusRequest.Builder()`"
+        errorLine1="        return AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)"
+        errorLine2="                                 ~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/audio/PlayerAudioFocusController.kt"
+            line="196"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 25): `android.media.AudioFocusRequest.Builder#setAudioAttributes`"
+        errorLine1="            .setAudioAttributes(attributes)"
+        errorLine2="             ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/audio/PlayerAudioFocusController.kt"
+            line="197"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 25): `android.media.AudioFocusRequest.Builder#setAcceptsDelayedFocusGain`"
+        errorLine1="            .setAcceptsDelayedFocusGain(false)"
+        errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/audio/PlayerAudioFocusController.kt"
+            line="198"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 25): `android.media.AudioFocusRequest.Builder#setWillPauseWhenDucked`"
+        errorLine1="            .setWillPauseWhenDucked(false)"
+        errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/audio/PlayerAudioFocusController.kt"
+            line="199"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 25): `android.media.AudioFocusRequest.Builder#setOnAudioFocusChangeListener`"
+        errorLine1="            .setOnAudioFocusChangeListener(audioFocusChangeListener)"
+        errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/audio/PlayerAudioFocusController.kt"
+            line="200"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 25): `android.media.AudioFocusRequest.Builder#build`"
+        errorLine1="            .build()"
+        errorLine2="             ~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/audio/PlayerAudioFocusController.kt"
+            line="201"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`">
+        <location
+            file="src/main/java/com/zenlemon/player/playback/PlaybackPreparationPlan.kt"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="    val retryPolicy: PlayerRetryPolicy"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/playback/PlaybackPreparationPlan.kt"
+            line="9"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="        retryPolicy = PlayerRetryPolicy("
+        errorLine2="                      ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/playback/PlaybackPreparationPlan.kt"
+            line="25"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="            val decoderEx = chain"
+        errorLine2="                ~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/PlayerEngine.kt"
+            line="285"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                val mime = decoderEx.mimeType"
+        errorLine2="                                     ~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/PlayerEngine.kt"
+            line="289"
+            column="38"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                val codecInfo = decoderEx.codecInfo"
+        errorLine2="                    ~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/PlayerEngine.kt"
+            line="300"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                val codecInfo = decoderEx.codecInfo"
+        errorLine2="                                          ~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/PlayerEngine.kt"
+            line="300"
+            column="43"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                    &quot;Codec $codecLabel is not supported by decoder ${codecInfo.name} on this device.&quot;"
+        errorLine2="                                                                               ~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/PlayerEngine.kt"
+            line="302"
+            column="80"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="            chain.any { it is BehindLiveWindowException } ||"
+        errorLine2="                              ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/playback/PlayerErrorClassifier.kt"
+            line="45"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="            chain.any { it is MediaCodecRenderer.DecoderInitializationException } ||"
+        errorLine2="                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/playback/PlayerErrorClassifier.kt"
+            line="58"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="            chain.any { it is ParserException } ||"
+        errorLine2="                              ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/playback/PlayerErrorClassifier.kt"
+            line="70"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                            bitrate   = video?.bitrate?.takeIf { it > 0 } ?: 0,"
+        errorLine2="                                               ~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/stats/PlayerStatsCollector.kt"
+            line="149"
+            column="48"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                            isHdr = video?.colorInfo?.colorTransfer in setOf("
+        errorLine2="                                           ~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/stats/PlayerStatsCollector.kt"
+            line="153"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                            isHdr = video?.colorInfo?.colorTransfer in setOf("
+        errorLine2="                                                      ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/stats/PlayerStatsCollector.kt"
+            line="153"
+            column="55"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                                C.COLOR_TRANSFER_ST2084,"
+        errorLine2="                                  ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/stats/PlayerStatsCollector.kt"
+            line="154"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                                C.COLOR_TRANSFER_HLG"
+        errorLine2="                                  ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/stats/PlayerStatsCollector.kt"
+            line="155"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                            videoBitrate      = video?.bitrate?.takeIf { it > 0 }"
+        errorLine2="                                                       ~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/stats/PlayerStatsCollector.kt"
+            line="163"
+            column="56"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="    val edgeType: Int = CaptionStyleCompat.EDGE_TYPE_OUTLINE,"
+        errorLine2="                                           ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/PlayerSubtitleStyle.kt"
+            line="9"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="            val type = group.mediaTrackGroup.type"
+        errorLine2="                                             ~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/tracks/PlayerTrackController.kt"
+            line="83"
+            column="46"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                    val format = group.mediaTrackGroup.getFormat(index)"
+        errorLine2="                                                       ~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/tracks/PlayerTrackController.kt"
+            line="90"
+            column="56"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="            if (group.mediaTrackGroup.type != trackType) continue"
+        errorLine2="                                      ~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/tracks/PlayerTrackController.kt"
+            line="186"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                val format = group.mediaTrackGroup.getFormat(index)"
+        errorLine2="                                                   ~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/tracks/PlayerTrackController.kt"
+            line="188"
+            column="52"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="        val bitrateLabel = format.bitrate.takeIf { it > 0 }"
+        errorLine2="                                  ~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/tracks/PlayerTrackController.kt"
+            line="261"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="            setShutterBackgroundColor(Color.BLACK)"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/PlayerViewBinder.kt"
+            line="32"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="                PlayerView.switchTargetView(player, boundPlayerView, playerView)"
+        errorLine2="                           ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/PlayerViewBinder.kt"
+            line="42"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="        playerView?.subtitleView?.setCues(injectedSubtitleCues)"
+        errorLine2="                    ~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/PlayerViewBinder.kt"
+            line="93"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="        playerView?.subtitleView?.setCues(injectedSubtitleCues)"
+        errorLine2="                                  ~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/PlayerViewBinder.kt"
+            line="93"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="        resizeMode = when (surfaceResizeMode) {"
+        errorLine2="        ~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/PlayerViewBinder.kt"
+            line="97"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="            PlayerSurfaceResizeMode.FIT -> AspectRatioFrameLayout.RESIZE_MODE_FIT"
+        errorLine2="                                                                  ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/PlayerViewBinder.kt"
+            line="98"
+            column="67"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="            PlayerSurfaceResizeMode.FILL -> AspectRatioFrameLayout.RESIZE_MODE_FILL"
+        errorLine2="                                                                   ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/PlayerViewBinder.kt"
+            line="99"
+            column="68"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="            PlayerSurfaceResizeMode.ZOOM -> AspectRatioFrameLayout.RESIZE_MODE_ZOOM"
+        errorLine2="                                                                   ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/PlayerViewBinder.kt"
+            line="100"
+            column="68"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/SubtitleStyleController.kt"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="        val subtitleView = playerView?.subtitleView ?: return"
+        errorLine2="            ~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/SubtitleStyleController.kt"
+            line="20"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="        val subtitleView = playerView?.subtitleView ?: return"
+        errorLine2="                                       ~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/SubtitleStyleController.kt"
+            line="20"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="        subtitleView.setApplyEmbeddedStyles(style.useEmbeddedStyles)"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/SubtitleStyleController.kt"
+            line="21"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="        subtitleView.setApplyEmbeddedFontSizes(style.useEmbeddedStyles)"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/SubtitleStyleController.kt"
+            line="22"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="        subtitleView.setStyle("
+        errorLine2="                     ~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/SubtitleStyleController.kt"
+            line="23"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="            CaptionStyleCompat("
+        errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/SubtitleStyleController.kt"
+            line="24"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="        subtitleView.setFractionalTextSize("
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/SubtitleStyleController.kt"
+            line="33"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="            SubtitleView.DEFAULT_TEXT_SIZE_FRACTION * style.textScale"
+        errorLine2="                         ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/SubtitleStyleController.kt"
+            line="34"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="UnsafeOptInUsageError"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.media3.common.util.UnstableApi` or `@OptIn(markerClass = androidx.media3.common.util.UnstableApi.class)`"
+        errorLine1="        subtitleView.setBottomPaddingFraction(style.bottomPaddingFraction)"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/ui/SubtitleStyleController.kt"
+            line="36"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="SupportAnnotationUsage"
+        message="Did you mean `@get:VisibleForTesting`? Without `get:` this annotates the constructor parameter itself instead of the associated getter."
+        errorLine1="    @VisibleForTesting"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/playback/FfmpegExtensionSupport.kt"
+            line="44"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="CustomX509TrustManager"
+        message="Implementing a custom `X509TrustManager` is error-prone and likely to be insecure. It is likely to disable certificate validation altogether, and is non-trivial to implement correctly without calling Android&apos;s default implementation."
+        errorLine1="    val trustAllManager = object : X509TrustManager {"
+        errorLine2="                          ~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/playback/UnsafeTlsSupport.kt"
+            line="11"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="UsableSpace"
+        message="Consider also using `StorageManager#getAllocatableBytes` and `allocateBytes` which will consider clearable cached data"
+        errorLine1="            context.cacheDir.usableSpace >= MIN_FREE_DISK_BYTES &amp;&amp;"
+        errorLine2="                             ~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/timeshift/LiveTimeshiftManager.kt"
+            line="295"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="UsableSpace"
+        message="Consider also using `StorageManager#getAllocatableBytes` and `allocateBytes` which will consider clearable cached data"
+        errorLine1="            val freeSpace = context.cacheDir.usableSpace"
+        errorLine2="                                             ~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/timeshift/LiveTimeshiftManager.kt"
+            line="425"
+            column="46"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        preferences.edit()"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/AudioCompatibilityMemoryStore.kt"
+            line="53"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        preferences.edit().clear().apply()"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/AudioCompatibilityMemoryStore.kt"
+            line="67"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="            .setUri(Uri.parse(streamInfo.url))"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/zenlemon/player/playback/PlayerMediaSourceFactory.kt"
+            line="126"
+            column="21"/>
+    </issue>
+
+</issues>

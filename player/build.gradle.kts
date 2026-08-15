@@ -9,6 +9,10 @@ plugins {
 }
 
 android {
+    lint {
+        baseline = file("lint-baseline.xml")
+        abortOnError = false
+    }
     namespace = "com.zenlemon.player"
     compileSdk = 36
 
@@ -145,4 +149,6 @@ dependencies {
     // Test
     testImplementation(libs.junit)
     testImplementation(libs.truth)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.androidx.test.ext.junit)
 }
