@@ -1136,7 +1136,7 @@ fun HomeScreen(
                                     if (hasBlockedCategorySearch) {
                                         Icon(
                                             imageVector = Icons.Filled.Lock,
-                                            contentDescription = null,
+                                            contentDescription = stringResource(R.string.home_locked_short),
                                             tint = OnBackground,
                                             modifier = Modifier.size(34.dp)
                                         )
