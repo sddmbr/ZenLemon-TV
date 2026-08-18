@@ -348,7 +348,7 @@ fun LiveChannelRowSurface(
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Star,
-                        contentDescription = null,
+                        contentDescription = stringResource(R.string.a11y_favorite),
                         tint = AppColors.Warning,
                         modifier = Modifier.size(11.dp)
                     )
