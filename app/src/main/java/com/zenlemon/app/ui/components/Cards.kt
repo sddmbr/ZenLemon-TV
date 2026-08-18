@@ -309,7 +309,7 @@ fun ChannelCard(
                 if (channel.isFavorite) {
                     Icon(
                         imageVector = Icons.Filled.Star,
-                        contentDescription = null,
+                        contentDescription = stringResource(R.string.a11y_favorite),
                         tint = AccentAmber,
                         modifier = Modifier.size(14.dp)
                     )
@@ -439,7 +439,7 @@ fun MovieCard(
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Star,
-                        contentDescription = null,
+                        contentDescription = stringResource(R.string.a11y_favorite),
                         tint = AccentAmber,
                         modifier = Modifier.size(12.dp)
                     )
@@ -549,7 +549,7 @@ fun SeriesCard(
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Star,
-                        contentDescription = null,
+                        contentDescription = stringResource(R.string.a11y_favorite),
                         tint = AccentAmber,
                         modifier = Modifier.size(12.dp)
                     )
