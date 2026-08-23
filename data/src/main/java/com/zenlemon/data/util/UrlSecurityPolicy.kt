@@ -6,8 +6,8 @@ import java.util.Locale
 
 object UrlSecurityPolicy {
     private val secureRemoteSchemes = setOf("https")
-    private val playlistSourceSchemes = setOf("http", "https")
-    private val xtreamServerSchemes = setOf("http", "https")
+    private val playlistSourceSchemes = setOf("https")
+    private val xtreamServerSchemes = setOf("https")
     private val localSchemes = setOf("file", "content")
     // Playlist storage only ever writes file:// paths via the internal copy flow;
     // content:// URIs are not openable by SyncManagerM3uImporter (OkHttp + java.io.File only).
@@ -29,7 +29,7 @@ object UrlSecurityPolicy {
         return validateRemoteUrl(
             url = url,
             allowedSchemes = xtreamServerSchemes,
-            invalidSchemeMessage = "Xtream server URLs must use HTTP or HTTPS.",
+            invalidSchemeMessage = "Xtream server URLs must use HTTPS.",
             missingHostMessage = "Xtream server URLs must include a host.",
             userInfoMessage = "Xtream server URLs must not include embedded credentials.",
             queryFragmentMessage = "Xtream server URLs must not include query parameters or fragments.",
@@ -41,7 +41,7 @@ object UrlSecurityPolicy {
         return validateRemoteUrl(
             url = url,
             allowedSchemes = xtreamServerSchemes,
-            invalidSchemeMessage = "Portal URLs must use HTTP or HTTPS.",
+            invalidSchemeMessage = "Portal URLs must use HTTPS.",
             missingHostMessage = "Portal URLs must include a host.",
             userInfoMessage = "Portal URLs must not include embedded credentials.",
             queryFragmentMessage = "Portal URLs must not include query parameters or fragments.",
@@ -53,7 +53,7 @@ object UrlSecurityPolicy {
         return validateRemoteUrl(
             url = url,
             allowedSchemes = xtreamServerSchemes,
-            invalidSchemeMessage = "Xtream EPG URLs must use HTTP or HTTPS.",
+            invalidSchemeMessage = "Xtream EPG URLs must use HTTPS.",
             missingHostMessage = "Xtream EPG URLs must include a host.",
             userInfoMessage = "Xtream EPG URLs must not include embedded credentials.",
             queryFragmentMessage = "Xtream EPG URLs must not include URL fragments.",
@@ -63,17 +63,17 @@ object UrlSecurityPolicy {
 
     fun validatePlaylistSourceUrl(url: String): String? {
         if (containsNewlines(url)) {
-            return "Playlist sources must use HTTP, HTTPS, or point to a local file."
+            return "Playlist sources must use HTTPS, or point to a local file."
         }
         val withScheme = ensureScheme(url.trim())
-        val scheme = parseScheme(withScheme) ?: return "Playlist sources must use HTTP, HTTPS, or point to a local file."
+        val scheme = parseScheme(withScheme) ?: return "Playlist sources must use HTTPS, or point to a local file."
         if (scheme in playlistLocalSchemes) {
             return null
         }
         return validateRemoteUrl(
             url = withScheme,
             allowedSchemes = playlistSourceSchemes,
-            invalidSchemeMessage = "Playlist sources must use HTTP, HTTPS, or point to a local file.",
+            invalidSchemeMessage = "Playlist sources must use HTTPS, or point to a local file.",
             missingHostMessage = "Playlist sources must include a host.",
             userInfoMessage = "Playlist sources must not include embedded credentials in the URL authority.",
             queryFragmentMessage = "Playlist sources must not include URL fragments.",
@@ -85,11 +85,10 @@ object UrlSecurityPolicy {
         return when {
             url.isBlank() -> null
             url.startsWith("content://") -> null  // SAF local file; validated by OS file picker
-            // Allow http:// as well as https:// — many IPTV portals serve their XMLTV
-            // EPG endpoint over plain HTTP on non-standard ports (same policy as playlists).
+            // Enforce https:// for EPG URLs
             // Bare hostnames are accepted here too and resolved before persistence.
             !containsNewlines(url) && hasAllowedScheme(ensureScheme(url.trim()), playlistSourceSchemes) -> null
-            else -> "EPG URLs must use HTTP, HTTPS, or select a local file."
+            else -> "EPG URLs must use HTTPS, or select a local file."
         }
     }
 
