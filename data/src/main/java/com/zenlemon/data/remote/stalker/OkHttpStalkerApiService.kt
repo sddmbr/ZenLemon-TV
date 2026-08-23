@@ -74,306 +74,181 @@ class OkHttpStalkerApiService @Inject constructor(
         val failedHandshakeLoadUrls = mutableSetOf<String>()
         val bootstrapSessions = mutableMapOf<String, StalkerBootstrapSession>()
         val authModes = candidateAuthModes(profile)
+
         for (effectiveAuthMode in authModes) {
             for (attempt in candidateAuthAttempts(profile, effectiveAuthMode)) {
                 val recipeIndex = attempt.recipeIndex
                 val recipe = attempt.recipe
                 val loadUrl = attempt.loadUrl
-                if (lockedLoadUrl != null && lockedLoadUrl != loadUrl) {
+
+                if (lockedLoadUrl != null && lockedLoadUrl != loadUrl) continue
+                if (lockedLoadUrl == null && loadUrl in failedHandshakeLoadUrls) continue
+
+                cookieJar.clear()
+                val referer = StalkerUrlFactory.portalReferer(loadUrl)
+                val evidence = mutableListOf<String>()
+                val recipeEvidence = mutableListOf("recipe:${recipe.recipe.name}", "preset:${recipe.magPreset.name}")
+                val attemptProfile = profile.withRecipe(recipe, effectiveAuthMode)
+                val bootstrapSessionKey = "${effectiveAuthMode.name}|$loadUrl"
+                var bootstrapSession = bootstrapSessions[bootstrapSessionKey]
+
+                val token = bootstrapSession?.token ?: runCatching {
+                    performHandshake(loadUrl, attemptProfile, referer)
+                }.getOrElse { error ->
+                    failedHandshakeLoadUrls += loadUrl
+                    lastError = error
                     continue
                 }
-                if (lockedLoadUrl == null && loadUrl in failedHandshakeLoadUrls) {
-                    continue
+
+                evidence += "handshake"
+                lockedLoadUrl = loadUrl
+
+                if (bootstrapSession == null) {
+                    bootstrapSession = StalkerBootstrapSession(token)
+                    bootstrapSessions[bootstrapSessionKey] = bootstrapSession
                 }
-                    cookieJar.clear()
-                    val referer = StalkerUrlFactory.portalReferer(loadUrl)
-                    val evidence = mutableListOf<String>()
-                    val recipeEvidence = mutableListOf("recipe:${recipe.recipe.name}", "preset:${recipe.magPreset.name}")
-                    val attemptProfile = profile.withRecipe(recipe, effectiveAuthMode)
-                    val bootstrapSessionKey = "${effectiveAuthMode.name}|$loadUrl"
-                    var bootstrapSession = bootstrapSessions[bootstrapSessionKey]
-                    val token = bootstrapSession?.token ?: run {
-                        val handshakePayload = runCatching {
-                            requestJson(
-                                url = loadUrl,
-                                profile = attemptProfile,
-                                referer = referer,
-                                query = mapOf(
-                                    "type" to "stb",
-                                    "action" to "handshake",
-                                    "token" to "",
-                                    "JsHttpRequest" to "1-xml"
-                                )
-                            )
-                        }.getOrElse { error ->
-                            failedHandshakeLoadUrls += loadUrl
+
+                if (recipe.authMode.requiresCredentials()) {
+                    if (!bootstrapSession.credentialAuthenticated) {
+                        runCatching {
+                            performCredentialAuth(loadUrl, attemptProfile, referer, token)
+                        }.onFailure { error ->
                             lastError = error
                             continue
                         }
-                        handshakePayload.findString("token")
-                            ?.takeIf { it.isNotBlank() }
-                            ?: run {
-                                lastError = IOException("Portal handshake did not return a token.")
-                                continue
-                            }
+                        bootstrapSession.credentialAuthenticated = true
                     }
-                    evidence += "handshake"
-                    lockedLoadUrl = loadUrl
-                    if (bootstrapSession == null) {
-                        bootstrapSession = StalkerBootstrapSession(token)
-                        bootstrapSessions[bootstrapSessionKey] = bootstrapSession
-                    }
+                    evidence += "do_auth"
+                }
 
-                    if (recipe.authMode.requiresCredentials()) {
-                        if (!bootstrapSession.credentialAuthenticated) {
-                            if (attemptProfile.username.isBlank()) {
-                                lastError = IOException("Portal requires account credentials for this connection.")
-                                continue
-                            }
-                            val authPayload = runCatching {
-                                requestCredentialAuth(
-                                    url = loadUrl,
-                                    profile = attemptProfile,
-                                    referer = referer,
-                                    token = token,
-                                    allowAlternateEndpointRetry = false
-                                )
-                            }.getOrElse { error ->
-                                lastError = error
-                                continue
-                            }
-                            authPayload.ensureNoPortalError()
-                            bootstrapSession.credentialAuthenticated = true
-                        }
-                        evidence += "do_auth"
-                    }
+                var session = StalkerSession(
+                    loadUrl = loadUrl,
+                    portalReferer = referer,
+                    token = token
+                )
 
-                    var session = StalkerSession(
-                        loadUrl = loadUrl,
-                        portalReferer = referer,
-                        token = token
-                    )
-                    if (recipe.preferLocalizationBeforeProfile) {
-                        runCatching {
-                            requestJson(
-                                url = loadUrl,
-                                profile = attemptProfile,
-                                referer = referer,
-                                token = token,
-                                query = mapOf(
-                                    "type" to "stb",
-                                    "action" to "get_localization",
-                                    "JsHttpRequest" to "1-xml"
-                                )
-                            )
-                        }.getOrNull()?.let {
-                            evidence += "get_localization"
-                        }
-                    }
-                    val profilePayload = runCatching {
-                        requestJson(
-                            url = loadUrl,
-                            profile = attemptProfile,
-                            referer = referer,
-                            token = token,
-                            query = buildProfileQuery(attemptProfile)
-                        )
-                    }.getOrElse { error ->
-                        lastError = error
-                        continue
-                    }
-                    profilePayload.ensureNoPortalError()
-                    evidence += "get_profile"
+                if (recipe.preferLocalizationBeforeProfile) {
+                    requestLocalization(loadUrl, attemptProfile, referer, token, evidence)
+                }
 
-                    var providerProfile = profilePayload.toProviderProfile()
-                    var bootstrapStrategy = when (recipe.recipe) {
-                        StalkerBootstrapRecipe.GENERIC_SAFE -> StalkerBootstrapStrategy.AUTO
-                        StalkerBootstrapRecipe.LEGACY_MAG -> StalkerBootstrapStrategy.MAC_ONLY
-                        StalkerBootstrapRecipe.STRICT_MAG,
-                        StalkerBootstrapRecipe.PORTAL_PREFERRED,
-                        StalkerBootstrapRecipe.LOCALIZATION_STRICT,
-                        StalkerBootstrapRecipe.AUTH_ONLY,
-                        StalkerBootstrapRecipe.AUTH_STRICT_MAG -> StalkerBootstrapStrategy.MAC_WITH_ACCOUNT_INFO
-                        StalkerBootstrapRecipe.MODULE_GATED -> StalkerBootstrapStrategy.MAC_WITH_MODULES
-                    }
-                    if (recipe.requestAccountInfo || providerProfile.shouldRequestAccountInfo()) {
-                        runCatching {
-                            requestJson(
-                                url = loadUrl,
-                                profile = attemptProfile,
-                                referer = referer,
-                                token = token,
-                                query = mapOf(
-                                    "type" to "account_info",
-                                    "action" to "get_main_info",
-                                    "JsHttpRequest" to "1-xml"
-                                )
-                            )
-                        }.getOrNull()?.let { accountInfoPayload ->
-                            providerProfile = providerProfile.merge(accountInfoPayload.toProviderProfile())
-                            bootstrapStrategy = StalkerBootstrapStrategy.MAC_WITH_ACCOUNT_INFO
-                            evidence += "get_account_info"
-                        }
-                    }
-                    if (recipe.requestLocalization && "get_localization" !in evidence) {
-                        runCatching {
-                            requestJson(
-                                url = loadUrl,
-                                profile = attemptProfile,
-                                referer = referer,
-                                token = token,
-                                query = mapOf(
-                                    "type" to "stb",
-                                    "action" to "get_localization",
-                                    "JsHttpRequest" to "1-xml"
-                                )
-                            )
-                        }.getOrNull()?.let {
-                            evidence += "get_localization"
-                        }
-                    }
-                    if (recipe.requestModules || providerProfile.shouldRequestModules()) {
-                        runCatching {
-                            requestJson(
-                                url = loadUrl,
-                                profile = attemptProfile,
-                                referer = referer,
-                                token = token,
-                                query = mapOf(
-                                    "type" to "stb",
-                                    "action" to "get_modules",
-                                    "JsHttpRequest" to "1-xml"
-                                )
-                            )
-                        }.getOrNull()?.let { modulesPayload ->
-                            val modules = modulesPayload.toModuleNames()
-                            if (modules.isNotEmpty()) {
-                                bootstrapStrategy = StalkerBootstrapStrategy.MAC_WITH_MODULES
-                                evidence += "get_modules"
-                            }
-                            providerProfile = providerProfile.copy(moduleNames = modules)
-                        }
-                    }
-                    if ((recipe.strictIdentityRequired || recipe.playbackBackendHint == StalkerPlaybackBackendHint.TEMP_LINK_STRICT) &&
-                        "get_events" !in evidence
-                    ) {
-                        runCatching {
-                            requestJson(
-                                url = loadUrl,
-                                profile = attemptProfile,
-                                referer = referer,
-                                token = token,
-                                query = mapOf(
-                                    "type" to "stb",
-                                    "action" to "get_events",
-                                    "JsHttpRequest" to "1-xml"
-                                )
-                            )
-                        }.getOrNull()?.let {
-                            evidence += "get_events"
-                        }
-                    }
+                val baseProviderProfile = runCatching {
+                    fetchProviderProfile(loadUrl, attemptProfile, referer, token)
+                }.getOrElse { error ->
+                    lastError = error
+                    continue
+                }
+                evidence += "get_profile"
 
-                    val fingerprint = detectPortalFingerprint(
-                        profile = providerProfile,
-                        effectiveAuthMode = effectiveAuthMode,
-                        selectedPreset = recipe.magPreset,
-                        selectedRecipe = recipe.recipe
-                    )
-                    val portalProfile = profileForFingerprint(fingerprint)
-                    val ambiguousState = providerProfile.isAmbiguousAccountState()
-                    val credentialRequired = portalProfile == StalkerPortalProfile.AUTH_REQUIRED ||
-                        portalProfile == StalkerPortalProfile.AUTH_PLUS_MAG
-                    val macRequired = portalProfile != StalkerPortalProfile.AUTH_REQUIRED
-                    if (effectiveAuthMode == StalkerAuthMode.MAC_ONLY &&
-                        attemptProfile.username.isNotBlank() &&
-                        ambiguousState
-                    ) {
-                        lastError = IOException("Portal partially accepted MAC identity; retrying credential-backed auth.")
-                        continue
-                    }
-                    if (effectiveAuthMode == StalkerAuthMode.MAC_ONLY && credentialRequired) {
-                        lastError = IOException("Portal requires account credentials for this connection.")
-                        continue
-                    }
-                    val fallbackRecipeUsed = recipeIndex > 0
-                    val rediscoveryAttempted = fallbackRecipeUsed || profile.bootstrapRecipe != StalkerBootstrapRecipe.GENERIC_SAFE
-                    if (fallbackRecipeUsed) {
-                        recipeEvidence += "fallback_recipe"
-                    }
-                    if (rediscoveryAttempted) {
-                        recipeEvidence += "rediscovery_attempted"
-                    }
-                    val fingerprintEvidence = StalkerFingerprintEvidence(
-                        endpointPreference = endpointPreferenceFor(loadUrl),
-                        cookieMode = resolveCookieMode(
-                            base = attemptProfile.cookieMode,
-                            serverCookieHeader = cookieJar.cookieHeaderFor(loadUrl),
-                            recipe = recipe
-                        ),
-                        playbackBackendHint = attemptProfile.playbackBackendHint,
-                        localizationRequired = "get_localization" in evidence,
-                        modulesRequired = "get_modules" in evidence,
-                        alternateEndpointAccepted = loadUrl != StalkerUrlFactory.loadUrlCandidates(profile.portalUrl).firstOrNull(),
-                        genericPresetRejected = fallbackRecipeUsed && recipe.magPreset != StalkerMagPreset.GENERIC_SAFE,
-                        strictPresetAccepted = recipe.magPreset != StalkerMagPreset.GENERIC_SAFE,
-                        archiveViaCreateLink = recipe.playbackBackendHint != StalkerPlaybackBackendHint.DIRECT ||
-                            providerProfile.portalCapabilities.archiveAvailable ||
-                            providerProfile.portalCapabilities.allowLocalTimeshift ||
-                            providerProfile.portalCapabilities.allowLocalPvr ||
-                            providerProfile.portalCapabilities.allowRemotePvr,
-                        archiveViaDirectUrl = recipe.playbackBackendHint == StalkerPlaybackBackendHint.DIRECT,
-                        archiveRequiresBootstrapPrep = "get_localization" in evidence || "get_modules" in evidence,
-                        archiveRequiresStrictCookies = resolveCookieMode(
-                            base = attemptProfile.cookieMode,
-                            serverCookieHeader = cookieJar.cookieHeaderFor(loadUrl),
-                            recipe = recipe
-                        ) in setOf(StalkerCookieMode.PLAYBACK, StalkerCookieMode.BOTH),
-                        archiveEndpointPreference = endpointPreferenceFor(loadUrl)
-                    )
-                    providerProfile = providerProfile.copy(
-                        bootstrapStrategy = bootstrapStrategy,
-                        effectiveAuthMode = effectiveAuthMode,
-                        portalProfile = portalProfile,
-                        portalFingerprint = fingerprint,
-                        magPreset = recipe.magPreset,
-                        bootstrapRecipe = recipe.recipe,
-                        fingerprintEvidence = fingerprintEvidence,
-                        credentialRequired = credentialRequired,
-                        macRequired = macRequired,
-                        bootstrapEvidence = evidence.toList(),
-                        recipeEvidence = recipeEvidence.toList(),
-                        strictFingerprintRequired = recipe.strictIdentityRequired,
-                        fallbackRecipeUsed = fallbackRecipeUsed,
-                        rediscoveryAttempted = rediscoveryAttempted,
-                        portalCapabilities = providerProfile.portalCapabilities.copy(
-                            bootstrapStrategy = bootstrapStrategy,
-                            moduleRestricted = providerProfile.moduleNames.isNotEmpty(),
-                            ambiguousAccountState = ambiguousState
-                        ),
-                        ambiguousState = ambiguousState
-                    )
-                    session = session.copy(
+                val enriched = enrichProviderProfile(loadUrl, attemptProfile, referer, token, recipe, baseProviderProfile, evidence)
+                var providerProfile = enriched.first
+                var bootstrapStrategy = enriched.second
+
+                val fingerprint = detectPortalFingerprint(
+                    profile = providerProfile,
+                    effectiveAuthMode = effectiveAuthMode,
+                    selectedPreset = recipe.magPreset,
+                    selectedRecipe = recipe.recipe
+                )
+                val portalProfile = profileForFingerprint(fingerprint)
+                val ambiguousState = providerProfile.isAmbiguousAccountState()
+                val credentialRequired = portalProfile == StalkerPortalProfile.AUTH_REQUIRED ||
+                    portalProfile == StalkerPortalProfile.AUTH_PLUS_MAG
+                val macRequired = portalProfile != StalkerPortalProfile.AUTH_REQUIRED
+
+                if (effectiveAuthMode == StalkerAuthMode.MAC_ONLY &&
+                    attemptProfile.username.isNotBlank() &&
+                    ambiguousState
+                ) {
+                    lastError = IOException("Portal partially accepted MAC identity; retrying credential-backed auth.")
+                    continue
+                }
+                if (effectiveAuthMode == StalkerAuthMode.MAC_ONLY && credentialRequired) {
+                    lastError = IOException("Portal requires account credentials for this connection.")
+                    continue
+                }
+
+                val fallbackRecipeUsed = recipeIndex > 0
+                val rediscoveryAttempted = fallbackRecipeUsed || profile.bootstrapRecipe != StalkerBootstrapRecipe.GENERIC_SAFE
+                if (fallbackRecipeUsed) {
+                    recipeEvidence += "fallback_recipe"
+                }
+                if (rediscoveryAttempted) {
+                    recipeEvidence += "rediscovery_attempted"
+                }
+
+                val fingerprintEvidence = StalkerFingerprintEvidence(
+                    endpointPreference = endpointPreferenceFor(loadUrl),
+                    cookieMode = resolveCookieMode(
+                        base = attemptProfile.cookieMode,
                         serverCookieHeader = cookieJar.cookieHeaderFor(loadUrl),
-                        effectiveAuthMode = effectiveAuthMode,
-                        portalProfile = portalProfile,
-                        portalFingerprint = fingerprint,
-                        magPreset = recipe.magPreset,
-                        bootstrapRecipe = recipe.recipe,
-                        fingerprintEvidence = fingerprintEvidence,
-                        bootstrapEvidence = evidence.toList(),
-                        recipeEvidence = recipeEvidence.toList(),
-                        rediscoveryAttempted = rediscoveryAttempted
-                    )
-                    Log.i(
-                        TAG,
-                        "Stalker auth success host=${runCatching { URI(loadUrl).host }.getOrNull().orEmpty()} " +
-                            "auth=${effectiveAuthMode.name} recipe=${recipe.recipe.name} preset=${recipe.magPreset.name} " +
-                            "profile=${attemptProfile.deviceProfile} endpoint=${endpointPreferenceFor(loadUrl).name} " +
-                            "cookie=${fingerprintEvidence.cookieMode.name} backend=${fingerprintEvidence.playbackBackendHint.name} " +
-                            "bootstrap=${evidence.joinToString(",")}"
-                    )
-                    return Result.success(session to providerProfile)
+                        recipe = recipe
+                    ),
+                    playbackBackendHint = attemptProfile.playbackBackendHint,
+                    localizationRequired = "get_localization" in evidence,
+                    modulesRequired = "get_modules" in evidence,
+                    alternateEndpointAccepted = loadUrl != StalkerUrlFactory.loadUrlCandidates(profile.portalUrl).firstOrNull(),
+                    genericPresetRejected = fallbackRecipeUsed && recipe.magPreset != StalkerMagPreset.GENERIC_SAFE,
+                    strictPresetAccepted = recipe.magPreset != StalkerMagPreset.GENERIC_SAFE,
+                    archiveViaCreateLink = recipe.playbackBackendHint != StalkerPlaybackBackendHint.DIRECT ||
+                        providerProfile.portalCapabilities.archiveAvailable ||
+                        providerProfile.portalCapabilities.allowLocalTimeshift ||
+                        providerProfile.portalCapabilities.allowLocalPvr ||
+                        providerProfile.portalCapabilities.allowRemotePvr,
+                    archiveViaDirectUrl = recipe.playbackBackendHint == StalkerPlaybackBackendHint.DIRECT,
+                    archiveRequiresBootstrapPrep = "get_localization" in evidence || "get_modules" in evidence,
+                    archiveRequiresStrictCookies = resolveCookieMode(
+                        base = attemptProfile.cookieMode,
+                        serverCookieHeader = cookieJar.cookieHeaderFor(loadUrl),
+                        recipe = recipe
+                    ) in setOf(StalkerCookieMode.PLAYBACK, StalkerCookieMode.BOTH),
+                    archiveEndpointPreference = endpointPreferenceFor(loadUrl)
+                )
+
+                providerProfile = providerProfile.copy(
+                    bootstrapStrategy = bootstrapStrategy,
+                    effectiveAuthMode = effectiveAuthMode,
+                    portalProfile = portalProfile,
+                    portalFingerprint = fingerprint,
+                    magPreset = recipe.magPreset,
+                    bootstrapRecipe = recipe.recipe,
+                    fingerprintEvidence = fingerprintEvidence,
+                    credentialRequired = credentialRequired,
+                    macRequired = macRequired,
+                    bootstrapEvidence = evidence.toList(),
+                    recipeEvidence = recipeEvidence.toList(),
+                    strictFingerprintRequired = recipe.strictIdentityRequired,
+                    fallbackRecipeUsed = fallbackRecipeUsed,
+                    rediscoveryAttempted = rediscoveryAttempted,
+                    portalCapabilities = providerProfile.portalCapabilities.copy(
+                        bootstrapStrategy = bootstrapStrategy,
+                        moduleRestricted = providerProfile.moduleNames.isNotEmpty(),
+                        ambiguousAccountState = ambiguousState
+                    ),
+                    ambiguousState = ambiguousState
+                )
+
+                session = session.copy(
+                    serverCookieHeader = cookieJar.cookieHeaderFor(loadUrl),
+                    effectiveAuthMode = effectiveAuthMode,
+                    portalProfile = portalProfile,
+                    portalFingerprint = fingerprint,
+                    magPreset = recipe.magPreset,
+                    bootstrapRecipe = recipe.recipe,
+                    fingerprintEvidence = fingerprintEvidence,
+                    bootstrapEvidence = evidence.toList(),
+                    recipeEvidence = recipeEvidence.toList(),
+                    rediscoveryAttempted = rediscoveryAttempted
+                )
+
+                Log.i(
+                    TAG,
+                    "Stalker auth success host=${runCatching { URI(loadUrl).host }.getOrNull().orEmpty()} " +
+                        "auth=${effectiveAuthMode.name} recipe=${recipe.recipe.name} preset=${recipe.magPreset.name} " +
+                        "profile=${attemptProfile.deviceProfile} endpoint=${endpointPreferenceFor(loadUrl).name} " +
+                        "cookie=${fingerprintEvidence.cookieMode.name} backend=${fingerprintEvidence.playbackBackendHint.name} " +
+                        "bootstrap=${evidence.joinToString(",")}"
+                )
+                return Result.success(session to providerProfile)
             }
         }
 
@@ -387,6 +262,175 @@ class OkHttpStalkerApiService @Inject constructor(
             lastError?.message ?: "Failed to connect to portal.",
             lastError
         )
+    }
+
+    private suspend fun performHandshake(
+        loadUrl: String,
+        attemptProfile: StalkerDeviceProfile,
+        referer: String
+    ): String {
+        val handshakePayload = requestJson(
+            url = loadUrl,
+            profile = attemptProfile,
+            referer = referer,
+            query = mapOf(
+                "type" to "stb",
+                "action" to "handshake",
+                "token" to "",
+                "JsHttpRequest" to "1-xml"
+            )
+        )
+        return handshakePayload.findString("token")
+            ?.takeIf { it.isNotBlank() }
+            ?: throw IOException("Portal handshake did not return a token.")
+    }
+
+    private suspend fun performCredentialAuth(
+        loadUrl: String,
+        attemptProfile: StalkerDeviceProfile,
+        referer: String,
+        token: String
+    ) {
+        if (attemptProfile.username.isBlank()) {
+            throw IOException("Portal requires account credentials for this connection.")
+        }
+        val authPayload = requestCredentialAuth(
+            url = loadUrl,
+            profile = attemptProfile,
+            referer = referer,
+            token = token,
+            allowAlternateEndpointRetry = false
+        )
+        authPayload.ensureNoPortalError()
+    }
+
+    private suspend fun fetchProviderProfile(
+        loadUrl: String,
+        attemptProfile: StalkerDeviceProfile,
+        referer: String,
+        token: String
+    ): StalkerProviderProfile {
+        val profilePayload = requestJson(
+            url = loadUrl,
+            profile = attemptProfile,
+            referer = referer,
+            token = token,
+            query = buildProfileQuery(attemptProfile)
+        )
+        profilePayload.ensureNoPortalError()
+        return profilePayload.toProviderProfile()
+    }
+
+    private suspend fun requestLocalization(
+        loadUrl: String,
+        attemptProfile: StalkerDeviceProfile,
+        referer: String,
+        token: String,
+        evidence: MutableList<String>
+    ) {
+        runCatching {
+            requestJson(
+                url = loadUrl,
+                profile = attemptProfile,
+                referer = referer,
+                token = token,
+                query = mapOf(
+                    "type" to "stb",
+                    "action" to "get_localization",
+                    "JsHttpRequest" to "1-xml"
+                )
+            )
+        }.getOrNull()?.let {
+            evidence += "get_localization"
+        }
+    }
+
+    private suspend fun enrichProviderProfile(
+        loadUrl: String,
+        attemptProfile: StalkerDeviceProfile,
+        referer: String,
+        token: String,
+        recipe: StalkerRecipeSpec,
+        initialProfile: StalkerProviderProfile,
+        evidence: MutableList<String>
+    ): Pair<StalkerProviderProfile, StalkerBootstrapStrategy> {
+        var providerProfile = initialProfile
+        var bootstrapStrategy = when (recipe.recipe) {
+            StalkerBootstrapRecipe.GENERIC_SAFE -> StalkerBootstrapStrategy.AUTO
+            StalkerBootstrapRecipe.LEGACY_MAG -> StalkerBootstrapStrategy.MAC_ONLY
+            StalkerBootstrapRecipe.STRICT_MAG,
+            StalkerBootstrapRecipe.PORTAL_PREFERRED,
+            StalkerBootstrapRecipe.LOCALIZATION_STRICT,
+            StalkerBootstrapRecipe.AUTH_ONLY,
+            StalkerBootstrapRecipe.AUTH_STRICT_MAG -> StalkerBootstrapStrategy.MAC_WITH_ACCOUNT_INFO
+            StalkerBootstrapRecipe.MODULE_GATED -> StalkerBootstrapStrategy.MAC_WITH_MODULES
+        }
+
+        if (recipe.requestAccountInfo || providerProfile.shouldRequestAccountInfo()) {
+            runCatching {
+                requestJson(
+                    url = loadUrl,
+                    profile = attemptProfile,
+                    referer = referer,
+                    token = token,
+                    query = mapOf(
+                        "type" to "account_info",
+                        "action" to "get_main_info",
+                        "JsHttpRequest" to "1-xml"
+                    )
+                )
+            }.getOrNull()?.let { accountInfoPayload ->
+                providerProfile = providerProfile.merge(accountInfoPayload.toProviderProfile())
+                bootstrapStrategy = StalkerBootstrapStrategy.MAC_WITH_ACCOUNT_INFO
+                evidence += "get_account_info"
+            }
+        }
+        if (recipe.requestLocalization && "get_localization" !in evidence) {
+            requestLocalization(loadUrl, attemptProfile, referer, token, evidence)
+        }
+        if (recipe.requestModules || providerProfile.shouldRequestModules()) {
+            runCatching {
+                requestJson(
+                    url = loadUrl,
+                    profile = attemptProfile,
+                    referer = referer,
+                    token = token,
+                    query = mapOf(
+                        "type" to "stb",
+                        "action" to "get_modules",
+                        "JsHttpRequest" to "1-xml"
+                    )
+                )
+            }.getOrNull()?.let { modulesPayload ->
+                val modules = modulesPayload.toModuleNames()
+                if (modules.isNotEmpty()) {
+                    bootstrapStrategy = StalkerBootstrapStrategy.MAC_WITH_MODULES
+                    evidence += "get_modules"
+                }
+                providerProfile = providerProfile.copy(moduleNames = modules)
+            }
+        }
+        if ((recipe.strictIdentityRequired || recipe.playbackBackendHint == StalkerPlaybackBackendHint.TEMP_LINK_STRICT) &&
+            "get_events" !in evidence
+        ) {
+            runCatching {
+                requestJson(
+                    url = loadUrl,
+                    profile = attemptProfile,
+                    referer = referer,
+                    token = token,
+                    query = mapOf(
+                        "type" to "stb",
+                        "action" to "get_events",
+                        "JsHttpRequest" to "1-xml"
+                    )
+                )
+            }.getOrNull()?.let {
+                evidence += "get_events"
+            }
+        }
+
+        return providerProfile to bootstrapStrategy
     }
 
     override suspend fun getLiveCategories(
