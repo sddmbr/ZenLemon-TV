@@ -213,7 +213,7 @@ fun ProviderSetupScreen(
                         }
                     }
                     val ext = if (uri.toString().substringBefore('?').lowercase().endsWith(".m3u8")) "m3u8" else "m3u"
-                    val outFile = java.io.File(context.filesDir, "m3u_${System.currentTimeMillis()}.$ext")
+                    val outFile = java.io.File.createTempFile("m3u_", ".$ext", context.filesDir)
                     outFile.outputStream().use { out -> inputStream.copyTo(out) }
                     cleanupOldImportedM3uFiles(
                         filesDir = context.filesDir,
