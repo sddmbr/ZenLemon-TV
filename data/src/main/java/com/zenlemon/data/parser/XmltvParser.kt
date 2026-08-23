@@ -55,45 +55,47 @@ class XmltvParser {
 
     private val logger = Logger.getLogger(XmltvParser::class.java.name)
 
-    private val offsetDateFormats = listOf(
-        // Space-separated numeric offset: "20250101120000 +0300"
-        DateTimeFormatterBuilder()
-            .parseCaseInsensitive()
-            .appendPattern("yyyyMMddHHmmss xx")
-            .toFormatter(Locale.US),
-        // No-space numeric offset: "20250101120000+0300"
-        DateTimeFormatterBuilder()
-            .parseCaseInsensitive()
-            .appendPattern("yyyyMMddHHmmssxx")
-            .toFormatter(Locale.US),
-        // No-space colon offset: "20250101120000+03:00"
-        DateTimeFormatterBuilder()
-            .parseCaseInsensitive()
-            .appendPattern("yyyyMMddHHmmssXXX")
-            .toFormatter(Locale.US),
-        // No-space short/Z offset: "20250101120000Z" or "20250101120000+03"
-        DateTimeFormatterBuilder()
-            .parseCaseInsensitive()
-            .appendPattern("yyyyMMddHHmmssX")
-            .toFormatter(Locale.US),
-        // ISO-8601 with colon offset
-        DateTimeFormatterBuilder()
-            .parseCaseInsensitive()
-            .appendPattern("yyyy-MM-dd'T'HH:mm:ssXXX")
-            .toFormatter(Locale.US)
-    )
+    companion object {
+        private val offsetDateFormats = listOf(
+            // Space-separated numeric offset: "20250101120000 +0300"
+            DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .appendPattern("yyyyMMddHHmmss xx")
+                .toFormatter(Locale.US),
+            // No-space numeric offset: "20250101120000+0300"
+            DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .appendPattern("yyyyMMddHHmmssxx")
+                .toFormatter(Locale.US),
+            // No-space colon offset: "20250101120000+03:00"
+            DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .appendPattern("yyyyMMddHHmmssXXX")
+                .toFormatter(Locale.US),
+            // No-space short/Z offset: "20250101120000Z" or "20250101120000+03"
+            DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .appendPattern("yyyyMMddHHmmssX")
+                .toFormatter(Locale.US),
+            // ISO-8601 with colon offset
+            DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .appendPattern("yyyy-MM-dd'T'HH:mm:ssXXX")
+                .toFormatter(Locale.US)
+        )
 
-    private val localDateTimeFormats = listOf(
-        DateTimeFormatter.ofPattern("yyyyMMddHHmmss", Locale.US),
-        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss", Locale.US),
-        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssX"),
-        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.US),
-        DateTimeFormatter.ofPattern("yyyyMMddHHmm", Locale.US)
-    )
+        private val localDateTimeFormats = listOf(
+            DateTimeFormatter.ofPattern("yyyyMMddHHmmss", Locale.US),
+            DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss", Locale.US),
+            DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssX"),
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.US),
+            DateTimeFormatter.ofPattern("yyyyMMddHHmm", Locale.US)
+        )
 
-    private val localDateFormats = listOf(
-        DateTimeFormatter.ofPattern("yyyyMMdd", Locale.US)
-    )
+        private val localDateFormats = listOf(
+            DateTimeFormatter.ofPattern("yyyyMMdd", Locale.US)
+        )
+    }
 
     private fun newPullParser(inputStream: InputStream): XmlPullParser {
         val factory = XmlPullParserFactory.newInstance()
