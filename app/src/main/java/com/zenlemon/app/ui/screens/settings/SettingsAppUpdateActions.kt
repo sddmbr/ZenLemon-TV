@@ -1,6 +1,8 @@
 package com.zenlemon.app.ui.screens.settings
 
 import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
@@ -20,6 +22,11 @@ internal class SettingsAppUpdateActions(
     private val uiState: MutableStateFlow<SettingsUiState>
 ) {
     private var updateCheckInFlight = false
+
+    private fun isUnmeteredNetwork(): Boolean {
+        val cm = appContext.getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager
+        return cm?.isActiveNetworkMetered == false
+    }
 
     fun shouldAutoCheckForUpdates(lastCheckedAt: Long?): Boolean {
         val now = System.currentTimeMillis()
@@ -105,6 +112,7 @@ internal class SettingsAppUpdateActions(
                     uiState.update { it.copy(appUpdate = latestUpdateModel) }
                     if (autoDownload &&
                         updateAvailable &&
+                        isUnmeteredNetwork() &&
                         latestUpdateModel.latestActionState() == AppUpdateActionState.DownloadLatest
                     ) {
                         downloadLatestUpdate(scope)
