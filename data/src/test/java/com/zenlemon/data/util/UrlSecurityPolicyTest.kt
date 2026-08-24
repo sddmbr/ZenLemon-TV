@@ -6,11 +6,12 @@ import org.junit.Test
 class UrlSecurityPolicyTest {
 
     @Test
-    fun `validateXtreamServerUrl allows http and https endpoints`() {
-        assertThat(UrlSecurityPolicy.validateXtreamServerUrl("http://provider.example.com")).isNull()
+    fun `validateXtreamServerUrl allows https endpoints`() {
+        assertThat(UrlSecurityPolicy.validateXtreamServerUrl("http://provider.example.com"))
+            .isEqualTo("Xtream server URLs must use HTTPS.")
         assertThat(UrlSecurityPolicy.validateXtreamServerUrl("https://provider.example.com")).isNull()
         assertThat(UrlSecurityPolicy.validateXtreamServerUrl("ftp://provider.example.com"))
-            .isEqualTo("Xtream server URLs must use HTTP or HTTPS.")
+            .isEqualTo("Xtream server URLs must use HTTPS.")
     }
 
     @Test
@@ -22,20 +23,22 @@ class UrlSecurityPolicyTest {
     }
 
     @Test
-    fun `validateXtreamEpgUrl allows http and https endpoints`() {
-        assertThat(UrlSecurityPolicy.validateXtreamEpgUrl("http://provider.example.com/xmltv.php")).isNull()
+    fun `validateXtreamEpgUrl allows https endpoints`() {
+        assertThat(UrlSecurityPolicy.validateXtreamEpgUrl("http://provider.example.com/xmltv.php"))
+            .isEqualTo("Xtream EPG URLs must use HTTPS.")
         assertThat(UrlSecurityPolicy.validateXtreamEpgUrl("https://provider.example.com/xmltv.php")).isNull()
         assertThat(UrlSecurityPolicy.validateXtreamEpgUrl("file:///storage/emulated/0/guide.xml"))
-            .isEqualTo("Xtream EPG URLs must use HTTP or HTTPS.")
+            .isEqualTo("Xtream EPG URLs must use HTTPS.")
     }
 
     @Test
-    fun `validatePlaylistSourceUrl allows local http and https`() {
+    fun `validatePlaylistSourceUrl allows local and https`() {
         assertThat(UrlSecurityPolicy.validatePlaylistSourceUrl("file:///storage/emulated/0/playlist.m3u")).isNull()
         assertThat(UrlSecurityPolicy.validatePlaylistSourceUrl("https://example.com/playlist.m3u")).isNull()
-        assertThat(UrlSecurityPolicy.validatePlaylistSourceUrl("http://example.com/playlist.m3u")).isNull()
+        assertThat(UrlSecurityPolicy.validatePlaylistSourceUrl("http://example.com/playlist.m3u"))
+            .isEqualTo("Playlist sources must use HTTPS, or point to a local file.")
         assertThat(UrlSecurityPolicy.validatePlaylistSourceUrl("ftp://example.com/playlist.m3u"))
-            .isEqualTo("Playlist sources must use HTTP, HTTPS, or point to a local file.")
+            .isEqualTo("Playlist sources must use HTTPS, or point to a local file.")
     }
 
     @Test
@@ -45,7 +48,7 @@ class UrlSecurityPolicyTest {
         // provider playlist source would cause every subsequent sync to fail because
         // SyncManagerM3uImporter only handles file: paths and HTTP/S via OkHttp.
         assertThat(UrlSecurityPolicy.validatePlaylistSourceUrl("content://downloads/public_downloads/1"))
-            .isEqualTo("Playlist sources must use HTTP, HTTPS, or point to a local file.")
+            .isEqualTo("Playlist sources must use HTTPS, or point to a local file.")
     }
 
     @Test
@@ -77,13 +80,14 @@ class UrlSecurityPolicyTest {
     }
 
     @Test
-    fun `validateOptionalEpgUrl allows http https and local files`() {
+    fun `validateOptionalEpgUrl allows https and local files`() {
         assertThat(UrlSecurityPolicy.validateOptionalEpgUrl("")).isNull()
-        assertThat(UrlSecurityPolicy.validateOptionalEpgUrl("http://epg.example.com/guide.xml")).isNull()
+        assertThat(UrlSecurityPolicy.validateOptionalEpgUrl("http://epg.example.com/guide.xml"))
+            .isEqualTo("EPG URLs must use HTTPS, or select a local file.")
         assertThat(UrlSecurityPolicy.validateOptionalEpgUrl("https://epg.example.com/guide.xml")).isNull()
         assertThat(UrlSecurityPolicy.validateOptionalEpgUrl("content://downloads/public_downloads/guide.xml")).isNull()
         assertThat(UrlSecurityPolicy.validateOptionalEpgUrl("ftp://epg.example.com/guide.xml"))
-            .isEqualTo("EPG URLs must use HTTP, HTTPS, or select a local file.")
+            .isEqualTo("EPG URLs must use HTTPS, or select a local file.")
     }
 
     @Test
