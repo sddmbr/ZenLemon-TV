@@ -31,6 +31,8 @@ import java.net.URI
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -298,17 +300,24 @@ class ZenLemonPluginManager @Inject constructor(
         if (url.isBlank()) return@withContext url
         val plugins = discoverPlugins()
             .filter { it.enabled && it.manifest.hasCapability(ZenLemonPluginContract.CAPABILITY_CAST_REWRITE_URL) }
-        for (plugin in plugins) {
-            val response = runCatching {
-                messengerClient.send(
-                    packageName = plugin.packageName,
-                    serviceClassName = plugin.serviceClassName,
-                    what = ZenLemonPluginContract.MSG_REWRITE_CAST_URL,
-                    data = request.toCastRewriteBundle(),
-                    timeoutMillis = 10_000L
-                )
-            }.getOrNull() ?: continue
 
+        val deferredResponses = plugins.map { plugin ->
+            async {
+                runCatching {
+                    messengerClient.send(
+                        packageName = plugin.packageName,
+                        serviceClassName = plugin.serviceClassName,
+                        what = ZenLemonPluginContract.MSG_REWRITE_CAST_URL,
+                        data = request.toCastRewriteBundle(),
+                        timeoutMillis = 10_000L
+                    )
+                }.getOrNull()
+            }
+        }
+        val responses = deferredResponses.awaitAll()
+
+        for (response in responses) {
+            if (response == null) continue
             if (!response.getBoolean(ZenLemonPluginContract.KEY_HANDLED, false)) continue
             if (!response.getBoolean(ZenLemonPluginContract.KEY_SUCCESS, false)) return@withContext null
             return@withContext response.getString(ZenLemonPluginContract.KEY_OUTPUT_URL).orEmpty()
