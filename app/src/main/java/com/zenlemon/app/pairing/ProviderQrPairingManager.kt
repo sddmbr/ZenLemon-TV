@@ -28,6 +28,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.OutputStream
 import java.net.Inet4Address
+import java.net.InetAddress
 import java.net.NetworkInterface
 import java.net.ServerSocket
 import java.net.Socket
@@ -82,7 +83,9 @@ class ProviderQrPairingManager @Inject constructor(
             return
         }
 
-        val socket = runCatching { ServerSocket(0, 8) }.getOrElse { error ->
+        val socket = runCatching {
+            ServerSocket(0, 8, InetAddress.getByName(host))
+        }.getOrElse { error ->
             _state.value = ProviderQrPairingState(
                 status = ProviderQrPairingStatus.ERROR,
                 message = "Could not start pairing server: ${error.message ?: "unknown error"}"
