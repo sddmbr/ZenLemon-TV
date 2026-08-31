@@ -4102,11 +4102,11 @@ class SyncManager @Inject constructor(
                 val seriesResult = jellyfinProvider.fetchSeries(decryptedProvider)
                 movieResult to seriesResult
             }
-            if (resolvedMovies is com.zenlemon.domain.model.Result.Error) android.util.Log.e("JellyfinSync", "Movies error: ${resolvedMovies.message}")
-            if (resolvedSeries is com.zenlemon.domain.model.Result.Error) android.util.Log.e("JellyfinSync", "Series error: ${resolvedSeries.message}")
+            if (resolvedMovies is com.zenlemon.domain.model.Result.Error) android.util.Log.e("JellyfinSync", "Movies error: ${sanitizeLogMessage(resolvedMovies.message)}")
+            if (resolvedSeries is com.zenlemon.domain.model.Result.Error) android.util.Log.e("JellyfinSync", "Series error: ${sanitizeLogMessage(resolvedSeries.message)}")
 
             if (resolvedMovies is com.zenlemon.domain.model.Result.Error && resolvedSeries is com.zenlemon.domain.model.Result.Error) {
-                warnings.add("Failed to load Jellyfin catalog: ${resolvedMovies.message}; ${resolvedSeries.message}")
+                warnings.add("Failed to load Jellyfin catalog: ${sanitizeLogMessage(resolvedMovies.message)}; ${sanitizeLogMessage(resolvedSeries.message)}")
                 return SyncOutcome(partial = true, warnings = warnings)
             }
 
