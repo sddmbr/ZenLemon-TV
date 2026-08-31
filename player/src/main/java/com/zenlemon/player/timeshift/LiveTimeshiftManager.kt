@@ -728,18 +728,18 @@ internal class DefaultLiveTimeshiftManager @Inject constructor(
                 return ParsedHlsPlaylist.Master(bestVariantUrl)
             }
 
-            var targetDurationSeconds = 6
+            var targetDurationSeconds = DEFAULT_TARGET_DURATION_SECONDS
             var endList = false
             var mediaSequence = 0L
             var discontinuitySequence = 0L
             val segments = mutableListOf<RemoteHlsSegment>()
-            var currentDurationMs = 6_000L
+            var currentDurationMs = DEFAULT_TARGET_DURATION_SECONDS * 1000L
             var nextSequence = 0L  // assigned after we see EXT-X-MEDIA-SEQUENCE
             var sequenceInitialized = false
             lines.forEach { line ->
                 when {
                     line.startsWith("#EXT-X-TARGETDURATION", ignoreCase = true) -> {
-                        targetDurationSeconds = line.substringAfter(':', "6").toIntOrNull() ?: 6
+                        targetDurationSeconds = line.substringAfter(':', DEFAULT_TARGET_DURATION_SECONDS.toString()).toIntOrNull() ?: DEFAULT_TARGET_DURATION_SECONDS
                     }
                     line.startsWith("#EXT-X-MEDIA-SEQUENCE", ignoreCase = true) -> {
                         mediaSequence = line.substringAfter(':', "0").trim().toLongOrNull() ?: 0L
@@ -750,7 +750,7 @@ internal class DefaultLiveTimeshiftManager @Inject constructor(
                         discontinuitySequence = line.substringAfter(':', "0").trim().toLongOrNull() ?: 0L
                     }
                     line.startsWith("#EXTINF", ignoreCase = true) -> {
-                        currentDurationMs = ((line.substringAfter(':').substringBefore(',').toDoubleOrNull() ?: 6.0) * 1000.0).toLong()
+                        currentDurationMs = ((line.substringAfter(':').substringBefore(',').toDoubleOrNull() ?: targetDurationSeconds.toDouble()) * 1000.0).toLong()
                     }
                     line.startsWith("#EXT-X-ENDLIST", ignoreCase = true) -> endList = true
                     line.startsWith("#") -> Unit
@@ -1181,5 +1181,6 @@ internal class DefaultLiveTimeshiftManager @Inject constructor(
         private const val HLS_ERROR_RETRY_DELAY_MS = 2_000L
         private const val DASH_ERROR_RETRY_DELAY_MS = 2_000L
         private const val MIN_FREE_DISK_BYTES = 200L * 1024 * 1024  // 200 MB
+        private const val DEFAULT_TARGET_DURATION_SECONDS = 6
     }
 }
