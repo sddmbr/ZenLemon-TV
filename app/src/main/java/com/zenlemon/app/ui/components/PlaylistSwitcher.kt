@@ -116,7 +116,7 @@ fun LiveSourceSwitcher(
                 )
                 Icon(
                     imageVector = if (showSourceList) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                    contentDescription = null,
+                    contentDescription = if (showSourceList) stringResource(R.string.a11y_collapse_list) else stringResource(R.string.a11y_expand_list),
                     tint = OnSurfaceDim
                 )
             }
