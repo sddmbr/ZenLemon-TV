@@ -7,3 +7,7 @@
 ## 2026-08-11 - Add contentDescription to favorite star badge
 **Learning:** Icon-only badges that communicate state (like a favorite star) on media cards were using `contentDescription = null`, causing screen readers to ignore them as decorative. For accessibility, they must use an existing string resource like `stringResource(R.string.a11y_favorite)` so screen readers announce the state appropriately, which is also read automatically if it is inside a clickable parent container.
 **Action:** Always verify that informative status icons have a `contentDescription` rather than `null`. Use existing accessibility strings from `strings.xml`.
+
+## 2026-08-11 - Unify Empty State Accessibility
+**Learning:** Custom empty state layouts built from primitives often lack polite live regions for accessibility. Reusing existing components like `TvEmptyState` that inherently support `modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite }` is crucial for ensuring screen readers announce dynamic state changes without jarring interruptions.
+**Action:** Always prefer existing design system components (`TvEmptyState`, `AppMessageState`) over custom empty state layouts to inherit accessibility semantics. When forced to build custom dynamic UI, ensure `LiveRegionMode.Polite` is applied.
