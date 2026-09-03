@@ -43,8 +43,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import com.zenlemon.app.ui.components.TvEmptyState
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -170,27 +174,11 @@ private fun DownloadsLoadingState() {
 
 @Composable
 private fun DownloadsEmptyState() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            Text(
-                text = stringResource(R.string.downloads_empty_title),
-                style = MaterialTheme.typography.titleLarge,
-                color = AppColors.TextPrimary
-            )
-            Text(
-                text = stringResource(R.string.downloads_empty_hint),
-                style = MaterialTheme.typography.bodyMedium,
-                color = AppColors.TextSecondary,
-                modifier = Modifier.padding(horizontal = 32.dp)
-            )
-        }
-    }
+    TvEmptyState(
+        title = stringResource(R.string.downloads_empty_title),
+        subtitle = stringResource(R.string.downloads_empty_hint),
+        modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite }
+    )
 }
 
 @Composable
