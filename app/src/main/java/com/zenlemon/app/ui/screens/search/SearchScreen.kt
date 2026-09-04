@@ -1313,7 +1313,7 @@ private fun SearchActionButton(
     ) {
         Icon(
             imageVector = icon,
-            contentDescription = null,
+            contentDescription = label,
             modifier = Modifier.size(20.dp)
         )
         Spacer(modifier = Modifier.width(10.dp))
