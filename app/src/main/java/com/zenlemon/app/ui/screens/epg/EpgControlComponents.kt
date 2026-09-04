@@ -347,7 +347,7 @@ internal fun GuideSearchField(
         ) {
             androidx.tv.material3.Icon(
                 imageVector = Icons.Default.Search,
-                contentDescription = null,
+                contentDescription = stringResource(R.string.a11y_search),
                 tint = if (isFocused) Primary else OnSurfaceDim
             )
             Box(

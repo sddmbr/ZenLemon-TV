@@ -3037,7 +3037,7 @@ private fun ImportOptionsButton(
         ) {
             Icon(
                 imageVector = Icons.Default.SettingsBackupRestore,
-                contentDescription = null,
+                contentDescription = stringResource(R.string.a11y_backup_restore),
                 modifier = Modifier.size(if (compact) 18.dp else 22.dp),
                 tint = if (isFocused) TextPrimary else OnSurface
             )
