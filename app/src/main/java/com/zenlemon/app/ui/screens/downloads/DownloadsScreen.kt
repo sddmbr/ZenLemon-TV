@@ -47,6 +47,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.zenlemon.app.ui.components.TvEmptyState
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import com.zenlemon.app.R
@@ -170,27 +171,10 @@ private fun DownloadsLoadingState() {
 
 @Composable
 private fun DownloadsEmptyState() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            Text(
-                text = stringResource(R.string.downloads_empty_title),
-                style = MaterialTheme.typography.titleLarge,
-                color = AppColors.TextPrimary
-            )
-            Text(
-                text = stringResource(R.string.downloads_empty_hint),
-                style = MaterialTheme.typography.bodyMedium,
-                color = AppColors.TextSecondary,
-                modifier = Modifier.padding(horizontal = 32.dp)
-            )
-        }
-    }
+    TvEmptyState(
+        title = stringResource(R.string.downloads_empty_title),
+        subtitle = stringResource(R.string.downloads_empty_hint)
+    )
 }
 
 @Composable
