@@ -54,6 +54,7 @@ import java.util.Locale
 import com.zenlemon.app.ui.interaction.TvClickableSurface
 import com.zenlemon.app.ui.interaction.TvButton
 import com.zenlemon.app.ui.interaction.TvIconButton
+import com.zenlemon.app.ui.components.TvEmptyState
 
 @Composable
 fun ProgramHistoryDialog(
@@ -111,9 +112,9 @@ fun ProgramHistoryDialog(
                             .height(200.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(
-                            text = stringResource(R.string.player_no_archive),
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        TvEmptyState(
+                            title = stringResource(R.string.player_no_archive),
+                            subtitle = "" // Assuming no subtitle is needed for this simple case based on the original Text.
                         )
                     }
                 } else {
