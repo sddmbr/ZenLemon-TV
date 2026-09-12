@@ -32,6 +32,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
@@ -1215,10 +1216,11 @@ private fun PlayerVodInfo(
                     ) {
                         Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
                             if (isPlaying) {
-                                Text(
-                                    text = "II",
-                                    style = MaterialTheme.typography.headlineMedium,
-                                    color = Color.White
+                                Icon(
+                                    imageVector = Icons.Default.Pause,
+                                    contentDescription = stringResource(R.string.player_pause),
+                                    tint = Color.White,
+                                    modifier = Modifier.size(playIconSize)
                                 )
                             } else {
                                 Icon(
@@ -1755,7 +1757,12 @@ private fun LiveTimeshiftScrubber(
                     ) {
                         Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
                             if (isPlaying) {
-                                Text(text = "II", style = MaterialTheme.typography.headlineMedium, color = Color.White)
+                                Icon(
+                                    imageVector = Icons.Default.Pause,
+                                    contentDescription = stringResource(R.string.player_pause),
+                                    tint = Color.White,
+                                    modifier = Modifier.size(30.dp)
+                                )
                             } else {
                                 Icon(
                                     imageVector = Icons.Default.PlayArrow,

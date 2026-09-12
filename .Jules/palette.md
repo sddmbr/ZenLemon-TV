@@ -5,3 +5,7 @@
 ## 2026-09-06 - Replacing custom Empty States with TvEmptyState
 **Learning:** Found custom empty states implementations across the app, such as in `DownloadsScreen.kt`. Using custom empty states often skips critical built-in accessibility features (like `liveRegion = LiveRegionMode.Polite`) and leads to design inconsistencies.
 **Action:** Replaced `DownloadsEmptyState` with the standard `TvEmptyState` component. Moving forward, prioritize standard empty state components like `TvEmptyState` or `AppMessageState` which enforce cohesive design and accessibility semantics automatically.
+
+## 2024-11-20 - Adding explicit Pause Icon
+**Learning:** Found an instance in `PlayerControlsChrome.kt` where the "Pause" state was represented by a hardcoded `Text(text = "II")` instead of an icon. This creates inconsistency and poor UX. Using a standard `Icon` with the appropriate `imageVector` makes the interface much cleaner.
+**Action:** Replace hardcoded text implementations of icons with their proper `imageVector` equivalents (e.g., `Icons.Default.Pause`) for consistent visual polish.
