@@ -5,3 +5,4 @@
 ## 2026-09-06 - Replacing custom Empty States with TvEmptyState
 **Learning:** Found custom empty states implementations across the app, such as in `DownloadsScreen.kt`. Using custom empty states often skips critical built-in accessibility features (like `liveRegion = LiveRegionMode.Polite`) and leads to design inconsistencies.
 **Action:** Replaced `DownloadsEmptyState` with the standard `TvEmptyState` component. Moving forward, prioritize standard empty state components like `TvEmptyState` or `AppMessageState` which enforce cohesive design and accessibility semantics automatically.
+## 2026-09-13 - Replaced text with semantic pause icon\n**Learning:** Accessibility text used visually as an icon causes screen-reader issues and inconsistencies in the UI representation.\n**Action:** Replaced Text("II") with Icons.Default.Pause to correctly represent the icon.
