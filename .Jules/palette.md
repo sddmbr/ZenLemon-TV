@@ -5,3 +5,6 @@
 ## 2026-09-06 - Replacing custom Empty States with TvEmptyState
 **Learning:** Found custom empty states implementations across the app, such as in `DownloadsScreen.kt`. Using custom empty states often skips critical built-in accessibility features (like `liveRegion = LiveRegionMode.Polite`) and leads to design inconsistencies.
 **Action:** Replaced `DownloadsEmptyState` with the standard `TvEmptyState` component. Moving forward, prioritize standard empty state components like `TvEmptyState` or `AppMessageState` which enforce cohesive design and accessibility semantics automatically.
+## 2024-06-25 - Avoid hardcoded text for icons
+**Learning:** Using hardcoded text like "II" for a pause button creates a poor user experience and breaks accessibility. Screen readers will literally read out "I I" (eye eye) or "two", confusing users. It also lacks visual consistency with actual SVG/Vector icons.
+**Action:** Always use proper `imageVector` icons (e.g., `Icons.Default.Pause`) with an appropriate localized `contentDescription` (e.g., `stringResource(R.string.player_pause)`).
