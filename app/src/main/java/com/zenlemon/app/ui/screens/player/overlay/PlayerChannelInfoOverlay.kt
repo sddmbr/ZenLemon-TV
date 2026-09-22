@@ -20,6 +20,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -843,10 +844,11 @@ private fun CompactTimeshiftTransport(
                             contentAlignment = Alignment.Center
                         ) {
                             if (isPlaying) {
-                                Text(
-                                    text = "II",
-                                    style = MaterialTheme.typography.headlineSmall,
-                                    color = Color.White
+                                androidx.tv.material3.Icon(
+                                    imageVector = Icons.Default.Pause,
+                                    contentDescription = stringResource(R.string.player_pause),
+                                    tint = Color.White,
+                                    modifier = Modifier.size(26.dp)
                                 )
                             } else {
                                 androidx.tv.material3.Icon(
