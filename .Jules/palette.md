@@ -9,3 +9,7 @@
 ## 2024-05-28 - Replaced hardcoded text pseudo-icons with semantic Icons
 **Learning:** Hardcoding string characters like 'II' for pause buttons does not provide appropriate semantic meaning for screen readers. Using these text hacks skips essential accessibility affordances and creates an inconsistent visual experience compared to native UI elements.
 **Action:** Replaced instances of 'II' text in the Player Controls with properly localized `Icons.Default.Pause` along with appropriate `contentDescription`. Ensure all core actions use standard material icons instead of text shapes.
+
+## 2024-05-18 - Avoid pseudo-icons
+**Learning:** Found instances where plain text like "II" were being used in Compose as a pause button icon, which provides zero accessibility semantics (no contentDescription can be attached easily to just Text serving as icon role without overriding semantics entirely) and looks visually inconsistent.
+**Action:** Replaced Text("II") pseudo-icon with a standard Compose `Icon` from `Icons.Default.Pause`, providing `contentDescription = stringResource(R.string.player_pause)` to ensure screen readers narrate the button's action rather than reading literal characters.
