@@ -13,3 +13,6 @@
 ## 2024-05-18 - Avoid pseudo-icons
 **Learning:** Found instances where plain text like "II" were being used in Compose as a pause button icon, which provides zero accessibility semantics (no contentDescription can be attached easily to just Text serving as icon role without overriding semantics entirely) and looks visually inconsistent.
 **Action:** Replaced Text("II") pseudo-icon with a standard Compose `Icon` from `Icons.Default.Pause`, providing `contentDescription = stringResource(R.string.player_pause)` to ensure screen readers narrate the button's action rather than reading literal characters.
+## 2024-06-25 - Replace transport button text icons with standard material icons
+**Learning:** Found instances where plain text like "\u23EA" and "\u23E9" were being used in Compose as rewind and fast forward button icons, which provides poor visual consistency and is less semantic than standard icons.
+**Action:** Replaced Text("\u23EA") and Text("\u23E9") pseudo-icons with standard Compose `Icon` from `Icons.Default.FastRewind` and `Icons.Default.FastForward`, maintaining the existing contentDescription on the parent button and using `contentDescription = null` for the icon itself to avoid double-reading by screen readers.
