@@ -31,6 +31,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FastForward
+import androidx.compose.material.icons.filled.FastRewind
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.LinearProgressIndicator
@@ -1191,7 +1193,7 @@ private fun PlayerVodInfo(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     PlayerTransportButton(
-                        label = "\u23EA",
+                        icon = Icons.Default.FastRewind,
                         contentDescription = stringResource(R.string.player_rewind),
                         onClick = onSeekBackward,
                         buttonSize = transportButtonSize,
@@ -1233,7 +1235,7 @@ private fun PlayerVodInfo(
                         }
                     }
                     PlayerTransportButton(
-                        label = "\u23E9",
+                        icon = Icons.Default.FastForward,
                         contentDescription = stringResource(R.string.player_forward),
                         onClick = onSeekForward,
                         buttonSize = transportButtonSize,
@@ -1481,7 +1483,7 @@ private fun PlayerQuickSettingsButton(
 
 @Composable
 private fun PlayerTransportButton(
-    label: String,
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
     contentDescription: String,
     onClick: () -> Unit,
     buttonSize: androidx.compose.ui.unit.Dp = 56.dp,
@@ -1544,10 +1546,11 @@ private fun PlayerTransportButton(
             .semantics { this.contentDescription = contentDescription }
     ) {
         Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-            Text(
-                text = label,
-                style = MaterialTheme.typography.headlineSmall,
-                color = Color.White
+            Icon(
+                imageVector = icon,
+                contentDescription = null, // semantics provided by the parent button
+                tint = Color.White,
+                modifier = Modifier.size(30.dp)
             )
         }
     }
@@ -1738,7 +1741,7 @@ private fun LiveTimeshiftScrubber(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     PlayerTransportButton(
-                        label = "\u23EA",
+                        icon = Icons.Default.FastRewind,
                         contentDescription = stringResource(R.string.player_rewind),
                         onClick = onSeekBackward,
                         modifier = Modifier.focusProperties { down = quickActionsFocusRequester }
@@ -1774,7 +1777,7 @@ private fun LiveTimeshiftScrubber(
                         }
                     }
                     PlayerTransportButton(
-                        label = "\u23E9",
+                        icon = Icons.Default.FastForward,
                         contentDescription = stringResource(R.string.player_forward),
                         onClick = onSeekForward,
                         modifier = Modifier.focusProperties { down = quickActionsFocusRequester }
