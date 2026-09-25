@@ -1375,7 +1375,7 @@ private fun PlayerSeekPreviewCard(
                     preview.frameBitmap != null -> {
                         Image(
                             bitmap = preview.frameBitmap.asImageBitmap(),
-                            contentDescription = null,
+                            contentDescription = stringResource(R.string.player_seek_preview_cd, formatDuration(preview.positionMs)),
                             contentScale = ContentScale.Crop,
                             modifier = Modifier.fillMaxSize()
                         )
@@ -1384,7 +1384,7 @@ private fun PlayerSeekPreviewCard(
                     artworkModel != null -> {
                         AsyncImage(
                             model = artworkModel,
-                            contentDescription = null,
+                            contentDescription = stringResource(R.string.player_artwork_cd, preview.title),
                             contentScale = ContentScale.Crop,
                             modifier = Modifier.fillMaxSize()
                         )

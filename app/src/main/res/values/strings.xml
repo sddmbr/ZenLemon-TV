@@ -1786,4 +1786,8 @@
     <string name="a11y_expand">Expand</string>
     <string name="a11y_collapse">Collapse</string>
     <string name="a11y_backup_restore">Backup and Restore</string>
+    <string name="downloads_poster_cd">Poster for %1$s</string>
+    <string name="player_next_episode_thumbnail_cd">Thumbnail for next episode %1$s</string>
+    <string name="player_seek_preview_cd">Seek preview at %1$s</string>
+    <string name="player_artwork_cd">Artwork for %1$s</string>
 </resources>
