@@ -16,3 +16,6 @@
 ## 2024-06-25 - Replace transport button text icons with standard material icons
 **Learning:** Found instances where plain text like "\u23EA" and "\u23E9" were being used in Compose as rewind and fast forward button icons, which provides poor visual consistency and is less semantic than standard icons.
 **Action:** Replaced Text("\u23EA") and Text("\u23E9") pseudo-icons with standard Compose `Icon` from `Icons.Default.FastRewind` and `Icons.Default.FastForward`, maintaining the existing contentDescription on the parent button and using `contentDescription = null` for the icon itself to avoid double-reading by screen readers.
+## 2026-09-25 - Adding alt text to Compose Image and AsyncImage components
+**Learning:** Null content descriptions for images with semantic meaning (like episode thumbnails and movie posters) hide important context from screen readers in Jetpack Compose.
+**Action:** Replaced `contentDescription = null` with parameterized string resources in `strings.xml` (e.g. `stringResource(R.string.player_artwork_cd, preview.title)`) to ensure full accessibility support without adding extra visual clutter.
