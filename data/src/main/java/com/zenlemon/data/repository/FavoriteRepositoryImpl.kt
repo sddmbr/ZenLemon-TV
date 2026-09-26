@@ -44,6 +44,13 @@ class FavoriteRepositoryImpl @Inject constructor(
         return flow.map { entities -> entities.map { it.toDomain() } }
     }
 
+    override fun getAllFavorites(providerIds: List<Long>, contentType: ContentType): Flow<List<Favorite>> =
+        getFavorites(providerIds, contentType)
+
+    @Suppress("OVERRIDE_DEPRECATION")
+    override fun getAllFavorites(providerId: Long, contentType: ContentType): Flow<List<Favorite>> =
+        getFavorites(providerId, contentType)
+
     override fun getFavoritesByGroup(groupId: Long): Flow<List<Favorite>> =
         favoriteDao.getByGroup(groupId).map { entities -> entities.map { it.toDomain() } }
 
