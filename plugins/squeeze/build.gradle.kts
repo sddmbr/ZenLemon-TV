@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 }
 
@@ -8,11 +8,14 @@ android {
     compileSdk = 36
 
     defaultConfig {
+        applicationId = "com.zenlemon.plugin.squeeze"
         minSdk = 25
-        targetSdk = 36
+        targetSdk = 34 // Android 14 - more stable for FireOS devices
+
+        versionCode = 1
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -34,6 +37,7 @@ android {
         }
     }
 }
+
 
 dependencies {
     implementation(libs.core.ktx)

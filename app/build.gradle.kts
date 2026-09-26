@@ -56,7 +56,7 @@ android {
     defaultConfig {
         applicationId = "com.zenlemon.tv"
         minSdk = 25
-        targetSdk = 36
+        targetSdk = 34 // Consistent with plugin for stability
         versionCode = 17
         versionName = "1.0.16"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -157,7 +157,6 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":player"))
-    implementation(project(":plugins:squeeze"))
 
     val composeBom = platform(libs.compose.bom)
     implementation(composeBom)
