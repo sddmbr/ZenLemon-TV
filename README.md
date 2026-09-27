@@ -3,7 +3,7 @@
 > *The pinnacle of tailored, enterprise-grade media streaming — where bitter complexity meets sweet user experience.*
 
 <p align="center">
-	<a href="https://github.com/sddmbr/Zenlemon-TV/releases/latest/download/ZenLemon.apk"><img src="https://img.shields.io/badge/Download-ZenLemon.apk-2ea44f?style=for-the-badge&logo=android" alt="Download ZenLemon APK" /></a>
+	<a href="https://github.com/sddmbr/Zenlemon-TV/releases/latest/download/ZenLemon-TV.apk"><img src="https://img.shields.io/badge/Download-ZenLemon--TV.apk-2ea44f?style=for-the-badge&logo=android" alt="Download ZenLemon APK" /></a>
 	<a href="https://github.com/sddmbr/Zenlemon-TV/releases/latest"><img src="https://img.shields.io/github/v/release/sddmbr/Zenlemon-TV?display_name=tag&style=for-the-badge&color=0f766e" alt="Latest ZenLemon release" /></a>
 	<a href="https://github.com/sddmbr/Zenlemon-TV/releases"><img src="https://img.shields.io/github/downloads/sddmbr/Zenlemon-TV/total?style=for-the-badge&color=8b5cf6" alt="Total Downloads" /></a>
 	<a href="https://discord.gg/eGPBMygcb"><img src="https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join the ZenLemon Discord" /></a>
@@ -167,7 +167,7 @@ ZenLemon is more than just a media player; it is a sandbox for advanced client-f
 ### Plugins
 
 - ZenLemon TV can be extended with companion Android APK plugins.
-- Try our YouTube plugin - Lemon Squeeze [(https://github.com/sddmbr/ZenLemon-TV/releases/download/v1.0.0/Lemon.Squeeze.YouTube.apk)]because sometimes you just want to watch your favorite YouTube feed and not have to switch apps, right.
+- Try our YouTube plugin – [Lemon Squeeze (YouTube Plugin)](https://github.com/sddmbr/Zenlemon-TV/releases/latest/download/Lemon.Squeeze.YouTube.apk) because sometimes you just want to watch your favorite YouTube feed and not have to switch apps, right?
 - Plugin developers can expose provider, playback, Cast URL rewrite, and host-rendered or native configuration capabilities.
 - We are working on a suite of plugins.
 
@@ -182,7 +182,8 @@ ZenLemon is more than just a media player; it is a sandbox for advanced client-f
 
 ## Download
 
-- [Download latest ZenLemonTV]([(https://github.com/sddmbr/Zenlemon-TV/releases/latest/download/ZenLemon-TV.apk)] [ZenLemon Squeeze YouTubePlugin [(https://github.com/sddmbr/Zenlemon-TV/releases/latest/download/Lemon.Squeeze.YouTube.apk])
+- [Download latest ZenLemon-TV.apk](https://github.com/sddmbr/Zenlemon-TV/releases/latest/download/ZenLemon-TV.apk)
+- [Download Lemon Squeeze YouTube Plugin](https://github.com/sddmbr/Zenlemon-TV/releases/latest/download/Lemon.Squeeze.YouTube.apk)
 - The app can also detect and download newer releases in-app through GitHub Releases.
 - GitHub Actions still runs build and test validation on pushes and pull requests.
 - GitHub Releases are now published only when the workflow is started manually with `workflow_dispatch`, so versioned releases do not get created by mistake on every push.

@@ -14,6 +14,7 @@ jobs:
       version_code: ${{ steps.app_version.outputs.version_code }}
       release_tag: ${{ steps.app_version.outputs.release_tag }}
       apk_name: ${{ steps.app_version.outputs.apk_name }}
+      plugin_version_name: ${{ steps.plugin_version.outputs.plugin_version_name }}
 
     steps:
       - uses: actions/checkout@v4
@@ -34,6 +35,16 @@ jobs:
           echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
           echo "release_tag=v$VERSION_NAME" >> "$GITHUB_OUTPUT"
           echo "apk_name=ZenLemon-$VERSION_NAME.apk" >> "$GITHUB_OUTPUT"
+
+      - name: Read plugin version
+        id: plugin_version
+        shell: bash
+        run: |
+          PLUGIN_VERSION_NAME=$(sed -n 's/.*versionName = "\(.*\)".*/\1/p' plugins/squeeze/build.gradle.kts | head -n 1)
+          if [ -z "$PLUGIN_VERSION_NAME" ]; then
+            PLUGIN_VERSION_NAME="1.0.1"
+          fi
+          echo "plugin_version_name=$PLUGIN_VERSION_NAME" >> "$GITHUB_OUTPUT"
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -73,8 +84,8 @@ jobs:
       - name: Run unit tests and coverage
         run: ./gradlew --console=plain testDebugUnitTest koverXmlReportCi koverHtmlReportCi
 
-      - name: Build release APK
-        run: ./gradlew --console=plain :app:assembleRelease
+      - name: Build release APKs
+        run: ./gradlew --console=plain :app:assembleRelease :plugins:squeeze:assembleRelease
 
       - name: Prepare release artifact
         if: github.event_name == 'workflow_dispatch'
@@ -87,7 +98,15 @@ jobs:
             exit 1
           fi
           cp "$APK_PATH" "dist/${{ steps.app_version.outputs.apk_name }}"
+          cp "$APK_PATH" dist/ZenLemon-TV.apk
           cp "$APK_PATH" dist/ZenLemon.apk
+
+          PLUGIN_APK_PATH=$(find plugins/squeeze/build/outputs/apk/release -maxdepth 1 -name '*.apk' | head -n 1)
+          if [ -n "$PLUGIN_APK_PATH" ]; then
+            PLUGIN_VERSION="${{ steps.plugin_version.outputs.plugin_version_name }}"
+            cp "$PLUGIN_APK_PATH" "dist/Lemon.Squeeze.YouTube-$PLUGIN_VERSION.apk"
+            cp "$PLUGIN_APK_PATH" dist/Lemon.Squeeze.YouTube.apk
+          fi
 
       - name: Upload release APK artifact
         if: github.event_name == 'workflow_dispatch'
@@ -95,8 +114,7 @@ jobs:
         with:
           name: release-apk
           path: |
-            dist/${{ steps.app_version.outputs.apk_name }}
-            dist/ZenLemon.apk
+            dist/*.apk
 
       - name: Upload test reports
         if: always()
@@ -178,7 +196,6 @@ jobs:
             ---
             Built from `${{ github.sha }}`.
           files: |
-            dist/${{ steps.app_version.outputs.apk_name }}
-            dist/ZenLemon.apk
+            dist/*.apk
           make_latest: true
           generate_release_notes: false

@@ -12,8 +12,8 @@ android {
         minSdk = 25
         targetSdk = 34 // Android 14 - more stable for FireOS devices
 
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
