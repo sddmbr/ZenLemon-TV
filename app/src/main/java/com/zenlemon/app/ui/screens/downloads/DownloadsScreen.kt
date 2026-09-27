@@ -242,7 +242,7 @@ private fun DownloadCard(
                 if (download.posterUrl != null) {
                     AsyncImage(
                         model = rememberCrossfadeImageModel(download.posterUrl),
-                        contentDescription = null,
+                        contentDescription = stringResource(R.string.downloads_poster_cd, download.contentName),
                         contentScale = ContentScale.Crop,
                         modifier = Modifier.fillMaxSize()
                     )
