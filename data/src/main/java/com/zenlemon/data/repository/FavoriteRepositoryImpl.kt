@@ -34,6 +34,10 @@ class FavoriteRepositoryImpl @Inject constructor(
         return flow.map { entities -> entities.map { it.toDomain() } }
     }
 
+    override fun getAllFavorites(providerId: Long, contentType: ContentType): Flow<List<Favorite>> = getFavorites(providerId, contentType)
+
+    override fun getAllFavorites(providerIds: List<Long>, contentType: ContentType): Flow<List<Favorite>> = getFavorites(providerIds, contentType)
+
     override fun getFavorites(providerIds: List<Long>, contentType: ContentType?): Flow<List<Favorite>> {
         if (providerIds.isEmpty()) return flowOf(emptyList())
         val flow = if (contentType != null) {
@@ -147,17 +151,21 @@ class FavoriteRepositoryImpl @Inject constructor(
                 "Favorite groups must have the same content type"
             }
 
-            favoriteDao.getByGroup(sourceGroupId).first().forEach { favorite ->
-                val targetFavorite = favoriteDao.get(
-                    providerId = favorite.providerId,
-                    contentId = favorite.contentId,
-                    contentType = favorite.contentType.name,
-                    groupId = targetGroupId
-                )
-                if (targetFavorite != null) {
-                    favoriteDao.delete(favorite.providerId, favorite.contentId, favorite.contentType.name, sourceGroupId)
-                } else {
-                    favoriteDao.updateGroup(favorite.id, targetGroupId)
+            val sourceFavorites = favoriteDao.getByGroupSync(sourceGroupId)
+            val targetFavorites = favoriteDao.getByGroupSync(targetGroupId)
+
+            val targetContentIds = targetFavorites.map { it.contentId }.toSet()
+
+            val (toDelete, toUpdate) = sourceFavorites.partition { it.contentId in targetContentIds }
+
+            if (toDelete.isNotEmpty()) {
+                toDelete.chunked(500).forEach { chunk ->
+                    favoriteDao.deleteByIds(chunk.map { it.id })
+                }
+            }
+            if (toUpdate.isNotEmpty()) {
+                toUpdate.chunked(500).forEach { chunk ->
+                    favoriteDao.updateGroupBatch(chunk.map { it.id }, targetGroupId)
                 }
             }
 
@@ -213,19 +221,28 @@ class FavoriteRepositoryImpl @Inject constructor(
 
     override suspend fun deleteGroup(groupId: Long): Result<Unit> = try {
         transactionRunner.inTransaction {
-            favoriteDao.getByGroup(groupId).first().forEach { favorite ->
-                val globalFavorite = favoriteDao.get(
-                    providerId = favorite.providerId,
-                    contentId = favorite.contentId,
-                    contentType = favorite.contentType.name,
-                    groupId = null
-                )
-                if (globalFavorite != null) {
-                    favoriteDao.delete(favorite.providerId, favorite.contentId, favorite.contentType.name, groupId)
-                } else {
-                    favoriteDao.updateGroup(favorite.id, null)
+            val group = virtualGroupDao.getById(groupId)
+                ?: return@inTransaction
+
+            val groupFavorites = favoriteDao.getByGroupSync(groupId)
+            if (groupFavorites.isNotEmpty()) {
+                val globalFavorites = favoriteDao.getGlobalByTypeSync(group.providerId, group.contentType.name)
+                val globalContentIds = globalFavorites.map { it.contentId }.toSet()
+
+                val (toDelete, toUpdate) = groupFavorites.partition { it.contentId in globalContentIds }
+
+                if (toDelete.isNotEmpty()) {
+                    toDelete.chunked(500).forEach { chunk ->
+                        favoriteDao.deleteByIds(chunk.map { it.id })
+                    }
+                }
+                if (toUpdate.isNotEmpty()) {
+                    toUpdate.chunked(500).forEach { chunk ->
+                        favoriteDao.updateGroupBatch(chunk.map { it.id }, null)
+                    }
                 }
             }
+
             virtualGroupDao.delete(groupId)
         }
         Result.success(Unit)
