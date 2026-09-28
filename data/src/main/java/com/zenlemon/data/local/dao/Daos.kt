@@ -3171,6 +3171,10 @@ abstract class FavoriteDao {
     @Query("SELECT * FROM favorites WHERE provider_id = :providerId AND content_type = :contentType AND group_id IS NULL ORDER BY position ASC")
     abstract fun getGlobalByType(providerId: Long, contentType: String): Flow<List<FavoriteEntity>>
 
+    @Query("SELECT * FROM favorites WHERE provider_id = :providerId AND content_type = :contentType AND group_id IS NULL ORDER BY position ASC")
+
+    abstract suspend fun getGlobalByTypeSync(providerId: Long, contentType: String): List<FavoriteEntity>
+
     @Query("SELECT * FROM favorites WHERE provider_id IN (:providerIds) AND content_type = :contentType AND group_id IS NULL ORDER BY provider_id ASC, position ASC")
     abstract fun getGlobalByTypeForProviders(providerIds: List<Long>, contentType: String): Flow<List<FavoriteEntity>>
 
@@ -3193,6 +3197,32 @@ abstract class FavoriteDao {
         """
     )
     abstract fun getByGroup(groupId: Long): Flow<List<FavoriteEntity>>
+
+    @Query(
+
+        """
+
+        SELECT f.*
+
+        FROM favorites AS f
+
+        INNER JOIN virtual_groups AS g
+
+            ON g.id = f.group_id
+
+           AND g.provider_id = f.provider_id
+
+           AND g.content_type = f.content_type
+
+        WHERE g.id = :groupId
+
+        ORDER BY f.position ASC
+
+        """
+
+    )
+
+    abstract suspend fun getByGroupSync(groupId: Long): List<FavoriteEntity>
 
     @Query("SELECT * FROM favorites WHERE provider_id = :providerId AND content_id = :contentId AND content_type = :contentType AND (:groupId IS NULL AND group_id IS NULL OR group_id = :groupId) LIMIT 1")
     abstract suspend fun get(providerId: Long, contentId: Long, contentType: String, groupId: Long?): FavoriteEntity?
@@ -3217,6 +3247,14 @@ abstract class FavoriteDao {
 
     @Update
     abstract suspend fun updateAll(favorites: List<FavoriteEntity>)
+
+    @Query("DELETE FROM favorites WHERE id IN (:ids)")
+
+    abstract suspend fun deleteByIds(ids: List<Long>)
+
+    @Query("UPDATE favorites SET group_id = :groupId, group_key = COALESCE(:groupId, 0) WHERE id IN (:favoriteIds)")
+
+    abstract suspend fun updateGroupBatch(favoriteIds: List<Long>, groupId: Long?)
 
     @Query("DELETE FROM favorites WHERE provider_id = :providerId AND content_id = :contentId AND content_type = :contentType AND (:groupId IS NULL AND group_id IS NULL OR group_id = :groupId)")
     abstract suspend fun delete(providerId: Long, contentId: Long, contentType: String, groupId: Long?)
