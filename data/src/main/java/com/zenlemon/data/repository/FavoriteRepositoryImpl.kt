@@ -154,19 +154,8 @@ class FavoriteRepositoryImpl @Inject constructor(
                 "Favorite groups must have the same content type"
             }
 
-            favoriteDao.getByGroup(sourceGroupId).first().forEach { favorite ->
-                val targetFavorite = favoriteDao.get(
-                    providerId = favorite.providerId,
-                    contentId = favorite.contentId,
-                    contentType = favorite.contentType.name,
-                    groupId = targetGroupId
-                )
-                if (targetFavorite != null) {
-                    favoriteDao.delete(favorite.providerId, favorite.contentId, favorite.contentType.name, sourceGroupId)
-                } else {
-                    favoriteDao.updateGroup(favorite.id, targetGroupId)
-                }
-            }
+            favoriteDao.deleteDuplicatesBeforeMove(sourceGroupId = sourceGroupId, targetGroupId = targetGroupId)
+            favoriteDao.updateGroupBulk(sourceGroupId = sourceGroupId, targetGroupId = targetGroupId)
 
             virtualGroupDao.delete(sourceGroupId)
         }
@@ -220,19 +209,8 @@ class FavoriteRepositoryImpl @Inject constructor(
 
     override suspend fun deleteGroup(groupId: Long): Result<Unit> = try {
         transactionRunner.inTransaction {
-            favoriteDao.getByGroup(groupId).first().forEach { favorite ->
-                val globalFavorite = favoriteDao.get(
-                    providerId = favorite.providerId,
-                    contentId = favorite.contentId,
-                    contentType = favorite.contentType.name,
-                    groupId = null
-                )
-                if (globalFavorite != null) {
-                    favoriteDao.delete(favorite.providerId, favorite.contentId, favorite.contentType.name, groupId)
-                } else {
-                    favoriteDao.updateGroup(favorite.id, null)
-                }
-            }
+            favoriteDao.deleteDuplicatesBeforeMove(sourceGroupId = groupId, targetGroupId = null)
+            favoriteDao.updateGroupBulk(sourceGroupId = groupId, targetGroupId = null)
             virtualGroupDao.delete(groupId)
         }
         Result.success(Unit)
