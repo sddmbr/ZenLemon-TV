@@ -17,7 +17,7 @@
         <receiver
             android:name="com.zenlemon.data.manager.recording.RecordingRestoreReceiver"
             android:enabled="true"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
@@ -27,7 +27,7 @@
         <receiver
             android:name="com.zenlemon.data.manager.reminder.ProgramReminderRestoreReceiver"
             android:enabled="true"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
