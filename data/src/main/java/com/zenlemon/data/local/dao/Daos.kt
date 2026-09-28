@@ -3230,6 +3230,26 @@ abstract class FavoriteDao {
     @Query("DELETE FROM favorites WHERE content_type = 'SERIES' AND content_id NOT IN (SELECT id FROM series)")
     abstract suspend fun deleteMissingSeriesFavorites(): Int
 
+    @Query("""
+        DELETE FROM favorites
+        WHERE group_id = :sourceGroupId
+          AND EXISTS (
+              SELECT 1 FROM favorites AS target
+              WHERE target.provider_id = favorites.provider_id
+                AND target.content_id = favorites.content_id
+                AND target.content_type = favorites.content_type
+                AND (target.group_id = :targetGroupId OR (:targetGroupId IS NULL AND target.group_id IS NULL))
+          )
+    """)
+    abstract suspend fun deleteDuplicatesBeforeMove(sourceGroupId: Long, targetGroupId: Long?): Int
+
+    @Query("""
+        UPDATE favorites
+        SET group_id = :targetGroupId, group_key = COALESCE(:targetGroupId, 0)
+        WHERE group_id = :sourceGroupId
+    """)
+    abstract suspend fun updateGroupBulk(sourceGroupId: Long, targetGroupId: Long?)
+
     @Query("SELECT * FROM favorites WHERE id = :favoriteId LIMIT 1")
     protected abstract suspend fun getById(favoriteId: Long): FavoriteEntity?
 

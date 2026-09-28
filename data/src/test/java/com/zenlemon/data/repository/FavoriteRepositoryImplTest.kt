@@ -457,118 +457,33 @@ class FavoriteRepositoryImplTest {
                 contentType = ContentType.LIVE
             )
         )
-        whenever(favoriteDao.getByGroup(11L)).thenReturn(
-            flowOf(
-                listOf(
-                    FavoriteEntity(
-                        id = 1L,
-                        providerId = 7L,
-                        contentId = 101L,
-                        contentType = ContentType.LIVE,
-                        position = 0,
-                        groupId = 11L,
-                        addedAt = 1_000L
-                    ),
-                    FavoriteEntity(
-                        id = 2L,
-                        providerId = 7L,
-                        contentId = 102L,
-                        contentType = ContentType.LIVE,
-                        position = 1_024,
-                        groupId = 11L,
-                        addedAt = 2_000L
-                    )
-                )
-            )
-        )
-        whenever(favoriteDao.get(7L, 101L, ContentType.LIVE.name, 12L)).thenReturn(null)
-        whenever(favoriteDao.get(7L, 102L, ContentType.LIVE.name, 12L)).thenReturn(
-            FavoriteEntity(
-                id = 3L,
-                providerId = 7L,
-                contentId = 102L,
-                contentType = ContentType.LIVE,
-                position = 2_048,
-                groupId = 12L,
-                addedAt = 3_000L
-            )
-        )
-
         val result = repository.mergeGroupInto(11L, 12L)
 
         assertThat(result.isSuccess).isTrue()
-        verify(favoriteDao).updateGroup(1L, 12L)
-        verify(favoriteDao).delete(7L, 102L, ContentType.LIVE.name, 11L)
+        verify(favoriteDao).deleteDuplicatesBeforeMove(11L, 12L)
+        verify(favoriteDao).updateGroupBulk(11L, 12L)
         verify(virtualGroupDao).delete(11L)
     }
 
     @Test
     fun `deleteGroup promotes members to global favorites when no duplicate exists`() = runTest {
-        whenever(favoriteDao.getByGroup(11L)).thenReturn(
-            flowOf(
-                listOf(
-                    FavoriteEntity(
-                        id = 1L,
-                        providerId = 7L,
-                        contentId = 101L,
-                        contentType = ContentType.LIVE,
-                        position = 0,
-                        groupId = 11L,
-                        groupKey = 11L,
-                        addedAt = 1_000L
-                    )
-                )
-            )
-        )
-        whenever(favoriteDao.get(7L, 101L, ContentType.LIVE.name, null)).thenReturn(null)
-
         val result = repository.deleteGroup(11L)
 
         assertThat(result.isSuccess).isTrue()
-        verify(favoriteDao).updateGroup(1L, null)
-        verify(favoriteDao, never()).delete(7L, 101L, ContentType.LIVE.name, 11L)
+        verify(favoriteDao).deleteDuplicatesBeforeMove(11L, null)
+        verify(favoriteDao).updateGroupBulk(11L, null)
         verify(virtualGroupDao).delete(11L)
     }
 
     @Test
     fun `deleteGroup removes source membership when a global favorite already exists`() = runTest {
-        whenever(favoriteDao.getByGroup(11L)).thenReturn(
-            flowOf(
-                listOf(
-                    FavoriteEntity(
-                        id = 1L,
-                        providerId = 7L,
-                        contentId = 101L,
-                        contentType = ContentType.LIVE,
-                        position = 0,
-                        groupId = 11L,
-                        groupKey = 11L,
-                        addedAt = 1_000L
-                    )
-                )
-            )
-        )
-        whenever(favoriteDao.get(7L, 101L, ContentType.LIVE.name, null)).thenReturn(
-            FavoriteEntity(
-                id = 2L,
-                providerId = 7L,
-                contentId = 101L,
-                contentType = ContentType.LIVE,
-                position = 1_024,
-                groupId = null,
-                groupKey = 0L,
-                addedAt = 2_000L
-            )
-        )
-
         val result = repository.deleteGroup(11L)
 
         assertThat(result.isSuccess).isTrue()
-        verify(favoriteDao).delete(7L, 101L, ContentType.LIVE.name, 11L)
-        verify(favoriteDao, never()).updateGroup(1L, null)
+        verify(favoriteDao).deleteDuplicatesBeforeMove(11L, null)
+        verify(favoriteDao).updateGroupBulk(11L, null)
         verify(virtualGroupDao).delete(11L)
     }
-
     private fun favorite(
         id: Long,
         contentId: Long,
