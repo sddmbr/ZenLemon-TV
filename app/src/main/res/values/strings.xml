@@ -1786,4 +1786,5 @@
     <string name="a11y_expand">Expand</string>
     <string name="a11y_collapse">Collapse</string>
     <string name="a11y_backup_restore">Backup and Restore</string>
+    <string name="poster_cd">Poster for %1$s</string>
 </resources>
