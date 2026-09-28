@@ -4,20 +4,20 @@ import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 class CodecPreferenceTest {
-
     @Test
-    fun `enum contains expected values`() {
-        assertThat(CodecPreference.values().map { it.name }).containsExactly(
-            "DEFAULT",
-            "SOFTWARE_ONLY",
-            "HARDWARE_ONLY"
+    fun `ActiveDecoderPolicy contains expected values`() {
+        assertThat(ActiveDecoderPolicy.values().map { it.name }).containsExactly(
+            "AUTO",
+            "HARDWARE_PREFERRED",
+            "SOFTWARE_PREFERRED",
+            "COMPATIBILITY"
         )
     }
 
     @Test
-    fun `enum values can be parsed from string`() {
-        assertThat(CodecPreference.valueOf("DEFAULT")).isEqualTo(CodecPreference.DEFAULT)
-        assertThat(CodecPreference.valueOf("SOFTWARE_ONLY")).isEqualTo(CodecPreference.SOFTWARE_ONLY)
-        assertThat(CodecPreference.valueOf("HARDWARE_ONLY")).isEqualTo(CodecPreference.HARDWARE_ONLY)
+    fun `ActiveDecoderPolicy values can be parsed from string`() {
+        assertThat(ActiveDecoderPolicy.valueOf("AUTO")).isEqualTo(ActiveDecoderPolicy.AUTO)
+        assertThat(ActiveDecoderPolicy.valueOf("HARDWARE_PREFERRED")).isEqualTo(ActiveDecoderPolicy.HARDWARE_PREFERRED)
+        assertThat(ActiveDecoderPolicy.valueOf("SOFTWARE_PREFERRED")).isEqualTo(ActiveDecoderPolicy.SOFTWARE_PREFERRED)
     }
 }
