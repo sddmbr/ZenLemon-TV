@@ -16,3 +16,6 @@
 ## 2024-06-25 - Replace transport button text icons with standard material icons
 **Learning:** Found instances where plain text like "\u23EA" and "\u23E9" were being used in Compose as rewind and fast forward button icons, which provides poor visual consistency and is less semantic than standard icons.
 **Action:** Replaced Text("\u23EA") and Text("\u23E9") pseudo-icons with standard Compose `Icon` from `Icons.Default.FastRewind` and `Icons.Default.FastForward`, maintaining the existing contentDescription on the parent button and using `contentDescription = null` for the icon itself to avoid double-reading by screen readers.
+## 2024-05-30 - Context-aware contentDescription for AsyncImage posters
+**Learning:** Found an `AsyncImage` in `DownloadsScreen.kt` for posters that had `contentDescription = null`, which strips critical context for screen readers when describing informative images in a list or grid. Users wouldn't know which poster was which if the image didn't load or if they were relying entirely on the screen reader for context.
+**Action:** Replaced `contentDescription = null` with a parameterized string resource `<string name="poster_cd">Poster for %1$s</string>` mapping to `stringResource(R.string.poster_cd, download.contentName)`.

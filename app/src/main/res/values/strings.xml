@@ -1735,6 +1735,7 @@
     <string name="downloads_empty_title">No downloads yet</string>
     <string name="downloads_empty_hint">Download movies or episodes from detail screens and they will appear here.</string>
     <string name="downloads_no_thumb">No poster</string>
+    <string name="poster_cd">Poster for %1$s</string>
     <string name="downloads_status_completed">Completed</string>
     <string name="downloads_status_downloading">Downloading</string>
     <string name="downloads_status_failed">Failed</string>
