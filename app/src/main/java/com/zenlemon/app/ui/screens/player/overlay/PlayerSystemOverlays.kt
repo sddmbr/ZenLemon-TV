@@ -1604,7 +1604,7 @@ fun NextEpisodeCountdownOverlay(
                 if (!nextEpisode.coverUrl.isNullOrBlank()) {
                     AsyncImage(
                         model = nextEpisode.coverUrl,
-                        contentDescription = null,
+                        contentDescription = stringResource(R.string.player_up_next_cover_cd, nextEpisode.title),
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .width(80.dp)

@@ -1581,6 +1581,8 @@
     <string name="settings_auto_play_next_episode">Auto-Play Next Episode</string>
     <string name="settings_auto_play_next_episode_subtitle">Show a 10-second countdown and automatically advance to the next episode when one ends.</string>
     <string name="player_up_next">Up Next</string>
+    <string name="player_up_next_cover_cd">Cover for next episode: %1$s</string>
+    <string name="player_seek_preview_cd">Preview for %1$s</string>
     <string name="player_auto_play_play_now">Play Now</string>
     <string name="player_auto_play_cancel">Cancel</string>
     <string name="player_auto_play_countdown">Playing in %1$d s</string>
