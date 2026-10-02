@@ -95,7 +95,7 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideStalkerApiService(okHttpClient: OkHttpClient, xtreamJson: Json): StalkerApiService =
-        OkHttpStalkerApiService(okHttpClient.newBuilder().applyUnsafeTlsBypass().build(), xtreamJson)
+        OkHttpStalkerApiService(okHttpClient, xtreamJson)
 
     @Provides
     @Singleton
@@ -104,19 +104,6 @@ object NetworkModule {
         isLenient = true
         explicitNulls = false
         coerceInputValues = true
-    }
-
-    private fun OkHttpClient.Builder.applyUnsafeTlsBypass(): OkHttpClient.Builder {
-        val trustAllManager = object : X509TrustManager {
-            override fun checkClientTrusted(chain: Array<out X509Certificate>?, authType: String?) = Unit
-            override fun checkServerTrusted(chain: Array<out X509Certificate>?, authType: String?) = Unit
-            override fun getAcceptedIssuers(): Array<X509Certificate> = emptyArray()
-        }
-        val sslContext = SSLContext.getInstance("TLS").apply {
-            init(null, arrayOf(trustAllManager), SecureRandom())
-        }
-        return sslSocketFactory(sslContext.socketFactory, trustAllManager)
-            .hostnameVerifier(HostnameVerifier { _, _ -> true })
     }
 
     @Provides
