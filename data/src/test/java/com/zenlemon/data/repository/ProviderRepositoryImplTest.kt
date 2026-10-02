@@ -22,6 +22,7 @@ import com.zenlemon.data.remote.dto.XtreamAuthResponse
 import com.zenlemon.data.remote.dto.XtreamServerInfo
 import com.zenlemon.data.remote.dto.XtreamUserInfo
 import com.zenlemon.data.security.CredentialCrypto
+import com.zenlemon.data.security.CredentialDecryptionException
 import com.zenlemon.data.sync.SyncManager
 import com.zenlemon.domain.model.ProviderEpgSyncMode
 import com.zenlemon.domain.model.ProviderSavedWithSyncErrorException
@@ -30,6 +31,8 @@ import com.zenlemon.domain.model.SyncState
 import com.zenlemon.domain.model.ProviderStatus
 import com.zenlemon.domain.model.ProviderType
 import com.zenlemon.domain.model.ProviderXtreamLiveSyncMode
+import com.zenlemon.domain.model.GuideSourcePolicy
+import com.zenlemon.domain.model.ChannelLogoSourcePolicy
 import com.zenlemon.domain.model.SyncMetadata
 import com.zenlemon.domain.repository.SyncMetadataRepository
 import kotlinx.coroutines.runBlocking
@@ -579,5 +582,40 @@ class ProviderRepositoryImplTest {
         assertThat(result.isSuccess).isTrue()
         verify(providerDao).setActive(9L)
         verify(syncManager, never()).scheduleProviderSyncResume(9L)
+    }
+
+    @Test
+    fun `loginXtream handles decryption error gracefully`() = runTest {
+        val existingProvider = ProviderEntity(
+            id = 1L,
+            name = "Test",
+            type = ProviderType.XTREAM_CODES,
+            serverUrl = "https://example.com",
+            username = "user",
+            password = "encrypted_password",
+            status = ProviderStatus.PARTIAL
+        )
+        whenever(providerDao.getByUrlAndUser("https://example.com", "user")).thenReturn(existingProvider)
+        whenever(credentialCrypto.decryptIfNeeded("encrypted_password")).thenThrow(CredentialDecryptionException("Decryption failed"))
+
+        val result = repository.loginXtream(
+            serverUrl = "https://example.com",
+            username = "user",
+            password = "",
+            name = "Test",
+            httpUserAgent = "",
+            httpHeaders = "",
+            xtreamFastSyncEnabled = false,
+            epgSyncMode = ProviderEpgSyncMode.UPFRONT,
+            xtreamLiveSyncMode = ProviderXtreamLiveSyncMode.AUTO,
+            guideSourcePolicy = GuideSourcePolicy.PROVIDER_ONLY,
+            channelLogoSourcePolicy = ChannelLogoSourcePolicy.SUPPLIER_ONLY,
+            onProgress = null,
+            id = null
+        )
+
+        assertThat(result.isSuccess).isFalse()
+        assertThat((result as Result.Error).message).isEqualTo("Decryption failed")
+        assertThat((result as Result.Error).exception).isInstanceOf(CredentialDecryptionException::class.java)
     }
 }
