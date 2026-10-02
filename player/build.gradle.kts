@@ -146,4 +146,5 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.truth)
     testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.robolectric)
 }
