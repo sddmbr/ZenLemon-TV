@@ -128,14 +128,14 @@ abstract class ZenLemonDatabase : RoomDatabase() {
          */
         val MIGRATION_2_3 = object : Migration(2, 3) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE categories ADD COLUMN is_user_protected INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE channels ADD COLUMN is_user_protected INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE movies ADD COLUMN is_adult INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE movies ADD COLUMN is_user_protected INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE series ADD COLUMN is_adult INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE series ADD COLUMN is_user_protected INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE episodes ADD COLUMN is_adult INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE episodes ADD COLUMN is_user_protected INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "categories", "is_user_protected", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "channels", "is_user_protected", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "movies", "is_adult", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "movies", "is_user_protected", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "series", "is_adult", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "series", "is_user_protected", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "episodes", "is_adult", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "episodes", "is_user_protected", "INTEGER NOT NULL DEFAULT 0")
             }
         }
 
@@ -219,21 +219,21 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_5_6 = object : Migration(5, 6) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE virtual_groups ADD COLUMN content_type TEXT NOT NULL DEFAULT 'LIVE'")
+                addColumnIfMissing(database, "virtual_groups", "content_type", "TEXT NOT NULL DEFAULT 'LIVE'")
             }
         }
 
         val MIGRATION_6_7 = object : Migration(6, 7) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE channels ADD COLUMN logical_group_id TEXT NOT NULL DEFAULT ''")
-                database.execSQL("ALTER TABLE channels ADD COLUMN error_count INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "channels", "logical_group_id", "TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "channels", "error_count", "INTEGER NOT NULL DEFAULT 0")
                 database.execSQL("CREATE INDEX IF NOT EXISTS index_channels_logical_group_id ON channels(logical_group_id)")
             }
         }
 
         val MIGRATION_7_8 = object : Migration(7, 8) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE programs ADD COLUMN provider_id INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "programs", "provider_id", "INTEGER NOT NULL DEFAULT 0")
                 database.execSQL("DROP INDEX IF EXISTS index_programs_channel_id")
                 database.execSQL("DROP INDEX IF EXISTS index_programs_channel_id_start_time")
                 database.execSQL("CREATE INDEX IF NOT EXISTS index_programs_provider_id ON programs(provider_id)")
@@ -1019,13 +1019,13 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_14_15 = object : Migration(14, 15) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE providers ADD COLUMN api_version TEXT")
-                database.execSQL("ALTER TABLE channels ADD COLUMN quality_options_json TEXT")
-                database.execSQL("ALTER TABLE programs ADD COLUMN rating TEXT")
-                database.execSQL("ALTER TABLE programs ADD COLUMN image_url TEXT")
-                database.execSQL("ALTER TABLE programs ADD COLUMN genre TEXT")
-                database.execSQL("ALTER TABLE programs ADD COLUMN category TEXT")
-                database.execSQL("ALTER TABLE playback_history ADD COLUMN watched_status TEXT NOT NULL DEFAULT 'IN_PROGRESS'")
+                addColumnIfMissing(database, "providers", "api_version", "TEXT")
+                addColumnIfMissing(database, "channels", "quality_options_json", "TEXT")
+                addColumnIfMissing(database, "programs", "rating", "TEXT")
+                addColumnIfMissing(database, "programs", "image_url", "TEXT")
+                addColumnIfMissing(database, "programs", "genre", "TEXT")
+                addColumnIfMissing(database, "programs", "category", "TEXT")
+                addColumnIfMissing(database, "playback_history", "watched_status", "TEXT NOT NULL DEFAULT 'IN_PROGRESS'")
             }
         }
 
@@ -1048,28 +1048,28 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_17_18 = object : Migration(17, 18) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN last_movie_attempt INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN last_movie_success INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN last_movie_partial INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN movie_sync_mode TEXT NOT NULL DEFAULT 'UNKNOWN'")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN movie_warnings_count INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN movie_catalog_stale INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN movie_parallel_failures_remembered INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "last_movie_attempt", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "last_movie_success", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "last_movie_partial", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "movie_sync_mode", "TEXT NOT NULL DEFAULT 'UNKNOWN'")
+                addColumnIfMissing(database, "sync_metadata", "movie_warnings_count", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "movie_catalog_stale", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "movie_parallel_failures_remembered", "INTEGER NOT NULL DEFAULT 0")
             }
         }
 
         val MIGRATION_18_19 = object : Migration(18, 19) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN movie_healthy_sync_streak INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "movie_healthy_sync_streak", "INTEGER NOT NULL DEFAULT 0")
             }
         }
 
         val MIGRATION_19_20 = object : Migration(19, 20) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE channels ADD COLUMN sync_fingerprint TEXT NOT NULL DEFAULT ''")
-                database.execSQL("ALTER TABLE movies ADD COLUMN sync_fingerprint TEXT NOT NULL DEFAULT ''")
-                database.execSQL("ALTER TABLE series ADD COLUMN sync_fingerprint TEXT NOT NULL DEFAULT ''")
-                database.execSQL("ALTER TABLE categories ADD COLUMN sync_fingerprint TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "channels", "sync_fingerprint", "TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "movies", "sync_fingerprint", "TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "series", "sync_fingerprint", "TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "categories", "sync_fingerprint", "TEXT NOT NULL DEFAULT ''")
 
                 database.execSQL(
                     """
@@ -1187,31 +1187,31 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_20_21 = object : Migration(20, 21) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN live_avoid_full_until INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN movie_avoid_full_until INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN series_avoid_full_until INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN live_sequential_failures_remembered INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN live_healthy_sync_streak INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN series_sequential_failures_remembered INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN series_healthy_sync_streak INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "live_avoid_full_until", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "movie_avoid_full_until", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "series_avoid_full_until", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "live_sequential_failures_remembered", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "live_healthy_sync_streak", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "series_sequential_failures_remembered", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "series_healthy_sync_streak", "INTEGER NOT NULL DEFAULT 0")
             }
         }
 
         val MIGRATION_21_22 = object : Migration(21, 22) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE channel_import_stage ADD COLUMN logical_group_id TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "channel_import_stage", "logical_group_id", "TEXT NOT NULL DEFAULT ''")
             }
         }
 
         val MIGRATION_22_23 = object : Migration(22, 23) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE channel_import_stage ADD COLUMN error_count INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "channel_import_stage", "error_count", "INTEGER NOT NULL DEFAULT 0")
             }
         }
 
         val MIGRATION_23_24 = object : Migration(23, 24) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE providers ADD COLUMN xtream_fast_sync_enabled INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "providers", "xtream_fast_sync_enabled", "INTEGER NOT NULL DEFAULT 0")
                 database.execSQL(
                     """
                     CREATE TABLE IF NOT EXISTS movie_category_hydration (
@@ -1252,13 +1252,13 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_26_27 = object : Migration(26, 27) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE providers ADD COLUMN epg_sync_mode TEXT NOT NULL DEFAULT 'UPFRONT'")
+                addColumnIfMissing(database, "providers", "epg_sync_mode", "TEXT NOT NULL DEFAULT 'UPFRONT'")
             }
         }
 
         val MIGRATION_27_28 = object : Migration(27, 28) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE providers ADD COLUMN m3u_vod_classification_enabled INTEGER NOT NULL DEFAULT 1")
+                addColumnIfMissing(database, "providers", "m3u_vod_classification_enabled", "INTEGER NOT NULL DEFAULT 1")
             }
         }
 
@@ -1410,7 +1410,7 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_30_31 = object : Migration(30, 31) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE movies ADD COLUMN added_at INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "movies", "added_at", "INTEGER NOT NULL DEFAULT 0")
             }
         }
 
@@ -1598,7 +1598,7 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_32_33 = object : Migration(32, 33) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE movies ADD COLUMN watch_count INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "movies", "watch_count", "INTEGER NOT NULL DEFAULT 0")
                 database.execSQL(
                     """
                     UPDATE movies
@@ -1623,9 +1623,9 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_33_34 = object : Migration(33, 34) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN last_live_success INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN last_series_success INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE sync_metadata ADD COLUMN last_epg_success INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "last_live_success", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "last_series_success", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "sync_metadata", "last_epg_success", "INTEGER NOT NULL DEFAULT 0")
                 database.execSQL("UPDATE sync_metadata SET last_live_success = last_live_sync")
                 database.execSQL("UPDATE sync_metadata SET last_series_success = last_series_sync")
                 database.execSQL("UPDATE sync_metadata SET last_epg_success = last_epg_sync")
@@ -1668,9 +1668,9 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_35_36 = object : Migration(35, 36) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE channel_epg_mappings ADD COLUMN matched_at INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE channel_epg_mappings ADD COLUMN failed_attempts INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE channel_epg_mappings ADD COLUMN source TEXT")
+                addColumnIfMissing(database, "channel_epg_mappings", "matched_at", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "channel_epg_mappings", "failed_attempts", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "channel_epg_mappings", "source", "TEXT")
 
                 database.execSQL(
                     """
@@ -1841,17 +1841,17 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_37_38 = object : Migration(37, 38) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE epg_sources ADD COLUMN etag TEXT DEFAULT NULL")
-                database.execSQL("ALTER TABLE epg_sources ADD COLUMN last_modified_header TEXT DEFAULT NULL")
+                addColumnIfMissing(database, "epg_sources", "etag", "TEXT DEFAULT NULL")
+                addColumnIfMissing(database, "epg_sources", "last_modified_header", "TEXT DEFAULT NULL")
             }
         }
 
         val MIGRATION_38_39 = object : Migration(38, 39) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_mac_address TEXT NOT NULL DEFAULT ''")
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_device_profile TEXT NOT NULL DEFAULT ''")
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_device_timezone TEXT NOT NULL DEFAULT ''")
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_device_locale TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "providers", "stalker_mac_address", "TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "providers", "stalker_device_profile", "TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "providers", "stalker_device_timezone", "TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "providers", "stalker_device_locale", "TEXT NOT NULL DEFAULT ''")
                 database.execSQL("DROP INDEX IF EXISTS index_providers_server_url_username")
                 database.execSQL("DROP INDEX IF EXISTS index_providers_server_url_username_stalker_mac_address")
                 database.execSQL(
@@ -1891,7 +1891,7 @@ abstract class ZenLemonDatabase : RoomDatabase() {
          */
         val MIGRATION_40_41 = object : Migration(40, 41) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE channel_preferences ADD COLUMN audio_video_offset_ms INTEGER DEFAULT NULL")
+                addColumnIfMissing(database, "channel_preferences", "audio_video_offset_ms", "INTEGER DEFAULT NULL")
             }
         }
 
@@ -1944,7 +1944,7 @@ abstract class ZenLemonDatabase : RoomDatabase() {
          */
         val MIGRATION_42_43 = object : Migration(42, 43) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE series ADD COLUMN provider_series_id TEXT")
+                addColumnIfMissing(database, "series", "provider_series_id", "TEXT")
                 database.execSQL(
                     "UPDATE series SET provider_series_id = CAST(series_id AS TEXT) WHERE provider_series_id IS NULL"
                 )
@@ -1962,10 +1962,10 @@ abstract class ZenLemonDatabase : RoomDatabase() {
             }
 
             private fun addPagedHydrationColumns(database: SupportSQLiteDatabase, tableName: String) {
-                database.execSQL("ALTER TABLE $tableName ADD COLUMN last_loaded_page INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE $tableName ADD COLUMN total_pages INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE $tableName ADD COLUMN is_complete INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE $tableName ADD COLUMN page_size INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, tableName, "last_loaded_page", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, tableName, "total_pages", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, tableName, "is_complete", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, tableName, "page_size", "INTEGER NOT NULL DEFAULT 0")
                 database.execSQL(
                     """
                     UPDATE $tableName
@@ -1996,7 +1996,7 @@ abstract class ZenLemonDatabase : RoomDatabase() {
          */
         val MIGRATION_44_45 = object : Migration(44, 45) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE favorites ADD COLUMN group_key INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "favorites", "group_key", "INTEGER NOT NULL DEFAULT 0")
                 database.execSQL("UPDATE favorites SET group_key = COALESCE(group_id, 0)")
                 database.execSQL(
                     """
@@ -2219,12 +2219,12 @@ abstract class ZenLemonDatabase : RoomDatabase() {
          */
         val MIGRATION_47_48 = object : Migration(47, 48) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE movies ADD COLUMN cache_state TEXT NOT NULL DEFAULT 'DETAIL_HYDRATED'")
-                database.execSQL("ALTER TABLE movies ADD COLUMN detail_hydrated_at INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE movies ADD COLUMN remote_stale_at INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE series ADD COLUMN cache_state TEXT NOT NULL DEFAULT 'DETAIL_HYDRATED'")
-                database.execSQL("ALTER TABLE series ADD COLUMN detail_hydrated_at INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE series ADD COLUMN remote_stale_at INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "movies", "cache_state", "TEXT NOT NULL DEFAULT 'DETAIL_HYDRATED'")
+                addColumnIfMissing(database, "movies", "detail_hydrated_at", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "movies", "remote_stale_at", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "series", "cache_state", "TEXT NOT NULL DEFAULT 'DETAIL_HYDRATED'")
+                addColumnIfMissing(database, "series", "detail_hydrated_at", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "series", "remote_stale_at", "INTEGER NOT NULL DEFAULT 0")
 
                 database.execSQL(
                     """
@@ -2524,8 +2524,8 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_48_49 = object : Migration(48, 49) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE providers ADD COLUMN http_user_agent TEXT NOT NULL DEFAULT ''")
-                database.execSQL("ALTER TABLE providers ADD COLUMN http_headers TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "providers", "http_user_agent", "TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "providers", "http_headers", "TEXT NOT NULL DEFAULT ''")
             }
         }
 
@@ -2563,19 +2563,19 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_50_51 = object : Migration(50, 51) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE xtream_live_onboarding_state ADD COLUMN sync_profile_tier TEXT")
-                database.execSQL("ALTER TABLE xtream_live_onboarding_state ADD COLUMN sync_profile_batch_size INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE xtream_live_onboarding_state ADD COLUMN sync_profile_strategy TEXT")
-                database.execSQL("ALTER TABLE xtream_live_onboarding_state ADD COLUMN sync_profile_low_memory INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE xtream_live_onboarding_state ADD COLUMN sync_profile_memory_class_mb INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE xtream_live_onboarding_state ADD COLUMN sync_profile_available_mem_mb INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "xtream_live_onboarding_state", "sync_profile_tier", "TEXT")
+                addColumnIfMissing(database, "xtream_live_onboarding_state", "sync_profile_batch_size", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "xtream_live_onboarding_state", "sync_profile_strategy", "TEXT")
+                addColumnIfMissing(database, "xtream_live_onboarding_state", "sync_profile_low_memory", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "xtream_live_onboarding_state", "sync_profile_memory_class_mb", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "xtream_live_onboarding_state", "sync_profile_available_mem_mb", "INTEGER NOT NULL DEFAULT 0")
                 validateForeignKeys(database, "xtream_live_onboarding_state")
             }
         }
 
         val MIGRATION_51_52 = object : Migration(51, 52) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE providers ADD COLUMN xtream_live_sync_mode TEXT NOT NULL DEFAULT 'AUTO'")
+                addColumnIfMissing(database, "providers", "xtream_live_sync_mode", "TEXT NOT NULL DEFAULT 'AUTO'")
                 validateForeignKeys(database, "providers")
             }
         }
@@ -2659,8 +2659,8 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_58_59 = object : Migration(58, 59) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE downloads ADD COLUMN supports_resume INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE downloads ADD COLUMN retry_count INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "downloads", "supports_resume", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "downloads", "retry_count", "INTEGER NOT NULL DEFAULT 0")
             }
         }
 
@@ -2713,34 +2713,34 @@ abstract class ZenLemonDatabase : RoomDatabase() {
 
         val MIGRATION_53_54 = object : Migration(53, 54) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_serial_number TEXT NOT NULL DEFAULT ''")
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_device_id TEXT NOT NULL DEFAULT ''")
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_device_id2 TEXT NOT NULL DEFAULT ''")
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_signature TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "providers", "stalker_serial_number", "TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "providers", "stalker_device_id", "TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "providers", "stalker_device_id2", "TEXT NOT NULL DEFAULT ''")
+                addColumnIfMissing(database, "providers", "stalker_signature", "TEXT NOT NULL DEFAULT ''")
                 validateForeignKeys(database, "providers")
             }
         }
 
         val MIGRATION_54_55 = object : Migration(54, 55) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_auth_mode TEXT NOT NULL DEFAULT 'AUTO'")
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_portal_profile TEXT NOT NULL DEFAULT 'MAG_BASIC'")
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_last_playback_mode TEXT")
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_credentials_required INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_mac_required INTEGER NOT NULL DEFAULT 1")
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_uses_temp_links INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("ALTER TABLE providers ADD COLUMN stalker_module_restricted INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "providers", "stalker_auth_mode", "TEXT NOT NULL DEFAULT 'AUTO'")
+                addColumnIfMissing(database, "providers", "stalker_portal_profile", "TEXT NOT NULL DEFAULT 'MAG_BASIC'")
+                addColumnIfMissing(database, "providers", "stalker_last_playback_mode", "TEXT")
+                addColumnIfMissing(database, "providers", "stalker_credentials_required", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "providers", "stalker_mac_required", "INTEGER NOT NULL DEFAULT 1")
+                addColumnIfMissing(database, "providers", "stalker_uses_temp_links", "INTEGER NOT NULL DEFAULT 0")
+                addColumnIfMissing(database, "providers", "stalker_module_restricted", "INTEGER NOT NULL DEFAULT 0")
                 validateForeignKeys(database, "providers")
             }
         }
 
         private fun addStalkerHardeningColumns(database: SupportSQLiteDatabase, tableName: String) {
-            database.execSQL("ALTER TABLE $tableName ADD COLUMN last_attempted_page INTEGER NOT NULL DEFAULT 0")
-            database.execSQL("ALTER TABLE $tableName ADD COLUMN last_successful_page INTEGER NOT NULL DEFAULT 0")
-            database.execSQL("ALTER TABLE $tableName ADD COLUMN retry_after_ms INTEGER NOT NULL DEFAULT 0")
-            database.execSQL("ALTER TABLE $tableName ADD COLUMN failure_count INTEGER NOT NULL DEFAULT 0")
-            database.execSQL("ALTER TABLE $tableName ADD COLUMN retry_budget_remaining INTEGER NOT NULL DEFAULT 3")
-            database.execSQL("ALTER TABLE $tableName ADD COLUMN last_page_fingerprint TEXT")
+            addColumnIfMissing(database, tableName, "last_attempted_page", "INTEGER NOT NULL DEFAULT 0")
+            addColumnIfMissing(database, tableName, "last_successful_page", "INTEGER NOT NULL DEFAULT 0")
+            addColumnIfMissing(database, tableName, "retry_after_ms", "INTEGER NOT NULL DEFAULT 0")
+            addColumnIfMissing(database, tableName, "failure_count", "INTEGER NOT NULL DEFAULT 0")
+            addColumnIfMissing(database, tableName, "retry_budget_remaining", "INTEGER NOT NULL DEFAULT 3")
+            addColumnIfMissing(database, tableName, "last_page_fingerprint", "TEXT")
         }
 
         private fun addColumnIfMissing(
