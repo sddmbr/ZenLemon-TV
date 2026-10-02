@@ -4,9 +4,46 @@ import com.google.common.truth.Truth.assertThat
 import java.net.Inet4Address
 import java.net.Inet6Address
 import java.net.InetAddress
+import java.net.UnknownHostException
+import okhttp3.Dns
 import org.junit.Test
 
 class PlayerDnsPolicyTest {
+
+    @Test
+    fun `healthAwareDns delegates to underlying dns and sorts results`() {
+        val ipv4a = InetAddress.getByName("192.0.2.10") as Inet4Address
+        val ipv6 = InetAddress.getByName("2001:db8::1") as Inet6Address
+        val ipv4b = InetAddress.getByName("192.0.2.20") as Inet4Address
+
+        val healthStore = PlayerAddressHealthStore()
+        healthStore.markHealthy("example.test", 443, ipv6)
+
+        val mockDns = object : Dns {
+            override fun lookup(hostname: String): List<InetAddress> {
+                if (hostname == "example.test") return listOf(ipv4a, ipv6, ipv4b)
+                throw UnknownHostException()
+            }
+        }
+
+        val dns = PlayerDnsPolicy.healthAwareDns(443, healthStore, mockDns)
+        val result = dns.lookup("example.test")
+
+        assertThat(result).containsExactly(ipv6, ipv4a, ipv4b).inOrder()
+    }
+
+    @Test(expected = UnknownHostException::class)
+    fun `healthAwareDns throws exception from delegate`() {
+        val healthStore = PlayerAddressHealthStore()
+        val mockDns = object : Dns {
+            override fun lookup(hostname: String): List<InetAddress> {
+                throw UnknownHostException()
+            }
+        }
+
+        val dns = PlayerDnsPolicy.healthAwareDns(443, healthStore, mockDns)
+        dns.lookup("invalid.test")
+    }
 
     @Test
     fun `sortForPlayback keeps all addresses when no health is known`() {
