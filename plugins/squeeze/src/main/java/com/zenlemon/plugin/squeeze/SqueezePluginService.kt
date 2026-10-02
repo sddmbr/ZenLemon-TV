@@ -1,6 +1,7 @@
 package com.zenlemon.plugin.squeeze
 
 import android.app.Service
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -13,14 +14,18 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.Scanner
 import kotlin.concurrent.thread
+import org.json.JSONObject
 
 class SqueezePluginService : Service() {
 
     companion object {
         private const val TAG = "SqueezePlugin"
+        private const val PREF_NAME = "squeeze_plugin_prefs"
+        private const val KEY_SERVER_URL = "serverUrl"
+        private const val DEFAULT_SERVER_URL = "http://192.168.0.35:3000"
     }
 
-    private class IncomingHandler(looper: Looper) : Handler(looper) {
+    private inner class IncomingHandler(looper: Looper) : Handler(looper) {
         override fun handleMessage(msg: Message) {
             val requestData = msg.data
             val apiVersion = requestData.getInt("api_version", 1)
@@ -69,7 +74,45 @@ class SqueezePluginService : Service() {
                 } else if (msg.what == 1) {
                     Log.d(TAG, "Manifest requested")
                     responseData.putBoolean("success", true)
-                    responseData.putString("manifest_json", """{"name": "ZenLemon Squeeze", "capabilities": ["playback.prepare"]}""")
+                    responseData.putString("manifest_json", """{"name": "ZenLemon Squeeze", "capabilities": ["playback.prepare", "configuration.schema"], "configurationMode": "host.schema"}""")
+                } else if (msg.what == 7) {
+                    val schema = """
+                        {
+                          "schemaVersion": 1,
+                          "title": "ZenLemon Squeeze",
+                          "description": "Extractor settings.",
+                          "sections": [
+                            {
+                              "id": "connection",
+                              "title": "Connection",
+                              "description": "Extractor server API endpoint.",
+                              "fields": [
+                                {
+                                  "key": "serverUrl",
+                                  "type": "url",
+                                  "label": "Server URL",
+                                  "placeholder": "$DEFAULT_SERVER_URL",
+                                  "required": true
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                    """.trimIndent()
+                    responseData.putBoolean("success", true)
+                    responseData.putString("configuration_schema_json", schema)
+                } else if (msg.what == 8) {
+                    val prefs = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+                    val serverUrl = prefs.getString(KEY_SERVER_URL, DEFAULT_SERVER_URL)
+                    val values = JSONObject().apply { put("serverUrl", serverUrl) }
+                    responseData.putBoolean("success", true)
+                    responseData.putString("configuration_values_json", values.toString())
+                } else if (msg.what == 9) {
+                    val valuesJson = requestData.getString("configuration_values_json")
+                    val values = if (valuesJson != null) JSONObject(valuesJson) else JSONObject()
+                    val newServerUrl = values.optString("serverUrl", DEFAULT_SERVER_URL)
+                    getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit().putString(KEY_SERVER_URL, newServerUrl).apply()
+                    responseData.putBoolean("success", true)
                 } else {
                     Log.d(TAG, "Unhandled message type: ${msg.what}")
                     responseData.putBoolean("success", true)
@@ -90,9 +133,9 @@ class SqueezePluginService : Service() {
         }
 
         private fun extractYoutubeStream(youtubeUrl: String): String {
-            // Updated to the current LAN IP for testing. 
-            // TODO: In production, this should point to a public domain or be configurable in the UI.
-            val serverApiUrl = "http://192.168.0.35:3000/api/extract?url=" + java.net.URLEncoder.encode(youtubeUrl, "UTF-8")
+            val prefs = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            val baseUrl = prefs.getString(KEY_SERVER_URL, DEFAULT_SERVER_URL)
+            val serverApiUrl = "$baseUrl/api/extract?url=" + java.net.URLEncoder.encode(youtubeUrl, "UTF-8")
             
             Log.d(TAG, "Connecting to extractor: $serverApiUrl")
             val connection = URL(serverApiUrl).openConnection() as HttpURLConnection
