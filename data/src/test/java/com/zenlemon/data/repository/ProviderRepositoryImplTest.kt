@@ -22,6 +22,7 @@ import com.zenlemon.data.remote.dto.XtreamAuthResponse
 import com.zenlemon.data.remote.dto.XtreamServerInfo
 import com.zenlemon.data.remote.dto.XtreamUserInfo
 import com.zenlemon.data.security.CredentialCrypto
+import com.zenlemon.data.security.CredentialDecryptionException
 import com.zenlemon.data.sync.SyncManager
 import com.zenlemon.domain.model.ProviderEpgSyncMode
 import com.zenlemon.domain.model.ProviderSavedWithSyncErrorException
@@ -579,5 +580,31 @@ class ProviderRepositoryImplTest {
         assertThat(result.isSuccess).isTrue()
         verify(providerDao).setActive(9L)
         verify(syncManager, never()).scheduleProviderSyncResume(9L)
+    }
+    @Test
+    fun `loginJellyfin returns error when credential decryption fails for existing provider`() = runTest {
+        val existingProvider = ProviderEntity(
+            id = 1L,
+            name = "Jellyfin",
+            type = ProviderType.JELLYFIN,
+            serverUrl = "http://jellyfin.local",
+            username = "user",
+            password = "encrypted_password"
+        )
+        whenever(providerDao.getByUrlAndUser("http://jellyfin.local", "user")).thenReturn(existingProvider)
+        whenever(providerDao.getById(1L)).thenReturn(existingProvider)
+        whenever(credentialCrypto.decryptIfNeeded("encrypted_password")).thenThrow(CredentialDecryptionException())
+
+        val result = repository.loginJellyfin(
+            serverUrl = "http://jellyfin.local",
+            username = "user",
+            password = "",
+            name = "Jellyfin",
+            onProgress = null,
+            id = 1L
+        )
+
+        assertThat(result.isError).isTrue()
+        assertThat((result as Result.Error).message).isEqualTo(CredentialDecryptionException.MESSAGE)
     }
 }
