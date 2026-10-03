@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
+import android.content.Context
 import android.os.Message
 import android.os.Messenger
 import android.util.Log
+import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
 import java.util.Scanner
@@ -18,9 +20,12 @@ class SqueezePluginService : Service() {
 
     companion object {
         private const val TAG = "SqueezePlugin"
+        private const val PREFS_NAME = "squeeze_plugin_prefs"
+        private const val PREF_SERVER_URL = "serverUrl"
+        private const val DEFAULT_SERVER_URL = "http://192.168.0.35:3000"
     }
 
-    private class IncomingHandler(looper: Looper) : Handler(looper) {
+    private class IncomingHandler(looper: Looper, private val context: Context) : Handler(looper) {
         override fun handleMessage(msg: Message) {
             val requestData = msg.data
             val apiVersion = requestData.getInt("api_version", 1)
@@ -69,7 +74,56 @@ class SqueezePluginService : Service() {
                 } else if (msg.what == 1) {
                     Log.d(TAG, "Manifest requested")
                     responseData.putBoolean("success", true)
-                    responseData.putString("manifest_json", """{"name": "ZenLemon Squeeze", "capabilities": ["playback.prepare"]}""")
+                    responseData.putString("manifest_json", """{"name": "ZenLemon Squeeze", "capabilities": ["playback.prepare", "configuration.schema"], "configurationMode": "host.schema"}""")
+                } else if (msg.what == 7) { // MSG_GET_CONFIGURATION_SCHEMA
+                    Log.d(TAG, "Configuration schema requested")
+                    val schemaJson = """
+                        {
+                          "schemaVersion": 1,
+                          "title": "ZenLemon Squeeze",
+                          "description": "Native YouTube extraction settings.",
+                          "sections": [
+                            {
+                              "id": "connection",
+                              "title": "Connection",
+                              "description": "Extractor endpoint.",
+                              "fields": [
+                                {
+                                  "key": "serverUrl",
+                                  "type": "url",
+                                  "label": "Extractor Server URL",
+                                  "placeholder": "http://192.168.0.35:3000",
+                                  "required": true
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                    """.trimIndent()
+                    responseData.putBoolean("success", true)
+                    responseData.putString("configuration_schema_json", schemaJson)
+                } else if (msg.what == 8) { // MSG_GET_CONFIGURATION_VALUES
+                    Log.d(TAG, "Configuration values requested")
+                    val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                    val serverUrl = prefs.getString(PREF_SERVER_URL, DEFAULT_SERVER_URL) ?: DEFAULT_SERVER_URL
+                    val valuesJson = JSONObject().apply {
+                        put("serverUrl", serverUrl)
+                    }.toString()
+                    responseData.putBoolean("success", true)
+                    responseData.putString("configuration_values_json", valuesJson)
+                } else if (msg.what == 9) { // MSG_SET_CONFIGURATION_VALUES
+                    Log.d(TAG, "Setting configuration values")
+                    val valuesJsonStr = requestData.getString("configuration_values_json")
+                    if (valuesJsonStr != null) {
+                        val valuesJson = JSONObject(valuesJsonStr)
+                        val newServerUrl = valuesJson.optString("serverUrl", DEFAULT_SERVER_URL)
+                        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                        prefs.edit().putString(PREF_SERVER_URL, newServerUrl).apply()
+                        responseData.putBoolean("success", true)
+                    } else {
+                        responseData.putBoolean("success", false)
+                        responseData.putString("message", "Missing configuration values")
+                    }
                 } else {
                     Log.d(TAG, "Unhandled message type: ${msg.what}")
                     responseData.putBoolean("success", true)
@@ -90,9 +144,15 @@ class SqueezePluginService : Service() {
         }
 
         private fun extractYoutubeStream(youtubeUrl: String): String {
-            // Updated to the current LAN IP for testing. 
-            // TODO: In production, this should point to a public domain or be configurable in the UI.
-            val serverApiUrl = "http://192.168.0.35:3000/api/extract?url=" + java.net.URLEncoder.encode(youtubeUrl, "UTF-8")
+            val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            var baseUrl = prefs.getString(PREF_SERVER_URL, DEFAULT_SERVER_URL) ?: DEFAULT_SERVER_URL
+
+            // Remove trailing slash if present to avoid //api/extract
+            if (baseUrl.endsWith("/")) {
+                baseUrl = baseUrl.dropLast(1)
+            }
+
+            val serverApiUrl = "$baseUrl/api/extract?url=" + java.net.URLEncoder.encode(youtubeUrl, "UTF-8")
             
             Log.d(TAG, "Connecting to extractor: $serverApiUrl")
             val connection = URL(serverApiUrl).openConnection() as HttpURLConnection
@@ -114,7 +174,12 @@ class SqueezePluginService : Service() {
         }
     }
 
-    private var messenger: Messenger? = Messenger(IncomingHandler(Looper.getMainLooper()))
+    private var messenger: Messenger? = null
+
+    override fun onCreate() {
+        super.onCreate()
+        messenger = Messenger(IncomingHandler(Looper.getMainLooper(), this))
+    }
 
     override fun onBind(intent: Intent): IBinder? {
         Log.d(TAG, "Service bound: ${intent.action}")
