@@ -33,7 +33,7 @@ jobs:
 
           echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
           echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
-          echo "release_tag=v$VERSION_NAME" >> "$GITHUB_OUTPUT"
+          echo "release_tag=v$VERSION_NAME+$VERSION_CODE" >> "$GITHUB_OUTPUT"
           echo "apk_name=ZenLemon-$VERSION_NAME.apk" >> "$GITHUB_OUTPUT"
 
       - name: Read plugin version
@@ -163,7 +163,7 @@ jobs:
 
           echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
           echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
-          echo "release_tag=v$VERSION_NAME" >> "$GITHUB_OUTPUT"
+          echo "release_tag=v$VERSION_NAME+$VERSION_CODE" >> "$GITHUB_OUTPUT"
           echo "apk_name=ZenLemon-$VERSION_NAME.apk" >> "$GITHUB_OUTPUT"
 
       - name: Extract changelog entry
