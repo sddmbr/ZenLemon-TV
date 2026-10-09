@@ -1440,7 +1440,7 @@ class SeriesRepositoryImpl @Inject constructor(
         val provider = providerDao.getById(providerId) ?: return
         if (provider.type != ProviderType.XTREAM_CODES && provider.type != ProviderType.STALKER_PORTAL) return
 
-        val localCount = seriesDao.getCountByCategory(providerId, categoryId).first()
+        val localCount = seriesDao.getCountByCategorySync(providerId, categoryId)
         val hydration = seriesCategoryHydrationDao.get(providerId, categoryId)
         if (provider.type == ProviderType.XTREAM_CODES) {
             if (localCount > 0) {
@@ -1484,7 +1484,7 @@ class SeriesRepositoryImpl @Inject constructor(
                 if (provider.type == ProviderType.XTREAM_CODES) {
                     return@launch
                 }
-                val localCount = seriesDao.getCountByCategory(providerId, categoryId).first()
+                val localCount = seriesDao.getCountByCategorySync(providerId, categoryId)
                 val hydration = seriesCategoryHydrationDao.get(providerId, categoryId)
                 if (localCount == 0 && hydration?.isEmptyRetryCoolingDown() == true) return@launch
                 if (provider.type == ProviderType.STALKER_PORTAL) {
@@ -1540,7 +1540,7 @@ class SeriesRepositoryImpl @Inject constructor(
         lock.withLock {
             val stalkerProvider = createStalkerProvider(providerId, provider)
             if (!allowWildcard && stalkerProvider.isWildcardCategory(ContentType.SERIES, categoryId)) return
-            var currentCount = localCount ?: seriesDao.getCountByCategory(providerId, categoryId).first()
+            var currentCount = localCount ?: seriesDao.getCountByCategorySync(providerId, categoryId)
             var currentHydration = hydration ?: seriesCategoryHydrationDao.get(providerId, categoryId)
             if (currentHydration?.isComplete == true || currentCount >= requiredCount) return
             if (currentCount == 0 && currentHydration?.isEmptyRetryCoolingDown() == true) return
@@ -1567,7 +1567,7 @@ class SeriesRepositoryImpl @Inject constructor(
                         val entities = result.data.items.map { series -> series.toEntity() }
                         val pageComplete = result.data.isComplete || entities.isEmpty()
                         seriesDao.upsertCategoryPage(providerId, entities)
-                        currentCount = seriesDao.getCountByCategory(providerId, categoryId).first()
+                        currentCount = seriesDao.getCountByCategorySync(providerId, categoryId)
                         currentHydration = SeriesCategoryHydrationEntity(
                             providerId = providerId,
                             categoryId = categoryId,

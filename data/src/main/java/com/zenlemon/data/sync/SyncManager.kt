@@ -3002,8 +3002,8 @@ class SyncManager @Inject constructor(
 
     private suspend fun currentStalkerCategoryCount(providerId: Long, contentType: ContentType, categoryId: Long): Int =
         when (contentType) {
-            ContentType.MOVIE -> movieDao.getCountByCategory(providerId, categoryId).first()
-            ContentType.SERIES -> seriesDao.getCountByCategory(providerId, categoryId).first()
+            ContentType.MOVIE -> movieDao.getCountByCategorySync(providerId, categoryId)
+            ContentType.SERIES -> seriesDao.getCountByCategorySync(providerId, categoryId)
             else -> 0
         }
 

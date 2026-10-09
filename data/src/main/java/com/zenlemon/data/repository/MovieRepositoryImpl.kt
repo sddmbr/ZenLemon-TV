@@ -1447,7 +1447,7 @@ class MovieRepositoryImpl @Inject constructor(
         val provider = providerDao.getById(providerId) ?: return
         if (provider.type != ProviderType.XTREAM_CODES && provider.type != ProviderType.STALKER_PORTAL) return
 
-        val localCount = movieDao.getCountByCategory(providerId, categoryId).first()
+        val localCount = movieDao.getCountByCategorySync(providerId, categoryId)
         val hydration = movieCategoryHydrationDao.get(providerId, categoryId)
         if (provider.type == ProviderType.XTREAM_CODES) {
             if (localCount > 0) {
@@ -1496,7 +1496,7 @@ class MovieRepositoryImpl @Inject constructor(
                 if (provider.type == ProviderType.XTREAM_CODES) {
                     return@launch
                 }
-                val localCount = movieDao.getCountByCategory(providerId, categoryId).first()
+                val localCount = movieDao.getCountByCategorySync(providerId, categoryId)
                 val hydration = movieCategoryHydrationDao.get(providerId, categoryId)
                 if (provider.type == ProviderType.STALKER_PORTAL) {
                     if (localCount <= 0) {
@@ -1552,7 +1552,7 @@ class MovieRepositoryImpl @Inject constructor(
         lock.withLock {
             val stalkerProvider = createStalkerProvider(providerId, provider)
             if (!allowWildcard && stalkerProvider.isWildcardCategory(ContentType.MOVIE, categoryId)) return
-            var currentCount = localCount ?: movieDao.getCountByCategory(providerId, categoryId).first()
+            var currentCount = localCount ?: movieDao.getCountByCategorySync(providerId, categoryId)
             var currentHydration = hydration ?: movieCategoryHydrationDao.get(providerId, categoryId)
             if (currentHydration?.isComplete == true || currentCount >= requiredCount) return
             if (currentCount == 0 && currentHydration?.isEmptyRetryCoolingDown() == true) return
@@ -1580,7 +1580,7 @@ class MovieRepositoryImpl @Inject constructor(
                         val pageComplete = result.data.isComplete || entities.isEmpty()
                         transactionRunner.inTransaction {
                             movieDao.upsertCategoryPage(providerId, entities)
-                            val updatedCount = movieDao.getCountByCategory(providerId, categoryId).first()
+                            val updatedCount = movieDao.getCountByCategorySync(providerId, categoryId)
                             currentCount = updatedCount
                             currentHydration = MovieCategoryHydrationEntity(
                                 providerId = providerId,
