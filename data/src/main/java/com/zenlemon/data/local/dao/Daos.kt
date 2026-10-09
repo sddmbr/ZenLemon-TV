@@ -1593,6 +1593,9 @@ interface MovieDao {
     @Query("SELECT id, stream_id AS remote_id FROM movies WHERE provider_id = :providerId")
     suspend fun getIdMappings(providerId: Long): List<RemoteIdMapping>
 
+    @Query("SELECT id, stream_id AS remote_id FROM movies WHERE provider_id = :providerId AND stream_id IN (:streamIds)")
+    suspend fun getIdMappingsByStreamIds(providerId: Long, streamIds: List<Long>): List<RemoteIdMapping>
+
     @Query("SELECT id, stream_id AS remote_id FROM movies WHERE provider_id = :providerId AND category_id = :categoryId")
     suspend fun getIdMappingsByCategory(providerId: Long, categoryId: Long): List<RemoteIdMapping>
 
@@ -1757,7 +1760,11 @@ interface MovieDao {
     @Transaction
     suspend fun upsertCategoryPage(providerId: Long, movies: List<MovieEntity>) {
         if (movies.isEmpty()) return
-        val existingByRemoteId = getIdMappings(providerId).associate { it.remoteId to it.id }
+        val streamIds = movies.map { it.streamId }.distinct()
+        val existingByRemoteId = mutableMapOf<Long, Long>()
+        streamIds.chunked(500).forEach { chunk ->
+            existingByRemoteId.putAll(getIdMappingsByStreamIds(providerId, chunk).associate { it.remoteId to it.id })
+        }
         val remapped = movies
             .distinctBy { it.streamId }
             .map { entity -> entity.copy(id = existingByRemoteId[entity.streamId] ?: 0L) }
@@ -2613,6 +2620,15 @@ interface SeriesDao {
         """
         SELECT id, COALESCE(NULLIF(provider_series_id, ''), CAST(series_id AS TEXT)) AS remote_id
         FROM series
+        WHERE provider_id = :providerId AND COALESCE(NULLIF(provider_series_id, ''), CAST(series_id AS TEXT)) IN (:remoteIds)
+        """
+    )
+    suspend fun getIdMappingsByRemoteIds(providerId: Long, remoteIds: List<String>): List<SeriesRemoteIdMapping>
+
+    @Query(
+        """
+        SELECT id, COALESCE(NULLIF(provider_series_id, ''), CAST(series_id AS TEXT)) AS remote_id
+        FROM series
         WHERE provider_id = :providerId AND category_id = :categoryId
         """
     )
@@ -2670,8 +2686,12 @@ interface SeriesDao {
     @Transaction
     suspend fun upsertCategoryPage(providerId: Long, series: List<SeriesEntity>) {
         if (series.isEmpty()) return
-        val existingByRemoteId = getIdMappings(providerId).associate { it.remoteId to it.id }
         fun SeriesEntity.remoteKey(): String = providerSeriesId?.takeIf { it.isNotBlank() } ?: seriesId.toString()
+        val remoteKeys = series.map { it.remoteKey() }.distinct()
+        val existingByRemoteId = mutableMapOf<String, Long>()
+        remoteKeys.chunked(500).forEach { chunk ->
+            existingByRemoteId.putAll(getIdMappingsByRemoteIds(providerId, chunk).associate { it.remoteId to it.id })
+        }
         val remapped = series
             .distinctBy { it.remoteKey() }
             .map { entity -> entity.copy(id = existingByRemoteId[entity.remoteKey()] ?: 0L) }
