@@ -1781,6 +1781,9 @@ interface MovieDao {
     @Query("SELECT COUNT(*) FROM movies WHERE provider_id = :providerId AND category_id = :categoryId")
     fun getCountByCategory(providerId: Long, categoryId: Long): Flow<Int>
 
+    @Query("SELECT COUNT(*) FROM movies WHERE provider_id = :providerId AND category_id = :categoryId")
+    suspend fun getCountByCategorySync(providerId: Long, categoryId: Long): Int
+
     @Query("UPDATE movies SET is_user_protected = :isProtected WHERE provider_id = :providerId AND category_id = :categoryId")
     suspend fun updateProtectionStatus(providerId: Long, categoryId: Long, isProtected: Boolean)
 
@@ -2706,6 +2709,9 @@ interface SeriesDao {
 
     @Query("SELECT COUNT(*) FROM series WHERE provider_id = :providerId AND category_id = :categoryId")
     fun getCountByCategory(providerId: Long, categoryId: Long): Flow<Int>
+
+    @Query("SELECT COUNT(*) FROM series WHERE provider_id = :providerId AND category_id = :categoryId")
+    suspend fun getCountByCategorySync(providerId: Long, categoryId: Long): Int
 
     @Query("UPDATE series SET is_user_protected = :isProtected WHERE provider_id = :providerId AND category_id = :categoryId")
     suspend fun updateProtectionStatus(providerId: Long, categoryId: Long, isProtected: Boolean)
