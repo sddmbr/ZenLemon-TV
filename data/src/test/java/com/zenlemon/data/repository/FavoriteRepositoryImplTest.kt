@@ -457,32 +457,29 @@ class FavoriteRepositoryImplTest {
                 contentType = ContentType.LIVE
             )
         )
-        whenever(favoriteDao.getByGroup(11L)).thenReturn(
-            flowOf(
-                listOf(
-                    FavoriteEntity(
-                        id = 1L,
-                        providerId = 7L,
-                        contentId = 101L,
-                        contentType = ContentType.LIVE,
-                        position = 0,
-                        groupId = 11L,
-                        addedAt = 1_000L
-                    ),
-                    FavoriteEntity(
-                        id = 2L,
-                        providerId = 7L,
-                        contentId = 102L,
-                        contentType = ContentType.LIVE,
-                        position = 1_024,
-                        groupId = 11L,
-                        addedAt = 2_000L
-                    )
-                )
+        val sourceFavorites = listOf(
+            FavoriteEntity(
+                id = 1L,
+                providerId = 7L,
+                contentId = 101L,
+                contentType = ContentType.LIVE,
+                position = 0,
+                groupId = 11L,
+                addedAt = 1_000L
+            ),
+            FavoriteEntity(
+                id = 2L,
+                providerId = 7L,
+                contentId = 102L,
+                contentType = ContentType.LIVE,
+                position = 1_024,
+                groupId = 11L,
+                addedAt = 2_000L
             )
         )
-        whenever(favoriteDao.get(7L, 101L, ContentType.LIVE.name, 12L)).thenReturn(null)
-        whenever(favoriteDao.get(7L, 102L, ContentType.LIVE.name, 12L)).thenReturn(
+        whenever(favoriteDao.getByGroupSync(11L)).thenReturn(sourceFavorites)
+
+        val targetFavorites = listOf(
             FavoriteEntity(
                 id = 3L,
                 providerId = 7L,
@@ -493,79 +490,92 @@ class FavoriteRepositoryImplTest {
                 addedAt = 3_000L
             )
         )
+        whenever(favoriteDao.getByGroupSync(12L)).thenReturn(targetFavorites)
 
         val result = repository.mergeGroupInto(11L, 12L)
 
         assertThat(result.isSuccess).isTrue()
-        verify(favoriteDao).updateGroup(1L, 12L)
-        verify(favoriteDao).delete(7L, 102L, ContentType.LIVE.name, 11L)
+        verify(favoriteDao).updateGroupBatch(listOf(1L), 12L)
+        verify(favoriteDao).deleteByIds(listOf(2L))
         verify(virtualGroupDao).delete(11L)
     }
 
     @Test
     fun `deleteGroup promotes members to global favorites when no duplicate exists`() = runTest {
-        whenever(favoriteDao.getByGroup(11L)).thenReturn(
-            flowOf(
-                listOf(
-                    FavoriteEntity(
-                        id = 1L,
-                        providerId = 7L,
-                        contentId = 101L,
-                        contentType = ContentType.LIVE,
-                        position = 0,
-                        groupId = 11L,
-                        groupKey = 11L,
-                        addedAt = 1_000L
-                    )
-                )
+        whenever(virtualGroupDao.getById(11L)).thenReturn(
+            VirtualGroupEntity(
+                id = 11L,
+                providerId = 7L,
+                name = "Source",
+                contentType = ContentType.LIVE
             )
         )
-        whenever(favoriteDao.get(7L, 101L, ContentType.LIVE.name, null)).thenReturn(null)
+        val groupFavorites = listOf(
+            FavoriteEntity(
+                id = 1L,
+                providerId = 7L,
+                contentId = 101L,
+                contentType = ContentType.LIVE,
+                position = 0,
+                groupId = 11L,
+                groupKey = 11L,
+                addedAt = 1_000L
+            )
+        )
+        whenever(favoriteDao.getByGroupSync(11L)).thenReturn(groupFavorites)
+        whenever(favoriteDao.getGlobalByTypeSync(7L, ContentType.LIVE.name)).thenReturn(emptyList())
 
         val result = repository.deleteGroup(11L)
 
         assertThat(result.isSuccess).isTrue()
-        verify(favoriteDao).updateGroup(1L, null)
-        verify(favoriteDao, never()).delete(7L, 101L, ContentType.LIVE.name, 11L)
+        verify(favoriteDao).updateGroupBatch(listOf(1L), null)
+        verify(favoriteDao, never()).deleteByIds(any())
         verify(virtualGroupDao).delete(11L)
     }
 
     @Test
     fun `deleteGroup removes source membership when a global favorite already exists`() = runTest {
-        whenever(favoriteDao.getByGroup(11L)).thenReturn(
-            flowOf(
-                listOf(
-                    FavoriteEntity(
-                        id = 1L,
-                        providerId = 7L,
-                        contentId = 101L,
-                        contentType = ContentType.LIVE,
-                        position = 0,
-                        groupId = 11L,
-                        groupKey = 11L,
-                        addedAt = 1_000L
-                    )
-                )
+        whenever(virtualGroupDao.getById(11L)).thenReturn(
+            VirtualGroupEntity(
+                id = 11L,
+                providerId = 7L,
+                name = "Source",
+                contentType = ContentType.LIVE
             )
         )
-        whenever(favoriteDao.get(7L, 101L, ContentType.LIVE.name, null)).thenReturn(
+        val groupFavorites = listOf(
             FavoriteEntity(
-                id = 2L,
+                id = 1L,
                 providerId = 7L,
                 contentId = 101L,
                 contentType = ContentType.LIVE,
                 position = 1_024,
-                groupId = null,
-                groupKey = 0L,
-                addedAt = 2_000L
+                groupId = 11L,
+                groupKey = 11L,
+                addedAt = 1_000L
+            )
+        )
+        whenever(favoriteDao.getByGroupSync(11L)).thenReturn(groupFavorites)
+        whenever(favoriteDao.getGlobalByTypeSync(7L, ContentType.LIVE.name)).thenReturn(
+            listOf(
+                FavoriteEntity(
+                    id = 2L,
+                    providerId = 7L,
+                    contentId = 101L,
+                    contentType = ContentType.LIVE,
+                    position = 0,
+                    groupId = null,
+                    groupKey = 0L,
+                    addedAt = 2_000L
+                )
             )
         )
 
         val result = repository.deleteGroup(11L)
 
         assertThat(result.isSuccess).isTrue()
-        verify(favoriteDao).delete(7L, 101L, ContentType.LIVE.name, 11L)
-        verify(favoriteDao, never()).updateGroup(1L, null)
+        verify(favoriteDao).deleteByIds(listOf(1L))
+        verify(favoriteDao, never()).updateGroupBatch(any(), any())
         verify(virtualGroupDao).delete(11L)
     }
 
