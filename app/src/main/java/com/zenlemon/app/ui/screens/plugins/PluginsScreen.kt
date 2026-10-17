@@ -56,6 +56,7 @@ import com.zenlemon.app.plugins.InstalledZenLemonPlugin
 import com.zenlemon.app.plugins.PluginConfigurationAction
 import com.zenlemon.app.plugins.PluginConfigurationField
 import com.zenlemon.app.plugins.PluginConfigurationSection
+import com.zenlemon.app.ui.components.TvEmptyState
 import com.zenlemon.app.ui.components.dialogs.PremiumDialog
 import com.zenlemon.app.ui.components.dialogs.PremiumDialogFooterButton
 import com.zenlemon.app.ui.components.shell.AppNavigationChrome
@@ -155,10 +156,12 @@ fun PluginsScreen(
                 ) {
                     if (uiState.plugins.isEmpty() && !uiState.isLoading) {
                         item {
-                            Text(
-                                text = "No compatible ZenLemon plugins are installed.",
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = AppColors.TextSecondary
+                            TvEmptyState(
+                                title = "No Plugins Found",
+                                subtitle = "No compatible ZenLemon plugins are installed.",
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .heightIn(min = 200.dp)
                             )
                         }
                     }
