@@ -23,7 +23,6 @@ import com.zenlemon.app.ui.theme.Primary
 import com.zenlemon.app.ui.theme.SurfaceElevated
 import com.zenlemon.app.ui.theme.TextPrimary
 import com.zenlemon.app.ui.theme.TextSecondary
-import com.zenlemon.app.ui.interaction.TvClickableSurface
 import com.zenlemon.app.ui.interaction.TvButton
 import com.zenlemon.app.ui.interaction.TvIconButton
 
