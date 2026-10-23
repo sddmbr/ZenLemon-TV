@@ -52,4 +52,28 @@ class PlayerHttpProtocolPolicyTest {
         )
             .isFalse()
     }
+
+    @Test
+    fun `url based forceHttp1 defaults to false`() {
+        assertThat(
+            PlayerHttpProtocolPolicy.forceHttp1(
+                url = "http://example.com/stream.m3u8",
+                resolvedStreamType = ResolvedStreamType.HLS
+            )
+        ).isFalse()
+
+        assertThat(
+            PlayerHttpProtocolPolicy.forceHttp1(
+                url = "https://example.com/video.mp4",
+                resolvedStreamType = ResolvedStreamType.PROGRESSIVE
+            )
+        ).isFalse()
+
+        assertThat(
+            PlayerHttpProtocolPolicy.forceHttp1(
+                url = "http://example.com/manifest.mpd",
+                resolvedStreamType = ResolvedStreamType.DASH
+            )
+        ).isFalse()
+    }
 }
