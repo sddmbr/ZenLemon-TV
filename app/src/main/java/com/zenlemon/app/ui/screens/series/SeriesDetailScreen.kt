@@ -212,7 +212,7 @@ private fun SeriesDetailContent(
 
         AsyncImage(
             model = rememberCrossfadeImageModel(series.backdropUrl ?: series.posterUrl),
-            contentDescription = series.name,
+            contentDescription = stringResource(R.string.poster_cd, series.name),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(heroHeight)
@@ -267,7 +267,7 @@ private fun SeriesDetailContent(
                         ) {
                             AsyncImage(
                                 model = rememberCrossfadeImageModel(series.posterUrl ?: series.backdropUrl),
-                                contentDescription = series.name,
+                                contentDescription = stringResource(R.string.poster_cd, series.name),
                                 modifier = Modifier.fillMaxSize(),
                                 contentScale = ContentScale.Crop
                             )
@@ -355,7 +355,7 @@ private fun SeriesDetailContent(
                         ) {
                             AsyncImage(
                                 model = rememberCrossfadeImageModel(series.posterUrl ?: series.backdropUrl),
-                                contentDescription = series.name,
+                                contentDescription = stringResource(R.string.poster_cd, series.name),
                                 modifier = Modifier.fillMaxSize(),
                                 contentScale = ContentScale.Crop
                             )

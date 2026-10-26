@@ -21,3 +21,6 @@
 ## 2024-05-30 - Context-aware contentDescription for AsyncImage posters
 **Learning:** Found an `AsyncImage` in `DownloadsScreen.kt` for posters that had `contentDescription = null`, which strips critical context for screen readers when describing informative images in a list or grid. Users wouldn't know which poster was which if the image didn't load or if they were relying entirely on the screen reader for context.
 **Action:** Replaced `contentDescription = null` with a parameterized string resource `<string name="poster_cd">Poster for %1$s</string>` mapping to `stringResource(R.string.poster_cd, download.contentName)`.
+## 2026-10-26 - Context-aware contentDescription for AsyncImage posters in detail screens
+**Learning:** Found `AsyncImage`s in `MovieDetailScreen.kt` and `SeriesDetailScreen.kt` that were using just `movie.name` or `series.name` for the `contentDescription` of poster images. This provides insufficient context for screen reader users, who will just hear the title of the movie/series without knowing they are focused on a poster image.
+**Action:** Replaced `contentDescription = movie.name` and similar usages with a parameterized string resource `stringResource(R.string.poster_cd, name)`, which maps to `Poster for %1$s`, matching the pattern established for other posters.
