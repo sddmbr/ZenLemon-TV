@@ -203,7 +203,7 @@ private fun MovieDetailContent(
 
         AsyncImage(
             model = rememberCrossfadeImageModel(movie.backdropUrl ?: movie.posterUrl),
-            contentDescription = movie.name,
+            contentDescription = stringResource(R.string.poster_cd, movie.name),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(heroHeight)
@@ -337,7 +337,7 @@ private fun MovieDetailContent(
                                     ) {
                                         AsyncImage(
                                             model = rememberCrossfadeImageModel(related.posterUrl ?: related.backdropUrl),
-                                            contentDescription = related.name,
+                                            contentDescription = stringResource(R.string.poster_cd, related.name),
                                             modifier = Modifier.fillMaxSize(),
                                             contentScale = ContentScale.Crop
                                         )
@@ -373,7 +373,7 @@ private fun MoviePoster(
     ) {
         AsyncImage(
             model = rememberCrossfadeImageModel(movie.posterUrl ?: movie.backdropUrl),
-            contentDescription = movie.name,
+            contentDescription = stringResource(R.string.poster_cd, movie.name),
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
         )
